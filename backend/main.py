@@ -1,3 +1,4 @@
+from sqlalchemy import text
 from sqlalchemy.orm import Session
 from fastapi import FastAPI, Depends
 from database import engine, get_db
@@ -5,6 +6,10 @@ from models import Base, Border, Document, Moment
 import json
 
 app = FastAPI()
+
+with engine.connect() as conn:
+    conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
+    conn.commit()
 
 Base.metadata.create_all(bind=engine)
 
