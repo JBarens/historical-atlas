@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 from database import SessionLocal
 from models import Border
+from sqlalchemy.dialects.postgresql import insert
 
 GEOJSON_DIR = os.path.join(os.path.dirname(__file__), "../historical-basemaps-master/geojson")
 YEARS = [1900, 1914, 1920, 1930, 1938, 1945, 1960, 1994, 2000]
@@ -25,13 +26,14 @@ def seed():
             continue
         data = json.load(open(path))
         for feature in data["features"]:
-            db.add(
+            stmt = insert(Border).values(
                 Border(
                     year=year,
                     country_code=feature["properties"]["NAME"],
                     geojson=json.dumps(feature["geometry"]),
                 )
             )
+            db.execute(stmt)
         print(f"Loaded {year}: {len(data['features'])} features")
     db.commit()
     db.close()
