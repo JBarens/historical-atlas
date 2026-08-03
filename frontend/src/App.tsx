@@ -163,34 +163,46 @@ export default function App() {
     setHighlightTrigger((t) => t + 1);
   }
 
-  function handleQuery() {
+  async function handleQuery() {
     setLoading(true);
     setResult(null);
     setDisplayedAnswer("");
     setMomentIdx(-1);
     setCurrentMoment(null);
-    fetch("http://localhost:8000/query", {
+
+    const response = await fetch("http://localhost:8000/query", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question: query }),
-    })
-      .then((r) => r.json())
-      .then((data) => {
-        setResult(data);
-        setLoading(false);
-        // jump to first moment immediately
-        if (data.moments.length > 0) {
-          setMomentIdx(0);
-          jumpToMoment(data.moments[0]);
+    });
+
+    const reader = response.body!.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      // SSE events are separated by \n\n
+      const events = buffer.split("\n\n");
+      buffer = events.pop() ?? "";
+      for (const event of events) {
+        if (!event.startsWith("data: ")) continue;
+        const msg = JSON.parse(event.slice(6));
+        if (msg.type === "meta") {
+          const data = msg as QueryResponse & { type: string };
+          setResult(data);
+          setLoading(false);
+          if (data.moments.length > 0) {
+            setMomentIdx(0);
+            jumpToMoment(data.moments[0]);
+          }
+        } else if (msg.type === "text") {
+          setDisplayedAnswer((prev) => prev + msg.char);
         }
-        // stream the answer text independently
-        let i = 0;
-        const interval = setInterval(() => {
-          i++;
-          setDisplayedAnswer(data.answer.slice(0, i));
-          if (i >= data.answer.length) clearInterval(interval);
-        }, 12);
-      });
+      }
+    }
   }
 
   function handleContinue() {
