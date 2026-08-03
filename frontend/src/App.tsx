@@ -2,8 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-mapboxgl.accessToken =
-  "MAPBOX_TOKEN_REMOVED";
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
 const YEARS = [1900, 1914, 1920, 1930, 1938, 1945, 1960, 1994, 2000];
 
