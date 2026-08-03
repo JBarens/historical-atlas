@@ -26,12 +26,17 @@ def seed():
             continue
         data = json.load(open(path))
         for feature in data["features"]:
-            stmt = insert(Border).values(
-                Border(
+            country_code = feature["properties"].get("NAME")
+            if not country_code:
+                continue
+            stmt = (
+                insert(Border)
+                .values(
                     year=year,
-                    country_code=feature["properties"]["NAME"],
+                    country_code=country_code,
                     geojson=json.dumps(feature["geometry"]),
                 )
+                .on_conflict_do_nothing()
             )
             db.execute(stmt)
         print(f"Loaded {year}: {len(data['features'])} features")
