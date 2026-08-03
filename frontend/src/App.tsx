@@ -93,6 +93,21 @@ function buildColorExpression(
   return expr;
 }
 
+function matchRegions(
+  regions: string[],
+  features: { properties: { name: string } }[],
+): string[] {
+  const names = features.map((f) => f.properties.name);
+  const matched = names.filter((n) =>
+    regions.some(
+      (r) =>
+        n.toLowerCase().includes(r.toLowerCase()) ||
+        r.toLowerCase().includes(n.toLowerCase()),
+    ),
+  );
+  return matched.length > 0 ? matched : regions;
+}
+
 interface Moment {
   year: number;
   title: string;
@@ -124,24 +139,12 @@ export default function App() {
     }[]
   >([]);
   const pendingRegions = useRef<string[] | null>(null);
+  const activeRegions = useRef<string[] | null>(null);
   const [result, setResult] = useState<QueryResponse | null>(null);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [displayedAnswer, setDisplayedAnswer] = useState("");
   const [currentMoment, setCurrentMoment] = useState<Moment | null>(null);
-
-  async function runAnimation(data: QueryResponse) {
-    const relevant = YEARS.filter(
-      (y) => y >= data.year_start && y <= data.year_end,
-    );
-    for (const y of relevant) {
-      setYear(y);
-      const moment = data.moments.find((m) => m.year === y);
-      if (moment) setCurrentMoment(moment);
-      await new Promise((r) => setTimeout(r, moment ? 2500 : 1200));
-    }
-    setCurrentMoment(null);
-  }
 
   function handleQuery() {
     setLoading(true);
@@ -155,15 +158,45 @@ export default function App() {
       .then((r) => r.json())
       .then((data) => {
         setResult(data);
-        pendingRegions.current = data.regions;
-        runAnimation(data);
         setLoading(false);
-        // fake streaming: type out answer char by char
+        const relevant = YEARS.filter(
+          (y) => y >= data.year_start && y <= data.year_end,
+        );
+        pendingRegions.current = data.regions;
+        activeRegions.current = data.regions;
+        if (relevant.length > 0) setYear(relevant[0]);
+        let yearIdx = 0;
         let i = 0;
+        const charsPerYear = data.answer.length / Math.max(relevant.length, 1);
         const interval = setInterval(() => {
           i++;
           setDisplayedAnswer(data.answer.slice(0, i));
-          if (i >= data.answer.length) clearInterval(interval);
+          const nextIdx = Math.min(
+            Math.floor(i / charsPerYear),
+            relevant.length - 1,
+          );
+          if (nextIdx > yearIdx) {
+            yearIdx = nextIdx;
+            setYear(relevant[yearIdx]);
+            const moment = data.moments.find(
+              (m) => m.year === relevant[yearIdx],
+            );
+            if (moment) setCurrentMoment(moment);
+          }
+          if (i >= data.answer.length) {
+            clearInterval(interval);
+            setCurrentMoment(null);
+            activeRegions.current = null;
+            const map = mapInstance.current;
+            if (map && map.getLayer("borders-fill")) {
+              map.setPaintProperty(
+                "borders-fill",
+                "fill-color",
+                colorsExpression.current as mapboxgl.Expression,
+              );
+              map.setPaintProperty("borders-fill", "fill-opacity", 0.85);
+            }
+          }
         }, 10);
       });
   }
@@ -176,19 +209,20 @@ export default function App() {
   function applyHighlight(map: mapboxgl.Map, regions: string[]) {
     if (!map.getLayer("borders-fill")) return;
     try {
-      const blended: unknown[] = [
-        "case",
-        ["in", ["get", "name"], ["literal", regions]],
-        "#e8613c",
-        colorsExpression.current as mapboxgl.Expression,
-      ];
+      const matched = matchRegions(regions, currentFeatures.current);
       map.setPaintProperty(
         "borders-fill",
         "fill-color",
-        blended as mapboxgl.Expression,
+        colorsExpression.current as mapboxgl.Expression,
       );
+      map.setPaintProperty("borders-fill", "fill-opacity", [
+        "case",
+        ["in", ["get", "name"], ["literal", matched]],
+        0.9,
+        0.12,
+      ] as mapboxgl.Expression);
       const highlighted = currentFeatures.current.filter((f) =>
-        regions.includes(f.properties.name),
+        matched.includes(f.properties.name),
       );
       if (highlighted.length > 0) {
         const bounds = new mapboxgl.LngLatBounds();
@@ -199,7 +233,7 @@ export default function App() {
             ),
           ),
         );
-        map.fitBounds(bounds, { padding: 80, maxZoom: 6, duration: 1000 });
+        map.fitBounds(bounds, { padding: 80, maxZoom: 6, duration: 2500 });
       }
     } catch (e) {
       console.warn("highlight failed", e);
@@ -298,12 +332,28 @@ export default function App() {
         if (pendingRegions.current) {
           applyHighlight(map, pendingRegions.current);
           pendingRegions.current = null;
+        } else if (activeRegions.current) {
+          const matched = matchRegions(activeRegions.current, geojson.features);
+          if (map.getLayer("borders-fill")) {
+            map.setPaintProperty(
+              "borders-fill",
+              "fill-color",
+              colorsExpression.current as mapboxgl.Expression,
+            );
+            map.setPaintProperty("borders-fill", "fill-opacity", [
+              "case",
+              ["in", ["get", "name"], ["literal", matched]],
+              0.9,
+              0.12,
+            ] as mapboxgl.Expression);
+          }
         } else if (map.getLayer("borders-fill")) {
           map.setPaintProperty(
             "borders-fill",
             "fill-color",
             expr as mapboxgl.Expression,
           );
+          map.setPaintProperty("borders-fill", "fill-opacity", 0.85);
         }
       });
   }, [year]);
@@ -436,7 +486,12 @@ export default function App() {
                     style={{
                       marginBottom: 12,
                       paddingLeft: 12,
-                      borderLeft: "2px solid #e8613c",
+                      borderLeft: `2px solid ${currentMoment?.year === m.year ? "#ffffff" : "#e8613c"}`,
+                      backgroundColor:
+                        currentMoment?.year === m.year
+                          ? "rgba(255,255,255,0.08)"
+                          : "transparent",
+                      transition: "background-color 0.5s, border-color 0.5s",
                     }}
                   >
                     <div
@@ -458,18 +513,6 @@ export default function App() {
                     >
                       {m.description}
                     </div>
-                    <div
-                      style={{
-                        marginBottom: 12,
-                        paddingLeft: 12,
-                        borderLeft: `2px solid ${currentMoment?.year === m.year ? "#ffffff" : "#e8613c"}`,
-                        backgroundColor:
-                          currentMoment?.year === m.year
-                            ? "rgba(255,255,255,0.08)"
-                            : "transparent",
-                        transition: "background-color 0.5s",
-                      }}
-                    ></div>
                   </div>
                 ))}
               </div>
