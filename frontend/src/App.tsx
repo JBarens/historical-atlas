@@ -93,18 +93,23 @@ function buildColorExpression(
   return expr;
 }
 
+const GENERIC_WORDS = new Set(["kingdom", "empire", "republic", "united", "great", "north", "south", "east", "west", "state", "states", "land", "lands", "holy", "federal", "democratic", "peoples", "soviet"]);
+
 function matchRegions(
   regions: string[],
   features: { properties: { name: string } }[],
 ): string[] {
   const names = features.map((f) => f.properties.name);
-  const matched = names.filter((n) =>
-    regions.some(
-      (r) =>
-        n.toLowerCase().includes(r.toLowerCase()) ||
-        r.toLowerCase().includes(n.toLowerCase()),
-    ),
-  );
+  const matched = names.filter((n) => {
+    const nl = n.toLowerCase();
+    return regions.some((r) => {
+      const rl = r.toLowerCase();
+      if (nl.includes(rl) || rl.includes(nl)) return true;
+      // word-level stem: "German Empire" ↔ "Germany" via "german", but skip generic words
+      const significantWords = nl.split(/\s+/).filter((w) => w.length > 4 && !GENERIC_WORDS.has(w));
+      return significantWords.some((w) => rl.includes(w));
+    });
+  });
   return matched.length > 0 ? matched : regions;
 }
 
@@ -112,6 +117,7 @@ interface Moment {
   year: number;
   title: string;
   description: string;
+  regions: string[];
 }
 interface QueryResponse {
   answer: string;
@@ -145,11 +151,24 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [displayedAnswer, setDisplayedAnswer] = useState("");
   const [currentMoment, setCurrentMoment] = useState<Moment | null>(null);
+  const [momentIdx, setMomentIdx] = useState(-1);
+  const [highlightTrigger, setHighlightTrigger] = useState(0);
+
+  function jumpToMoment(moment: Moment) {
+    setCurrentMoment(moment);
+    activeRegions.current = moment.regions;
+    const targetYear = YEARS.find((y) => y >= moment.year) ?? moment.year;
+    setYear(targetYear as number);
+    pendingRegions.current = moment.regions;
+    setHighlightTrigger((t) => t + 1);
+  }
 
   function handleQuery() {
     setLoading(true);
     setResult(null);
     setDisplayedAnswer("");
+    setMomentIdx(-1);
+    setCurrentMoment(null);
     fetch("http://localhost:8000/query", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -159,46 +178,27 @@ export default function App() {
       .then((data) => {
         setResult(data);
         setLoading(false);
-        const relevant = YEARS.filter(
-          (y) => y >= data.year_start && y <= data.year_end,
-        );
-        pendingRegions.current = data.regions;
-        activeRegions.current = data.regions;
-        if (relevant.length > 0) setYear(relevant[0]);
-        let yearIdx = 0;
+        // jump to first moment immediately
+        if (data.moments.length > 0) {
+          setMomentIdx(0);
+          jumpToMoment(data.moments[0]);
+        }
+        // stream the answer text independently
         let i = 0;
-        const charsPerYear = data.answer.length / Math.max(relevant.length, 1);
         const interval = setInterval(() => {
           i++;
           setDisplayedAnswer(data.answer.slice(0, i));
-          const nextIdx = Math.min(
-            Math.floor(i / charsPerYear),
-            relevant.length - 1,
-          );
-          if (nextIdx > yearIdx) {
-            yearIdx = nextIdx;
-            setYear(relevant[yearIdx]);
-            const moment = data.moments.find(
-              (m) => m.year === relevant[yearIdx],
-            );
-            if (moment) setCurrentMoment(moment);
-          }
-          if (i >= data.answer.length) {
-            clearInterval(interval);
-            setCurrentMoment(null);
-            activeRegions.current = null;
-            const map = mapInstance.current;
-            if (map && map.getLayer("borders-fill")) {
-              map.setPaintProperty(
-                "borders-fill",
-                "fill-color",
-                colorsExpression.current as mapboxgl.Expression,
-              );
-              map.setPaintProperty("borders-fill", "fill-opacity", 0.85);
-            }
-          }
-        }, 10);
+          if (i >= data.answer.length) clearInterval(interval);
+        }, 12);
       });
+  }
+
+  function handleContinue() {
+    if (!result) return;
+    const nextIdx = momentIdx + 1;
+    if (nextIdx >= result.moments.length) return;
+    setMomentIdx(nextIdx);
+    jumpToMoment(result.moments[nextIdx]);
   }
 
   useEffect(() => {
@@ -229,7 +229,10 @@ export default function App() {
         highlighted.forEach((f) =>
           f.geometry.coordinates.forEach((polygon: number[][][]) =>
             polygon.forEach((ring) =>
-              ring.forEach(([lng, lat]: number[]) => bounds.extend([lng, lat])),
+              ring.forEach(([lng, lat]: number[]) => {
+                if (lng >= -30 && lng <= 65 && lat >= 25 && lat <= 75)
+                  bounds.extend([lng, lat]);
+              }),
             ),
           ),
         );
@@ -322,9 +325,11 @@ export default function App() {
   useEffect(() => {
     const map = mapInstance.current;
     if (!map || !map.getSource("borders")) return;
+    let cancelled = false;
     fetch(`http://localhost:8000/borders/${year}`)
       .then((r) => r.json())
       .then((geojson) => {
+        if (cancelled) return;
         currentFeatures.current = geojson.features;
         const expr = buildColorExpression(geojson.features);
         colorsExpression.current = expr;
@@ -335,28 +340,18 @@ export default function App() {
         } else if (activeRegions.current) {
           const matched = matchRegions(activeRegions.current, geojson.features);
           if (map.getLayer("borders-fill")) {
-            map.setPaintProperty(
-              "borders-fill",
-              "fill-color",
-              colorsExpression.current as mapboxgl.Expression,
+            map.setPaintProperty("borders-fill", "fill-color", colorsExpression.current as mapboxgl.Expression);
+            map.setPaintProperty("borders-fill", "fill-opacity",
+              ["case", ["in", ["get", "name"], ["literal", matched]], 0.9, 0.12] as mapboxgl.Expression,
             );
-            map.setPaintProperty("borders-fill", "fill-opacity", [
-              "case",
-              ["in", ["get", "name"], ["literal", matched]],
-              0.9,
-              0.12,
-            ] as mapboxgl.Expression);
           }
         } else if (map.getLayer("borders-fill")) {
-          map.setPaintProperty(
-            "borders-fill",
-            "fill-color",
-            expr as mapboxgl.Expression,
-          );
+          map.setPaintProperty("borders-fill", "fill-color", expr as mapboxgl.Expression);
           map.setPaintProperty("borders-fill", "fill-opacity", 0.85);
         }
       });
-  }, [year]);
+    return () => { cancelled = true; };
+  }, [year, highlightTrigger]);
 
   return (
     <div
@@ -486,12 +481,10 @@ export default function App() {
                     style={{
                       marginBottom: 12,
                       paddingLeft: 12,
-                      borderLeft: `2px solid ${currentMoment?.year === m.year ? "#ffffff" : "#e8613c"}`,
-                      backgroundColor:
-                        currentMoment?.year === m.year
-                          ? "rgba(255,255,255,0.08)"
-                          : "transparent",
-                      transition: "background-color 0.5s, border-color 0.5s",
+                      borderLeft: `2px solid ${idx === momentIdx ? "#ffffff" : "#e8613c"}`,
+                      backgroundColor: idx === momentIdx ? "rgba(255,255,255,0.08)" : "transparent",
+                      opacity: idx > momentIdx ? 0.35 : 1,
+                      transition: "background-color 0.5s, border-color 0.5s, opacity 0.5s",
                     }}
                   >
                     <div
@@ -516,6 +509,25 @@ export default function App() {
                   </div>
                 ))}
               </div>
+              {momentIdx < result.moments.length - 1 && (
+                <div style={{ padding: "8px 20px" }}>
+                  <button
+                    onClick={handleContinue}
+                    style={{
+                      width: "100%",
+                      padding: "8px",
+                      background: "#1a2a3a",
+                      border: "1px solid #e8613c",
+                      color: "#e8613c",
+                      borderRadius: 4,
+                      cursor: "pointer",
+                      fontSize: 13,
+                    }}
+                  >
+                    Continue →
+                  </button>
+                </div>
+              )}
               <div
                 style={{
                   padding: "12px 20px 20px",
