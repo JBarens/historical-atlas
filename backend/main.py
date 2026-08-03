@@ -43,6 +43,7 @@ def get_borders(year: int, db: Session = Depends(get_db)):
                 "type": "Feature",
                 "geometry": json.loads(border.geojson),
                 "properties": {"year": border.year, "name": border.country_code},
+                "properties": {"year": border.year},
             }
             for border in borders
         ],
