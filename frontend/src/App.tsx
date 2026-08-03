@@ -128,6 +128,20 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [displayedAnswer, setDisplayedAnswer] = useState("");
+  const [currentMoment, setCurrentMoment] = useState<Moment | null>(null);
+
+  async function runAnimation(data: QueryResponse) {
+    const relevant = YEARS.filter(
+      (y) => y >= data.year_start && y <= data.year_end,
+    );
+    for (const y of relevant) {
+      setYear(y);
+      const moment = data.moments.find((m) => m.year === y);
+      if (moment) setCurrentMoment(moment);
+      await new Promise((r) => setTimeout(r, moment ? 2500 : 1200));
+    }
+    setCurrentMoment(null);
+  }
 
   function handleQuery() {
     setLoading(true);
@@ -142,7 +156,7 @@ export default function App() {
       .then((data) => {
         setResult(data);
         pendingRegions.current = data.regions;
-        setYear(YEARS.find((y) => y >= data.year_start) ?? YEARS[0]);
+        runAnimation(data);
         setLoading(false);
         // fake streaming: type out answer char by char
         let i = 0;
@@ -444,6 +458,18 @@ export default function App() {
                     >
                       {m.description}
                     </div>
+                    <div
+                      style={{
+                        marginBottom: 12,
+                        paddingLeft: 12,
+                        borderLeft: `2px solid ${currentMoment?.year === m.year ? "#ffffff" : "#e8613c"}`,
+                        backgroundColor:
+                          currentMoment?.year === m.year
+                            ? "rgba(255,255,255,0.08)"
+                            : "transparent",
+                        transition: "background-color 0.5s",
+                      }}
+                    ></div>
                   </div>
                 ))}
               </div>
