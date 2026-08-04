@@ -152,6 +152,7 @@ interface QueryResponse {
 export default function App() {
   const [year, setYear] = useState(1914);
   const mapRef = useRef<HTMLDivElement>(null);
+  const streamDone = useRef(false);
   const mapInstance = useRef<mapboxgl.Map | null>(null);
   const mapLoaded = useRef(false);
   const colorsExpression = useRef<unknown[]>([
@@ -174,6 +175,7 @@ export default function App() {
   const [currentMoment, setCurrentMoment] = useState<Moment | null>(null);
   const [momentIdx, setMomentIdx] = useState(-1);
   const [highlightTrigger, setHighlightTrigger] = useState(0);
+  const queue = useRef<string[]>([]);
 
   function handleReset() {
     setResult(null);
@@ -182,6 +184,7 @@ export default function App() {
     setCurrentMoment(null);
     activeRegions.current = null;
     pendingRegions.current = null;
+    queue.current = [];
     const map = mapInstance.current;
     if (map && map.getLayer("borders-fill")) {
       map.setPaintProperty(
@@ -202,40 +205,64 @@ export default function App() {
     setHighlightTrigger((t) => t + 1);
   }
 
-  function handleQuery() {
-    setLoading(true);
-    setResult(null);
-    setDisplayedAnswer("");
-    setMomentIdx(-1);
-    setCurrentMoment(null);
-    fetch("http://localhost:8000/query", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: query }),
-    })
-      .then((r) => r.json())
-      .then((data) => {
-        setResult(data);
-        setLoading(false);
-        if (data.moments.length > 0) {
-          setMomentIdx(0);
-          jumpToMoment(data.moments[0]);
-        }
-        let i = 0;
-        const interval = setInterval(() => {
-          i++;
-          setDisplayedAnswer(data.answer.slice(0, i));
-          if (i >= data.answer.length) clearInterval(interval);
-        }, 12);
-      });
-  }
-
   function handleContinue() {
     if (!result) return;
     const nextIdx = momentIdx + 1;
     if (nextIdx >= result.moments.length) return;
     setMomentIdx(nextIdx);
     jumpToMoment(result.moments[nextIdx]);
+  }
+
+  async function handleQuery() {
+    setLoading(true);
+    setResult(null);
+    setDisplayedAnswer("");
+    setMomentIdx(-1);
+    setCurrentMoment(null);
+    streamDone.current = false;
+    queue.current = [];
+
+    const response = await fetch("http://localhost:8000/query", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question: query }),
+    });
+
+    const reader = response.body!.getReader();
+    const decode = new TextDecoder();
+    let buffer = "";
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decode.decode(value, { stream: true });
+      const events = buffer.split("\n\n");
+      buffer = events.pop() ?? "";
+      for (const event of events) {
+        if (!event.startsWith("data: ")) continue;
+        const msg = JSON.parse(event.slice(6));
+        if (msg.type === "meta") {
+          const interval = setInterval(() => {
+            if (queue.current.length > 0) {
+              const char = queue.current.shift()!;
+              setDisplayedAnswer((prev) => prev + char);
+            } else if (streamDone.current) {
+              clearInterval(interval);
+            }
+          }, 20);
+          setResult(msg);
+          setLoading(false);
+          if (msg.moments.length > 0) {
+            setMomentIdx(0);
+            jumpToMoment(msg.moments[0]);
+          }
+        } else if (msg.type === "text") {
+          queue.current.push(msg.char);
+        } else if (msg.type === "done") {
+          streamDone.current = true;
+        }
+      }
+    }
   }
 
   useEffect(() => {
@@ -497,7 +524,14 @@ export default function App() {
                 Thinking...
               </p>
             )}
-            <p style={{ fontSize: 13, lineHeight: 1.7, color: "#c8c0b0" }}>
+            <p
+              style={{
+                fontSize: 13,
+                lineHeight: 1.7,
+                color: "#c8c0b0",
+                paddingTop: 40,
+              }}
+            >
               {displayedAnswer}
             </p>
           </div>

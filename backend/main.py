@@ -2,11 +2,14 @@ from pydantic import BaseModel as PydanticBase
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 from fastapi import FastAPI, Depends
+from fastapi.responses import StreamingResponse
 from database import engine, get_db
 from models import Base, Border, Document
 from query import agent
 from fastapi.middleware.cors import CORSMiddleware
 import json
+import asyncio
+from retrieve import retrieve
 
 app = FastAPI()
 
@@ -51,6 +54,29 @@ def get_borders(year: int, db: Session = Depends(get_db)):
 
 
 @app.post("/query")
-def agent_query(request: QueryRequest):
-    results = agent.run_sync(request.question)
-    return results.output
+async def agent_query(request: QueryRequest):
+    chunks = retrieve(request.question)
+    context = "\n\n".join(chunks)
+    augmented = f"Context from historical sources:\n{context}\n\nQuestion: {request.question}"
+    results = await agent.run(augmented)
+    data = results.output
+
+    async def event_stream():
+        # send structured data first
+        meta = {
+            "type": "meta",
+            "regions": data.regions,
+            "year_start": data.year_start,
+            "year_end": data.year_end,
+            "moments": [m.model_dump() for m in data.moments],
+            "citations": data.citations,
+        }
+        yield f"data: {json.dumps(meta)}\n\n"
+        # stream answer char by char
+        for char in data.answer:
+            yield f"data: {json.dumps({'type': 'text', 'char': char})}\n\n"
+            await asyncio.sleep(0.012)
+        yield f"data: {json.dumps({'type': 'done'})}\n\n"
+
+    return StreamingResponse(event_stream(), media_type="text/event-stream")
+

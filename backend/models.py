@@ -16,7 +16,7 @@ class Document(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     text = Column(Text, nullable=False)
-    embedding = Column(Vector(1536), nullable=False)
+    embedding = Column(Vector(384), nullable=False)
     source = Column(String, nullable=False)
 
 
