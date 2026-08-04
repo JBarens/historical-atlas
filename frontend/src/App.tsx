@@ -93,7 +93,26 @@ function buildColorExpression(
   return expr;
 }
 
-const GENERIC_WORDS = new Set(["kingdom", "empire", "republic", "united", "great", "north", "south", "east", "west", "state", "states", "land", "lands", "holy", "federal", "democratic", "peoples", "soviet"]);
+const GENERIC_WORDS = new Set([
+  "kingdom",
+  "empire",
+  "republic",
+  "united",
+  "great",
+  "north",
+  "south",
+  "east",
+  "west",
+  "state",
+  "states",
+  "land",
+  "lands",
+  "holy",
+  "federal",
+  "democratic",
+  "peoples",
+  "soviet",
+]);
 
 function matchRegions(
   regions: string[],
@@ -106,7 +125,9 @@ function matchRegions(
       const rl = r.toLowerCase();
       if (nl.includes(rl) || rl.includes(nl)) return true;
       // word-level stem: "German Empire" ↔ "Germany" via "german", but skip generic words
-      const significantWords = nl.split(/\s+/).filter((w) => w.length > 4 && !GENERIC_WORDS.has(w));
+      const significantWords = nl
+        .split(/\s+/)
+        .filter((w) => w.length > 4 && !GENERIC_WORDS.has(w));
       return significantWords.some((w) => rl.includes(w));
     });
   });
@@ -154,6 +175,24 @@ export default function App() {
   const [momentIdx, setMomentIdx] = useState(-1);
   const [highlightTrigger, setHighlightTrigger] = useState(0);
 
+  function handleReset() {
+    setResult(null);
+    setDisplayedAnswer("");
+    setMomentIdx(-1);
+    setCurrentMoment(null);
+    activeRegions.current = null;
+    pendingRegions.current = null;
+    const map = mapInstance.current;
+    if (map && map.getLayer("borders-fill")) {
+      map.setPaintProperty(
+        "borders-fill",
+        "fill-color",
+        colorsExpression.current as mapboxgl.Expression,
+      );
+      map.setPaintProperty("borders-fill", "fill-opacity", 0.85);
+    }
+  }
+
   function jumpToMoment(moment: Moment) {
     setCurrentMoment(moment);
     activeRegions.current = moment.regions;
@@ -163,46 +202,32 @@ export default function App() {
     setHighlightTrigger((t) => t + 1);
   }
 
-  async function handleQuery() {
+  function handleQuery() {
     setLoading(true);
     setResult(null);
     setDisplayedAnswer("");
     setMomentIdx(-1);
     setCurrentMoment(null);
-
-    const response = await fetch("http://localhost:8000/query", {
+    fetch("http://localhost:8000/query", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question: query }),
-    });
-
-    const reader = response.body!.getReader();
-    const decoder = new TextDecoder();
-    let buffer = "";
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      buffer += decoder.decode(value, { stream: true });
-      // SSE events are separated by \n\n
-      const events = buffer.split("\n\n");
-      buffer = events.pop() ?? "";
-      for (const event of events) {
-        if (!event.startsWith("data: ")) continue;
-        const msg = JSON.parse(event.slice(6));
-        if (msg.type === "meta") {
-          const data = msg as QueryResponse & { type: string };
-          setResult(data);
-          setLoading(false);
-          if (data.moments.length > 0) {
-            setMomentIdx(0);
-            jumpToMoment(data.moments[0]);
-          }
-        } else if (msg.type === "text") {
-          setDisplayedAnswer((prev) => prev + msg.char);
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        setResult(data);
+        setLoading(false);
+        if (data.moments.length > 0) {
+          setMomentIdx(0);
+          jumpToMoment(data.moments[0]);
         }
-      }
-    }
+        let i = 0;
+        const interval = setInterval(() => {
+          i++;
+          setDisplayedAnswer(data.answer.slice(0, i));
+          if (i >= data.answer.length) clearInterval(interval);
+        }, 12);
+      });
   }
 
   function handleContinue() {
@@ -335,6 +360,14 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleReset();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [result]);
+
+  useEffect(() => {
     const map = mapInstance.current;
     if (!map || !map.getSource("borders")) return;
     let cancelled = false;
@@ -352,17 +385,30 @@ export default function App() {
         } else if (activeRegions.current) {
           const matched = matchRegions(activeRegions.current, geojson.features);
           if (map.getLayer("borders-fill")) {
-            map.setPaintProperty("borders-fill", "fill-color", colorsExpression.current as mapboxgl.Expression);
-            map.setPaintProperty("borders-fill", "fill-opacity",
-              ["case", ["in", ["get", "name"], ["literal", matched]], 0.9, 0.12] as mapboxgl.Expression,
+            map.setPaintProperty(
+              "borders-fill",
+              "fill-color",
+              colorsExpression.current as mapboxgl.Expression,
             );
+            map.setPaintProperty("borders-fill", "fill-opacity", [
+              "case",
+              ["in", ["get", "name"], ["literal", matched]],
+              0.9,
+              0.12,
+            ] as mapboxgl.Expression);
           }
         } else if (map.getLayer("borders-fill")) {
-          map.setPaintProperty("borders-fill", "fill-color", expr as mapboxgl.Expression);
+          map.setPaintProperty(
+            "borders-fill",
+            "fill-color",
+            expr as mapboxgl.Expression,
+          );
           map.setPaintProperty("borders-fill", "fill-opacity", 0.85);
         }
       });
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, [year, highlightTrigger]);
 
   return (
@@ -494,9 +540,13 @@ export default function App() {
                       marginBottom: 12,
                       paddingLeft: 12,
                       borderLeft: `2px solid ${idx === momentIdx ? "#ffffff" : "#e8613c"}`,
-                      backgroundColor: idx === momentIdx ? "rgba(255,255,255,0.08)" : "transparent",
+                      backgroundColor:
+                        idx === momentIdx
+                          ? "rgba(255,255,255,0.08)"
+                          : "transparent",
                       opacity: idx > momentIdx ? 0.35 : 1,
-                      transition: "background-color 0.5s, border-color 0.5s, opacity 0.5s",
+                      transition:
+                        "background-color 0.5s, border-color 0.5s, opacity 0.5s",
                     }}
                   >
                     <div
@@ -570,6 +620,43 @@ export default function App() {
             </>
           )}
         </div>
+      )}
+
+      {/* close/reset button on panel */}
+      {(result || loading) && (
+        <button
+          onClick={() => {
+            setResult(null);
+            setDisplayedAnswer("");
+            setMomentIdx(-1);
+            setCurrentMoment(null);
+            activeRegions.current = null;
+            pendingRegions.current = null;
+            const map = mapInstance.current;
+            if (map && map.getLayer("borders-fill")) {
+              map.setPaintProperty(
+                "borders-fill",
+                "fill-color",
+                colorsExpression.current as mapboxgl.Expression,
+              );
+              map.setPaintProperty("borders-fill", "fill-opacity", 0.85);
+            }
+          }}
+          style={{
+            position: "absolute",
+            top: 20,
+            right: 20,
+            zIndex: 11,
+            padding: "6px 10px",
+            background: "#1a2a3a",
+            border: "1px solid #e8613c",
+            color: "#e8613c",
+            borderRadius: 4,
+            cursor: "pointer",
+          }}
+        >
+          ×
+        </button>
       )}
 
       {/* slider */}
