@@ -9,8 +9,9 @@ sys.path.insert(0, os.path.dirname(__file__))
 from dotenv import load_dotenv
 
 load_dotenv()
-from database import SessionLocal
-from models import Border
+from database import SessionLocal, engine
+from models import Base, Border
+from sqlalchemy import text
 from sqlalchemy.dialects.postgresql import insert
 
 GEOJSON_DIR = os.path.join(os.path.dirname(__file__), "../historical-basemaps-master/geojson")
@@ -18,6 +19,10 @@ YEARS = [1900, 1914, 1920, 1930, 1938, 1945, 1960, 1994, 2000]
 
 
 def seed():
+    with engine.connect() as conn:
+        conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
+        conn.commit()
+    Base.metadata.create_all(bind=engine)
     db = SessionLocal()
     for year in YEARS:
         path = os.path.join(GEOJSON_DIR, f"world_{year}.geojson")
