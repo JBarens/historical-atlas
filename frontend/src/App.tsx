@@ -1,12 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import "./App.css";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
+const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+
 const YEARS = [1900, 1914, 1920, 1930, 1938, 1945, 1960, 1994, 2000];
 
-// Named colors for major powers, HOI4-inspired
 const NAMED_COLORS: Record<string, string> = {
   "German Empire": "#5a5a3c",
   Germany: "#5a5a3c",
@@ -48,26 +50,10 @@ const NAMED_COLORS: Record<string, string> = {
 };
 
 const HOI4_PALETTE = [
-  "#5a6b3c",
-  "#3a5a8b",
-  "#8b3a3a",
-  "#6b5a2a",
-  "#3a6b5a",
-  "#6b3a6b",
-  "#3a6b3a",
-  "#8b6b2a",
-  "#3a4a8b",
-  "#6b2a3a",
-  "#4a6b6b",
-  "#8b5a3a",
-  "#4a3a8b",
-  "#6b8b3a",
-  "#2a5a6b",
-  "#8b4a5a",
-  "#5a8b3a",
-  "#3a8b6b",
-  "#6b4a3a",
-  "#4a5a6b",
+  "#5a6b3c", "#3a5a8b", "#8b3a3a", "#6b5a2a", "#3a6b5a",
+  "#6b3a6b", "#3a6b3a", "#8b6b2a", "#3a4a8b", "#6b2a3a",
+  "#4a6b6b", "#8b5a3a", "#4a3a8b", "#6b8b3a", "#2a5a6b",
+  "#8b4a5a", "#5a8b3a", "#3a8b6b", "#6b4a3a", "#4a5a6b",
 ];
 
 function countryColor(name: string): string {
@@ -78,9 +64,7 @@ function countryColor(name: string): string {
   return HOI4_PALETTE[Math.abs(hash) % HOI4_PALETTE.length];
 }
 
-function buildColorExpression(
-  features: { properties: { name: string } }[],
-): unknown[] {
+function buildColorExpression(features: { properties: { name: string } }[]): unknown[] {
   const expr: unknown[] = ["match", ["get", "name"]];
   const seen = new Set<string>();
   features.forEach((f) => {
@@ -89,49 +73,36 @@ function buildColorExpression(
       seen.add(f.properties.name);
     }
   });
-  expr.push("#6b6b5a"); // fallback
+  expr.push("#6b6b5a");
   return expr;
 }
 
 const GENERIC_WORDS = new Set([
-  "kingdom",
-  "empire",
-  "republic",
-  "united",
-  "great",
-  "north",
-  "south",
-  "east",
-  "west",
-  "state",
-  "states",
-  "land",
-  "lands",
-  "holy",
-  "federal",
-  "democratic",
-  "peoples",
-  "soviet",
+  "kingdom", "empire", "republic", "united", "great",
+  "north", "south", "east", "west", "state", "states",
+  "land", "lands", "holy", "federal", "democratic", "peoples", "soviet",
 ]);
 
-function matchRegions(
-  regions: string[],
-  features: { properties: { name: string } }[],
-): string[] {
+function matchRegions(regions: string[], features: { properties: { name: string } }[]): string[] {
   const names = features.map((f) => f.properties.name);
   const matched = names.filter((n) => {
     const nl = n.toLowerCase();
     return regions.some((r) => {
       const rl = r.toLowerCase();
       if (nl.includes(rl) || rl.includes(nl)) return true;
-      // word-level stem: "German Empire" ↔ "Germany" via "german", but skip generic words
-      const significantWords = nl
-        .split(/\s+/)
-        .filter((w) => w.length > 4 && !GENERIC_WORDS.has(w));
+      const significantWords = nl.split(/\s+/).filter((w) => w.length > 4 && !GENERIC_WORDS.has(w));
       return significantWords.some((w) => rl.includes(w));
     });
   });
   return matched.length > 0 ? matched : regions;
+}
+
+interface CountryFact {
+  formal_name: string;
+  period: string;
+  summary: string;
+  key_facts: string[];
+  citations: string[];
 }
 
 interface Moment {
@@ -149,50 +120,70 @@ interface QueryResponse {
   citations: string[];
 }
 
+const EXAMPLE_QUERIES = [
+  "What caused World War I?",
+  "How did Germany divide after 1945?",
+  "What happened to Yugoslavia?",
+];
+
 export default function App() {
   const [year, setYear] = useState(1914);
   const mapRef = useRef<HTMLDivElement>(null);
   const streamDone = useRef(false);
   const mapInstance = useRef<mapboxgl.Map | null>(null);
   const mapLoaded = useRef(false);
-  const colorsExpression = useRef<unknown[]>([
-    "match",
-    ["get", "name"],
-    "#6b6b5a",
-  ]);
-  const currentFeatures = useRef<
-    {
-      properties: { name: string };
-      geometry: { coordinates: number[][][][] };
-    }[]
-  >([]);
+  const colorsExpression = useRef<unknown[]>(["match", ["get", "name"], "#6b6b5a"]);
+  const currentFeatures = useRef<{ properties: { name: string }; geometry: { coordinates: number[][][][] } }[]>([]);
   const pendingRegions = useRef<string[] | null>(null);
   const activeRegions = useRef<string[] | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const yearRef = useRef(year);
+  const [countryCard, setCountryCard] = useState<CountryFact | null>(null);
+  const [countryLoading, setCountryLoading] = useState(false);
+  const [countryName, setCountryName] = useState<string | null>(null);
   const [result, setResult] = useState<QueryResponse | null>(null);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [displayedAnswer, setDisplayedAnswer] = useState("");
   const [currentMoment, setCurrentMoment] = useState<Moment | null>(null);
   const [momentIdx, setMomentIdx] = useState(-1);
   const [highlightTrigger, setHighlightTrigger] = useState(0);
   const queue = useRef<string[]>([]);
+  const [history, setHistory] = useState<{ id: number; question: string }[]>([]);
+  const [showHistory, setShowHistory] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+
+  function clearInterval_() {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }
 
   function handleReset() {
+    clearInterval_();
     setResult(null);
     setDisplayedAnswer("");
     setMomentIdx(-1);
     setCurrentMoment(null);
+    setError(null);
     activeRegions.current = null;
     pendingRegions.current = null;
     queue.current = [];
     const map = mapInstance.current;
     if (map && map.getLayer("borders-fill")) {
-      map.setPaintProperty(
-        "borders-fill",
-        "fill-color",
-        colorsExpression.current as mapboxgl.Expression,
-      );
+      map.setPaintProperty("borders-fill", "fill-color", colorsExpression.current as mapboxgl.Expression);
       map.setPaintProperty("borders-fill", "fill-opacity", 0.85);
+    }
+    if (map && map.getLayer("borders-label")) {
+      map.setPaintProperty("borders-label", "text-opacity", 1);
     }
   }
 
@@ -213,8 +204,20 @@ export default function App() {
     jumpToMoment(result.moments[nextIdx]);
   }
 
-  async function handleQuery() {
+  async function loadHistory() {
+    const res = await fetch(`${API_URL}/history`);
+    const rows = await res.json();
+    setHistory(rows);
+    setShowHistory(true);
+  }
+
+  async function handleQuery(questionOverride?: string) {
+    const q = (questionOverride ?? query).trim();
+    if (!q) return;
+
+    clearInterval_();
     setLoading(true);
+    setError(null);
     setResult(null);
     setDisplayedAnswer("");
     setMomentIdx(-1);
@@ -222,72 +225,77 @@ export default function App() {
     streamDone.current = false;
     queue.current = [];
 
-    const response = await fetch("http://localhost:8000/query", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: query }),
-    });
+    try {
+      const response = await fetch(`${API_URL}/query`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: q }),
+      });
 
-    const reader = response.body!.getReader();
-    const decode = new TextDecoder();
-    let buffer = "";
+      if (!response.ok) throw new Error(`Server error ${response.status}`);
 
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      buffer += decode.decode(value, { stream: true });
-      const events = buffer.split("\n\n");
-      buffer = events.pop() ?? "";
-      for (const event of events) {
-        if (!event.startsWith("data: ")) continue;
-        const msg = JSON.parse(event.slice(6));
-        if (msg.type === "meta") {
-          const interval = setInterval(() => {
-            if (queue.current.length > 0) {
-              const char = queue.current.shift()!;
-              setDisplayedAnswer((prev) => prev + char);
-            } else if (streamDone.current) {
-              clearInterval(interval);
+      const reader = response.body!.getReader();
+      const decode = new TextDecoder();
+      let buffer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decode.decode(value, { stream: true });
+        const events = buffer.split("\n\n");
+        buffer = events.pop() ?? "";
+        for (const event of events) {
+          if (!event.startsWith("data: ")) continue;
+          const msg = JSON.parse(event.slice(6));
+          if (msg.type === "meta") {
+            intervalRef.current = setInterval(() => {
+              if (queue.current.length > 0) {
+                const char = queue.current.shift()!;
+                setDisplayedAnswer((prev) => prev + char);
+              } else if (streamDone.current) {
+                clearInterval_();
+              }
+            }, 20);
+            setResult(msg);
+            setLoading(false);
+            if (msg.moments.length > 0) {
+              setMomentIdx(0);
+              jumpToMoment(msg.moments[0]);
             }
-          }, 20);
-          setResult(msg);
-          setLoading(false);
-          if (msg.moments.length > 0) {
-            setMomentIdx(0);
-            jumpToMoment(msg.moments[0]);
+          } else if (msg.type === "text") {
+            queue.current.push(msg.char);
+          } else if (msg.type === "done") {
+            streamDone.current = true;
           }
-        } else if (msg.type === "text") {
-          queue.current.push(msg.char);
-        } else if (msg.type === "done") {
-          streamDone.current = true;
         }
       }
+    } catch (e) {
+      setError("Could not reach the server. Make sure the backend is running.");
+    } finally {
+      setLoading(false);
     }
   }
-
-  useEffect(() => {
-    const map = mapInstance.current;
-    // highlight handled in year effect via pendingRegions
-  }, [result]);
 
   function applyHighlight(map: mapboxgl.Map, regions: string[]) {
     if (!map.getLayer("borders-fill")) return;
     try {
       const matched = matchRegions(regions, currentFeatures.current);
-      map.setPaintProperty(
-        "borders-fill",
-        "fill-color",
-        colorsExpression.current as mapboxgl.Expression,
-      );
+      map.setPaintProperty("borders-fill", "fill-color", colorsExpression.current as mapboxgl.Expression);
       map.setPaintProperty("borders-fill", "fill-opacity", [
         "case",
         ["in", ["get", "name"], ["literal", matched]],
         0.9,
         0.12,
       ] as mapboxgl.Expression);
-      const highlighted = currentFeatures.current.filter((f) =>
-        matched.includes(f.properties.name),
-      );
+      if (map.getLayer("borders-label")) {
+        map.setPaintProperty("borders-label", "text-opacity", [
+          "case",
+          ["in", ["get", "name"], ["literal", matched]],
+          1,
+          0.25,
+        ] as mapboxgl.Expression);
+      }
+      const highlighted = currentFeatures.current.filter((f) => matched.includes(f.properties.name));
       if (highlighted.length > 0) {
         const bounds = new mapboxgl.LngLatBounds();
         highlighted.forEach((f) =>
@@ -300,13 +308,15 @@ export default function App() {
             ),
           ),
         );
-        map.fitBounds(bounds, { padding: 80, maxZoom: 6, duration: 2500 });
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        map.fitBounds(bounds, { padding: 80, maxZoom: 6, duration: reducedMotion ? 0 : 2500 });
       }
     } catch (e) {
       console.warn("highlight failed", e);
     }
   }
 
+  // Map init
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapRef.current!,
@@ -315,10 +325,7 @@ export default function App() {
       zoom: 4,
       minZoom: 3,
       maxZoom: 10,
-      maxBounds: [
-        [-30, 25],
-        [65, 75],
-      ], // Europe bounds
+      maxBounds: [[-30, 25], [65, 75]],
       projection: "mercator",
     });
     mapInstance.current = map;
@@ -333,25 +340,20 @@ export default function App() {
         id: "hillshade-layer",
         type: "hillshade",
         source: "hillshade",
-        paint: {
-          "hillshade-intensity": 0.5,
-          "hillshade-shadow-color": "#473B24",
-        },
+        paint: { "hillshade-intensity": 0.5, "hillshade-shadow-color": "#473B24" },
       });
-      fetch("http://localhost:8000/borders/1914")
+      fetch(`${API_URL}/borders/1914`)
         .then((r) => r.json())
         .then((geojson) => {
           const expr = buildColorExpression(geojson.features);
           colorsExpression.current = expr;
-          map.addSource("borders", { type: "geojson", data: geojson });
+          currentFeatures.current = geojson.features;
+          map.addSource("borders", { type: "geojson", data: geojson, generateId: true });
           map.addLayer({
             id: "borders-fill",
             type: "fill",
             source: "borders",
-            paint: {
-              "fill-color": expr as mapboxgl.Expression,
-              "fill-opacity": 0.85,
-            },
+            paint: { "fill-color": expr as mapboxgl.Expression, "fill-opacity": 0.85 },
           });
           map.addLayer({
             id: "borders-line",
@@ -375,6 +377,58 @@ export default function App() {
               "text-halo-width": 1,
             },
           });
+          // White overlay on hovered country — additive, doesn't touch fill-opacity logic
+          map.addLayer({
+            id: "borders-hover",
+            type: "fill",
+            source: "borders",
+            paint: {
+              "fill-color": "#ffffff",
+              "fill-opacity": [
+                "case",
+                ["boolean", ["feature-state", "hover"], false],
+                0.18,
+                0,
+              ],
+            },
+          }, "borders-label");
+
+          let hoveredId: number | null = null;
+          map.on("mousemove", "borders-fill", (e) => {
+            if (!e.features?.length) return;
+            if (hoveredId !== null) {
+              map.setFeatureState({ source: "borders", id: hoveredId }, { hover: false });
+            }
+            hoveredId = e.features[0].id as number;
+            map.setFeatureState({ source: "borders", id: hoveredId }, { hover: true });
+            map.getCanvas().style.cursor = "pointer";
+          });
+          map.on("mouseleave", "borders-fill", () => {
+            if (hoveredId !== null) {
+              map.setFeatureState({ source: "borders", id: hoveredId }, { hover: false });
+            }
+            hoveredId = null;
+            map.getCanvas().style.cursor = "";
+          });
+
+          map.on("click", "borders-fill", async (e) => {
+            if (!e.features?.length) return;
+            const name = e.features[0].properties?.name;
+            if (!name) return;
+            setCountryName(name);
+            setCountryCard(null);
+            setCountryLoading(true);
+            try {
+              const res = await fetch(`${API_URL}/country/`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, year: yearRef.current }),
+              });
+              setCountryCard(await res.json());
+            } finally {
+              setCountryLoading(false);
+            }
+          });
         });
     });
     const observer = new ResizeObserver(() => map.resize());
@@ -387,18 +441,27 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleReset();
-    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") handleReset(); };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [result]);
 
+  useEffect(() => { yearRef.current = year; }, [year]);
+
+  useEffect(() => {
+    if (!countryName) return;
+    const map = mapInstance.current;
+    if (!map) return;
+    activeRegions.current = [countryName];
+    applyHighlight(map, [countryName]);
+  }, [countryName]);
+
+  // Year / highlight effect
   useEffect(() => {
     const map = mapInstance.current;
     if (!map || !map.getSource("borders")) return;
     let cancelled = false;
-    fetch(`http://localhost:8000/borders/${year}`)
+    fetch(`${API_URL}/borders/${year}`)
       .then((r) => r.json())
       .then((geojson) => {
         if (cancelled) return;
@@ -412,96 +475,159 @@ export default function App() {
         } else if (activeRegions.current) {
           const matched = matchRegions(activeRegions.current, geojson.features);
           if (map.getLayer("borders-fill")) {
-            map.setPaintProperty(
-              "borders-fill",
-              "fill-color",
-              colorsExpression.current as mapboxgl.Expression,
-            );
+            map.setPaintProperty("borders-fill", "fill-color", colorsExpression.current as mapboxgl.Expression);
             map.setPaintProperty("borders-fill", "fill-opacity", [
               "case",
               ["in", ["get", "name"], ["literal", matched]],
               0.9,
               0.12,
             ] as mapboxgl.Expression);
+            if (map.getLayer("borders-label")) {
+              map.setPaintProperty("borders-label", "text-opacity", [
+                "case",
+                ["in", ["get", "name"], ["literal", matched]],
+                1,
+                0.25,
+              ] as mapboxgl.Expression);
+            }
           }
         } else if (map.getLayer("borders-fill")) {
-          map.setPaintProperty(
-            "borders-fill",
-            "fill-color",
-            expr as mapboxgl.Expression,
-          );
+          map.setPaintProperty("borders-fill", "fill-color", expr as mapboxgl.Expression);
           map.setPaintProperty("borders-fill", "fill-opacity", 0.85);
+          if (map.getLayer("borders-label")) {
+            map.setPaintProperty("borders-label", "text-opacity", 1);
+          }
         }
       });
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, [year, highlightTrigger]);
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100vw",
-        height: "100vh",
-        backgroundColor: "#0a1628",
-      }}
-    >
+    <div style={{ position: "relative", width: "100vw", height: "100vh", backgroundColor: "#0a1628" }}>
       <div
         ref={mapRef}
         style={{
-          width: result || loading ? "calc(100% - 380px)" : "100%",
+          width: isMobile ? "100%" : (result || loading ? "calc(100% - 380px)" : "100%"),
           height: "100%",
           transition: "width 0.3s",
         }}
         onTransitionEnd={() => mapInstance.current?.resize()}
       />
 
-      {/* query input */}
+      {/* Onboarding — only when idle */}
+      {!result && !loading && !countryName && (
+        <div className="ds-onboarding">
+          <h1>Historical Atlas</h1>
+          <p>Ask a question below, or click a country on the map</p>
+          <div className="ds-example-queries">
+            {EXAMPLE_QUERIES.map((q) => (
+              <button
+                key={q}
+                className="ds-example-query"
+                onClick={() => { setQuery(q); handleQuery(q); }}
+              >
+                {q}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Query bar */}
       <div
         style={{
           position: "absolute",
-          top: 20,
+          top: 16,
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 10,
           display: "flex",
           gap: 8,
+          width: isMobile ? "calc(100% - 32px)" : "auto",
         }}
       >
         <input
+          className="ds-input-query"
           type="text"
+          aria-label="Ask about European history"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleQuery()}
           placeholder="Ask about European history..."
-          style={{
-            width: 400,
-            padding: "8px 12px",
-            borderRadius: 4,
-            border: "none",
-            fontSize: 14,
-          }}
+          style={isMobile ? { flex: 1, width: "auto" } : undefined}
         />
         <button
-          onClick={handleQuery}
-          style={{
-            padding: "8px 16px",
-            borderRadius: 4,
-            border: "none",
-            background: "#e8613c",
-            color: "white",
-            cursor: "pointer",
-          }}
+          className="ds-btn-primary"
+          onClick={() => handleQuery()}
+          disabled={loading}
+          aria-busy={loading}
         >
           {loading ? "Loading..." : "Ask"}
         </button>
+        <div style={{ position: "relative" }}>
+          <button
+            className="ds-btn-ghost"
+            onClick={() => showHistory ? setShowHistory(false) : loadHistory()}
+            aria-label="Query history"
+          >
+            ↑
+          </button>
+          {showHistory && history.length > 0 && (
+            <div style={{
+              position: "absolute",
+              top: "calc(100% + 6px)",
+              right: 0,
+              width: 360,
+              backgroundColor: "#0f1923",
+              border: "1px solid #2a3a4a",
+              borderRadius: 4,
+              zIndex: 20,
+            }}>
+              {history.map((h) => (
+                <button
+                  key={h.id}
+                  onClick={() => { setQuery(h.question); setShowHistory(false); handleQuery(h.question); }}
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    padding: "10px 14px",
+                    background: "none",
+                    border: "none",
+                    borderBottom: "1px solid #2a3a4a",
+                    color: "#c8c0b0",
+                    fontSize: 13,
+                    textAlign: "left",
+                    cursor: "pointer",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#162432")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "none")}
+                >
+                  {h.question}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* result panel */}
+      {/* Result panel */}
       {(result || loading) && (
         <div
-          style={{
+          style={isMobile ? {
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "60vh",
+            width: "100%",
+            backgroundColor: "#0f1923",
+            color: "#e8e0d0",
+            display: "flex",
+            flexDirection: "column",
+            borderRadius: "12px 12px 0 0",
+            borderTop: "1px solid #2a3a4a",
+            zIndex: 20,
+          } : {
             position: "absolute",
             top: 0,
             right: 0,
@@ -513,206 +639,190 @@ export default function App() {
             flexDirection: "column",
             borderLeft: "1px solid #2a3a4a",
             zIndex: 10,
-            overflowY: "auto",
           }}
         >
-          <div style={{ padding: "20px 20px 0" }}>
-            {loading && (
-              <p
-                style={{ color: "#6a8a9a", fontStyle: "italic", fontSize: 13 }}
-              >
-                Thinking...
-              </p>
-            )}
-            <p
-              style={{
-                fontSize: 13,
-                lineHeight: 1.7,
-                color: "#c8c0b0",
-                paddingTop: 40,
-              }}
-            >
-              {displayedAnswer}
-            </p>
-          </div>
-          {result && (
-            <>
-              <div
-                style={{
-                  margin: "16px 20px 0",
-                  padding: "12px 0",
-                  borderTop: "1px solid #2a3a4a",
-                }}
-              >
-                <span
-                  style={{
-                    fontSize: 11,
-                    color: "#6a8a9a",
-                    textTransform: "uppercase",
-                    letterSpacing: 1,
-                  }}
+          {/* Drag handle (mobile only) */}
+          {isMobile && (
+            <div style={{ display: "flex", justifyContent: "center", padding: "10px 0 4px" }}>
+              <div style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: "#2a3a4a" }} />
+            </div>
+          )}
+          {/* Scrollable content */}
+          <div style={{ flex: 1, overflowY: "auto" }}>
+            <div style={{ padding: "20px 20px 0" }}>
+              <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
+                <button
+                  className="ds-btn-ghost"
+                  onClick={handleReset}
+                  aria-label="Close panel"
+                  style={{ padding: "4px 10px", fontSize: 16 }}
                 >
-                  {result.year_start} — {result.year_end}
-                </span>
+                  ×
+                </button>
               </div>
-              <div style={{ padding: "0 20px" }}>
-                <p
-                  style={{
-                    fontSize: 11,
-                    color: "#6a8a9a",
-                    textTransform: "uppercase",
-                    letterSpacing: 1,
-                    marginBottom: 8,
-                  }}
-                >
-                  Key Moments
+              {loading && !result && (
+                <p style={{ color: "#6a8a9a", fontStyle: "italic", fontSize: 13 }}>
+                  Thinking...
                 </p>
-                {result.moments.map((m, idx) => (
-                  <div
-                    key={idx}
-                    style={{
-                      marginBottom: 12,
-                      paddingLeft: 12,
-                      borderLeft: `2px solid ${idx === momentIdx ? "#ffffff" : "#e8613c"}`,
-                      backgroundColor:
-                        idx === momentIdx
-                          ? "rgba(255,255,255,0.08)"
-                          : "transparent",
-                      opacity: idx > momentIdx ? 0.35 : 1,
-                      transition:
-                        "background-color 0.5s, border-color 0.5s, opacity 0.5s",
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontSize: 12,
-                        color: "#e8613c",
-                        fontWeight: 600,
-                      }}
-                    >
-                      {m.year} · {m.title}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: 12,
-                        color: "#a0a8b0",
-                        marginTop: 2,
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {m.description}
-                    </div>
+              )}
+              {error && <p className="ds-error">{error}</p>}
+              {displayedAnswer && (
+                <p className="ds-answer-text" aria-live="polite">
+                  {displayedAnswer}
+                </p>
+              )}
+            </div>
+
+            {result && (
+              <>
+                <div style={{ margin: "16px 20px 0", padding: "12px 0", borderTop: "1px solid #2a3a4a" }}>
+                  <span className="ds-meta-label">{result.year_start} — {result.year_end}</span>
+                </div>
+                <div style={{ padding: "0 20px" }}>
+                  <div style={{ display: "flex", alignItems: "center", marginBottom: 8 }}>
+                    <p className="ds-meta-label" style={{ margin: 0 }}>Key Moments</p>
+                    {momentIdx >= 0 && (
+                      <span style={{ marginLeft: "auto", fontSize: 11, color: "#6a8a9a" }}>
+                        {momentIdx + 1} / {result.moments.length}
+                      </span>
+                    )}
                   </div>
+                  {result.moments.map((m, idx) => (
+                    <button
+                      key={idx}
+                      className={[
+                        "ds-moment-card",
+                        idx === momentIdx ? "ds-moment-active" : "",
+                        idx > momentIdx ? "ds-moment-upcoming" : "",
+                      ].filter(Boolean).join(" ")}
+                      onClick={() => { setMomentIdx(idx); jumpToMoment(m); }}
+                      disabled={idx > momentIdx}
+                    >
+                      <div style={{ fontSize: 12, color: "#e8613c", fontWeight: 600 }}>
+                        {m.year} · {m.title}
+                      </div>
+                      <div style={{ fontSize: 12, color: "#a0a8b0", marginTop: 2, lineHeight: 1.5 }}>
+                        {m.description}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+                <div style={{ padding: "12px 20px 20px", borderTop: "1px solid #2a3a4a", marginTop: 8 }}>
+                  <p className="ds-meta-label">Sources</p>
+                  {result.citations.map((c, idx) => (
+                    <div key={idx} style={{ fontSize: 12, color: "#6a8a9a", marginBottom: 4 }}>
+                      · {c}
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+
+          {/* Continue — pinned to panel bottom */}
+          {result && momentIdx < result.moments.length - 1 && (
+            <div style={{ padding: "8px 20px 12px", borderTop: "1px solid #2a3a4a", flexShrink: 0 }}>
+              <button
+                className="ds-btn-ghost"
+                onClick={handleContinue}
+                style={{ width: "100%", padding: "8px" }}
+              >
+                Continue →
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Country fact card */}
+      {(countryLoading || countryCard) && (
+        <div style={{
+          position: "absolute",
+          bottom: 110,
+          left: 20,
+          width: 280,
+          backgroundColor: "#0f1923",
+          border: "1px solid #2a3a4a",
+          borderRadius: 4,
+          padding: "14px 16px",
+          zIndex: 10,
+          color: "#e8e0d0",
+        }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+            <span className="ds-meta-label" style={{ margin: 0 }}>
+              {countryLoading ? countryName : countryCard?.period}
+            </span>
+            <button
+              className="ds-btn-ghost"
+              onClick={() => {
+                setCountryCard(null);
+                setCountryName(null);
+                activeRegions.current = null;
+                const map = mapInstance.current;
+                if (map && map.getLayer("borders-fill")) {
+                  map.setPaintProperty("borders-fill", "fill-color", colorsExpression.current as mapboxgl.Expression);
+                  map.setPaintProperty("borders-fill", "fill-opacity", 0.85);
+                }
+                if (map && map.getLayer("borders-label")) {
+                  map.setPaintProperty("borders-label", "text-opacity", 1);
+                }
+              }}
+              aria-label="Close"
+              style={{ padding: "2px 8px", fontSize: 14 }}
+            >×</button>
+          </div>
+          {countryLoading ? (
+            <p style={{ color: "#6a8a9a", fontStyle: "italic", fontSize: 13, margin: 0 }}>Loading...</p>
+          ) : countryCard && (
+            <>
+              <p style={{ fontSize: 12, lineHeight: 1.7, color: "#c8c0b0", margin: "0 0 10px" }}>
+                {countryCard.summary}
+              </p>
+              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 10px" }}>
+                {countryCard.key_facts.map((f, i) => (
+                  <li key={i} style={{ fontSize: 12, color: "#a0a8b0", marginBottom: 4, paddingLeft: 14, position: "relative" }}>
+                    <span style={{ position: "absolute", left: 0, color: "#e8613c" }}>·</span>
+                    {f}
+                  </li>
                 ))}
-              </div>
-              {momentIdx < result.moments.length - 1 && (
-                <div style={{ padding: "8px 20px" }}>
-                  <button
-                    onClick={handleContinue}
-                    style={{
-                      width: "100%",
-                      padding: "8px",
-                      background: "#1a2a3a",
-                      border: "1px solid #e8613c",
-                      color: "#e8613c",
-                      borderRadius: 4,
-                      cursor: "pointer",
-                      fontSize: 13,
-                    }}
-                  >
-                    Continue →
-                  </button>
+              </ul>
+              {countryCard.citations.length > 0 && (
+                <div style={{ borderTop: "1px solid #2a3a4a", paddingTop: 8 }}>
+                  <p className="ds-meta-label" style={{ margin: "0 0 4px" }}>Sources</p>
+                  {countryCard.citations.map((c, i) => (
+                    <div key={i} style={{ fontSize: 11, color: "#6a8a9a", marginBottom: 2 }}>· {c}</div>
+                  ))}
                 </div>
               )}
-              <div
-                style={{
-                  padding: "12px 20px 20px",
-                  borderTop: "1px solid #2a3a4a",
-                  marginTop: 8,
-                }}
-              >
-                <p
-                  style={{
-                    fontSize: 11,
-                    color: "#6a8a9a",
-                    textTransform: "uppercase",
-                    letterSpacing: 1,
-                    marginBottom: 8,
-                  }}
-                >
-                  Sources
-                </p>
-                {result.citations.map((c, idx) => (
-                  <div
-                    key={idx}
-                    style={{ fontSize: 12, color: "#6a8a9a", marginBottom: 4 }}
-                  >
-                    · {c}
-                  </div>
-                ))}
-              </div>
             </>
           )}
         </div>
       )}
 
-      {/* close/reset button on panel */}
-      {(result || loading) && (
-        <button
-          onClick={() => {
-            setResult(null);
-            setDisplayedAnswer("");
-            setMomentIdx(-1);
-            setCurrentMoment(null);
-            activeRegions.current = null;
-            pendingRegions.current = null;
-            const map = mapInstance.current;
-            if (map && map.getLayer("borders-fill")) {
-              map.setPaintProperty(
-                "borders-fill",
-                "fill-color",
-                colorsExpression.current as mapboxgl.Expression,
-              );
-              map.setPaintProperty("borders-fill", "fill-opacity", 0.85);
-            }
-          }}
-          style={{
-            position: "absolute",
-            top: 20,
-            right: 20,
-            zIndex: 11,
-            padding: "6px 10px",
-            background: "#1a2a3a",
-            border: "1px solid #e8613c",
-            color: "#e8613c",
-            borderRadius: 4,
-            cursor: "pointer",
-          }}
-        >
-          ×
-        </button>
-      )}
-
-      {/* slider */}
+      {/* Year slider */}
       <div
         style={{
           position: "absolute",
-          bottom: 40,
+          ...(isMobile
+            ? { top: 72, bottom: "auto" }
+            : { bottom: 40 }),
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 10,
+          textAlign: "center",
         }}
       >
         <input
+          className="ds-year-slider"
           type="range"
           min={0}
           max={YEARS.length - 1}
           value={YEARS.indexOf(year)}
           onChange={(e) => setYear(YEARS[parseInt(e.target.value)])}
+          aria-label="Year"
+          aria-valuetext={String(year)}
         />
-        <div style={{ textAlign: "center", color: "white", fontSize: 24 }}>
-          {year}
-        </div>
+        <div style={{ color: "white", fontSize: 24, marginTop: 4 }}>{year}</div>
       </div>
     </div>
   );

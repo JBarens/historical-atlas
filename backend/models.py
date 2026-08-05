@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Text, ARRAY
+import datetime
+from sqlalchemy import Column, Integer, String, Text, ARRAY, DateTime
 from database import Base
 from pgvector.sqlalchemy import Vector
 
@@ -29,3 +30,11 @@ class Moment(Base):
     title = Column(String, nullable=False)
     description = Column(Text, nullable=False)
     citations = Column(ARRAY(String), nullable=True)
+
+class Query(Base):
+    __tablename__ = "queries"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    question = Column(Text, nullable=False)
+    response = Column(Text, nullable=False)
+    created_at = Column(DateTime, default=datetime.datetime.utcnow)
