@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import html2canvas from "html2canvas";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./App.css";
@@ -128,6 +129,7 @@ const EXAMPLE_QUERIES = [
 
 export default function App() {
   const [year, setYear] = useState(1914);
+  const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const streamDone = useRef(false);
   const mapInstance = useRef<mapboxgl.Map | null>(null);
@@ -153,6 +155,7 @@ export default function App() {
   const [history, setHistory] = useState<{ id: number; question: string }[]>([]);
   const [showHistory, setShowHistory] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [exporting, setExporting] = useState(false);
 
   useEffect(() => {
     const handler = () => setIsMobile(window.innerWidth < 768);
@@ -202,6 +205,24 @@ export default function App() {
     if (nextIdx >= result.moments.length) return;
     setMomentIdx(nextIdx);
     jumpToMoment(result.moments[nextIdx]);
+  }
+
+  async function handleExport() {
+    if (!containerRef.current) return;
+    setExporting(true);
+    try {
+      const canvas = await html2canvas(containerRef.current, {
+        useCORS: true,
+        allowTaint: false,
+        logging: false,
+      });
+      const link = document.createElement("a");
+      link.download = `historical-atlas-${year}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    } finally {
+      setExporting(false);
+    }
   }
 
   async function loadHistory() {
@@ -327,6 +348,7 @@ export default function App() {
       maxZoom: 10,
       maxBounds: [[-30, 25], [65, 75]],
       projection: "mercator",
+      preserveDrawingBuffer: true,
     });
     mapInstance.current = map;
     map.on("load", () => {
@@ -503,7 +525,7 @@ export default function App() {
   }, [year, highlightTrigger]);
 
   return (
-    <div style={{ position: "relative", width: "100vw", height: "100vh", backgroundColor: "#0a1628" }}>
+    <div ref={containerRef} style={{ position: "relative", width: "100vw", height: "100vh", backgroundColor: "#0a1628" }}>
       <div
         ref={mapRef}
         style={{
@@ -799,6 +821,32 @@ export default function App() {
           )}
         </div>
       )}
+
+      {/* Export button */}
+      <button
+        onClick={handleExport}
+        disabled={exporting}
+        aria-label="Export as PNG"
+        style={{
+          position: "absolute",
+          bottom: isMobile ? 16 : 16,
+          right: result || loading ? (isMobile ? 16 : 396) : 16,
+          zIndex: 10,
+          background: "rgba(15,25,35,0.85)",
+          border: "1px solid #2a3a4a",
+          borderRadius: 4,
+          color: exporting ? "#6a8a9a" : "#c8c0b0",
+          fontSize: 18,
+          width: 36,
+          height: 36,
+          cursor: exporting ? "wait" : "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {exporting ? "…" : "⬇"}
+      </button>
 
       {/* Year slider */}
       <div
