@@ -148,7 +148,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [displayedAnswer, setDisplayedAnswer] = useState("");
-  const [currentMoment, setCurrentMoment] = useState<Moment | null>(null);
+  const [_currentMoment, setCurrentMoment] = useState<Moment | null>(null);
   const [momentIdx, setMomentIdx] = useState(-1);
   const [highlightTrigger, setHighlightTrigger] = useState(0);
   const queue = useRef<string[]>([]);
@@ -362,7 +362,7 @@ export default function App() {
         id: "hillshade-layer",
         type: "hillshade",
         source: "hillshade",
-        paint: { "hillshade-intensity": 0.5, "hillshade-shadow-color": "#473B24" },
+        paint: { "hillshade-intensity": 0.5, "hillshade-shadow-color": "#473B24" } as mapboxgl.HillshadePaint,
       });
       fetch(`${API_URL}/borders/1914`)
         .then((r) => r.json())
@@ -421,7 +421,7 @@ export default function App() {
             if (hoveredId !== null) {
               map.setFeatureState({ source: "borders", id: hoveredId }, { hover: false });
             }
-            hoveredId = e.features[0].id as number;
+            hoveredId = (e.features[0] as any).id as number;
             map.setFeatureState({ source: "borders", id: hoveredId }, { hover: true });
             map.getCanvas().style.cursor = "pointer";
           });
@@ -435,7 +435,7 @@ export default function App() {
 
           map.on("click", "borders-fill", async (e) => {
             if (!e.features?.length) return;
-            const name = e.features[0].properties?.name;
+            const name = (e.features[0] as any).properties?.name;
             if (!name) return;
             setCountryName(name);
             setCountryCard(null);
