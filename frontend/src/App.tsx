@@ -738,8 +738,9 @@ export default function App() {
       {(countryLoading || countryCard) && (
         <div style={{
           position: "absolute",
-          bottom: 110,
-          left: 20,
+          ...(isMobile
+            ? { top: 130, left: 16, right: 16, width: "auto" }
+            : { bottom: 110, left: 20, width: 280 }),
           width: 280,
           backgroundColor: "#0f1923",
           border: "1px solid #2a3a4a",
@@ -747,7 +748,7 @@ export default function App() {
           padding: "14px 16px",
           zIndex: 10,
           color: "#e8e0d0",
-        }}>
+        } as React.CSSProperties}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
             <span className="ds-meta-label" style={{ margin: 0 }}>
               {countryLoading ? countryName : countryCard?.period}
