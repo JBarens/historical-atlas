@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: historical-atlas-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt && python seed_borders.py
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+
+  - type: web
+    name: historical-atlas-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_MAPBOX_TOKEN
+        sync: false
+      - key: VITE_API_URL
+        sync: false

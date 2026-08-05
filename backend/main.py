@@ -13,9 +13,15 @@ from retrieve import retrieve
 
 app = FastAPI()
 
+import os
+
+_origins_env = os.getenv("ALLOWED_ORIGINS", "")
+_default_origins = ["http://localhost:3000", "http://localhost:8000", "http://localhost:5173"]
+_allowed_origins = [o.strip() for o in _origins_env.split(",") if o.strip()] or _default_origins
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:8000", "http://localhost:5173"],
+    allow_origins=_allowed_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
