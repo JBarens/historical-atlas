@@ -6,3 +6,4 @@ pgvector
 pydantic-ai[anthropic]
 anthropic
 python-dotenv
+sentence-transformers
