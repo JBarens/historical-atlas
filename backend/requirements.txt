@@ -6,4 +6,4 @@ pgvector
 pydantic-ai[anthropic]
 anthropic
 python-dotenv
-sentence-transformers
+# sentence-transformers omitted — local RAG only, not needed on free Render tier

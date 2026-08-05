@@ -1,10 +1,12 @@
-from sentence_transformers import SentenceTransformer
 from sqlalchemy.orm import Session
 from database import engine
 from models import Document
 
-
-model = SentenceTransformer('all-MiniLM-L6-v2')
+try:
+    from sentence_transformers import SentenceTransformer
+    _model = SentenceTransformer('all-MiniLM-L6-v2')
+except Exception:
+    _model = None
 
 def chunk_text(text, size=500, overlap=50):
     """
@@ -29,16 +31,9 @@ def chunk_text(text, size=500, overlap=50):
 
 
 def embed(texts: list[str]) -> list[list[float]]:
-    """
-    Generates embeddings for a list of texts using OpenAI's embedding model.
-
-    Args:
-        texts (list[str]): A list of texts to be embedded.
-    
-    Returns:
-        list[list[float]]: A list of embeddings corresponding to the input texts.
-    """
-    return model.encode(texts).tolist()
+    if _model is None:
+        return [[0.0] * 384 for _ in texts]
+    return _model.encode(texts).tolist()
 
 
 
