@@ -3,8 +3,8 @@ services:
     name: historical-atlas-api
     runtime: python
     rootDir: backend
-    buildCommand: pip install -r requirements.txt && python seed_borders.py
-    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    buildCommand: pip install -r requirements.txt
+    startCommand: python seed_borders.py && uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: DATABASE_URL
         sync: false
