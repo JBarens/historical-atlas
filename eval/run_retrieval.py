@@ -20,6 +20,7 @@ SIZE, OVERLAP = 500, 50
 KS = (3, 5, 10, 20)
 
 
+QUERY_PREFIX = DOC_PREFIX = ""
 MODE = "char500"  # set from argv: char500 | speech | speech150
 
 
@@ -70,12 +71,14 @@ def main(split="dev"):
     chunks = [(d, s, e) for d, s, e, _ in built]
     text_of = {d["doc_id"]: d["text"] for d in docs}
     model = TextEmbedding(MODEL)
-    cache = CACHE / (f"baseline_minilm_{SIZE}_{OVERLAP}.npy" if MODE == "char500" else f"minilm_{MODE}.npy")
+    tag = MODEL.split("/")[-1]
+    cache = CACHE / (f"baseline_minilm_{SIZE}_{OVERLAP}.npy" if MODE == "char500" and "MiniLM" in MODEL
+                     else (f"minilm_{MODE}.npy" if "MiniLM" in MODEL else f"{tag}_{MODE}.npy"))
     if cache.exists():
         X = np.load(cache)
     else:
         t = time.time()
-        X = np.array(list(model.embed([x for *_, x in built], batch_size=64)), dtype=np.float32)
+        X = np.array(list(model.embed([DOC_PREFIX + x for *_, x in built], batch_size=32)), dtype=np.float32)
         np.save(cache, X)
         print(f"embedded {len(chunks)} chunks in {time.time()-t:.0f}s")
     if not np.abs(X).sum(axis=1).all():
@@ -83,7 +86,7 @@ def main(split="dev"):
 
     items = [json.loads(l) for l in (ROOT / "eval/eval_set_v1.jsonl").read_text().splitlines()]
     items = [i for i in items if i["split"] == split and any(e.get("verified") for e in i.get("evidence", []))]
-    Q = np.array(list(model.embed([i["question"] for i in items])), dtype=np.float32)
+    Q = np.array(list(model.embed([QUERY_PREFIX + i["question"] for i in items])), dtype=np.float32)
     D = ((Q[:, None, :] - X[None, :, :]) ** 2).sum(-1) if len(X) * len(Q) < 5e7 else None
     rows = []
     for qi, it in enumerate(items):
@@ -111,7 +114,7 @@ def main(split="dev"):
         print(f"{name:22} n={len(sub):3}  " + "  ".join(f"R@{k}={np.mean([r[f'R@{k}'] for r in sub]):.2f}" for k in KS)
               + f"  MRR={np.mean([r['rr'] for r in sub]):.2f}")
 
-    print(f"\n[{MODE}] on {split}: {len(chunks)} chunks, {len(items)} answerable items with labels")
+    print(f"\n[{MODE} | {MODEL}] on {split}: {len(chunks)} chunks, {len(items)} answerable items with labels")
     agg(rows, "ALL")
     for key in ("form", "category"):
         g = defaultdict(list)
@@ -119,7 +122,7 @@ def main(split="dev"):
             g[r[key]].append(r)
         for k, v in sorted(g.items()):
             agg(v, f"  {key}={k}")
-    name = "baseline" if MODE == "char500" else MODE
+    name = ("baseline" if MODE == "char500" else MODE) + ("" if "MiniLM" in MODEL else "_" + MODEL.split("/")[-1])
     (ROOT / "eval/results").mkdir(exist_ok=True)
     (ROOT / f"eval/results/{name}_{split}.json").write_text(json.dumps(rows, indent=1))
 
@@ -128,4 +131,8 @@ if __name__ == "__main__":
     args = sys.argv[1:] or ["dev"]
     if len(args) > 1:
         MODE = args[1]
+    if len(args) > 2:
+        MODEL = args[2]
+    if "nomic" in MODEL:  # nomic is trained with task prefixes; without them quality drops
+        QUERY_PREFIX, DOC_PREFIX = "search_query: ", "search_document: "
     main(args[0])

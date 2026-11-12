@@ -39,3 +39,5 @@
 - Phase 2 baseline (dev, n=35 labelled): MiniLM, 500/50 char chunks, no header, L2. R@5=0.20, R@20=0.31, MRR=0.19. Lexical R@5 0.19 vs semantic 0.20 (R@20 0.38 vs 0.27). Jasper predicted R@5 ~0.20 (correct) and lexical clearly lower (not supported). eval/results/baseline_dev.json
 
 - Chunking (Jasper: A2 kept, truncation is a bad default). Eval blind spot: 70% of dev labels in first 150 words; fixed with 11 deep-passage questions (eval/add_deep_questions.py, offsets 292-747 words, existing splits untouched, $0.09). Dev R@5 after fix: char500 0.20, speech 0.21, speech150 0.24. Next: embedding model.
+
+- Model (speech150, dev n=39): nomic-embed-text-v1.5 R@5 0.35 / R@20 0.41 / MRR 0.29 vs MiniLM 0.24 / 0.32 / 0.17. Lexical 0.57 (MiniLM 0.33), semantic 0.20 (0.17). Index time 2202s vs 234s (~9x). Jasper predicted 0.5.
