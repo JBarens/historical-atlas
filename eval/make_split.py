@@ -12,7 +12,7 @@ from fastembed import TextEmbedding
 
 ROOT = Path(__file__).resolve().parents[1]
 E = ROOT / "eval"
-SIM = 0.80                      # cosine threshold for "near-duplicate"
+SIM = 0.72                      # Jasper: calibrated by hand on the 0.65-0.80 band (real duplicates down to ~0.73)
 TARGET = {"dev": 40, "validation": 25, "test": 25}
 random.seed(7)
 
