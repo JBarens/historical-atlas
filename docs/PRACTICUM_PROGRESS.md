@@ -35,3 +35,5 @@
 - eval/eval_set_v1.jsonl: 106 items, 92 clusters (all-MiniLM-L6-v2 via fastembed, cosine >= 0.80, history included in the embedded text; follow-up pairs forced together). Split dev 49 / validation 28 / test 29, stratified by category.
 - Bug caught: embedding only the question put all 4 computation items (identical text, different history) in one cluster -> all in dev. Fixed by embedding history + question.
 - NEXT: Jasper sanity-checks threshold; freeze v1; Phase 2 baseline (current dense retriever on dev).
+
+- Phase 2 baseline (dev, n=35 labelled): MiniLM, 500/50 char chunks, no header, L2. R@5=0.20, R@20=0.31, MRR=0.19. Lexical R@5 0.19 vs semantic 0.20 (R@20 0.38 vs 0.27). Jasper predicted R@5 ~0.20 (correct) and lexical clearly lower (not supported). eval/results/baseline_dev.json
