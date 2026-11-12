@@ -41,3 +41,8 @@
 - Chunking (Jasper: A2 kept, truncation is a bad default). Eval blind spot: 70% of dev labels in first 150 words; fixed with 11 deep-passage questions (eval/add_deep_questions.py, offsets 292-747 words, existing splits untouched, $0.09). Dev R@5 after fix: char500 0.20, speech 0.21, speech150 0.24. Next: embedding model.
 
 - Model (speech150, dev n=39): nomic-embed-text-v1.5 R@5 0.35 / R@20 0.41 / MRR 0.29 vs MiniLM 0.24 / 0.32 / 0.17. Lexical 0.57 (MiniLM 0.33), semantic 0.20 (0.17). Index time 2202s vs 234s (~9x). Jasper predicted 0.5.
+
+## Pause point (end Day 2)
+- Best so far (dev): speech150 + nomic-embed-text-v1.5, R@5 0.35 (index cached: backend/data/index/nomic-embed-text-v1.5_speech150.npy; run: eval/run_retrieval.py dev speech150 nomic-ai/nomic-embed-text-v1.5). Semantic = lower bound.
+- OPEN DECISION (Jasper): fusion for BM25+dense: A RRF / B weighted alpha / C routing; plus predictions for BM25-alone and hybrid R@5, lexical vs semantic. Also measure BM25 alone.
+- Later: few-shot judge (generation phase), query rewriting for follow-ups, inflation tool.
