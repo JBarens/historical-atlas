@@ -1,0 +1,62 @@
+[
+ {
+  "k": 1,
+  "id": "q078",
+  "rank": 1,
+  "judge": true
+ },
+ {
+  "k": 2,
+  "id": "q032",
+  "rank": 4,
+  "judge": true
+ },
+ {
+  "k": 3,
+  "id": "q071",
+  "rank": 5,
+  "judge": true
+ },
+ {
+  "k": 4,
+  "id": "q079",
+  "rank": 1,
+  "judge": false
+ },
+ {
+  "k": 5,
+  "id": "q062",
+  "rank": 5,
+  "judge": false
+ },
+ {
+  "k": 6,
+  "id": "q026",
+  "rank": 2,
+  "judge": false
+ },
+ {
+  "k": 7,
+  "id": "q063",
+  "rank": 1,
+  "judge": true
+ },
+ {
+  "k": 8,
+  "id": "q012",
+  "rank": 4,
+  "judge": false
+ },
+ {
+  "k": 9,
+  "id": "q113",
+  "rank": 2,
+  "judge": false
+ },
+ {
+  "k": 10,
+  "id": "q028",
+  "rank": 2,
+  "judge": true
+ }
+]

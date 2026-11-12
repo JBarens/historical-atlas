@@ -45,3 +45,9 @@
 - Grounding found 7/22 Hermes questions without evidence, all asking for outcomes. Per-case check: Aaland outcome never debated (true gap); Upper Silesia and Greco-Bulgarian had filter misses that the 30+30 random audit could not see (small strata). Lesson: audit per segment, not only overall.
 - Fixes in backend/corpus/build.py: (1) greco_bulgarian body pattern widened to any Bulgaria mention in the window (Jasper, A: case = incident and its aftermath incl. refugee loans); (2) speeches in a debate whose title matches the strict case pattern inherit the tag. Tags: vilna 26->42, upper_silesia 76->113, mosul 87->102, greco_bulgarian 2->28, aland 9. No speech lost a tag.
 - Split model: BAAI/bge-small-en-v1.5 (deliberately not the retriever model MiniLM; first attempt wrongly used MiniLM). Threshold 0.79, hand-calibrated on the bge band. Exact duplicates between the ambiguous set and follow-up pairs removed. Eval set v1 frozen; test set not looked at until final evaluation.
+
+## Label completeness and LLM judge (Day 2)
+- Semantic labels are incomplete: in 20 human-judged top-5 chunks of semantic misses, 5 were valid answers. Semantic hit@k is reported as a LOWER BOUND. Lexical labels assumed near-complete (names/dates have one clear source).
+- LLM-as-judge for label completion rejected after calibration against Jasper (20 labels): v1 5/10 (no history, soft rule), v2 6/10 (8/10 after Jasper corrected 2; verdict-before-reason contradictions), v3 14/20 with only 1/3 judge-yes correct (overcorrected). Total ~$0.80.
+- Plan (Jasper, C): revisit in the generation phase as a few-shot judge built from the 20 human labels, tested on fresh unseen pairs.
+- Also fixed later: Hermes question "What did the people living in the disputed area actually want?" is ambiguous (no case named) -> relabel ambiguous.
