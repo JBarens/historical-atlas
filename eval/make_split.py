@@ -1,5 +1,5 @@
 """Merge all reviewed questions into one eval set and make a cluster-aware, stratified split.
-Embedding model for clustering: all-MiniLM-L6-v2 via fastembed (local, free, independent of the retriever).
+Embedding model for clustering: BAAI/bge-small-en-v1.5 via fastembed (local, free; deliberately NOT the retriever model all-MiniLM-L6-v2).
 Usage: uv run -q --with fastembed --with numpy python eval/make_split.py
 """
 import json
@@ -12,7 +12,7 @@ from fastembed import TextEmbedding
 
 ROOT = Path(__file__).resolve().parents[1]
 E = ROOT / "eval"
-SIM = 0.72                      # Jasper: calibrated by hand on the 0.65-0.80 band (real duplicates down to ~0.73)
+SIM = 0.79                      # Jasper: hand-calibrated on the bge band (true duplicates down to ~0.79)
 TARGET = {"dev": 40, "validation": 25, "test": 25}
 random.seed(7)
 
@@ -23,6 +23,8 @@ def load():
         q = json.loads(l)
         if q["review"].get("decision") == "drop":
             continue
+        if q["question"] in {f["question"] for f in json.loads((E / "questions_followup.json").read_text())}:
+            continue  # same text as a follow-up pair; the pair (with/without history) replaces it
         kind = "ambiguous" if q["tags"]["answerability"] == "ambiguous" else \
                ("multi-doc" if q["tags"]["evidence"] == "multi-doc" else q["tags"]["query_form"])
         items.append({**q, "history": [], "category": kind, "source": "ai"})
@@ -30,7 +32,10 @@ def load():
         q = json.loads(l)
         cat = "follow-up" if q["history"] else ("out-of-corpus" if q["tags"]["answerability"] == "out-of-corpus" else q["kind"])
         items.append({**q, "category": cat})
+    followup_qs = {q["question"] for q in json.loads((E / "questions_followup.json").read_text())}
     for q in json.loads((E / "questions_hermes_draft.json").read_text()):
+        if q["kind"] == "ambiguous" and q["question"] in followup_qs:
+            continue  # already present as the no-history half of a follow-up pair
         if q["kind"] in ("out-of-corpus", "ambiguous"):
             items.append({"case": q.get("case"), "question": q["question"], "history": [], "kind": q["kind"],
                           "ambiguous_readings": q.get("readings", []), "evidence": [], "source": "hermes",
@@ -48,7 +53,7 @@ def load():
 
 
 def clusters(items):
-    model = TextEmbedding("sentence-transformers/all-MiniLM-L6-v2")
+    model = TextEmbedding("BAAI/bge-small-en-v1.5")
     texts = [" ".join(t["content"] for t in it.get("history", [])) + " " + it["question"] for it in items]
     X = np.array(list(model.embed(texts)))
     X /= np.linalg.norm(X, axis=1, keepdims=True)
