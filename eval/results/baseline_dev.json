@@ -383,5 +383,49 @@
   "R@5": 0.0,
   "R@10": 0.0,
   "R@20": 0.0
+ },
+ {
+  "id": "q107",
+  "category": "semantic",
+  "form": "semantic",
+  "history": false,
+  "rr": 0.0,
+  "R@3": 0.0,
+  "R@5": 0.0,
+  "R@10": 0.0,
+  "R@20": 0.0
+ },
+ {
+  "id": "q108",
+  "category": "semantic",
+  "form": "semantic",
+  "history": false,
+  "rr": 0.0,
+  "R@3": 0.0,
+  "R@5": 0.0,
+  "R@10": 0.0,
+  "R@20": 0.0
+ },
+ {
+  "id": "q111",
+  "category": "lexical",
+  "form": "lexical",
+  "history": false,
+  "rr": 1.0,
+  "R@3": 1.0,
+  "R@5": 1.0,
+  "R@10": 1.0,
+  "R@20": 1.0
+ },
+ {
+  "id": "q113",
+  "category": "semantic",
+  "form": "semantic",
+  "history": false,
+  "rr": 0.0,
+  "R@3": 0.0,
+  "R@5": 0.0,
+  "R@10": 0.0,
+  "R@20": 0.0
  }
 ]

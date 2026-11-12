@@ -1,0 +1,24 @@
+embedded 5097 chunks in 110s
+[speech] on dev: 5097 chunks, 35 answerable items with labels
+ALL                    n= 35  R@3=0.18  R@5=0.23  R@10=0.28  R@20=0.32  MRR=0.15
+  form=lexical         n= 15  R@3=0.28  R@5=0.34  R@10=0.38  R@20=0.44  MRR=0.28
+  form=semantic        n= 20  R@3=0.10  R@5=0.15  R@10=0.20  R@20=0.23  MRR=0.06
+  category=ambiguous   n=  1  R@3=0.00  R@5=0.00  R@10=1.00  R@20=1.00  MRR=0.10
+  category=cross-case  n=  2  R@3=0.00  R@5=0.00  R@10=0.00  R@20=0.00  MRR=0.00
+  category=follow-up   n=  4  R@3=0.00  R@5=0.00  R@10=0.00  R@20=0.00  MRR=0.00
+  category=lexical     n= 10  R@3=0.30  R@5=0.40  R@10=0.40  R@20=0.50  MRR=0.28
+  category=multi-doc   n=  6  R@3=0.19  R@5=0.19  R@10=0.28  R@20=0.28  MRR=0.22
+  category=semantic    n=  9  R@3=0.22  R@5=0.33  R@10=0.33  R@20=0.33  MRR=0.11
+  category=why         n=  3  R@3=0.00  R@5=0.00  R@10=0.00  R@20=0.17  MRR=0.02
+embedded 9798 chunks in 234s
+[speech150] on dev: 9798 chunks, 35 answerable items with labels
+ALL                    n= 35  R@3=0.15  R@5=0.21  R@10=0.29  R@20=0.30  MRR=0.15
+  form=lexical         n= 15  R@3=0.22  R@5=0.29  R@10=0.34  R@20=0.38  MRR=0.22
+  form=semantic        n= 20  R@3=0.10  R@5=0.15  R@10=0.25  R@20=0.25  MRR=0.09
+  category=ambiguous   n=  1  R@3=0.00  R@5=0.00  R@10=1.00  R@20=1.00  MRR=0.12
+  category=cross-case  n=  2  R@3=0.00  R@5=0.00  R@10=0.00  R@20=0.00  MRR=0.00
+  category=follow-up   n=  4  R@3=0.00  R@5=0.00  R@10=0.00  R@20=0.00  MRR=0.00
+  category=lexical     n= 10  R@3=0.30  R@5=0.40  R@10=0.40  R@20=0.40  MRR=0.23
+  category=multi-doc   n=  6  R@3=0.06  R@5=0.06  R@10=0.19  R@20=0.28  MRR=0.18
+  category=semantic    n=  9  R@3=0.22  R@5=0.33  R@10=0.44  R@20=0.44  MRR=0.18
+  category=why         n=  3  R@3=0.00  R@5=0.00  R@10=0.00  R@20=0.00  MRR=0.00

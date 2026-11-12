@@ -20,6 +20,29 @@ SIZE, OVERLAP = 500, 50
 KS = (3, 5, 10, 20)
 
 
+MODE = "char500"  # set from argv: char500 | speech | speech150
+
+
+def doc_chunks(d):
+    """Return (start, end, text_to_embed) for one document under the current MODE."""
+    t = d["text"]
+    if MODE == "char500":
+        return [(s, e, t[s:e]) for s, e in chunk_spans(t)]
+    head = d.get("header") or ""
+    if MODE == "speech" or len(t.split()) <= 180:
+        return [(0, len(t), head + "\n" + t)]
+    # speech150: ~150-word pieces cut at sentence ends, header repeated on each piece
+    out, start, words = [], 0, 0
+    for m in re.finditer(r"[^.!?]+[.!?]+\S*\s*|[^.!?]+$", t):
+        words += len(m.group().split())
+        if words >= 150:
+            out.append((start, m.end(), head + "\n" + t[start:m.end()]))
+            start, words = m.end(), 0
+    if start < len(t):
+        out.append((start, len(t), head + "\n" + t[start:]))
+    return out
+
+
 def chunk_spans(text):
     out, start = [], 0
     while start < len(text):
@@ -43,15 +66,16 @@ def main(split="dev"):
     docs = []
     for f in ("hansard_speeches.jsonl", "frus_documents.jsonl"):
         docs += [json.loads(l) for l in (ROOT / "backend/data/corpus" / f).read_text().splitlines() if l.strip()]
-    chunks = [(d["doc_id"], s, e) for d in docs for (s, e) in chunk_spans(d["text"])]
+    built = [(d["doc_id"], s, e, x) for d in docs for (s, e, x) in doc_chunks(d)]
+    chunks = [(d, s, e) for d, s, e, _ in built]
     text_of = {d["doc_id"]: d["text"] for d in docs}
     model = TextEmbedding(MODEL)
-    cache = CACHE / f"baseline_minilm_{SIZE}_{OVERLAP}.npy"
+    cache = CACHE / (f"baseline_minilm_{SIZE}_{OVERLAP}.npy" if MODE == "char500" else f"minilm_{MODE}.npy")
     if cache.exists():
         X = np.load(cache)
     else:
         t = time.time()
-        X = np.array(list(model.embed([text_of[d][s:e] for d, s, e in chunks], batch_size=256)), dtype=np.float32)
+        X = np.array(list(model.embed([x for *_, x in built], batch_size=64)), dtype=np.float32)
         np.save(cache, X)
         print(f"embedded {len(chunks)} chunks in {time.time()-t:.0f}s")
     if not np.abs(X).sum(axis=1).all():
@@ -87,7 +111,7 @@ def main(split="dev"):
         print(f"{name:22} n={len(sub):3}  " + "  ".join(f"R@{k}={np.mean([r[f'R@{k}'] for r in sub]):.2f}" for k in KS)
               + f"  MRR={np.mean([r['rr'] for r in sub]):.2f}")
 
-    print(f"\nBaseline on {split}: {len(chunks)} chunks, {len(items)} answerable items with labels")
+    print(f"\n[{MODE}] on {split}: {len(chunks)} chunks, {len(items)} answerable items with labels")
     agg(rows, "ALL")
     for key in ("form", "category"):
         g = defaultdict(list)
@@ -95,9 +119,13 @@ def main(split="dev"):
             g[r[key]].append(r)
         for k, v in sorted(g.items()):
             agg(v, f"  {key}={k}")
-    (ROOT / f"eval/results/baseline_{split}.json").parent.mkdir(exist_ok=True)
-    (ROOT / f"eval/results/baseline_{split}.json").write_text(json.dumps(rows, indent=1))
+    name = "baseline" if MODE == "char500" else MODE
+    (ROOT / "eval/results").mkdir(exist_ok=True)
+    (ROOT / f"eval/results/{name}_{split}.json").write_text(json.dumps(rows, indent=1))
 
 
 if __name__ == "__main__":
-    main(*(sys.argv[1:] or ["dev"]))
+    args = sys.argv[1:] or ["dev"]
+    if len(args) > 1:
+        MODE = args[1]
+    main(args[0])
