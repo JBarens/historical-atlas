@@ -1,0 +1,6 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+mosul 27 questions; verified passages: 27
+greco_bulgarian 10 questions; verified passages: 10
+aland 10 questions; verified passages: 13
+upper_silesia 10 questions; verified passages: 15
+usage {'input_tokens': 330641, 'output_tokens': 25705, 'calls': 12}

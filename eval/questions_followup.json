@@ -1,0 +1,250 @@
+[
+ {
+  "question": "Did Britain accept the League's decision?",
+  "case": "mosul",
+  "kind": "follow-up",
+  "history": [],
+  "expected_behaviour": "ask which dispute is meant (or answer briefly per case); no confident single-case answer"
+ },
+ {
+  "question": "Did Britain accept the League's decision?",
+  "case": "mosul",
+  "kind": "follow-up",
+  "history": [
+   {
+    "role": "user",
+    "content": "What was the Mosul dispute about?"
+   }
+  ],
+  "expected_behaviour": "answer about mosul using retrieved evidence"
+ },
+ {
+  "question": "What did the government decide about the treaty?",
+  "case": "mosul",
+  "kind": "follow-up",
+  "history": [],
+  "expected_behaviour": "ask which dispute is meant (or answer briefly per case); no confident single-case answer"
+ },
+ {
+  "question": "What did the government decide about the treaty?",
+  "case": "mosul",
+  "kind": "follow-up",
+  "history": [
+   {
+    "role": "user",
+    "content": "Tell me about the Mosul question after Lausanne."
+   }
+  ],
+  "expected_behaviour": "answer about mosul using retrieved evidence"
+ },
+ {
+  "question": "Who got the territory in the end?",
+  "case": "upper_silesia",
+  "kind": "follow-up",
+  "history": [],
+  "expected_behaviour": "ask which dispute is meant (or answer briefly per case); no confident single-case answer"
+ },
+ {
+  "question": "Who got the territory in the end?",
+  "case": "upper_silesia",
+  "kind": "follow-up",
+  "history": [
+   {
+    "role": "user",
+    "content": "What happened in the Upper Silesia plebiscite?"
+   }
+  ],
+  "expected_behaviour": "answer about upper_silesia using retrieved evidence"
+ },
+ {
+  "question": "What was the cost of that, and who paid?",
+  "case": "upper_silesia",
+  "kind": "follow-up",
+  "history": [],
+  "expected_behaviour": "ask which dispute is meant (or answer briefly per case); no confident single-case answer"
+ },
+ {
+  "question": "What was the cost of that, and who paid?",
+  "case": "upper_silesia",
+  "kind": "follow-up",
+  "history": [
+   {
+    "role": "user",
+    "content": "Why were Allied troops stationed in Upper Silesia?"
+   }
+  ],
+  "expected_behaviour": "answer about upper_silesia using retrieved evidence"
+ },
+ {
+  "question": "Why did the League fail there?",
+  "case": "vilna",
+  "kind": "follow-up",
+  "history": [],
+  "expected_behaviour": "ask which dispute is meant (or answer briefly per case); no confident single-case answer"
+ },
+ {
+  "question": "Why did the League fail there?",
+  "case": "vilna",
+  "kind": "follow-up",
+  "history": [
+   {
+    "role": "user",
+    "content": "What was the Vilna dispute?"
+   }
+  ],
+  "expected_behaviour": "answer about vilna using retrieved evidence"
+ },
+ {
+  "question": "What did the Commission recommend?",
+  "case": "aland",
+  "kind": "follow-up",
+  "history": [],
+  "expected_behaviour": "ask which dispute is meant (or answer briefly per case); no confident single-case answer"
+ },
+ {
+  "question": "What did the Commission recommend?",
+  "case": "aland",
+  "kind": "follow-up",
+  "history": [
+   {
+    "role": "user",
+    "content": "How did the Aaland Islands question reach the League?"
+   }
+  ],
+  "expected_behaviour": "answer about aland using retrieved evidence"
+ },
+ {
+  "question": "Did Finland accept the outcome?",
+  "case": "aland",
+  "kind": "follow-up",
+  "history": [],
+  "expected_behaviour": "ask which dispute is meant (or answer briefly per case); no confident single-case answer"
+ },
+ {
+  "question": "Did Finland accept the outcome?",
+  "case": "aland",
+  "kind": "follow-up",
+  "history": [
+   {
+    "role": "user",
+    "content": "Why did the Aaland islanders want to join Sweden?"
+   }
+  ],
+  "expected_behaviour": "answer about aland using retrieved evidence"
+ },
+ {
+  "question": "Did Britain take part?",
+  "case": "greco_bulgarian",
+  "kind": "follow-up",
+  "history": [],
+  "expected_behaviour": "ask which dispute is meant (or answer briefly per case); no confident single-case answer"
+ },
+ {
+  "question": "Did Britain take part?",
+  "case": "greco_bulgarian",
+  "kind": "follow-up",
+  "history": [
+   {
+    "role": "user",
+    "content": "What did Parliament discuss about the League loans to Greece and Bulgaria?"
+   }
+  ],
+  "expected_behaviour": "answer about greco_bulgarian using retrieved evidence"
+ },
+ {
+  "kind": "follow-up-computation",
+  "case": null,
+  "history": [
+   {
+    "role": "user",
+    "content": "What did the Mosul commitment cost?"
+   },
+   {
+    "role": "assistant",
+    "content": "In 1925 the figure given in Parliament was £600,000."
+   }
+  ],
+  "question": "What is that in today's money?",
+  "expected": {
+   "amount_gbp": 600000,
+   "year": 1925,
+   "index": "ONS RPI long run (CDKO)",
+   "target_year": 2025,
+   "value": 51245161,
+   "tolerance": 0.05
+  },
+  "expected_behaviour": "no retrieval; call the inflation tool with amount and year; name the measure used"
+ },
+ {
+  "kind": "follow-up-computation",
+  "case": null,
+  "history": [
+   {
+    "role": "user",
+    "content": "What did the Upper Silesia commitment cost?"
+   },
+   {
+    "role": "assistant",
+    "content": "In 1921 the figure given in Parliament was £2,500,000."
+   }
+  ],
+  "question": "What is that in today's money?",
+  "expected": {
+   "amount_gbp": 2500000,
+   "year": 1921,
+   "index": "ONS RPI long run (CDKO)",
+   "target_year": 2025,
+   "value": 171926407,
+   "tolerance": 0.05
+  },
+  "expected_behaviour": "no retrieval; call the inflation tool with amount and year; name the measure used"
+ },
+ {
+  "kind": "follow-up-computation",
+  "case": null,
+  "history": [
+   {
+    "role": "user",
+    "content": "What did the Greek refugee loan commitment cost?"
+   },
+   {
+    "role": "assistant",
+    "content": "In 1926 the figure given in Parliament was £1,400,000."
+   }
+  ],
+  "question": "What is that in today's money?",
+  "expected": {
+   "amount_gbp": 1400000,
+   "year": 1926,
+   "index": "ONS RPI long run (CDKO)",
+   "target_year": 2025,
+   "value": 120218378,
+   "tolerance": 0.05
+  },
+  "expected_behaviour": "no retrieval; call the inflation tool with amount and year; name the measure used"
+ },
+ {
+  "kind": "follow-up-computation",
+  "case": null,
+  "history": [
+   {
+    "role": "user",
+    "content": "What did the Aaland commitment cost?"
+   },
+   {
+    "role": "assistant",
+    "content": "In 1920 the figure given in Parliament was £250,000."
+   }
+  ],
+  "question": "What is that in today's money?",
+  "expected": {
+   "amount_gbp": 250000,
+   "year": 1920,
+   "index": "ONS RPI long run (CDKO)",
+   "target_year": 2025,
+   "value": 15697628,
+   "tolerance": 0.05
+  },
+  "expected_behaviour": "no retrieval; call the inflation tool with amount and year; name the measure used"
+ }
+]
