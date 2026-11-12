@@ -7,3 +7,7 @@ frontend/dist/
 .claude/
 .impeccable/
 skill-observations/
+
+# practicum data (rebuildable)
+backend/data/
+data_*.log
