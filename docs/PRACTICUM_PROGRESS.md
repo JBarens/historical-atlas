@@ -60,7 +60,7 @@ Cross-cutting gaps: latency (p50/p95) measured nowhere yet; retrieval runs outsi
 
 ## Day 2 (cont.): eval set v1
 - Review applied (5 AI questions dropped). Follow-ups (decision C) + inflation tool items (decision B, ONS RPI CDKO). Recall fix per case (see methodology). Grounding cost total ~$2.50.
-- eval/eval_set_v1.jsonl: 106 items, 92 clusters (all-MiniLM-L6-v2 via fastembed, cosine >= 0.80, history included in the embedded text; follow-up pairs forced together). Split dev 49 / validation 28 / test 29, stratified by category.
+- eval/eval_set_v1.jsonl: 106 items, 92 clusters (all-MiniLM-L6-v2 via fastembed, cosine >= 0.80, history included in the embedded text; follow-up pairs forced together). Split dev 49 / validation 28 / test 29, stratified by category. [SUPERSEDED: split redone with BAAI/bge-small-en-v1.5, threshold 0.79, see methodology]
 - Bug caught: embedding only the question put all 4 computation items (identical text, different history) in one cluster -> all in dev. Fixed by embedding history + question.
 - NEXT: Jasper sanity-checks threshold; freeze v1; Phase 2 baseline (current dense retriever on dev).
 
