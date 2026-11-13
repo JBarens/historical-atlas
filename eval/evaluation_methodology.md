@@ -51,3 +51,5 @@
 - LLM-as-judge for label completion rejected after calibration against Jasper (20 labels): v1 5/10 (no history, soft rule), v2 6/10 (8/10 after Jasper corrected 2; verdict-before-reason contradictions), v3 14/20 with only 1/3 judge-yes correct (overcorrected). Total ~$0.80.
 - Plan (Jasper, C): revisit in the generation phase as a few-shot judge built from the 20 human labels, tested on fresh unseen pairs.
 - Also fixed later: Hermes question "What did the people living in the disputed area actually want?" is ambiguous (no case named) -> relabel ambiguous.
+
+- Eval v2 known limitation: strict self-contained rule makes multi-part questions out-of-corpus (e.g. F01); multi-doc rule should be per-part coverage.

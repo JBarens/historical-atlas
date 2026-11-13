@@ -20,7 +20,7 @@ PASSAGE SPLIT ACROSS CHUNKS: no
 TOP-1 RETRIEVED INSTEAD: [Commons, 1925-11-16, "NORTHERN FRONTIER.", Mr. AMERY]
 The question of the northern frontier of Iraq has been before the Council of the League of Nations, which, as the hon. Member is probably aware, referred certain judicial points to the Permanent Court of International Justice at The Hague. The Permanent Court has not yet given a decision on the points referred to it, but it is hoped that the d
 
-CAT: F (fusion: dense 11, BM25 923 pulled it down) [Hermes]
+CAT: L (Jasper: passage answers neither part; top-1 Amery chunk is closer) [Jasper, overrides Hermes F]
 
 ## F02  rank 66 (dense 97, bm25 140)  [multi-doc]
 QUESTION: Who were the three members of the committee established in September 1920 to propose a final settlement of the Aaland Islands question, and which countries did they represent?
@@ -308,4 +308,4 @@ PASSAGE SPLIT ACROSS CHUNKS: no
 TOP-1 RETRIEVED INSTEAD: [Commons, 1926-03-23, "LEAGUE OF NATIONS.", Mr. THURTLE]
 They quail before the monocle of the Foreign Secretary. The reason why I believe we are going into the Lobby against the Government this evening may be put briefly in a few words. We contend that the Foreign Secretary misled the House of Commons and the people of this country, and we contend that when he got to Geneva he failed to carry out 
 
-CAT: L (partial at best) [Hermes]
+CAT: L (partial at best) [Hermes; Jasper: Q]
