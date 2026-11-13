@@ -67,3 +67,5 @@ Cross-cutting gaps: latency (p50/p95) measured nowhere yet; retrieval runs outsi
 - Later: few-shot judge (generation phase), query rewriting for follow-ups, inflation tool.
 
 - Day 3: BM25 vs nomic vs RRF (k=60, depth 100) on speech150, dev n=38. R@5: bm25 0.36, nomic 0.36, rrf 0.35. R@20: 0.46 / 0.43 / 0.56. Lexical R@20 rrf 0.82. Semantic: bm25 0.27 > nomic 0.20 at R@5. Jasper predicted bm25 0.20, hybrid 0.40, gain on lexical. eval/run_hybrid.py
+
+- Day 3 rerank (bge-reranker-base, top-50 of RRF, dev n=38): R@5 0.35->0.44, R@3 0.29->0.40, MRR 0.33->0.40; ceiling R@50 0.62. Lexical R@5 0.54->0.64, semantic 0.20->0.30. Latency median 13.3s, max 19.4s per question on CPU. Jasper predicted R@5 0.6.
