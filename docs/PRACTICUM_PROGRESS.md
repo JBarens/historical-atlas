@@ -1,3 +1,22 @@
+# Status against the brief (docs/PRACTICUM_BRIEF.md), updated Day 3
+
+Order deviated from the brief: chunking (brief Phase 6) and the embedding-model swap were done during baseline work, because the baseline exposed them first.
+
+| Phase | Topic | Status | Gaps vs brief |
+|---|---|---|---|
+| 0 | Current architecture | done | ADR-001 |
+| 1 | Eval dataset | done | 106 items, dev/val/test; nDCG not used |
+| 2 | Dense baseline | metrics done | no p50/p95 latency; no failure classification; baseline_dense.md not written; measured in numpy, not pgvector |
+| 3 | Lexical | metrics done | rank_bm25, not PostgreSQL-native; no latency; baseline_lexical.md not written |
+| 4 | Hybrid (RRF) | metrics done on dev | depths 5/10/20/50 not swept; brief says choose on VALIDATION (done on dev); ADR-002 not written; RRF k explanation not yet tested |
+| 5 | Reranking | running | bge-reranker-base, 50 candidates; ADR-003, latency, answer quality pending |
+| 6 | Chunking | done early | chunking_experiment.md not written |
+| 7-16 | Generation, agent, failures, observability, cost/latency, scale, CI, security, held-out, interview | not started | |
+
+Cross-cutting gaps: latency (p50/p95) measured nowhere yet; retrieval runs outside PostgreSQL/pgvector (brief: keep PG, prefer PG-native lexical).
+
+---
+
 # Practicum progress
 
 ## Where we are (end of day 1)
