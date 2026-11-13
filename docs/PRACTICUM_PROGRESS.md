@@ -46,3 +46,5 @@
 - Best so far (dev): speech150 + nomic-embed-text-v1.5, R@5 0.35 (index cached: backend/data/index/nomic-embed-text-v1.5_speech150.npy; run: eval/run_retrieval.py dev speech150 nomic-ai/nomic-embed-text-v1.5). Semantic = lower bound.
 - OPEN DECISION (Jasper): fusion for BM25+dense: A RRF / B weighted alpha / C routing; plus predictions for BM25-alone and hybrid R@5, lexical vs semantic. Also measure BM25 alone.
 - Later: few-shot judge (generation phase), query rewriting for follow-ups, inflation tool.
+
+- Day 3: BM25 vs nomic vs RRF (k=60, depth 100) on speech150, dev n=38. R@5: bm25 0.36, nomic 0.36, rrf 0.35. R@20: 0.46 / 0.43 / 0.56. Lexical R@20 rrf 0.82. Semantic: bm25 0.27 > nomic 0.20 at R@5. Jasper predicted bm25 0.20, hybrid 0.40, gain on lexical. eval/run_hybrid.py
