@@ -53,3 +53,5 @@
 - Also fixed later: Hermes question "What did the people living in the disputed area actually want?" is ambiguous (no case named) -> relabel ambiguous.
 
 - Eval v2 known limitation: strict self-contained rule makes multi-part questions out-of-corpus (e.g. F01); multi-doc rule should be per-part coverage.
+
+- v2 fix: 8 R2 rewrites reverted (wrong case injected: chain error from widened greco_bulgarian filter tagging an aviation FRUS doc). Cross-case list question unscored. Applied to all splits from question text only.

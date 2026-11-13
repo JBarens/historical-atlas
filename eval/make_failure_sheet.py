@@ -20,8 +20,8 @@ by_id = {d["doc_id"]: d for d in docs}
 built = [(d["doc_id"], s, e, x) for d in docs for (s, e, x) in rr.doc_chunks(d)]
 X = np.load(ROOT / "backend/data/index/nomic-embed-text-v1.5_speech150.npy")
 bm25 = BM25Okapi([tok(x) for *_, x in built])
-items = [json.loads(l) for l in (ROOT / "eval/eval_set_v1.jsonl").read_text().splitlines()]
-items = [i for i in items if i["split"] == "dev" and any(e.get("verified") for e in i.get("evidence", []))]
+items = [json.loads(l) for l in (ROOT / "eval" / __import__("os").environ.get("EVALSET", "eval_set_v1.jsonl")).read_text().splitlines()]
+items = [i for i in items if i["split"] == "dev" and any(e.get("verified") for e in i.get("evidence", [])) and i.get("score_retrieval", True)]
 Q = np.array(list(TextEmbedding("nomic-ai/nomic-embed-text-v1.5").embed(["search_query: " + i["question"] for i in items])))
 N = len(built)
 rows = []
@@ -40,7 +40,7 @@ for qi, it in enumerate(items):
         if not hits:
             continue
         best = min(hits, key=lambda h: pf[h])
-        if pf[best] <= 50:
+        if pf[best] <= int(__import__("os").environ.get("CUT", "50")):
             continue
         cut = len(hits) > 1
         rows.append({"q": it, "e": e, "doc": d, "rank": int(pf[best]), "dense": int(pd_[best]), "bm25": int(pl[best]),
@@ -64,5 +64,5 @@ for k, r in enumerate(rows, 1):
           f"PASSAGE SPLIT ACROSS CHUNKS: {'yes' if r['split_passage'] else 'no'}", "",
           f"TOP-1 RETRIEVED INSTEAD: {r['top1'][:400]}", "",
           "CAT: ", ""]
-(ROOT / "eval/failure_classification.md").write_text("\n".join(L))
+(ROOT / "eval" / __import__("os").environ.get("OUT", "failure_classification.md")).write_text("\n".join(L))
 print(len(rows), "items")
