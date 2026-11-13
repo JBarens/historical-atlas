@@ -2,7 +2,7 @@
 Goal now: find the right piece of text for a question (retrieval). Claude-written answers come later (Phase 7).
 Corpus: 9,798 pieces (~150 words + header) of Hansard speeches and FRUS documents.
 Test: questions with a label = the sentence that answers it. Score R@5 = label in top 5? Eval v2 (strict labels) since Day 3.
-Best system: BM25 + nomic (RRF) -> reranker on top 50. Dev v2: R@5 0.54, R@50 ceiling 0.81. Reranker latency ~16 s/question on CPU (too slow).
+Best system: BM25 + nomic (RRF) -> Haiku 5.5 rerank top 20. Dev v2: R@5 0.65, MRR 0.68 (= ceiling R@20 0.65). Haiku p50 1.0s / p95 1.3s, ~5.6k tokens, ~$0.006/question (assumed price). Local bge reranker on 50: R@5 0.54, 16 s.
 History (v1 labels): 0.20 start -> 0.35 chunks+nomic -> 0.35 hybrid -> 0.44 rerank. Then 19/25 remaining misses turned out to be eval errors -> eval v2.
 Next: decide reranker trade-off (latency), then consolidation (Postgres, latency, validation, write-ups), then Phase 7.
 

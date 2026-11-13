@@ -1,0 +1,7 @@
+dev: 27 items | Haiku latency p50 1.0s p95 1.3s | tokens in 5648 out 68 per question | est cost $0.0060/question (assumed price) | short/invalid rankings: 0
+rrf            ALL       n=27  R@3=0.39  R@5=0.48  R@10=0.57  R@20=0.65  MRR=0.39
+rrf            lexical   n=12  R@3=0.58  R@5=0.62  R@10=0.75  R@20=0.83  MRR=0.60
+rrf            semantic  n=15  R@3=0.23  R@5=0.37  R@10=0.43  R@20=0.50  MRR=0.23
+rrf+haiku20    ALL       n=27  R@3=0.63  R@5=0.65  R@10=0.65  R@20=0.65  MRR=0.68
+rrf+haiku20    lexical   n=12  R@3=0.79  R@5=0.83  R@10=0.83  R@20=0.83  MRR=0.92
+rrf+haiku20    semantic  n=15  R@3=0.50  R@5=0.50  R@10=0.50  R@20=0.50  MRR=0.49
