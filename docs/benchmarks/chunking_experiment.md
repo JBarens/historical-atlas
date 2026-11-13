@@ -27,7 +27,7 @@ With nomic-embed-text-v1.5 on speech150 (v1 dev n=39): R@5 0.35, R@20 0.41, MRR 
 ## Decision and interpretation
 
 * Jasper: "A2 kept, truncation is a bad default" (docs/PRACTICUM\_PROGRESS.md). speech150 is the chunking in the chosen stack.
-* JASPER: TODO prediction before the run (not recorded), and answers to: what happens when chunks are too small, or too large? What does overlap solve, and what does it cost (speech150 uses none)? Too small, too focused info is given, too large, too vague and not precise info is given. Overlap solves tis problem by giving extra info at times where it otherwise would be cut off, at the expense of latency cost and perhaps too much info being given.
+* Jasper: too small loses context (who 'he' is; an answer split from its question, as in the Wedgwood/Chamberlain failures). Too large dilutes: one vector averages several topics and the LLM gets more tokens. Overlap solves answers cut at a boundary, but costs more chunks and tokens and can produce duplicate hits that push other relevant chunks out of the top 5. Prediction before the run was not recorded.
 
 ## Caveats
 

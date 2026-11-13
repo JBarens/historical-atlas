@@ -35,7 +35,7 @@ v1 (dev n=38, docs/PRACTICUM\_PROGRESS.md Day 3): BM25 R@5 0.36 vs nomic 0.36; o
 
 * Jasper predicted BM25 R@5 0.20; measured 0.36 on v1 (docs/PRACTICUM\_PROGRESS.md).
 * A likely reason BM25 beats FTS OR (not tested): BM25 uses IDF, saturates term frequency and normalises for length; ts\_rank\_cd rewards density and proximity of matched terms and has no IDF, so common words count as much as rare names.
-* JASPER: TODO which query categories each approach wins, and BM25 vs Postgres FTS for the system. BM25 for the system wins, it wins on lexical and in general as the questions are very specific, dense working on the occasional very vague question.
+* Jasper: on v1 (R@5) nomic won on lexical questions (0.57 vs 0.48) and BM25 on the vague/semantic ones (0.27 vs 0.20), the opposite of the day-1 hypothesis, because the generated 'vague' questions still share content words with their passages. For the system: BM25 over Postgres FTS, which matched almost nothing with AND and was slower and weaker with OR.
 
 ## Caveats
 
