@@ -5,7 +5,7 @@ Test: questions with a label = the sentence that answers it. Score R@5 = label i
 Best system: BM25 + nomic (RRF) -> Haiku 5.5 rerank. Dev v2 (n=26): top20 R@5 0.71 ($0.006, 1.0s); top50 R@5 0.79, MRR 0.74 (~$0.014, p50 1.2s p95 1.9s). Start was 0.20.
 History (v1 labels): 0.20 start -> 0.35 chunks+nomic -> 0.35 hybrid -> 0.44 rerank. Then 19/25 remaining misses turned out to be eval errors -> eval v2.
 Consolidation (Postgres/pgvector exact = numpy, top-20 overlap 1.00): VALIDATION n=16 dense 0.51, BM25 0.49, PG-FTS-OR 0.40 (AND 0.00), RRF 0.51, +Haiku20 0.62, +Haiku50 R@5 0.69 MRR 0.68, total p50 1.4s p95 2.1s (no rerank 0.26s). eval/results/pg_*.json
-Next: Jasper fills JASPER: TODO lines in ADR-002/003 + docs/benchmarks/*, decides BM25 vs PG FTS and fusion depth; then Phase 7.
+Next: (1) review ADR-002 depth answer with Hermes (Jasper unsure of the question), (2) Phase 7 Claude generation + answer eval (few-shot judge from 20 human labels).
 
 # Status against the brief (docs/PRACTICUM_BRIEF.md), updated Day 3
 
