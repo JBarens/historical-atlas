@@ -1,0 +1,29 @@
+dev: n=26  pg-vs-numpy dense top-20 overlap mean 1.000 min 1.000  fts_and empty for 25 questions
+dense                  R@5=0.44 R@10=0.50 R@20=0.54 MRR=0.36
+bm25                   R@5=0.50 R@10=0.54 R@20=0.73 MRR=0.35
+fts_and                R@5=0.04 R@10=0.04 R@20=0.04 MRR=0.04
+fts_or                 R@5=0.12 R@10=0.17 R@20=0.27 MRR=0.10
+rrf_bm25               R@5=0.50 R@10=0.60 R@20=0.71 MRR=0.37
+rrf_fts_or             R@5=0.40 R@10=0.52 R@20=0.58 MRR=0.24
+rrf_bm25@5             R@5=0.62 R@10=0.63 R@20=0.63 MRR=0.38
+rrf_fts_or@5           R@5=0.37 R@10=0.48 R@20=0.48 MRR=0.26
+rrf_bm25@10            R@5=0.63 R@10=0.65 R@20=0.65 MRR=0.37
+rrf_fts_or@10          R@5=0.37 R@10=0.48 R@20=0.58 MRR=0.24
+rrf_bm25@20            R@5=0.54 R@10=0.65 R@20=0.69 MRR=0.38
+rrf_fts_or@20          R@5=0.35 R@10=0.48 R@20=0.58 MRR=0.21
+rrf_bm25@50            R@5=0.50 R@10=0.56 R@20=0.69 MRR=0.37
+rrf_fts_or@50          R@5=0.40 R@10=0.40 R@20=0.58 MRR=0.23
+rrf_bm25@100           R@5=0.50 R@10=0.60 R@20=0.71 MRR=0.37
+rrf_fts_or@100         R@5=0.40 R@10=0.52 R@20=0.58 MRR=0.24
+rrf_bm25+haiku50       R@5=0.79 R@10=0.85 R@20=0.88 MRR=0.73
+latency embed            p50    190.7 ms  p95    240.3 ms
+latency dense_pg         p50     44.4 ms  p95     58.8 ms
+latency dense_numpy      p50     16.1 ms  p95     26.1 ms
+latency fts_and_pg       p50      0.6 ms  p95      3.4 ms
+latency fts_or_pg        p50    211.9 ms  p95    411.7 ms
+latency bm25             p50     41.8 ms  p95     60.4 ms
+latency fusion           p50      0.1 ms  p95      0.2 ms
+latency total_norerank   p50    280.7 ms  p95    326.3 ms
+latency haiku50          p50   1159.3 ms  p95   1411.4 ms
+latency total_haiku50    p50   1431.2 ms  p95   1735.0 ms
+haiku50: tokens in 356126 out 2150  cost $0.367 (assumed price)
