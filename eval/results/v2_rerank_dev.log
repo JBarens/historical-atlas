@@ -1,0 +1,7 @@
+dev: 27 items; rerank latency per question: median 15.7s, max 21.7s (CPU)
+rrf            ALL       n=27  R@3=0.39  R@5=0.48  R@10=0.57  R@20=0.65  R@50=0.81  MRR=0.40
+rrf            lexical   n=12  R@3=0.58  R@5=0.62  R@10=0.75  R@20=0.83  R@50=0.96  MRR=0.60
+rrf            semantic  n=15  R@3=0.23  R@5=0.37  R@10=0.43  R@20=0.50  R@50=0.70  MRR=0.24
+rrf+rerank50   ALL       n=27  R@3=0.44  R@5=0.54  R@10=0.65  R@20=0.70  R@50=0.81  MRR=0.48
+rrf+rerank50   lexical   n=12  R@3=0.62  R@5=0.67  R@10=0.83  R@20=0.96  R@50=0.96  MRR=0.71
+rrf+rerank50   semantic  n=15  R@3=0.30  R@5=0.43  R@10=0.50  R@20=0.50  R@50=0.70  MRR=0.30
