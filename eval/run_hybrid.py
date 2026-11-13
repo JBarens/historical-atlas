@@ -36,8 +36,8 @@ def main(split="dev"):
     assert len(X) == len(built)
     bm25 = BM25Okapi([tok(x) for *_, x in built])   # header included, same text the dense side embeds
 
-    items = [json.loads(l) for l in (ROOT / "eval/eval_set_v1.jsonl").read_text().splitlines()]
-    items = [i for i in items if i["split"] == split and any(e.get("verified") for e in i.get("evidence", []))]
+    items = [json.loads(l) for l in (ROOT / "eval" / __import__("os").environ.get("EVALSET", "eval_set_v1.jsonl")).read_text().splitlines()]
+    items = [i for i in items if i["split"] == split and any(e.get("verified") for e in i.get("evidence", [])) and i.get("score_retrieval", True)]
     model = TextEmbedding("nomic-ai/nomic-embed-text-v1.5")
     Q = np.array(list(model.embed(["search_query: " + i["question"] for i in items])))
 

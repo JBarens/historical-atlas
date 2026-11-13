@@ -30,8 +30,8 @@ def main(split="dev", n=50):
     text_of = {d["doc_id"]: d["text"] for d in docs}
     X = np.load(ROOT / "backend/data/index/nomic-embed-text-v1.5_speech150.npy")
     bm25 = BM25Okapi([tok(x) for *_, x in built])
-    items = [json.loads(l) for l in (ROOT / "eval/eval_set_v1.jsonl").read_text().splitlines()]
-    items = [i for i in items if i["split"] == split and any(e.get("verified") for e in i.get("evidence", []))]
+    items = [json.loads(l) for l in (ROOT / "eval" / __import__("os").environ.get("EVALSET", "eval_set_v1.jsonl")).read_text().splitlines()]
+    items = [i for i in items if i["split"] == split and any(e.get("verified") for e in i.get("evidence", [])) and i.get("score_retrieval", True)]
     Q = np.array(list(TextEmbedding("nomic-ai/nomic-embed-text-v1.5").embed(["search_query: " + i["question"] for i in items])))
     ce = TextCrossEncoder("BAAI/bge-reranker-base")
 
