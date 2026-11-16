@@ -1,0 +1,574 @@
+[
+ {
+  "id": "q001",
+  "output": {
+   "status": "answered",
+   "answer": "The Ambassadors' Conference derived its authority to take the Vilna decision from Article 87 of the Treaty of Versailles, which stipulates that Poland's boundaries not laid down in the Treaty will be subsequently determined by the Principal Allied and Associated Powers. The Prime Minister stated the decision was directly based on the authority conferred on the Allies by Article 87.",
+   "claims": [
+    {
+     "claim": "The Ambassadors' Conference derives its authority to take the Vilna decision from Article 87 of the Treaty of Versailles, which says Poland's boundaries not laid down in the Treaty will be subsequently determined by the Principal Allied and Associated Powers.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "The decision of the Ambassadors' Conference was directly based on the authority conferred on the Allies by Article 87 of the Treaty of Versailles.",
+     "chunk_id": 2
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 1.9603067130010459,
+  "in_tokens": 1586,
+  "out_tokens": 387
+ },
+ {
+  "id": "q003",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not describe the 1921 plebiscite discussions, so a change between 1921 and 1923 cannot be traced. It does show the 1923 position: the League was informally asked to devise conditions, the parties rejected them, and responsibility reverted to the Allied and Associated Powers, whose Ambassadors' Conference decided the matter under Article 87 of the Treaty of Versailles. The Prime Minister stated this did not replace the League's authority. Evidence on the 1921 plebiscite approach is needed to answer the comparison.",
+   "claims": [
+    {
+     "claim": "The League was informally asked to devise conditions for the parties, but the parties rejected them, so responsibility returned to the Allied and Associated Powers.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "The 1923 Ambassadors' Conference decision was directly based on the authority conferred on the Allies by Article 87 of the Treaty of Versailles, and the Prime Minister said there was no substitution of the League's decisions.",
+     "chunk_id": 4
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 3.05959411799995,
+  "in_tokens": 1616,
+  "out_tokens": 627
+ },
+ {
+  "id": "q006",
+  "output": {
+   "status": "answered",
+   "answer": "By May 1922 no plebiscite had been held in the Vilna district. Lithuanians there boycotted January 1922 elections to the Vilna assembly, and the district was being administered openly as an integral part of Poland, with the League of Nations neutral zone still serving as the de facto boundary. Lithuania's priorities were shifting: unofficially it was tending to accept the status quo and concentrating on securing de jure recognition and Memel, a tendency encouraged by other Baltic States. Officials at Riga also expected de jure recognition of Lithuania soon, since armed conflict between Poland and Lithuania no longer seemed likely.",
+   "claims": [
+    {
+     "claim": "No plebiscite has been held in the Vilna district as of May 1922.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "Lithuanians in the Vilna district refrained from voting in the January 1922 elections to the Vilna assembly.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "The Vilna district is administered openly as an integral part of Poland, and the League neutral zone still serves as the boundary between the two countries.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "Lithuania was unofficially tending to accept the status quo and concentrating on de jure recognition and Memel, encouraged by other Baltic States.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "De jure recognition of Lithuania was expected in the near future because there was no longer any probability of armed conflict between Poland and Lithuania.",
+     "chunk_id": 2
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 2.7570680959997844,
+  "in_tokens": 1844,
+  "out_tokens": 616
+ },
+ {
+  "id": "q012",
+  "output": {
+   "status": "answered",
+   "answer": "According to Mr. Thomas, the rider cannot affect the validity of the Treaty once it has been ratified, and the Government does not regard it as imposing any responsibility on His Majesty's Government. He also stated that the condition of acceptance by the Constituent Assembly had been fulfilled under Article 18.",
+   "claims": [
+    {
+     "claim": "The rider cannot affect the validity of the Treaty once it has been ratified.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "The Government does not regard the rider as imposing any responsibility on His Majesty's Government.",
+     "chunk_id": 1
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 1.5081003659997805,
+  "in_tokens": 1711,
+  "out_tokens": 280
+ },
+ {
+  "id": "q021",
+  "output": {
+   "status": "answered",
+   "answer": "Ramsay MacDonald moved an amendment declining to extend the period for which Britain accepted responsibility for Iraq, while urging the Government to use every effort to expedite Iraq's admission to the League of Nations. He argued that British military and financial obligations under the 1922 Treaty should cease by 1928, when Iraq could be admitted to the League, and he questioned whether the Treaty would have any special value if Iraq were attacked from outside.",
+   "claims": [
+    {
+     "claim": "MacDonald moved an amendment declining to extend the period for which Britain accepted responsibility for Iraq, urging the Government to expedite Iraq's admission to the League of Nations.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "MacDonald argued that Britain should let the 1922 Treaty's military and financial obligations flow out by efflux of time, and by 1928 ask the League to admit Iraq.",
+     "chunk_id": 2
+    },
+    {
+     "claim": "MacDonald questioned whether the Treaty would be of special value if Iraq were attacked from outside, and suggested Britain would not have been asked to renew the Treaty without a threat to Iraq.",
+     "chunk_id": 3
+    },
+    {
+     "claim": "MacDonald noted that under the 1922 Treaty, Britain's military and financial commitments were to cease in 1928, even though the general Treaty ran for 20 years.",
+     "chunk_id": 4
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 3.1306814670006133,
+  "in_tokens": 2607,
+  "out_tokens": 672
+ },
+ {
+  "id": "q023",
+  "output": {
+   "status": "answered",
+   "answer": "His Majesty's Ambassador at Constantinople resumed the negotiations at Angora: he left Constantinople for Angora on 16 April 1926 to resume talks with the Turkish Minister for Foreign Affairs (the evidence names Sir R. Lindsay as the envoy instructed to go, but does not explicitly confirm he was the one who left). British ratification was signalled in the Commons on 21 June 1926, when the Secretary of State said His Majesty would be advised to ratify \"in a few days\"; the evidence does not give the exact date ratification was formally announced.",
+   "claims": [
+    {
+     "claim": "His Majesty's Ambassador left Constantinople on 16 April 1926 for Angora to resume negotiations with the Turkish Minister for Foreign Affairs.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "Sir R. Lindsay was in consultation with HM Government and was to proceed to Angora to resume negotiations.",
+     "chunk_id": 3
+    },
+    {
+     "claim": "The Treaty signed at Angora was laid before the House, and His Majesty would be advised to ratify in a few days, with British ratification to be given at the earliest possible moment (21 June 1926).",
+     "chunk_id": 2
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 3.6511116059991764,
+  "in_tokens": 1935,
+  "out_tokens": 772
+ },
+ {
+  "id": "q025",
+  "output": {
+   "status": "answered",
+   "answer": "When the Turkish delegate said he could not consider, even in principle, the British proposals, the Conference broke down: Sir P. Cox was instructed to tell the Turkish delegate he was returning to London, since the only remaining course was to submit the matter to the League of Nations under Article 3(2) of the Treaty of Lausanne. Cox left Constantinople on 9 June, and once the nine-month period for direct negotiation (Article VII of the Evacuation Protocol) had elapsed, the British government would address the League and ask it to decide the Turkey-Iraq frontier. Under the Treaty, the dispute goes to the League Council if no agreement is reached within the nine months.",
+   "claims": [
+    {
+     "claim": "The Turkish delegate said he was unable to consider, even in principle, the British proposals, so the Conference had no common ground and Sir P. Cox was ordered back to London.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "Since no other course remained, the British government would submit the matter to the League of Nations under Article 3(2) of the Treaty of Lausanne once the nine-month direct-negotiation period had elapsed, and invite the League to decide the frontier.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "Under Article 3 of the Treaty, if no agreement is reached between the two governments within nine months, the dispute will be referred to the Council of the League of Nations.",
+     "chunk_id": 2
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 2.614621189999525,
+  "in_tokens": 1866,
+  "out_tokens": 564
+ },
+ {
+  "id": "q026",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence sets out the rider the Iraq Constituent Assembly attached to its acceptance of the Treaty: that the Treaty and its subsidiary agreements would become null and void if the British Government failed to safeguard Iraq's rights in the Mosul vilayet in their entirety. However, none of the chunks give the Assembly's reasons or motives for insisting on this condition, so the question of why it did so cannot be answered from the given material.",
+   "claims": [
+    {
+     "claim": "The Assembly attached a rider stating the Treaty and its subsidiary agreements would become null and void if the British Government fail to safeguard the rights of Iraq in the Mosul vilayet in their entirety.",
+     "chunk_id": 2
+    },
+    {
+     "claim": "The rider was attached to the Assembly's ratification of the Anglo-Iraq Treaty, which was accepted by 36 votes with nine abstentions out of 69 deputies present.",
+     "chunk_id": 2
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 2.626742866999848,
+  "in_tokens": 2123,
+  "out_tokens": 514
+ },
+ {
+  "id": "q028",
+  "output": {
+   "status": "answered",
+   "answer": "Critic Mr. Thurtle argued that oil interests drove the policy: he claimed that, whatever the House \"may try to disguise,\" oil \"does loom very largely\" in the question, and he cited a Daily Telegraph diplomatic correspondent's report of \"a tremendous amount of lobbying\" at Geneva by different oil interests. He also argued that Iraq had no legal right to the disputed territory, so legal justifications were weak. Minister Mr. Amery rejected the oil explanation, stating that oil had \"not had the slightest influence\" on policy and pointing instead to cotton and irrigation development.",
+   "claims": [
+    {
+     "claim": "Mr. Thurtle said oil does loom very largely in the Iraq question despite attempts to disguise it, and cited reported lobbying at Geneva by oil interests.",
+     "chunk_id": 5
+    },
+    {
+     "claim": "Mr. Thurtle argued Iraq cannot claim the disputed territory by conquest or any other legal right.",
+     "chunk_id": 5
+    },
+    {
+     "claim": "Mr. Amery stated oil has not had the slightest influence on British policy regarding Iraq, pointing instead to economic development such as cotton growing and irrigation.",
+     "chunk_id": 1
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 3.1638618689994473,
+  "in_tokens": 2605,
+  "out_tokens": 650
+ },
+ {
+  "id": "q030",
+  "output": {
+   "status": "answered",
+   "answer": "The proposal, made by the Turkish representative in March 1925, would have returned roughly two-thirds of the Mosul Vilayet to Turkey in exchange for the exploitation of all the oil being granted to a British company approved by the British Government. Sir A. Chamberlain presented the oil element as the other side of the bargain, while denying that the government was actuated by a desire to secure Iraq's oil. The evidence contains no Turkish or Iraqi statement of motives.",
+   "claims": [
+    {
+     "claim": "Approximately two-thirds of the Mosul Vilayet were to be returned to Turkey under the proposal, with exploitation of oil granted to an English group approved by the British Government.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "The Turkish representative approached Chamberlain in March 1925 with a proposition: Turkey would have as much of the Mosul vilayet as she desired, and a British company approved by His Majesty's Government would have exploitation of all the oil.",
+     "chunk_id": 2
+    },
+    {
+     "claim": "Chamberlain denied that the government had been actuated by a desire to secure the oil of Iraq.",
+     "chunk_id": 2
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 3.24257216299884,
+  "in_tokens": 2231,
+  "out_tokens": 664
+ },
+ {
+  "id": "q032",
+  "output": {
+   "status": "answered",
+   "answer": "According to the evidence, after the Council's decision on the Turkey-Iraq frontier, the Prime Minister (Mr. Baldwin, in the absence of Sir A. Chamberlain) invited the Turkish Ambassador to meet him and begin conversations between the British and Turkish governments. The evidence shows the invitation to talks; it does not describe a finalized lasting agreement.",
+   "claims": [
+    {
+     "claim": "After the Council gave its decision, the Prime Minister, in Sir A. Chamberlain's absence, invited the Turkish Ambassador to meet him and begin conversations with Turkey.",
+     "chunk_id": 2
+    },
+    {
+     "claim": "The British Government said it would open conversations with Turkey once the Council's decision fixed a boundary that could be a basis for discussion.",
+     "chunk_id": 2
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 2.959432912999546,
+  "in_tokens": 2439,
+  "out_tokens": 588
+ },
+ {
+  "id": "q033",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not cover the Greco-Bulgarian (Petrich) incident. The only 29 March 1926 Commons exchange provided concerns a proposed League of Nations loan to Bulgaria: Mr. Noel Buxton asked whether His Majesty's Government would take part in a loan on the lines of the Greek loan to solve the refugee problem, and asked whether the system was working well in Greece. Sir Austen Chamberlain declined to commit in advance and said the Greek arrangement was working well but not without difficulty. Nothing about Petrich was provided.",
+   "claims": [
+    {
+     "claim": "On 29 March 1926, Mr. Noel Buxton asked the Foreign Secretary whether HM Government would take part in a League-organised loan to Bulgaria, similar to the Greek loan, to solve the refugee problem.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "Buxton asked whether the system was working well in Greece and whether it was the best model to follow.",
+     "chunk_id": 2
+    },
+    {
+     "claim": "Sir A. Chamberlain said he could not say in advance the government's attitude to such a League loan.",
+     "chunk_id": 3
+    },
+    {
+     "claim": "Chamberlain said the Greek system was now working well but had not worked without difficulty.",
+     "chunk_id": 4
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 2.82543737999913,
+  "in_tokens": 1673,
+  "out_tokens": 631
+ },
+ {
+  "id": "q034",
+  "output": {
+   "status": "answered",
+   "answer": "Buxton drew the comparison because he was asking whether the League of Nations-organised Bulgarian loan should follow the same model as the earlier Greek loan, which had a similar purpose: solving the refugee problem. In his follow-up he asked whether the Greek system was working well and was \"the best model to follow.\" The evidence records the framing of the comparison but does not state his underlying reasons in further detail.",
+   "claims": [
+    {
+     "claim": "Buxton asked whether the government would support a Bulgarian loan organised by the League 'on lines similar to the loan to Greece, and for a similar purpose, namely, the solution of the refugee problem'.",
+     "chunk_id": 2
+    },
+    {
+     "claim": "Buxton asked whether the Greek system was working well and whether it was 'the best model to follow', presenting Greece as the model for the Bulgarian loan.",
+     "chunk_id": 1
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 2.534069463999913,
+  "in_tokens": 1481,
+  "out_tokens": 511
+ },
+ {
+  "id": "q036",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not address the Greco-Bulgarian (Petrich) incident. The June 1926 Kellogg memorandum concerns the 1919 Paris Convention Relating to the Regulation of Aerial Navigation, not a Greco-Bulgarian matter. In it, Kellogg recommended that the Senate advise and consent to ratification of that convention, with Articles 5 and 34 amended, subject to reservations (including one concerning the Permanent Court of International Justice). The provided chunks contain nothing about Petrich, so the question's premise cannot be confirmed from this evidence.",
+   "claims": [
+    {
+     "claim": "Kellogg asked President Coolidge to transmit to the Senate the 1919 aerial navigation convention, with Articles 5 and 34 amended, for advice and consent to ratification.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "Kellogg recommended that the Senate's consent be conditioned on reservations, including one concerning the Permanent Court of International Justice.",
+     "chunk_id": 2
+    },
+    {
+     "claim": "Coolidge concurred in Kellogg's recommendation and requested the Senate's advice and consent to ratification with appropriate reservations.",
+     "chunk_id": 3
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 2.827826057000493,
+  "in_tokens": 2764,
+  "out_tokens": 616
+ },
+ {
+  "id": "q037",
+  "output": {
+   "status": "needs_clarification",
+   "answer": "The evidence shows that the Secretary of State's June 15, 1926 submission to the President asked for Senate consent to ratification of the Aerial Navigation Convention with Articles 5 and 34 amended as recommended by the International Commission for Air Navigation, while Articles 34 and 37 were flagged for reservations rather than amendment. None of the chunks names Kellogg, so please confirm whether you mean the Secretary of State's June 1926 submission (amendments to Articles 5 and 34) before I answer as to Kellogg specifically.",
+   "claims": []
+  },
+  "schema_ok": true,
+  "latency_s": 2.680155662001198,
+  "in_tokens": 2742,
+  "out_tokens": 507
+ },
+ {
+  "id": "q040",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence gives a possible date for Bulgaria in the Additional Protocol table (Nov. 28, 1924), but the column is unclear from the garbled table, so it cannot be confirmed whether this is the accession date for the base Convention or another act. Greece's entry in the same table is a \"ditto\" row (same dates as France: signed May 1, 1920, accession June 1, 1922), and a separate passage says Greece had deposited its ratification before the Convention and Protocol entered into force on July 11, 1922. A reliable comparison requires the clearly labelled Convention column for Bulgaria, which is missing from the evidence.",
+   "claims": [
+    {
+     "claim": "The table lists Bulgaria with a date of Nov. 28, 1924, in the Additional Protocol section, but the column type is not clearly legible.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "Greece's row uses ditto marks, so its dates match the row above it (France: signed May 1, 1920; accession June 1, 1922).",
+     "chunk_id": 1
+    },
+    {
+     "claim": "Greece is listed among signatory States that deposited ratifications before the Convention and Additional Protocol went into force on July 11, 1922.",
+     "chunk_id": 3
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 4.676451665998684,
+  "in_tokens": 2975,
+  "out_tokens": 885
+ },
+ {
+  "id": "q044",
+  "output": {
+   "status": "answered",
+   "answer": "The September 20, 1920 Council resolution set up a committee to report on a settlement of the Aaland Islands question, but left the members blank. The proposed three members were Baron Beyens of Belgium (former Minister for Foreign Affairs, who had accepted), Ferraris of Italy (willing, but awaiting his government's consent), and Calonder (spelled \"Axinneer\" in the telegram) of Switzerland (his government was willing for him to serve, though he had not yet replied). The source describes these as the intended members and does not confirm their final appointment; an American fourth member was also sought.",
+   "claims": [
+    {
+     "claim": "The Council resolution of September 20, 1920 established a committee to report on a final or provisional settlement of the Aaland Islands question, with members left blank.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "Baron Beyens, former Minister for Foreign Affairs of Belgium, had accepted a place on the committee.",
+     "chunk_id": 2
+    },
+    {
+     "claim": "Ferraris of Italy was willing to serve but had not yet received his government's consent.",
+     "chunk_id": 2
+    },
+    {
+     "claim": "The Swiss representative (Calonder, spelled 'Axinneer') had not yet replied, but the Swiss government was willing for him to serve.",
+     "chunk_id": 2
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 3.2348316879997583,
+  "in_tokens": 2612,
+  "out_tokens": 710
+ },
+ {
+  "id": "q050",
+  "output": {
+   "status": "answered",
+   "answer": "Under paragraph 6 of the Annex to Article 88, the cost of the troops occupying the plebiscite area in Upper Silesia was a charge on the area. A later statement in the Commons also said this cost was chargeable to Poland and Germany under the Treaty of Versailles.",
+   "claims": [
+    {
+     "claim": "Under paragraph 6 of the Annex to Article 88 of the Treaty of Versailles, the cost of the troops occupying the plebiscite area in Upper Silesia is a charge on the area.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "The cost of the occupying troops is chargeable to Poland and Germany under the terms of the Treaty of Versailles.",
+     "chunk_id": 2
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 2.1787677690008422,
+  "in_tokens": 1717,
+  "out_tokens": 429
+ },
+ {
+  "id": "q051",
+  "output": {
+   "status": "answered",
+   "answer": "According to the latest figures given in the Commons on 20 June 1921, 520 members of the Inter-Allied Commission were in Upper Silesia, of whom 294 were French, 85 Italian, and 141 British. (The question's figure of 875 was not accepted; the official answer gave 520.)",
+   "claims": [
+    {
+     "claim": "520 members of the Inter-Allied Commission were in Upper Silesia according to the latest figures as of June 1921.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "Of these members, 294 were French, 85 Italian, and 141 British.",
+     "chunk_id": 1
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 1.7531125219993555,
+  "in_tokens": 1667,
+  "out_tokens": 284
+ },
+ {
+  "id": "q055",
+  "output": {
+   "status": "answered",
+   "answer": "In June 1921 Mr. Chamberlain attributed the delay to other parties to the conference not being ready, while stating that the British Government was ready for a conference at an early date but that arrangements had not yet been made. The evidence does not specify what the other parties' unreadiness consisted of, so the specific causes of the repeated postponements are not fully explained.",
+   "claims": [
+    {
+     "claim": "Mr. Chamberlain said the conference was delayed because other parties to the conference were not ready.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "His Majesty's Government were ready for a conference at an early date, but the arrangements had not yet been made.",
+     "chunk_id": 2
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 2.5802543079989846,
+  "in_tokens": 1440,
+  "out_tokens": 509
+ },
+ {
+  "id": "q079",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not give a specific timeframe for how quickly the League acted after fighting broke out on the Greek-Bulgarian border; it does not say when the League took up the matter. It does indicate that once the Greeks placed the matter in the League's hands, warlike developments ceased immediately, and that the League's willingness to tackle the controversy and desire for a peaceful settlement, without concern for corporate prestige, is what its supporter credits for this. The reasons given are a speaker's opinion, and the passage does not explicitly name the Greek-Bulgarian incident.",
+   "claims": [
+    {
+     "claim": "Once the matter was placed by the Greeks into the hands of the League, warlike developments ceased instantly.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "The League did not feel too weak to tackle an international controversy even when one of the great Powers was engaged in it.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "The desire at Geneva was to achieve a peaceful settlement, with no question of corporate amour propre interfering.",
+     "chunk_id": 1
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 3.669729756000379,
+  "in_tokens": 2683,
+  "out_tokens": 705
+ },
+ {
+  "id": "q107",
+  "output": {
+   "status": "answered",
+   "answer": "Kenworthy objects that the district of Pressburg and Ersekhovar, which is predominantly Magyar, was handed to the new Czechoslovak State so that it would have a riparian frontier on the Danube and a footing on both sides of the river. He argues that Pressburg, with its normal Magyar population and old Hungarian associations, should not pass to alien rule, and warns that failing to rectify this will be a cause of future warfare. He also contends that the Treaty should have secured freedom of transit for the Czechs along the railways and roads to the Danube, rather than drawing the frontier to give them river access.",
+   "claims": [
+    {
+     "claim": "The district of Pressburg and Ersekhovar is predominantly inhabited by Magyars and was handed to the new Czechoslovak State to give it a riparian frontier on the Danube and a footing on both sides of the river.",
+     "chunk_id": 1
+    },
+    {
+     "claim": "Kenworthy wants Pressburg, with its normal Magyar population and old associations with Hungary, not handed over to alien rule, and says unless it is rectified it will be the cause of future warfare.",
+     "chunk_id": 2
+    },
+    {
+     "claim": "Kenworthy asks why, if the Czechs needed freedom of transit to the Danube, an arrangement giving freedom of transit along the railways and roads leading to it was not made instead.",
+     "chunk_id": 2
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 2.4678750799994305,
+  "in_tokens": 2583,
+  "out_tokens": 536
+ },
+ {
+  "id": "q108",
+  "output": {
+   "status": "answered",
+   "answer": "Asquith says that one of the greatest blots upon the whole series of treaties was that the Great Powers did not insist, as a condition of the emancipation and autonomous rule granted to these countries, that they should remain members of one economic unit, as the Austro-Hungarian Empire had been.",
+   "claims": [
+    {
+     "claim": "Asquith says that one of the greatest blots upon the whole series of treaties was that the Great Powers did not insist, as a condition of the emancipation and grant of autonomous rule to the new countries, that they remain members of one economic unit, as the Austro-Hungarian Empire had been.",
+     "chunk_id": 1
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 1.5122826360002364,
+  "in_tokens": 2809,
+  "out_tokens": 291
+ },
+ {
+  "id": "q111",
+  "output": {
+   "status": "answered",
+   "answer": "The Lithuanian Constituent Assembly ratified the treaty of peace with the Soviet Government on August 6 (1920), according to a despatch cited by Jonas Vileitis.",
+   "claims": [
+    {
+     "claim": "On August 6 the treaty of peace was ratified by the Lithuanian Constituent Assembly.",
+     "chunk_id": 1
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 2.631924164999873,
+  "in_tokens": 2778,
+  "out_tokens": 202
+ },
+ {
+  "id": "q113",
+  "output": {
+   "status": "answered",
+   "answer": "At the time of Lord Parmoor's speech of 25 November 1925, the League of Nations had between fifty and sixty constituent Members, according to his statement. He gave a range rather than an exact figure.",
+   "claims": [
+    {
+     "claim": "In Lord Parmoor's 25 November 1925 speech, he stated that at the present time the League of Nations had between fifty and sixty constituent Members.",
+     "chunk_id": 1
+    }
+   ]
+  },
+  "schema_ok": true,
+  "latency_s": 1.8672076929997274,
+  "in_tokens": 2418,
+  "out_tokens": 318
+ }
+]

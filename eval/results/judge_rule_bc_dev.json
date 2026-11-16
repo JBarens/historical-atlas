@@ -1,0 +1,650 @@
+[
+ {
+  "id": "q001",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer matches the reference: Article 87 of the Treaty of Versailles, with the Principal Allied and Associated Powers determining Poland's boundaries. Claim 1 is supported by chunk 1. Claim 2 is supported by chunk 2, where the Prime Minister says the decision was directly based on Article 87.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q001",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer matches the reference: Article 87 of the Treaty of Versailles, with Poland's boundaries not laid down in the Treaty to be determined by the Principal Allied and Associated Powers. Claim 1 is directly supported by its quote. Claim 2 is supported by the Prime Minister's statement in the quote. The answer's phrase \"cited\" is slightly loose, since the statement was made by the government in the Commons, but it is minor.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q003",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The shown chunks contain only the 1923 material, with nothing on 1921. The answer honestly says the 1921 evidence is missing and accurately gives the 1923 position. This is an honest partial answer, so it counts as partially correct. Both claims are supported by their cited chunks. Chunk 1 supports claim 1. Chunk 4 supports claim 2: it cites Article 87 and the statement that there is no substitution of the League's decisions.",
+   "correctness": "partially",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "multi-doc"
+ },
+ {
+  "id": "q003",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The chunks cover only 1923, and the answer honestly says it cannot establish the change. Its 1923 account matches the reference. The 1921 half is missing from the shown chunks, so the answer is partial. Claim 1's quote supports only the informal request, not the rejection or the return of responsibility, so I mark it unsupported on a strict quote reading. Claim 2 is fully supported by its quote.",
+   "correctness": "partially",
+   "faithfulness": [
+    "no",
+    "yes"
+   ]
+  },
+  "category": "multi-doc"
+ },
+ {
+  "id": "q006",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer matches the reference on all key points: no plebiscite, January elections boycotted by Lithuanians, district administered as part of Poland, and Lithuania unofficially accepting the status quo and focusing on de jure recognition and Memel. Extra details (neutral zone, encouragement by Baltic States, expected recognition) are supported by chunks 1 and 2. The statement \"Officials at Riga\" is slightly loose, since it was the Commissioner, but this is minor. All claims are supported by their cited chunks.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q006",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer covers all the reference points accurately, and the extra de jure recognition point is supported by chunk 2. Claim 2's quote omits the neutral-zone detail, but the cited chunk contains it, so I treat it as supported.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q012",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer matches the reference: the rider cannot affect validity once ratified and imposes no responsibility on HMG. The extra statement about Article 18 acceptance being fulfilled is supported by chunk 1. Both claims are directly supported by chunk 1.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q012",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer matches the reference: the rider cannot affect the validity of the treaty once it is ratified, and it imposes no responsibility on HMG. The extra statement, that Assembly acceptance was a condition precedent that has now been fulfilled, is supported by chunk 1. Both claims are directly supported by the quote.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q021",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer matches the reference: MacDonald moved an amendment declining to extend responsibility and urging expedited League admission. Chunk 1 supports this directly. The extra details are supported too. Claim 2: chunk 2 says the case for letting military obligations flow out by efflux of time and financial obligations go the same way, and by 1928 asking the League to admit Iraq. That is a fair paraphrase. Claim 3: chunk 3 asks \"Is this Treaty to be of any special value then?\" if Iraq is attacked, and says that without an external threat Britain would not have been asked to renew the Treaty. Supported. Claim 4: chunk 4 states that in 1928 military and financial commitments should cease while the general Treaty ran 20 years. Supported, though it is a description of the Treaty, and the \"noted\" framing is fine.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q021",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer matches the reference: MacDonald moved an amendment declining to extend responsibility but urging expedited League admission. Extra detail about the argument is supported by chunk 2. \"Speaking for the Opposition\" is not in the evidence, but it is a minor, plausible context detail and not in a claim. \"Motion of the Government\" is a reasonable inference. Claims 1 and 2 are both supported by their quotes.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q023",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer identifies the Ambassador, with Sir R. Lindsay noted as the envoy. It gives 16 April and 21 June 1926 and the \"few days\" wording, which matches the reference. It is hedged: it says the evidence does not explicitly confirm Lindsay was the one who left. That is a reasonable caveat, because chunk 3 says Lindsay will proceed to Angora and chunk 1 says the Ambassador left. The two chunks together make the identification very likely. The hedge on the \"exact date\" is slightly odd, but the answer still gives 21 June as the date it was signalled. Overall it is essentially correct. All three claims are supported by their chunks. In claim 3, the \"21 June 1926\" date comes from the chunk header, which is acceptable.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "multi-doc"
+ },
+ {
+  "id": "q023",
+  "rule": "C",
+  "verdict": null,
+  "category": "multi-doc"
+ },
+ {
+  "id": "q025",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer says the matter goes to the League of Nations under Article 3(2), and that the dispute goes to the League Council if there is no agreement within nine months. That matches the key point of the reference. The reference also says the Council set up a committee of three to investigate. The shown chunks don't contain that detail, and the answer doesn't claim it. The answer describes the situation in June 1924, when the referral was still to come. That is a reasonable reading of the evidence. It is mostly correct, but it lacks the committee detail. The core point, referral to the League Council, is right, so I rate it correct. Each claim is supported by its cited chunk. Claim 1 matches chunk 1, where Cox was told to return to London. Claim 2 matches chunk 1. Claim 3 matches chunk 2.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q025",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer captures the key point: the matter was to be referred to the League of Nations under Article 3(2) of the Treaty of Lausanne. It omits the Council setting up a committee, but the shown chunks don't contain that, so the answer is adequate. The reference's main point (referral to the League Council under Art 3(2)) is matched. The answer adds the context of the Constantinople breakdown, which is supported by chunk 1. It honestly notes that the start date of the nine months is not specified. Minor: the reference says \"was referred\", the answer says \"planned to address\" \u2014 consistent with the evidence at that date. Rate correct. Claims are supported by their quotes. Claim 1's \"so the conference had no common ground and Sir P. Cox instructed to return\" is supported by the chunk, though the quote itself only covers the first part; the whole chunk supports it, and I judge against the quote. The quote supports the Turkish delegate part but not the Cox instruction, which is a slight overreach, but the claim is mostly supported. I'll still say yes, though it is borderline.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q026",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer gives the rider's content, which matches the reference. It also honestly says the chunks don't state the Assembly's motives. Both claims are supported by chunk 2.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q026",
+  "rule": "C",
+  "verdict": {
+   "correctness": "correct",
+   "faithfulness": [],
+   "reasoning": "The answer gives the rider's content correctly: the treaty would be null and void if Britain failed to safeguard Iraq's rights in the Mosul vilayet. This is the reference's key point. It honestly says the chunks give no motives beyond that. There are no claims to check for faithfulness."
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q028",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The reference says critics (Purcell, Griffiths) argued oil was at the bottom of the Mosul question and Britain wouldn't be interested without oil/agricultural wealth. The answer gives Thurtle, a critic, arguing oil looms large, with lobbying evidence. This captures the key point (oil as the suspected motive) though it names a different critic; the chunks shown support Thurtle. The claim that Iraq has no legal right is accurate to the chunk, but it is a bit off-point: it is about Iraq's claim to territory, not about why legal obligations are not the explanation. Calling this \"legal justifications were weak\" is a slight stretch but minor. The Amery rebuttal is accurate. Overall, the answer is mostly correct and captures the key point, but it lacks the \"if it doesn't pay we'd leave\" reasoning. I'd rate it as correct or partially; I lean toward correct since the core is oil.\n\nFaithfulness: claim 1 is supported by chunk 5. Claim 2 is supported by chunk 5. Claim 3 is supported by chunk 1: oil had no influence, cotton and irrigation mentioned.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "multi-doc"
+ },
+ {
+  "id": "q028",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The reference names Purcell and Griffiths and says oil was at the bottom of the Mosul question. The answer names a different critic, Thurtle, who is in the evidence chunks. It gives the same key point: critics suspected oil was behind the policy. It supports this with the Daily Telegraph lobbying report and adds Amery's rebuttal. All of this is accurate against the chunks. The answer doesn't mention agricultural wealth or the reference's critics, so it is incomplete. It is also slightly off on \"oil, not principle\", which is a mild paraphrase. It does capture the core point. I rate it partially to correct. The main idea matches, but the named critics differ and it leaves out the \"would not be interested otherwise\" argument. I'll go with partially.\n\nAll three claims are supported by their quotes. In claim 3, \"any influence\" is a fair paraphrase of \"not the slightest influence\".",
+   "correctness": "partially",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "multi-doc"
+ },
+ {
+  "id": "q030",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer captures the core: two-thirds of Mosul to Turkey in exchange for oil exploitation by an approved British company. It omits pipelines, ports, railway concessions and the trusteeship rejection reason, but those details are not in the shown chunks, so omission is acceptable. The statement \"exploitation of all the oil\" is supported by chunk 2. The answer says Chamberlain \"presented the oil element as the other side of the bargain\" \u2014 supported. The claim that the proposal was made \"by the Turkish representative in March 1925\" is supported. The answer does not explicitly say it was rejected, nor the trusteeship reason; the question is about economic motivation, and the answer is basically right. Slight nuance: the answer frames it as Turkey offering oil to Britain, which matches. Mostly correct, but the answer is missing the rejection/trusteeship point; the chunks don't have it. I'd rate correct, perhaps partially due to omission. The key point (territory for British oil rights) is present, so correct.\n\nFaithfulness: claim 1 supported by chunk 1 (two-thirds, English group approved). Claim 2 supported by chunk 2. Claim 3: Chamberlain called the suggestion \"a more palpable untruth\" \u2014 supported.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q030",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer captures the core: territory (about two-thirds of Mosul) for Turkey in exchange for oil exploitation by an approved British company. It omits the pipelines, ports, railway concessions and the trusteeship rejection, but these are not in the shown chunks, so the answer is essentially correct on the key point. Minor issue: \"as much as it desired (about two-thirds)\" merges two chunks but is reasonable. Claim 1: the quote supports the oil/English group part but not the two-thirds part. The two-thirds is in the chunk though the quote omits it. The instructions say to judge against the quote only, so claim 1 is partly unsupported by its quote. Claim 2 is supported by its quote, which mentions the other side of the bargain; \"territory for Turkey\" comes from the earlier sentence, but the quote implies the bargain.",
+   "correctness": "correct",
+   "faithfulness": [
+    "no",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q032",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The reference answer names Sir Ronald Lindsay, the Ambassador who went to Angora to resume negotiations. The system answer instead names the Prime Minister, who invited the Turkish Ambassador to begin conversations. That is a different person and a different stage. The chunk does support that the Prime Minister invited the Turkish Ambassador, so the statement is true in itself. It doesn't answer the question about who brought the parties back together to conclude the agreement. The system adds \"Mr. Baldwin\", and chunk 2 doesn't name him, so that detail is an outside inference. The answer is therefore incorrect, or at best only partly relevant. It also hedges honestly that the evidence doesn't describe a finalized agreement. Still, the shown chunks don't contain the Lindsay evidence, so the system could not have answered correctly from them. The answer's main claim is a different person than the reference, so I rate it partially at most. Because it names a different person as the answer and doesn't match the key point, I lean toward incorrect. However, the answer is honest about the limits of the evidence, and the Prime Minister's invitation did begin the conversations. I'll go with partially.\n\nFaithfulness: claim 1 is supported by chunk 2. Claim 2 is also supported, because Chamberlain said that with a boundary fixed, the government would open conversations.",
+   "correctness": "partially",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q032",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The reference answer names Sir Ronald Lindsay, the Ambassador, who went to Angora to resume negotiations. The system answered that the British Prime Minister initiated conversations by inviting the Turkish Ambassador. This is supported by the chunks, but it does not match the reference's key point (Lindsay). The shown chunks do not mention Lindsay, so the system could not have given the reference answer. However, it answered with a different person and did not decline. It describes the initial step, which is a true statement from the evidence, but it does not answer who finalized the agreement. I rate this as partially correct: the initiating step is accurate but it misses the key point. The claim is faithful to its quote. The Prime Minister is named correctly as \"my right hon. Friend the Prime Minister\", and the quote supports the claim, so the faithfulness verdict is yes.",
+   "correctness": "partially",
+   "faithfulness": [
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q033",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer gives the key content of the reference: Buxton asked whether HMG would take part in a League-organised loan to Bulgaria similar to the Greek loan, for refugee problem. It adds a caveat that the evidence does not cover Petrich, which is an honest observation, and the question's framing (Petrich) is just a topic label. Extra details (follow-up question, Chamberlain's replies) are supported by chunks 2-4. All claims are supported. The status \"insufficient_evidence\" is slightly off but the answer text contains the correct key point.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q033",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer text correctly states what Buxton asked on 29 March 1926. He asked whether HMG would take part in a League of Nations loan to Bulgaria to solve the refugee problem. This matches chunk 1 and the reference. It omits the \"on lines similar to the loan to Greece\" detail. It also frames the answer as insufficient evidence, saying the question about the Petrich incident cannot be answered. That is an odd conclusion, because the shown chunks contain the reference answer. Because the key point is present but the answer is hedged and incomplete, I rate it partially correct. The answer lists no claims, so there is nothing to judge for faithfulness.",
+   "correctness": "partially",
+   "faithfulness": []
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q034",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The reference says the comparison was made because both loans were organised by the League for the same purpose, the refugee problem. The answer states this (similar lines, similar purpose: solving the refugee problem) and adds the follow-up about the Greek model. It also honestly notes the limits of the evidence. This matches the key point.\n\nClaim 1 is directly supported by chunk 2. Claim 2 is supported by chunk 1, which asks whether the system in Greece is working well and is the best model to follow. The addition \"presenting Greece as the model for the Bulgarian loan\" is a mild inference, but chunk 1 reads as a question about the model, so it is acceptable, particularly since the question appears in connection with the Bulgarian loan.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q034",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer captures the key point: both loans were League-organised, with a similar purpose (solving the refugee problem). It adds that Buxton asked whether Greece was the best model, which the evidence supports. It also honestly notes the limits of the evidence. Claim 1 is supported by its quote. Claim 2 is supported too: the quote asks if the system is working well in Greece and if it is the best model, so \"implying the Greek loan as a model\" is reasonable.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q036",
+  "rule": "B",
+  "verdict": {
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ],
+   "reasoning": "The answer states the core recommendation: Senate advice and consent to ratification of the aerial navigation convention, with Articles 5 and 34 amended and with reservations, including one on the Permanent Court of International Justice. It does not list the customs and League reservations, but it says \"including\", so it does not claim the list is complete. It also honestly notes that the chunks say nothing about Petrich. All three claims are supported by the chunks they cite (chunks 1, 2 and 3)."
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q036",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer gives the core recommendation: Senate asked to advise and consent to ratification of the aerial navigation convention with Articles 5 and 34 amended, with reservations including PCIJ. It omits the League and customs reservations (League is in chunk 4, customs not shown), so it is somewhat incomplete. It also notes the Petrich premise is not in the evidence, which is honest. Status is insufficient_evidence, though the core answer is given. Overall mostly correct but incomplete; \"partially\" is appropriate since it hedges and omits the League/customs reservations. Claims are supported by quotes.",
+   "correctness": "partially",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q037",
+  "rule": "B",
+  "verdict": {
+   "correctness": "partially",
+   "faithfulness": [],
+   "reasoning": "The answer correctly says Articles 5 and 34 were to be amended as the International Commission for Air Navigation recommended. It also correctly says Articles 34 and 37 were flagged for reservations. It omits the protocol dates and hedges by asking for clarification about Kellogg instead of committing. The substance is right but the answer is not committed, so it is partially correct. No claims were listed, so the faithfulness list is empty."
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q037",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The reference answer is Articles 5 and 34, amended as recommended by the Commission. The system's answer does state that the convention was to be ratified with Articles 5 and 34 amended, but it hedges: it says the evidence doesn't name Kellogg and that the question's premise cannot be confirmed. The chunks show a letter from the Secretary of State (dated June 15, 1926) laying the convention with Articles 5 and 34 amended before the President. Kellogg was Secretary of State in 1926, but the chunks don't name him, so the hedge is defensible. Still, the answer does give the key articles, though it declines to attribute them. That is mostly correct but framed as insufficient evidence. The status \"insufficient_evidence\" is arguably wrong, since the evidence answers the question. I'd rate it partially.\n\nFaithfulness: Claim 1 is supported by the quote, but \"not by the Secretary of State\" is a slight gloss. The quote says the amendments were recommended by the Commission, so the gloss is a reasonable inference. Claim 2 is supported by its quote.",
+   "correctness": "partially",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q040",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The reference gives Bulgaria's Convention accession as July 5, 1923, its Protocol accession as Nov. 28, 1924, and Greece's ratification as June 1, 1922 for both. The Convention row for Bulgaria is not in the chunks shown. Chunk 5 cuts off just as the Convention table starts. Only the Protocol table, in chunk 1, is visible. The answer correctly finds the Nov. 28, 1924 Protocol date for Bulgaria. It declines to confirm the Convention date and says that part is missing, which is honest. It also reports that Greece's dates match France's (June 1, 1922) and that Greece deposited its ratification before entry into force. It hedges on whether the Bulgaria date is an accession, and it mislabels Greece's June 1, 1922 as an \"accession\" date when it is the deposit of ratification. It never gives the direct comparison, so it is a partial answer. On faithfulness, claim 1 is supported by chunk 1. Claim 2 is supported: the \"do do\" row matches France's dates, and only the column label is loose. Claim 3 is supported by chunk 3.",
+   "correctness": "partially",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q040",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The reference answer gives Bulgaria's Convention accession as July 5, 1923, and the Protocol accession as Nov. 28, 1924. It gives Greece's ratification as June 1, 1922. The chunks shown do not contain the Bulgaria Convention row (July 5, 1923). Chunk 1 does show Bulgaria Nov. 28, 1924 for the Protocol, and \"Greece do do\" after June 1, 1922. The system declined, saying the column labels were unclear. That is a partly honest answer, because the Convention table is missing from the chunks. However, it did not state that Bulgaria's Protocol date of Nov. 28, 1924 is probably the accession date, and it did not give Greece's June 1, 1922 ratification date. That date is visible in the chunk, since \"France May 1, 1920 June 1, 1922 Greece do do\" implies it. The answer is incomplete, but it is honest and not wrong, so it is partially correct.\n\nFaithfulness: Claim 1 is supported by its quote, which includes Bulgaria Nov. 28, 1924, and it correctly hedges on the column. Claim 2 is supported by the chunk 3 quote: Greece is listed among the states that deposited ratifications before entry into force on July 11, 1922.",
+   "correctness": "partially",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q044",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer names Beyens (Belgium), Ferraris (Italy) and Calonder (Switzerland), which matches the reference. It also mentions the American fourth member being sought. The answer is accurate and appropriately hedged. One small point is that the chunk shows \"Axinneer [Calonder?]\", and the answer treats that as Calonder. That is a reasonable reading and the answer flags the spelling. The answer's note that the final appointment isn't confirmed is honest, since the chunks don't cover it. Every claim is supported by its cited chunk. Claim 1 is supported by chunk 1, which gives the resolution and the blank for the appointees. It does not literally say \"final or provisional settlement\" is the report's purpose, but it does say the report will enable the Council to frame a final or provisional settlement. Claims 2\u20134 are supported by chunk 2.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "multi-doc"
+ },
+ {
+  "id": "q044",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The reference answer names Beyens (Belgium), Ferraris (Italy), and Calonder (Switzerland). The system gave these three names with countries from chunk 2, though hedged as candidates, and noted the \"Axinneer [Calonder?]\" uncertainty. The shown evidence does present them as the proposed three-member committee, so the system's hedging is somewhat over-cautious, but its content matches the reference. It declined to confirm, labelled insufficient_evidence, yet supplied the right names and countries. That is a mostly correct but hedged answer; \"partially\" fits, since it does not commit. The statements it makes are accurate to the chunks. Claims list is empty, so faithfulness is judged on no claims.",
+   "correctness": "partially",
+   "faithfulness": []
+  },
+  "category": "multi-doc"
+ },
+ {
+  "id": "q050",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer states the key point: the cost is a charge on the area, which matches chunk 1 and the reference answer. It adds that a later Commons statement said the cost was chargeable to Poland and Germany. Chunk 2 supports that. Chunk 2 refers to British troops, but the answer's claim is only loosely framed as \"occupying troops\". The two statements are compatible, because the area's cost is borne by Poland and Germany once the area is allotted. The answer attributes the extra statement to a later Commons statement, not to paragraph 6, so it doesn't misattribute. Both claims are supported.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q050",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer's main point matches the reference: the cost is a charge on the area. The extra 1922 statement is supported by chunk 2 (Mr. Harmsworth said the cost is chargeable to Poland and Germany under the Treaty). The answer attributes it to \"the Government\", which is reasonable. It doesn't contradict anything. Both claims are supported by their quotes.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q051",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The core answer matches the reference (520; 294 French, 85 Italian, 141 British). The parenthetical about 875 is a minor misreading, since 875 is likely a page number artifact, but it does not change the core answer. The claims are supported by chunk 1.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q051",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer's 520 total and the 294 French / 85 Italian / 141 British breakdown match chunk 1 and the reference. The extra remark about \"875\" mischaracterizes a page-number artifact as a figure raised in the question. It is minor and does not affect the core answer. Both claims are supported by the quote.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q055",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer matches the reference. Chamberlain attributed the delay to other parties not being ready, and the British government was ready but arrangements were not made. The caveat about unspecified causes is honest and accurate. Claim 1 is supported by chunk 1. Claim 2 is supported by chunk 2.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q055",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer matches the reference: Chamberlain said other parties to the conference were not ready, and arrangements had not been made. It adds that Allied measures were being considered, which the evidence supports, and it honestly notes the evidence doesn't fully explain the repeated delays. Claim 1 and 2 quotes support them. Claim 3's quote supports it too.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q079",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The reference evidence (the Greco-Bulgarian quote) is not among the chunks shown. Chunk 1 is about the Corfu incident (Greece and Italy, a great Power), not the Greek-Bulgarian border. The system correctly noted that the passage does not name the Greek-Bulgarian incident, and it declined to give a specific timeframe. However, it still presented the Corfu-related content as an answer, implicitly attributing it to the Greek-Bulgarian case, even though it hedged. The reference answer is that fighting was stopped first, troops were withdrawn, and arbitration followed. The system answer does not say this. It gives a partial, honest account with caveats, and the shown chunks lack the key quote, so \"partially\" is fair. Claims 1-3 are all supported by chunk 1, which says warlike developments ceased instantly once the matter was placed in the League's hands, that the League did not feel too weak, and that Geneva desired a peaceful settlement without amour propre concerns.",
+   "correctness": "partially",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "why"
+ },
+ {
+  "id": "q079",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The reference answer concerns the Greco-Bulgarian dispute: fighting was stopped, troops were withdrawn, and arbitration followed. The system's answer uses chunk 1, which describes a different incident, the Greek-Italian one involving a great Power. The answer presents that as the response to the question without noting that the shown chunks lack the Greco-Bulgarian passage. It therefore misses the key point and describes the wrong event. The claims are supported by their quotes, so faithfulness is fine.",
+   "correctness": "incorrect",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "why"
+ },
+ {
+  "id": "q107",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer covers the key points from the reference: the territory is predominantly Magyar, it was given to Czechoslovakia for a riparian frontier, and transit arrangements could have been used instead. It adds the warning about future warfare, which chunk 2 supports. Each claim matches its cited chunk. Claim 1 matches chunk 1. Claims 2 and 3 match chunk 2.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q107",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer gives the reference's key point: the Pressburg territory is predominantly Magyar and was handed to Czechoslovakia to give it a riparian frontier on the Danube. It leaves out the transit-arrangements alternative, but chunk 2 shows the added points (future warfare, harm to trade) are accurate to the speech. Overall it is correct.\n\nFaithfulness, judged against each quote only:\n- Claim 1: the quote says only that the territory is predominantly inhabited by Magyars. It does not mention the riparian frontier or the handover to Czechoslovakia, so the quote does not support the full claim.\n- Claim 2: the quote supports the warning about future warfare.\n- Claim 3: the quote supports the point that the frontiers cut across trade and affect Britain.",
+   "correctness": "correct",
+   "faithfulness": [
+    "no",
+    "yes",
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q108",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer matches the reference: the Great Powers did not insist that the new states remain members of one economic unit, as they had been under the Austro-Hungarian Empire. Chunk 1 supports the claim. Asquith says \"one of the greatest blots\", and the answer reproduces that wording. The phrase \"as the Austro-Hungarian Empire had been\" is a fair paraphrase.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q108",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer matches the reference: the Great Powers did not insist that the new states remain one economic unit, as under the Austro-Hungarian Empire. The added sentence about \"economic fragmentation... serious failing\" is a reasonable paraphrase and is supported by the other chunks. The one claim is directly supported by its quote.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q111",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer gives August 6, matching the reference. Chunk 1 supports the claim directly. The year 1920 is in the chunk metadata and the letter date (Aug 9, 1920), so it is reasonable. The mention that the treaty is with the Soviet Government is supported by chunks 3 and 4, and the reference question itself says this.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q111",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer, August 6th, matches the reference. The added \"1920\" is consistent with the chunk metadata and the August 9, 1920 letter. The claim is supported by the quote. The quote doesn't name the Soviet government, but the context makes clear which treaty it is, so I count it as supported.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes"
+   ]
+  },
+  "category": "lexical"
+ },
+ {
+  "id": "q113",
+  "rule": "B",
+  "verdict": {
+   "reasoning": "The answer matches the reference (\"between fifty and sixty\") and is supported by chunk 1, dated 1925-11-25. The added remark that he gave a range rather than an exact figure is accurate. The claim is supported.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ },
+ {
+  "id": "q113",
+  "rule": "C",
+  "verdict": {
+   "reasoning": "The answer matches the reference (\"between fifty and sixty\") and is supported by chunk 1. The quote supports the claim; the date of the speech comes from the chunk header. The claim is faithful.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes"
+   ]
+  },
+  "category": "semantic"
+ }
+]
