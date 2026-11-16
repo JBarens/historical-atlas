@@ -1,11 +1,12 @@
 # WHERE WE ARE (one screen, keep updated)
-Goal now: find the right piece of text for a question (retrieval). Claude-written answers come later (Phase 7).
+Goal now: find the right piece of text for a question (retrieval). Claude-written answers: Phase 7 done.
 Corpus: 9,798 pieces (~150 words + header) of Hansard speeches and FRUS documents.
 Test: questions with a label = the sentence that answers it. Score R@5 = label in top 5? Eval v2 (strict labels) since Day 3.
 Best system: BM25 + nomic (RRF) -> Haiku 5.5 rerank. Dev v2 (n=26): top20 R@5 0.71 ($0.006, 1.0s); top50 R@5 0.79, MRR 0.74 (~$0.014, p50 1.2s p95 1.9s). Start was 0.20.
 History (v1 labels): 0.20 start -> 0.35 chunks+nomic -> 0.35 hybrid -> 0.44 rerank. Then 19/25 remaining misses turned out to be eval errors -> eval v2.
 Consolidation (Postgres/pgvector exact = numpy, top-20 overlap 1.00): VALIDATION n=16 dense 0.51, BM25 0.49, PG-FTS-OR 0.40 (AND 0.00), RRF 0.51, +Haiku20 0.62, +Haiku50 R@5 0.69 MRR 0.68, total p50 1.4s p95 2.1s (no rerank 0.26s). eval/results/pg_*.json
-Next: (1) review ADR-002 depth answer with Hermes (Jasper unsure of the question), (2) Phase 7 Claude generation + answer eval (few-shot judge from 20 human labels).
+Phase 7 done (docs/benchmarks/answer_eval.md, ADR-005): Haiku 5.5 generator, top 5 chunks, per-claim citations rule B (dev: correctness 0.90, faithfulness 1.00 likely lenient; quote-forced audit as guard). Judge vs human 5/10 before rubric fix.
+Next: Phase 8 agent and tools: query rewriting for follow-ups, inflation tool from backend/data/reference/cdko.csv, deterministic vs model decisions.
 
 # Status against the brief (docs/PRACTICUM_BRIEF.md), updated Day 3
 
@@ -20,7 +21,8 @@ Order deviated from the brief: chunking (brief Phase 6) and the embedding-model 
 | 4 | Hybrid (RRF) | metrics done on dev | depths 5/10/20/50 not swept; brief says choose on VALIDATION (done on dev); ADR-002 not written; RRF k explanation not yet tested |
 | 5 | Reranking | running | bge-reranker-base, 50 candidates; ADR-003, latency, answer quality pending |
 | 6 | Chunking | done early | chunking_experiment.md not written |
-| 7-16 | Generation, agent, failures, observability, cost/latency, scale, CI, security, held-out, interview | not started | |
+| 7 | Generation + answer eval | done | answer_eval.md, ADR-005; dev only, small n |
+| 8-16 | Agent, failures, observability, cost/latency, scale, CI, security, held-out, interview | not started | |
 
 Cross-cutting gaps: latency (p50/p95) measured nowhere yet; retrieval runs outside PostgreSQL/pgvector (brief: keep PG, prefer PG-native lexical).
 

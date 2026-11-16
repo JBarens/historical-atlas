@@ -1,3 +1,5 @@
+> Superseded by answer_eval.md (final). Kept for setup details and deviations.
+
 # Answer evaluation, dev (DRAFT): Haiku 5.5 vs Sonnet 5.5 as generator
 
 Script: `eval/run_generation.py` (stages retrieve / generate / redo / judge / report). Raw data: `eval/results/gen_context_dev.json`, `gen_haiku_dev.json`, `gen_sonnet_dev.json`, metrics `gen_metrics_dev.json`.
