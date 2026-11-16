@@ -80,3 +80,5 @@ Cross-cutting gaps: latency (p50/p95) measured nowhere yet; retrieval runs outsi
 - Day 3 rerank (bge-reranker-base, top-50 of RRF, dev n=38): R@5 0.35->0.44, R@3 0.29->0.40, MRR 0.33->0.40; ceiling R@50 0.62. Lexical R@5 0.54->0.64, semantic 0.20->0.30. Latency median 13.3s, max 19.4s per question on CPU. Jasper predicted R@5 0.6.
 
 - Day 4 Phase 7: Haiku vs Sonnet (dev, Opus judge) -> accuracy within noise, Haiku 3x cheaper/2x faster. Judge too harsh vs Jasper/Hermes (5/10): penalised honest partial answers and format. Rule B (chunk id, no quote) vs C, Haiku, Sonnet judge with fixed rubric, n=25: correctness C 0.79 / B 0.90, faithfulness C 0.93 / B 1.00, latency p95 4.6 / 3.7 s. Spend $0.83.
+
+- Decision (Jasper): citation rule B (chunk id per claim, no quote) for the system. Leniency guard: periodic spot check where the judge must extract a verbatim supporting sentence from the cited chunk, verified in code (quote-forced audit).
