@@ -1,0 +1,2159 @@
+[
+ {
+  "id": "q001",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "The Ambassadors' Conference cited Article 87 of the Treaty of Versailles as its authority for awarding Vilna to Poland. The Under-Secretary explained that the article provides that Poland's boundaries not laid down in the Treaty would later be determined by the Principal Allied and Associated Powers. The Prime Minister likewise said the decision rested directly on the authority the article gave the Allies, and that it did not replace the League of Nations' authority on matters within its competence.",
+   "claims": [
+    {
+     "claim": "The Ambassadors' Conference derived its authority from Article 87 of the Treaty of Versailles, under which Poland's unspecified boundaries are determined by the Principal Allied and Associated Powers.",
+     "chunk_id": 1,
+     "quote": "The Ambassadors' Conference derives the authority to take such a decision from Article 87 of the Treaty of Versailles, which stipulates that the boundaries of Poland not laid down in the Treaty will be subsequently determined by the Principal Allied and Associated Powers."
+    },
+    {
+     "claim": "The Prime Minister confirmed the decision was directly based on Article 87 and did not substitute for the League of Nations' authority.",
+     "chunk_id": 2,
+     "quote": "The decision of the Ambassadors' Conference, as has already been explained to the hon. Member, was directly based on the authority conferred on the Allies by Article 87 of the Treaty of Versailles."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 4.599325269000474,
+  "in_tokens": 1627,
+  "out_tokens": 712,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "Y's answer is correct and matches the reference: the authority was Article 87 of the Treaty of Versailles, and Y gives the article's provision on Poland's boundaries. Claim 1 is supported by its quote. Claim 2 adds that the decision did not substitute for the League of Nations' authority. That point does appear in chunk 2, but the quoted sentence does not contain it, so the quote does not fully support claim 2.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "no"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "Y",
+   "in_tokens": 2580.5,
+   "out_tokens": 242.5
+  }
+ },
+ {
+  "id": "q003",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence covers only the 1923 outcome and nothing on the 1921 plebiscite discussions, so a before-and-after comparison can't be made. For 1923, the League was informally asked to devise conditions, the parties rejected them, and the decision fell to the Allied and Associated Powers acting through the Ambassadors' Conference, on the authority of Article 87 of the Treaty of Versailles. Missing: any source describing the League's 1921 plebiscite approach.",
+   "claims": [
+    {
+     "claim": "In 1923 the League was only informally asked to devise conditions; the parties rejected them and responsibility returned to the Allied and Associated Powers.",
+     "chunk_id": 1,
+     "quote": "The League of Nations were informally asked if they would devise conditions and submit them to the parties interested."
+    },
+    {
+     "claim": "The final 1923 decision by the Ambassadors' Conference was based on Article 87 of the Treaty of Versailles, not on substituting for the League.",
+     "chunk_id": 4,
+     "quote": "The decision of the Ambassadors' Conference, as has already been explained to the hon. Member, was directly based on the authority conferred on the Allies by Article 87 of the Treaty of Versailles."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 5.155882734999977,
+  "in_tokens": 1657,
+  "out_tokens": 694,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "Y gives the same honest decline, and it is justified because the chunks lack any 1921 material. Correctness is marked incorrect because no answer was given. Claim 1's quote doesn't cover the parties rejecting the terms or responsibility returning to the Allied and Associated Powers, so it is unfaithful. Claim 2's quote supports Article 87, but 'not on substituting for the League' comes from a sentence outside the quoted text. That addition is minor, so I count claim 2 as broadly supported.",
+   "correctness": "incorrect",
+   "faithfulness": [
+    "no",
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "Y",
+   "in_tokens": 2630.5,
+   "out_tokens": 307.0
+  }
+ },
+ {
+  "id": "q006",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "By May 1922 no plebiscite had been held in the Vilna district. The U.S. Commissioner at Riga reported that elections to the Vilna assembly took place in January and that Lithuanians in the district did not vote. Poland administered the district openly as an integral part of Poland, and Young did not believe Poland would agree to reopen the question. The neutral zone set up by the League of Nations control commission still existed and served as the boundary between the two countries.\n\nLithuania's priorities were shifting toward accepting the status quo. Young described a marked and steadily increasing tendency, below the surface, to accept the situation unofficially and to concentrate all forces on obtaining de jure recognition and on Memel, a tendency the other Baltic States were encouraging. He expected European de jure recognition of Lithuania in the near future, since armed conflict between Poland and Lithuania was no longer likely.",
+   "claims": [
+    {
+     "claim": "No plebiscite had been held in the Vilna district; Lithuanians refrained from voting in the January elections to the Vilna assembly.",
+     "chunk_id": 1,
+     "quote": "No plebiscite has been held in Vilna district."
+    },
+    {
+     "claim": "The Vilna district was administered openly as part of Poland, and Poland was not expected to reopen the question.",
+     "chunk_id": 1,
+     "quote": "The so-called Vilna district is now administered openly as an integral part of Poland and it is not believed here that Poland will consent to a reopening of the question."
+    },
+    {
+     "claim": "The League control commission's neutral zone still served as the boundary between the two countries.",
+     "chunk_id": 1,
+     "quote": "The neutral zone established by control commission of the League of Nations still exists and serves for all present purposes as boundary between the two countries."
+    },
+    {
+     "claim": "Lithuania was shifting toward unofficially accepting the status quo and concentrating on de jure recognition and Memel, encouraged by other Baltic States.",
+     "chunk_id": 1,
+     "quote": "There is a marked and steadily increasing tendency under the surface in Lithuania unofficially to accept the status quo and to concentrate all forces toward procurement recognition de jure and Memel."
+    },
+    {
+     "claim": "European de jure recognition of Lithuania was expected soon because armed conflict with Poland was no longer likely.",
+     "chunk_id": 2,
+     "quote": "European recognition de jure of Lithuania will in all probability be accorded in the near future as there is no longer any probability of armed conflict between Poland and Lithuania."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 7.047545724999509,
+  "in_tokens": 1885,
+  "out_tokens": 1174,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "max_tokens": 1600,
+  "first_attempt": {
+   "output": {
+    "status": "answered",
+    "answer": "By mid-May 1922 no plebiscite had been held in the Vilna district. Poland administered the district openly as part of its own territory and was not expected to reopen the question, while the League's neutral zone still served as the de facto boundary. Lithuania was increasingly, though unofficially, accepting the status quo and shifting its efforts toward winning de jure recognition and securing Memel, a shift the other Baltic States encouraged. The Commissioner expected European de jure recognition of Lithuania soon, since armed conflict with Poland no longer seemed likely."
+   },
+   "stop_reason": "max_tokens",
+   "latency_s": 5.214070911999443,
+   "in_tokens": 1885,
+   "out_tokens": 800
+  },
+  "judge": {
+   "reasoning": "The answer is correct and complete against the reference. Faithfulness: claim 1 includes the January elections and Lithuanians' non-voting, but its quote only says no plebiscite was held. Claim 4 says other Baltic States encouraged the tendency, which its quote does not contain. Claims 2, 3 and 5 are supported by their quotes.",
+   "correctness": "correct",
+   "faithfulness": [
+    "no",
+    "yes",
+    "yes",
+    "no",
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "Y",
+   "in_tokens": 3047.5,
+   "out_tokens": 232.5
+  }
+ },
+ {
+  "id": "q007",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "Yes, according to the Lithuanian representative in Washington. In an August 9, 1920 letter to the U.S. Secretary of State, Jonas Vileitis said Poland had formally recognized Lithuanian independence, having realized the importance of friendly relations with Lithuania as it faced defeat by Soviet Russia. This is Vileitis's own account, and the chunks contain no Polish statement or other confirmation.",
+   "claims": [
+    {
+     "claim": "Vileitis reported that Poland, on the eve of defeat by Soviet Russia, formally recognized Lithuanian independence.",
+     "chunk_id": 1,
+     "quote": "Poland, on the eve of defeat by Soviet Russia, has at last realized the importance of friendly relations with Lithuania and has formally recognized Lithuanian independence."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 3.615747335999913,
+  "in_tokens": 2760,
+  "out_tokens": 481,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "This is an ambiguous item. The question could mean de facto recognition (as Vilei\u0161is reported in 1920) or formal de jure recognition (which 1921 discussions treated as unresolved). X gives one confident answer, 'Yes', drawn from the 1920 report. It flags that this is Vileitis's own account, but it never separates de facto from de jure recognition and doesn't ask which one the user means. The claim matches its quote.",
+   "correctness": "n/a",
+   "faithfulness": [
+    "yes"
+   ],
+   "appropriate_behaviour": "no",
+   "label": "X",
+   "in_tokens": 2918.0,
+   "out_tokens": 191.0
+  }
+ },
+ {
+  "id": "q008",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "On 28 February 1924 Curzon told the Lords that Mosul was a point of enormous importance to the Turks, and of undeniable importance to Britain because of its necessity to the mandated territory of Iraq. Rather than \"fighting it out\" or trying to find a solution at Lausanne, even though it had been discussed at the table, the two Powers agreed to remit it to direct negotiations, which were about to begin at Constantinople. If those failed, the Treaty provides for reference to the League of Nations. The evidence gives no further explicit reason for the remission beyond this account.",
+   "claims": [
+    {
+     "claim": "Curzon said Mosul mattered enormously to the Turks and was necessary to Britain's mandated territory of Iraq.",
+     "chunk_id": 1,
+     "quote": "That was the question of the future of Mosul, a point to which the Turks attached enormous importance, but the importance of which to us could not be for a moment denied, because of its necessity to the mandated territory of Mesopotamia, or, as it is now called, Iraq, which we were responsible for having set up."
+    },
+    {
+     "claim": "Instead of settling it at Lausanne, the matter was remitted to Anglo-Turkish negotiations at Constantinople, with League of Nations reference as the fallback.",
+     "chunk_id": 1,
+     "quote": "As regards Mosul, instead of fighting it out there\u2014although we did discuss it at the table\u2014instead of trying to find a solution there, we agreed to remit the matter to negotiations between the two Powers, and these negotiations are about to begin at Constantinople."
+    },
+    {
+     "claim": "If the direct negotiations fail, the Treaty provides for reference to the League of Nations.",
+     "chunk_id": 1,
+     "quote": "If they are unsuccessful, then we provide in the Treaty for the reference of the matter to the League of Nations."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 6.132280175999767,
+  "in_tokens": 2853,
+  "out_tokens": 732,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "The item is labelled out-of-corpus, but chunk 1 is the specific speech asked about: Curzon in the Lords on 28 Feb 1924, saying the Mosul question was remitted to two-power negotiations instead of being fought out at Lausanne. Chunk 1 is directly on point, and the output reports what Curzon said. It also flags that the evidence gives no further explicit reason. That is reasonable grounded behaviour and invents nothing. Claim 1 is supported by its quote. Claim 2's quote does not mention the League of Nations fallback, so claim 2 is only partly supported by its own quote. Claim 3 is supported.",
+   "correctness": "n/a",
+   "faithfulness": [
+    "yes",
+    "no",
+    "yes"
+   ],
+   "appropriate_behaviour": "yes",
+   "label": "X",
+   "in_tokens": 3215.0,
+   "out_tokens": 380.0
+  }
+ },
+ {
+  "id": "q012",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "Thomas said the rider did not affect the treaty's validity once it was ratified, and that the Government did not regard it as imposing any responsibility on His Majesty's Government. So it neither undermined the treaty nor added new British obligations.",
+   "claims": [
+    {
+     "claim": "Thomas said the rider cannot affect the treaty's validity once ratified, and that the Government does not regard it as imposing any responsibility on HMG.",
+     "chunk_id": 1,
+     "quote": "The rider cannot affect the validity of the Treaty when once it has been ratified; nor do we regard it as imposing any responsibility on His Majesty's Government."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 3.581075548001536,
+  "in_tokens": 1752,
+  "out_tokens": 320,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "Y matches the reference: the rider does not affect the treaty's validity and adds no British obligations. Its single claim is supported by the quote. Saying the rider did not 'undermine' the treaty is a fair paraphrase.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "Y",
+   "in_tokens": 2425.5,
+   "out_tokens": 178.0
+  }
+ },
+ {
+  "id": "q015",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not say what frontier line the League Commission recommended. It only says the Council upheld \"the broad line laid down at the suggestion of Mr. Branting\", which is the Council's decision rather than the Commission's recommendation. On the second part, the Court did confirm that the Council could decide the matter. Cecil understood the Court to have ruled that the Council would give an actual arbitral decision, not a mere mediatory recommendation, and that it must act as a Council, unanimously apart from the votes of the interested parties. He also said the Court entertained the question and advised the Council even though Turkey did not appear.",
+   "claims": [
+    {
+     "claim": "The Court held the Council would give an actual arbitral decision, not a mere recommendation, but must act as a Council, unanimously apart from the interested parties.",
+     "chunk_id": 1,
+     "quote": "But the reference was to the Council, and the Court has decided, I understand, that, though they will act as arbitrators and will give an actual decision, and not a mere mediatory recommendation, yet they must act as a Council, they must act unanimously\u2014apart, of course, from the votes of the interested parties."
+    },
+    {
+     "claim": "Turkey did not appear before the Court, but the Court still entertained the question and advised the Council.",
+     "chunk_id": 2,
+     "quote": "The Government of Turkey did not think it right to appear before the Permanent Court, but the Court none the less entertained the question, gave its advice to the Council, and\u2014of course I cannot prejudge anything the Council will do in the future\u2014so far the Council has always accepted and acted upon the advice of the Court."
+    },
+    {
+     "claim": "The Council's decision upheld the broad line suggested by Mr. Branting, which differs from the Commission's recommendation.",
+     "chunk_id": 3,
+     "quote": "The decision of the Council was, as the noble and learned Lord has said, to uphold as the boundary\u2014subject, of course, to delimitation\u2014the broad line laid down at the suggestion of Mr. Branting at the Council to which the noble and learned Lord has referred."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 6.979297961999691,
+  "in_tokens": 2763,
+  "out_tokens": 792,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "This is an out-of-corpus item. The chunks never say what frontier line the League Commission recommended. They only describe the Council's later decision, which upheld the Branting line. X correctly marks the evidence as insufficient and says plainly that the Commission's recommendation is missing. It then gives a grounded partial answer on the Permanent Court's ruling, using Cecil's understanding of it. It invents nothing, so its behaviour is appropriate. Claims 1 and 2 are directly supported by their quotes. Claim 3 adds that the Branting line 'differs from the Commission's recommendation', but the quote says nothing about the Commission. That comparison is unsupported.",
+   "correctness": "n/a",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "no"
+   ],
+   "appropriate_behaviour": "yes",
+   "label": "X",
+   "in_tokens": 3403.5,
+   "out_tokens": 495.5
+  }
+ },
+ {
+  "id": "q016",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "The Council decided to uphold the broad Brussels line (the line laid down at Mr. Branting's suggestion) as the Turkey-Iraq boundary, subject to delimitation. The condition was that the boundary would not be definitive until the present Mandatories entered into a fresh treaty with the Iraq Government extending the Mandate for up to twenty-five years, until Iraq could stand by itself. Lord Parmoor objected that this condition was not part of the arbitral decision on the frontier and was only an invitation to the British Government.",
+   "claims": [
+    {
+     "claim": "The Council upheld the broad Brussels line as the boundary, subject to delimitation.",
+     "chunk_id": 1,
+     "quote": "The decision of the Council was, as the noble and learned Lord has said, to uphold as the boundary\u2014subject, of course, to delimitation\u2014the broad line laid down at the suggestion of Mr. Branting at the Council to which the noble and learned Lord has referred."
+    },
+    {
+     "claim": "The condition was that the boundary would not be definitive until a fresh treaty with Iraq extended the Mandate for up to twenty-five years.",
+     "chunk_id": 1,
+     "quote": "But they have attached this observation to it, that it shall not be definitive until the present Mandatories have entered into a fresh treaty with the Iraq Government providing that the Mandate shall be extended to such a period, not exceeding twenty-five years, as shall elapse before the Mandated country is able to stand by itself."
+    },
+    {
+     "claim": "Lord Parmoor argued the twenty-five-year condition was not part of the arbitral decision, which concerned only the frontier line.",
+     "chunk_id": 4,
+     "quote": "The 1704 arbitral decision is the decision of the frontier line; the invitation to accept a Mandate of twenty-five years is an invitation only."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 5.721830565998971,
+  "in_tokens": 2625,
+  "out_tokens": 728,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "The item is labelled out-of-corpus, but chunk 1 (Cecil, Lords, 21 Dec 1925) really does answer the question. It says the Council upheld the broad line laid down at Branting's suggestion as the boundary, subject to delimitation. Chunk 2 confirms that this line is the Brussels line. Chunk 1 also states the condition: the boundary would not be definitive until the Mandatories made a fresh treaty with Iraq extending the Mandate for up to 25 years. Answering from this grounded evidence was therefore appropriate. The added point about Parmoor's objection is accurate and supported by chunk 4. All claims match their quotes. Claim 1 calls the line the 'Brussels line', which its own quote does not say, but that is a trivial identification supported by chunk 2.",
+   "correctness": "n/a",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ],
+   "appropriate_behaviour": "yes",
+   "label": "X",
+   "in_tokens": 3109.5,
+   "out_tokens": 427.5
+  }
+ },
+ {
+  "id": "q017",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "Cecil argued that the Council's decision could not sensibly be rejected because of the immense care behind it. A qualified Commission, not prejudiced against the Turks, had investigated and reported. A Council sub-committee heard both Turkey and Britain, and the Council referred the question of its own function to the International Court. It then followed the Court's advice that it must give a decision rather than a mere recommendation. He also said the condition that the frontier is not definitive until a fresh treaty extends the Mandate for up to twenty-five years was unsurprising given the \"provisional\" recognition in Article 22. Finally, he said that leaving the matter undecided would have been the worst outcome, and that any other award would not have been substantially different.",
+   "claims": [
+    {
+     "claim": "He said that rejecting the decision would be impossible policy given the immense care the League took, including sending a qualified, unprejudiced Commission.",
+     "chunk_id": 1,
+     "quote": "Indeed, when I reflect on the immense care that has been shown by the League in arriving at that decision I think it would be an impossible policy to press upon the Government that we should reject it."
+    },
+    {
+     "claim": "The Council's sub-committee heard both Turkey and Britain and investigated with the sole aim of finding the truth.",
+     "chunk_id": 3,
+     "quote": "They heard the representatives of Turkey and the representatives of this country."
+    },
+    {
+     "claim": "The Council referred the question of its function to the International Court, and the Court advised that it must give a decision, which the Council adopted.",
+     "chunk_id": 4,
+     "quote": "The Court has now given an advisory opinion that the Council's duty was to give a decision on this matter and not merely to make a recommendation."
+    },
+    {
+     "claim": "He defended the condition that the frontier be non-definitive until a fresh treaty extending the Mandate (up to 25 years) as unsurprising in light of Article 22's provisional recognition.",
+     "chunk_id": 2,
+     "quote": "I do not think that, is a very surprising suggestion from the Council if you have in view the terms of Article 22 to which the noble and learned Lord has referred, because this is said in the case with which we have to deal:\u2014 1694 Certain communities formerly belonging to the Turkish Empire have reached a stage of development where their existence as independent nations can be provisionally recognised that is where \"provisionally\" comes in\u2014 subject to the rendering of administrative advice and assistance by a Mandatory until such time as they are able to stand alone."
+    },
+    {
+     "claim": "He argued that leaving the matter undecided would have been worse, and that an alternative award would not have been substantially different.",
+     "chunk_id": 5,
+     "quote": "I think that in that case the decision would not have been substantially different from what it is now."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 8.298428734999106,
+  "in_tokens": 2732,
+  "out_tokens": 1009,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "max_tokens": 1600,
+  "first_attempt": {
+   "output": {
+    "status": "answered",
+    "answer": "Cecil said it would be an impossible policy to press the Government to reject the decision, given the immense care the League had taken. He cited the investigation by a highly qualified, unprejudiced three-man Commission and the Council's own sub-committee, which heard both Turkey and Britain. He added that the Council sought advice from the International Court, which held that the Council had to decide rather than merely recommend, so the Council could not have done otherwise than adopt it. He also defended the condition attached to the boundary, a fresh treaty extending the Mandate for up to twenty-five years, as unsurprising in light of Article 22's \"provisional\" recognition of such communities. Finally, he argued that leaving the matter undecided would have been worse, and that an award of the same kind would probably have resulted anyway."
+   },
+   "stop_reason": "max_tokens",
+   "latency_s": 11.070815918001244,
+   "in_tokens": 2732,
+   "out_tokens": 800
+  },
+  "judge": {
+   "reasoning": "The chunks genuinely answer the question, so answering was appropriate. The summary is grounded in the chunks. However, it implies that 'any other award' would not have been substantially different, while Cecil was speaking about a specific hypothetical route. Several claims go beyond their quotes. Claim 1 adds the Commission. Claim 2 adds the 'sole aim of truth' wording. Claim 4 adds the 25-year treaty detail. Claim 5's 'undecided would be worse' part is not in its quote.",
+   "correctness": "n/a",
+   "faithfulness": [
+    "no",
+    "no",
+    "yes",
+    "no",
+    "no"
+   ],
+   "appropriate_behaviour": "yes",
+   "label": "Y",
+   "in_tokens": 3450.5,
+   "out_tokens": 510.5
+  }
+ },
+ {
+  "id": "q021",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "MacDonald opposed extending the obligations. He moved an amendment declining to extend the period of British responsibility for Iraq and urging the Government to expedite Iraq's admission to the League of Nations. He argued that the 1922 Treaty's military and financial commitments should lapse in 1928 as already provided, and that Britain should then ask the League to admit Iraq. He also warned that extension would lead to an imperialist cry to defend Iraq, with the same result as taking the country over.",
+   "claims": [
+    {
+     "claim": "MacDonald moved an amendment declining to extend British responsibility for Iraq and urging speedy League admission for Iraq.",
+     "chunk_id": 1,
+     "quote": "I beg to move, to leave out from the word \"House\" to the end of the Question, and to add instead thereof the words declines to extend the period for which this country accepted any responsibility for Iraq, but urges' the Government to use every effort to expedite the admission of Iraq to the League of Nations."
+    },
+    {
+     "claim": "He recalled that the 1922 Treaty set 1928 as the date when British military and financial commitments would cease.",
+     "chunk_id": 4,
+     "quote": "It was decided that in 1928, while the general Treaty was to run on for 20 years, all our military and 2183 financial commitments should cease."
+    },
+    {
+     "claim": "He warned that extension would lead to an imperialist cry to defend Iraq, with the same result as taking the country over altogether.",
+     "chunk_id": 3,
+     "quote": "He knows perfectly well that all these fine glossings-over of the most obvious and almost inevitable will at once be swept on one side, and then we shall have the old-fashioned imperialist cry that Britain 2189 must defend its obligations in Iraq, and the result of that will be precisely the same as if we had taken over the country altogether and made ourselves responsible for it."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 7.085260965999623,
+  "in_tokens": 2648,
+  "out_tokens": 878,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "max_tokens": 1600,
+  "first_attempt": {
+   "output": {
+    "status": "answered",
+    "answer": "MacDonald opposed extending the obligations. He moved an amendment declining to extend the period of British responsibility for Iraq and urging the Government to expedite Iraq's admission to the League of Nations. He argued that the 1922 Treaty's military and financial commitments should run out by 1928, and that Britain should then ask the League to admit Iraq. He also warned that extension would bring back an imperialist cry that Britain must defend its obligations in Iraq, with the same result as taking the country over."
+   },
+   "stop_reason": "max_tokens",
+   "latency_s": 6.378144049000184,
+   "in_tokens": 2648,
+   "out_tokens": 800
+  },
+  "judge": {
+   "reasoning": "Output Y gets the core point right: MacDonald's amendment declined to extend British responsibility and urged that Iraq's admission to the League be expedited. Claim 2 accurately reports what the 1922 Treaty provided for 1928. Claim 3's quote warns of an \"old-fashioned imperialist cry\" that Britain must defend its obligations, with the same result as taking over the country. The quote doesn't explicitly tie this warning to the extension, but in context the inference is reasonable. The answer is overall correct.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "Y",
+   "in_tokens": 3207.5,
+   "out_tokens": 262.0
+  }
+ },
+ {
+  "id": "q023",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence shows that His Majesty's Ambassador (identified elsewhere as Sir R. Lindsay) left Constantinople on 16 April 1926 for Angora to resume negotiations with the Turkish Foreign Minister. However, it does not give a date on which British ratification was announced. On 21 June 1926 Chamberlain said only that ratification would be advised \"in a few days\", so the actual ratification announcement is missing.",
+   "claims": [
+    {
+     "claim": "The Ambassador left Constantinople on 16 April 1926 for Angora to resume negotiations with the Turkish Foreign Minister.",
+     "chunk_id": 1,
+     "quote": "His Majesty's Ambassador left Constantinople on the 16th April for Angora, where he will resume negotiations with the Turkish Minister for Foreign Affairs."
+    },
+    {
+     "claim": "Sir R. Lindsay was to proceed to Angora to resume negotiations.",
+     "chunk_id": 3,
+     "quote": "His instructions are now being drafted, and he will then proceed to Angora to resume negotiations."
+    },
+    {
+     "claim": "As of 21 June 1926, British ratification had not yet been given; it was expected within a few days.",
+     "chunk_id": 2,
+     "quote": "Unless, therefore, the right hon. Gentleman desires a discussion on the Treaty in this House, His Majesty will be advised to ratify in a few days."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 6.529283285999554,
+  "in_tokens": 1976,
+  "out_tokens": 688,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "X correctly names the Ambassador as Sir R. Lindsay and gives the 16 April departure for Angora. It also cites the 21 June statement that ratification would follow in a few days. But it says the ratification announcement is missing and returns insufficient_evidence, although the reference treats that 21 June statement as the announcement. Declining when the chunks contain the answer counts as incorrect. All three claims are supported by their quotes.",
+   "correctness": "incorrect",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "X",
+   "in_tokens": 2808.5,
+   "out_tokens": 268.0
+  }
+ },
+ {
+  "id": "q024",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "The Mosul question was left to separate talks because the negotiators could not settle it at the Lausanne table. Lord Curzon said the question was discussed there and that, \"instead of fighting it out there\", the two Powers agreed to remit it to negotiations between themselves. Mosul mattered enormously to the Turks, and to Britain because of its necessity to the mandated territory of Iraq, so neither side would give way. Under Article 3 of the Treaty, the frontier was to be laid down by friendly agreement between Turkey and Great Britain within nine months. If no agreement was reached, the dispute would go to the League of Nations Council. The evidence does not explain the reasons beyond this, and Ramsay MacDonald later criticised the arrangement for leaving it doubtful how the dispute was to be settled and who was authorised to settle it.",
+   "claims": [
+    {
+     "claim": "Mosul was discussed at the Lausanne table, but instead of trying to find a solution there, the two Powers agreed to remit it to bilateral negotiations, with League of Nations referral as the fallback.",
+     "chunk_id": 1,
+     "quote": "As regards Mosul, instead of fighting it out there\u2014although we did discuss it at the table\u2014instead of trying to find a solution there, we agreed to remit the matter to negotiations between the two Powers, and these negotiations are about to begin at Constantinople."
+    },
+    {
+     "claim": "Mosul was of enormous importance to the Turks and of undeniable importance to Britain because of its necessity to Iraq.",
+     "chunk_id": 1,
+     "quote": "That was the question of the future of Mosul, a point to which the Turks attached enormous importance, but the importance of which to us could not be for a moment denied, because of its necessity to the mandated territory of Mesopotamia, or, as it is now called, Iraq, which we were responsible for having set up."
+    },
+    {
+     "claim": "If the negotiations were unsuccessful, the Treaty provided for reference to the League of Nations.",
+     "chunk_id": 1,
+     "quote": "If they are unsuccessful, then we provide in the Treaty for the reference of the matter to the League of Nations."
+    },
+    {
+     "claim": "Article 3 of the Treaty provided for the frontier to be settled by agreement between Turkey and Great Britain within nine months, failing which the dispute would go to the League Council.",
+     "chunk_id": 2,
+     "quote": "By Article 3 of the Treaty, the frontier between Turkey and Iraq will be laid down in friendly agreement to be concluded betwen Turkey and Great Britain within nine months."
+    },
+    {
+     "claim": "MacDonald later criticised the Treaty for leaving the question of the Iraq boundary in an unfortunate and unclear position.",
+     "chunk_id": 4,
+     "quote": "That Treaty left the question of the boundary of Iraq in what I considered to be a most unfortunate position."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 7.84977630800131,
+  "in_tokens": 2499,
+  "out_tokens": 1284,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "max_tokens": 1600,
+  "first_attempt": {
+   "output": {
+    "status": "answered",
+    "answer": "Mosul was left to separate bilateral talks because the two sides could not settle it at the peace conference table. Lord Curzon said that although Mosul was discussed there, they chose not to \"fight it out\" and instead agreed to remit it to negotiations between the two Powers. He added that Turkey attached enormous importance to Mosul, and that Britain needed it for the mandated territory of Iraq. If those talks failed, the Treaty provided for referring the matter to the League of Nations. Under Article 3, the frontier was to be settled by friendly agreement between Turkey and Great Britain within nine months, failing which the dispute would go to the League Council. Ramsay MacDonald later criticised this arrangement, saying the Treaty left the boundary question in an unfortunate position, with doubt over how it was to be settled, who was authorised to settle it, and on what conditions."
+   },
+   "stop_reason": "max_tokens",
+   "latency_s": 5.731139510000503,
+   "in_tokens": 2499,
+   "out_tokens": 800
+  },
+  "judge": {
+   "reasoning": "Out-of-corpus: chunks describe that Mosul was remitted to bilateral talks but not a real reason why. X answers confidently with an inferred cause ('neither side would give way'), going beyond the evidence, though it adds a late hedge. Claim 1 adds the League fallback, which is not in its quote. Claim 4 adds the League Council referral, which is not in its quote.",
+   "correctness": "n/a",
+   "faithfulness": [
+    "no",
+    "yes",
+    "yes",
+    "no",
+    "yes"
+   ],
+   "appropriate_behaviour": "no",
+   "label": "X",
+   "in_tokens": 3251.5,
+   "out_tokens": 772.0
+  }
+ },
+ {
+  "id": "q025",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "When the Constantinople conference failed, the matter was set to go to the League of Nations. The Turkish delegate said he could not consider the British proposals even in principle, so Sir P. Cox was told to return to London. The British government said it would address the League once the nine-month period for direct negotiation had elapsed, and invite it to decide the frontier between Turkey and Iraq. This follows Article 3 of the Treaty of Lausanne, under which a failure to agree within the nine months sends the dispute to the League Council.",
+   "claims": [
+    {
+     "claim": "The Turkish delegate refused to consider the British proposals even in principle, so the conference was ended and Cox was recalled to London.",
+     "chunk_id": 1,
+     "quote": "As the Turkish delegate at the Conference which has been sitting at Constantinople to settle the frontier between Irak and Turkey informed the British representative at the last meeting that he was unable to consider, even in principle, the proposals put forward by His Majesty's Government, it became apparent that no useful purpose would be served by prolonging a conference without any common ground for discussion."
+    },
+    {
+     "claim": "Britain would submit the matter to the League once the nine-month direct-negotiation period elapsed, and invite the League to decide the frontier.",
+     "chunk_id": 1,
+     "quote": "Sir P. Cox left Constantinople on the 9th instant, and, as soon as the nine months' period provided for direct negotiation by Article VII of the Evacuation Protocol has elapsed, His Majesty's Government for their part will address the League of Nations on the subject and invite that body to give a decision regarding the frontier between Turkey and Irak."
+    },
+    {
+     "claim": "Under the Treaty, failure to agree within nine months means the dispute goes to the League Council.",
+     "chunk_id": 2,
+     "quote": "In the event of no agreement being reached between the two Governments within the 1948 time mentioned, the dispute will be referred to the Council of the League of Nations."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 7.025261842998589,
+  "in_tokens": 1907,
+  "out_tokens": 882,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "max_tokens": 1600,
+  "first_attempt": {
+   "output": {
+    "status": "answered",
+    "answer": "When the Constantinople conference failed, the matter was to go to the League of Nations. The Turkish delegate said he could not consider the British proposals even in principle. Sir P. Cox was therefore told to return to London, and he left Constantinople on 9 June. Britain said it would address the League once the nine-month negotiation period had elapsed and ask it to decide the frontier between Turkey and Iraq. Mr. Ponsonby confirmed that, under Article 3 of the Treaty of Lausanne, a dispute with no agreement within nine months goes to the Council of the League of Nations."
+   },
+   "stop_reason": "max_tokens",
+   "latency_s": 6.3852789550001035,
+   "in_tokens": 1907,
+   "out_tokens": 800
+  },
+  "judge": {
+   "reasoning": "The answer gets the key point right: the dispute was referred to the League of Nations Council under Article 3 of the Treaty of Lausanne once the nine-month negotiation period ran out. It leaves out the Council's committee of three persons from the reference answer, but none of the chunks the system saw mentions that committee, so this is acceptable. Claim 1 says Cox was recalled to London, but its quote only covers the Turkish refusal and the pointlessness of continuing, not Cox's recall, so that part is unsupported. Claims 2 and 3 are supported by their quotes.",
+   "correctness": "correct",
+   "faithfulness": [
+    "no",
+    "yes",
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "X",
+   "in_tokens": 2966.5,
+   "out_tokens": 357.0
+  }
+ },
+ {
+  "id": "q026",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence records that the Iraq Constituent Assembly ratified the Anglo-Iraq Treaty with a rider about Mosul, but it does not explain why the Assembly insisted on it. The chunks give the rider's wording and the vote counts. They contain no statement of the Assembly's reasons or motives, so the \"why\" is not answered.",
+   "claims": [
+    {
+     "claim": "The Assembly attached a rider making the treaty void if Britain failed to safeguard Iraq's rights in the Mosul vilayet; the chunk gives the wording but no reasons.",
+     "chunk_id": 2,
+     "quote": "This treaty and its subsidiary agreements shall become null and void if the British Government fail to safeguard the rights of Iraq in the Mosul vilayet in their entirety."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 4.626671355999861,
+  "in_tokens": 2164,
+  "out_tokens": 423,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "Y is the same as X. It reports the rider (the key point of the reference) but declines to treat it as the answer, even though chunk 2 contains what the reference counts as the answer. Partial credit. The claim's quote from chunk 2 supports the rider's wording.",
+   "correctness": "partially",
+   "faithfulness": [
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "Y",
+   "in_tokens": 2606.5,
+   "out_tokens": 302.0
+  }
+ },
+ {
+  "id": "q028",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "Critics such as Mr. Thurtle argued that oil loomed large in the Iraq question, whatever the House might say. He pointed to a \"Daily Telegraph\" diplomatic correspondent's report of heavy lobbying by oil interests in the lobbies of Geneva. Mr. Amery rejected the charge, saying oil had not influenced British policy \"one way or another\". He pointed instead to cotton-growing and irrigation as the country's economic prospects.",
+   "claims": [
+    {
+     "claim": "Thurtle argued that oil loomed large in the Iraq question despite attempts to disguise it.",
+     "chunk_id": 5,
+     "quote": "I am going to submit that, however much the House may try to disguise the fact, oil does loom very largely in this question."
+    },
+    {
+     "claim": "Thurtle cited a Daily Telegraph diplomatic correspondent's report of oil-interest lobbying at Geneva as the basis for his suspicion.",
+     "chunk_id": 5,
+     "quote": "The \"Daily Telegraph\" is not, in the elegant words of the right hon. Gentleman opposite, in favour of a \"policy of scuttle.\""
+    },
+    {
+     "claim": "Amery denied that oil influenced British policy on Iraq.",
+     "chunk_id": 1,
+     "quote": "Oil has not had the slightest influence, one way or another, in determining our policy with regard to Iraq."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 4.344928495000204,
+  "in_tokens": 2646,
+  "out_tokens": 570,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "Correctness: The answer has the same substance as X: Thurtle's argument that oil loomed large, his citation of oil lobbying at Geneva, and Amery's denial. It is partially correct for the same reasons.\n\nFaithfulness: Claim 1 is supported by its quote. Claim 2 is not: its quote is only about the Daily Telegraph not favouring a 'policy of scuttle', and says nothing about lobbying by oil interests. Claim 3 is supported by its quote.",
+   "correctness": "partially",
+   "faithfulness": [
+    "yes",
+    "no",
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "Y",
+   "in_tokens": 3139.0,
+   "out_tokens": 292.5
+  }
+ },
+ {
+  "id": "q030",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "The economic motivation was oil. In March 1925 the Turkish representative proposed settling the question outside the League of Nations, with Turkey receiving as much of the Mosul vilayet as she desired and a British company, approved by His Majesty's Government, receiving the exploitation of all the oil. Chamberlain confirmed that approximately two-thirds of the vilayet was to be returned to Turkey under this proposal, and that the oil exploitation was to be granted to an English group approved by the British Government. He used this to rebut the suggestion that Britain was acting to secure Iraq's oil.",
+   "claims": [
+    "The March 1925 Turkish proposal was a bargain pairing Turkish control of as much of Mosul as she wanted with British exploitation of all the oil.",
+    "Approximately two-thirds of the vilayet was to be returned to Turkey, and oil exploitation was to go to a British-approved English group.",
+    "Chamberlain used the proposal to counter the suggestion that Britain wanted Iraq's oil."
+   ]
+  },
+  "schema_ok": false,
+  "stop_reason": "tool_use",
+  "latency_s": 6.906851667999945,
+  "in_tokens": 2272,
+  "out_tokens": 1142,
+  "citations": [],
+  "max_tokens": 1600,
+  "first_attempt": {
+   "output": {
+    "status": "answered",
+    "answer": "The economic motivation was oil. In March 1925 the Turkish representative proposed settling the question outside the League of Nations. Turkey would receive as much of the Mosul vilayet as it desired, and in return a British company approved by the British Government would have the exploitation of all the oil. Chamberlain later confirmed that approximately two-thirds of the vilayet was to be returned to Turkey under the proposal, with oil exploitation granted to an English group approved by the British Government. He cited the proposal to rebut the suggestion that Britain was driven by a desire to secure Iraq's oil."
+   },
+   "stop_reason": "max_tokens",
+   "latency_s": 5.551053018998573,
+   "in_tokens": 2272,
+   "out_tokens": 800
+  },
+  "judge": {
+   "reasoning": "The output is malformed or truncated. The claims are plain strings with no chunk ids or quotes, so it counts as a failed answer. The prose itself does match the reference, but because the output is malformed, correctness is marked incorrect. None of the claims has a quote, so none can be verified as supported.",
+   "correctness": "incorrect",
+   "faithfulness": [
+    "no",
+    "no",
+    "no"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "X",
+   "in_tokens": 2850.0,
+   "out_tokens": 226.0
+  }
+ },
+ {
+  "id": "q032",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "Per Chamberlain's account, the initiative came from the British Government, not a neutral third party. Right after the Council's decision, he declared that Britain would open conversations with Turkey, and the Prime Minister, in his absence, at once invited the Turkish Ambassador to meet him and begin them. Viscount Cecil likewise said the British Government would gladly lend itself to conversation with Turkey.",
+   "claims": [
+    {
+     "claim": "Chamberlain declared on behalf of the British Government that it would open conversations with Turkey once the boundary was fixed.",
+     "chunk_id": 2,
+     "quote": "No sooner had the Council given its decision than, on behalf of His Majesty's Government, I made a declaration upon which we have acted, that now there was a boundary fixed which might be the basis of discussion, we would be glad to open conversations with the Republic of Turkey and to see whether any means could be found of rendering that decision more palatable to them."
+    },
+    {
+     "claim": "The Prime Minister, in Chamberlain's absence, invited the Turkish Ambassador to begin the conversations.",
+     "chunk_id": 2,
+     "quote": "My right hon. Friend the Prime Minister, in my absence, at once invited the Turkish Ambassador to meet him and begin these conversations."
+    },
+    {
+     "claim": "The British Government stated it would gladly lend itself to conversation with Turkey after the Council's decision.",
+     "chunk_id": 4,
+     "quote": "The Council having given its decision, His Majesty's Government will gladly lend itself to conversation with the Government of the Republic of Turkey in order to see whether, while taking due account of the Council's decision, it may not be possible to render the relations between our two countries easier and safer."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 6.03719799099963,
+  "in_tokens": 2480,
+  "out_tokens": 731,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "The reference names Sir Ronald Lindsay, the British Ambassador, who went to Angora to resume and conclude negotiations. None of the chunks the system saw mention Lindsay. X correctly says the British Government took the initiative: Chamberlain's declaration and the Prime Minister's invitation to the Turkish Ambassador. That matches the reference in broad direction, since Lindsay acted for HMG, but X misses the specific person who actually brought the parties together. Partially correct. All three claims are supported by their quotes.",
+   "correctness": "partially",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "X",
+   "in_tokens": 2965.5,
+   "out_tokens": 392.5
+  }
+ },
+ {
+  "id": "q033",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "On March 29, 1926, Noel Buxton did not ask about the Petrich incident in the evidence provided. He asked whether the Government would take part in a League of Nations-organised loan to Bulgaria, modelled on the loan to Greece, to solve the refugee problem. He then asked whether the Greek system was working well and was the best model. Chamberlain said he could not commit the Government in advance and was unwilling to make a general statement about a League-sponsored loan.",
+   "claims": [
+    {
+     "claim": "Buxton asked whether the Government would take part in a League-organised loan to Bulgaria, similar to the Greek loan, to solve the refugee problem.",
+     "chunk_id": 1,
+     "quote": "asked the Secretary of State for Foreign Affairs whether His Majesty's Government is willing to take part in a loan to Bulgaria, organised by the League of Nations on lines similar to the loan to Greece, and for a similar purpose, namely, the solution of the refugee problem?"
+    },
+    {
+     "claim": "Buxton followed up by asking whether the Greek system was working well and was the best model.",
+     "chunk_id": 2,
+     "quote": "In connection with that, is the system working well in Greece, and is it not the best model to follow?"
+    },
+    {
+     "claim": "Chamberlain declined to say in advance what the Government's attitude would be.",
+     "chunk_id": 3,
+     "quote": "I cannot undertake to say in advance what would be the attitude of His Majesty's Government in the event of the League's under taking to organise such a loan."
+    },
+    {
+     "claim": "Chamberlain said the Greek system was working well but not without difficulty, and he was unwilling to make a general statement.",
+     "chunk_id": 4,
+     "quote": "It is now working well, but it has not worked without difficulty, and, though I recognise the importance, for peace in these districts, of the settlement of these refugees, I should be unwilling to make any statement in general terms about a loan brought out under the auspices of the League."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 5.165503017000447,
+  "in_tokens": 1714,
+  "out_tokens": 793,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ]
+ },
+ {
+  "id": "q034",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "Buxton framed the Bulgarian loan as modelled on the Greek one because both were meant to solve a refugee problem. He asked whether the British Government would join a League-organised Bulgarian loan on lines similar to the Greek loan and for the same purpose. He also pressed whether the Greek system was working well and was the best model to follow, which suggests he saw it as a proven precedent. The evidence gives no fuller statement of his reasoning than this.",
+   "claims": [
+    {
+     "claim": "Buxton asked about a League-organised Bulgarian loan on lines similar to the Greek loan and for a similar purpose, the refugee problem.",
+     "chunk_id": 2,
+     "quote": "asked the Secretary of State for Foreign Affairs whether His Majesty's Government is willing to take part in a loan to Bulgaria, organised by the League of Nations on lines similar to the loan to Greece, and for a similar purpose, namely, the solution of the refugee problem?"
+    },
+    {
+     "claim": "Buxton suggested the Greek system was working well and was the best model to follow.",
+     "chunk_id": 1,
+     "quote": "In connection with that, is the system working well in Greece, and is it not the best model to follow?"
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 7.6913599020008405,
+  "in_tokens": 1522,
+  "out_tokens": 637,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "Correctness: the answer matches the reference. Both loans were League-organised and served the same purpose, solving the refugee problem, and Buxton treated the Greek loan as a model. Faithfulness: claim 1 is directly supported by chunk 2. Claim 2 says Buxton 'suggested the Greek system was working well', but the quote only asks whether it was working well. The rhetorical 'is it not the best model' implies the model point, but the claim states as a suggestion what was only a question, so it is overstated.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "no"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "X",
+   "in_tokens": 2423.0,
+   "out_tokens": 321.5
+  }
+ },
+ {
+  "id": "q036",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not link Kellogg's June 1926 recommendation to the Greco-Bulgarian incident (Petrich); none of the chunks mention it. They show that on June 15, 1926 Kellogg laid the 1919 Paris air navigation convention before Coolidge for transmission to the Senate, and recommended that the Senate consent to ratification with reservations, including one on the Permanent Court of International Justice. Nothing here connects that to Petrich, so I cannot confirm the premise of the question.",
+   "claims": [
+    {
+     "claim": "Kellogg's June 15, 1926 report concerned the International Convention Relating to the Regulation of Aerial Navigation, to be sent to the Senate for advice and consent to ratification.",
+     "chunk_id": 1,
+     "quote": "The President : The undersigned the Secretary of State has the honor to lay before the President, with a view to its transmission to the Senate to receive the advice and consent of that body to its ratification, if his judgment approve thereof, the International Convention Relating to the Regulation of Aerial Navigation with Articles 5 and 34 amended as recommended by the International Commission for Air Navigation in the protocols of amendment approved by the Commission on October 27, 1922 and June 30, 1923, respectively."
+    },
+    {
+     "claim": "Kellogg suggested the Senate might include a reservation concerning the Permanent Court of International Justice.",
+     "chunk_id": 2,
+     "quote": "It therefore is suggested that the Senate may desire to include in the resolution giving its advice and consent to ratification a reservation concerning the Permanent Court of International Justice."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 9.950115305999134,
+  "in_tokens": 2805,
+  "out_tokens": 781,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "The question contains a false premise about Petrich, but the core answer is in the evidence. X flags the premise correctly and gives the gist: it says Kellogg laid the convention before Coolidge and recommended Senate consent with reservations, including one on the PCIJ. It labels its status insufficient_evidence even though it answers the substantive question. It leaves out the Articles 5 and 34 amendments from its recommendation summary, and it never quotes the key recommendation sentence. It is broadly correct but less complete than the reference. Both claims are supported by their quotes.",
+   "correctness": "partially",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "X",
+   "in_tokens": 3301.0,
+   "out_tokens": 230.5
+  }
+ },
+ {
+  "id": "q037",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "Kellogg's June 15, 1926 submission asked for ratification of the convention with Articles 5 and 34 amended. The amendments were those recommended by the International Commission for Air Navigation in protocols of October 27, 1922 and June 30, 1923, so he was adopting the Commission's amendments rather than originating them. Separately, he flagged Articles 34 and 37 (League of Nations and Permanent Court) as provisions to be covered by US reservations rather than amendment.",
+   "claims": [
+    "Kellogg laid before the President the convention with Articles 5 and 34 amended as recommended by the Commission's protocols.",
+    "Coolidge's request to the Senate likewise names Articles 5 and 34 as amended per the Commission's protocols.",
+    "Articles 34 and 37 were flagged for reservations, not amendment."
+   ]
+  },
+  "schema_ok": false,
+  "stop_reason": "tool_use",
+  "latency_s": 5.172358489000544,
+  "in_tokens": 2783,
+  "out_tokens": 476,
+  "citations": [],
+  "max_tokens": 1600,
+  "first_attempt": {
+   "output": {
+    "status": "answered",
+    "answer": "The Secretary of State's June 15, 1926 submission to President Coolidge concerned the convention \"with Articles 5 and 34 amended\". These amendments came from the International Commission for Air Navigation, which approved protocols of amendment on October 27, 1922 and June 30, 1923, respectively. They were not Kellogg's own proposals. Separately, Kellogg flagged Articles 34 and 37 (League of Nations and Permanent Court) as provisions to be covered by reservations rather than amendment.",
+    "claims": [
+     "chunk_id: 2",
+     "chunk_id: 1",
+     "chunk_id: 1"
+    ]
+   },
+   "stop_reason": "tool_use",
+   "latency_s": 7.356084516999545,
+   "in_tokens": 2783,
+   "out_tokens": 365
+  },
+  "judge": {
+   "reasoning": "The output is marked malformed/truncated, so it counts as a failed answer. Its claims also have no chunk IDs or quotes, so none can be checked against a quote. The text itself does match the reference (Articles 5 and 34), but as a failed output it has to be marked incorrect, and each unsupported claim gets no.",
+   "correctness": "incorrect",
+   "faithfulness": [
+    "no",
+    "no",
+    "no"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "X",
+   "in_tokens": 3155.5,
+   "out_tokens": 227.5
+  }
+ },
+ {
+  "id": "q040",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence gives Bulgaria's date for the Additional Protocol, but not for the base Convention. The tabulation lists Bulgaria's adhesion to the Additional Protocol as Nov. 28, 1924. Greece is listed as having signed the Protocol on May 1, 1920 and as being among the states that had deposited ratifications by the time the Convention and Protocol entered into force on July 11, 1922. On the Protocol, then, Bulgaria came in about two and a half years after Greece's ratification and the entry into force. The Convention-table row for Bulgaria's accession date is not in the retrieved text, so I cannot give that date or compare it with Greece's.",
+   "claims": [
+    {
+     "claim": "The tabulation lists Bulgaria's date for the Additional Protocol as Nov. 28, 1924.",
+     "chunk_id": 1,
+     "quote": "Bulgaria Nov. 28, 1924 France May 1, 1920 June 1, 1922 Greece do do Italy do Apr. 10, 1923"
+    },
+    {
+     "claim": "Greece was among the signatory states that had deposited ratifications by the time the Convention and Additional Protocol went into force on July 11, 1922.",
+     "chunk_id": 3,
+     "quote": "I am informed that the Convention, as well as the Additional Protocol of May 1, 1920, to the Convention, went into force on July 11, 1922, the following signatory States having deposited their ratifications: Belgium, Bolivia, The British Empire, France, Greece, Japan, Portugal, Kingdom of the Serbs, Croats and Slovenes, and Siam."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 5.067581761000838,
+  "in_tokens": 3016,
+  "out_tokens": 683,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "max_tokens": 1600,
+  "first_attempt": {
+   "output": {
+    "status": "insufficient_evidence",
+    "answer": "The evidence gives Bulgaria's adhesion date for the Additional Protocol only: Nov. 28, 1924. The base Convention's date for Bulgaria is not shown. Greece's ratification is shown only as \"do do\" (ditto marks) in the table, and the evidence otherwise says Greece had deposited its ratification by the time the Convention and Protocol entered into force on July 11, 1922. That places Greece's ratification before the in-force date and Bulgaria's Protocol adhesion about two years later. An exact comparison, and Bulgaria's accession date to the base Convention, cannot be given from these chunks."
+   },
+   "stop_reason": "max_tokens",
+   "latency_s": 5.958366938999461,
+   "in_tokens": 3016,
+   "out_tokens": 800
+  },
+  "judge": {
+   "reasoning": "The chunks do contain Bulgaria's Protocol date (Nov. 28, 1924). They also contain Greece's 'do do' entry, which by ditto marks gives May 1, 1920 and June 1, 1922. However, the July 5, 1923 Convention accession date for Bulgaria is not in the retrieved chunks. X correctly gives the Protocol date and correctly says the Convention date is missing. It compares Bulgaria with Greece, which was a ratifier by July 1922, but it does not give Greece's June 1, 1922 deposit date. The answer is partial: one key element (Bulgaria's Convention date) is missing, and the system honestly flags that gap. Both claims are supported by their quotes.",
+   "correctness": "partially",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "X",
+   "in_tokens": 3392.5,
+   "out_tokens": 275.0
+  }
+ },
+ {
+  "id": "q044",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "The evidence names three prospective members of the committee. They were Baron Beyens of Belgium, a former Foreign Minister, who had accepted; Ferraris of Italy, who was willing but awaiting his government's consent; and a Swiss Foreign Office official (name garbled as \"Axinneer [Calonder?]\"), whose government was willing. The October 5 telegram describes these appointments as not yet final, so it does not confirm the committee's ultimate composition.",
+   "claims": [
+    {
+     "claim": "Baron Beyens of Belgium had accepted a place on the committee.",
+     "chunk_id": 2,
+     "quote": "Baron Beyens, former Minister for Foreign Affairs of Belgium, has accepted; Ferraris of Italy is willing to accept but has not yet received the consent of his Government; Axinneer [ Calonder? ] of the Swiss Foreign Office has not yet replied but his Government is willing that he should serve."
+    },
+    {
+     "claim": "These three would constitute the committee if no American was appointed, and the committee was to be set up under the Council's September 20 resolution.",
+     "chunk_id": 2,
+     "quote": "If these three are finally appointed it is hoped they can commence their preliminary labors here in ten days; they will alone constitute the committee if no American is appointed."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 5.5497488839992,
+  "in_tokens": 2653,
+  "out_tokens": 551,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "X correctly names Baron Beyens (Belgium), Ferraris (Italy) and the Swiss Foreign Office official (Calonder). This matches the reference. X's caveat that the appointments were not yet final is accurate to chunk 2, and it does not omit anything critical. On faithfulness, claim 1 is supported by its quote. Claim 2's first half matches the quote, but its second half, that the committee was set up under the September 20 resolution, comes from chunk 1 and does not appear in the cited chunk 2 quote. So claim 2 is not fully supported by its own quote.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "no"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "X",
+   "in_tokens": 2996.5,
+   "out_tokens": 361.5
+  }
+ },
+ {
+  "id": "q050",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "Paragraph 6 of the Annex to Article 88 made the cost of the troops occupying the Upper Silesia plebiscite area a charge on that area. In a later Commons answer, the cost was described as chargeable to Poland and Germany under the Treaty of Versailles.",
+   "claims": [
+    {
+     "claim": "Under paragraph 6 of the Annex to Article 88, the cost of the occupying troops in the plebiscite area was a charge on the area.",
+     "chunk_id": 1,
+     "quote": "Under paragraph 6 of the Annex to Article 88 of the Treaty of Versailles, the cost of the troops occupying the pl\u00e9biscite area in Upper Silesia is a charge on the area."
+    },
+    {
+     "claim": "In 1922 the cost was described as chargeable to Poland and Germany under the Treaty of Versailles.",
+     "chunk_id": 2,
+     "quote": "The cost is chargeable to Poland and Germany under the terms of the Treaty of Versailles."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 3.3504262839996954,
+  "in_tokens": 1758,
+  "out_tokens": 489,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "The answer matches the reference: under Paragraph 6, the cost of the occupying troops is a charge on the area. The 1922 statement is correctly framed as a later Commons answer. Both claims are directly supported by their quotes.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "Y",
+   "in_tokens": 2509.0,
+   "out_tokens": 168.0
+  }
+ },
+ {
+  "id": "q051",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "By the latest figures given in the Commons on 20 June 1921, the Inter-Allied Commission had 520 members in Upper Silesia: 294 French, 85 Italian and 141 British. These three numbers sum to 520, so they match the stated total.",
+   "claims": [
+    {
+     "claim": "520 members of the Inter-Allied Commission were in Upper Silesia, broken down as 294 French, 85 Italian and 141 British.",
+     "chunk_id": 1,
+     "quote": "According to the latest figures available, 520 members of the Inter-Allied Commission are in Upper Silesia at present, of whom 294 are French, 85 Italian, and 141 British."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 4.471380257000419,
+  "in_tokens": 1708,
+  "out_tokens": 445,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "Y matches the reference exactly: 520 members, made up of 294 French, 85 Italian and 141 British, from the 20 June 1921 Commons answer. Its arithmetic check is correct, since 294 + 85 + 141 = 520. The answer contains no wrong statements. The claim is supported by the quote from chunk 1.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "Y",
+   "in_tokens": 2420.0,
+   "out_tokens": 262.5
+  }
+ },
+ {
+  "id": "q055",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "According to the evidence, Mr. Chamberlain attributed the delay on 9 June 1921 to the other parties to the conference not being ready, while the British Government was ready for an early conference. He said arrangements had not yet been made. The chunks do not say why the other parties were unready or explain earlier delays.",
+   "claims": [
+    {
+     "claim": "Chamberlain thought the delay was because other parties to the conference were not ready.",
+     "chunk_id": 1,
+     "quote": "I think it is because other parties to the conference are not ready."
+    },
+    {
+     "claim": "The British Government was ready for an early conference but arrangements had not been made.",
+     "chunk_id": 2,
+     "quote": "His Majesty's Government are ready for a conference at an early date, but the arrangements have not yet been made."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 3.487283080999987,
+  "in_tokens": 1481,
+  "out_tokens": 452,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "max_tokens": 1600,
+  "first_attempt": {
+   "output": {
+    "status": "answered",
+    "claims": [
+     {
+      "claim": "Chamberlain attributed the delay to other parties to the conference not being ready.",
+      "chunk_id": 1,
+      "quote": "I think it is because other parties to the conference are not ready."
+     },
+     {
+      "claim": "The British Government said it was ready for an early conference, but arrangements had not yet been made.",
+      "chunk_id": 2,
+      "quote": "His Majesty's Government are ready for a conference at an early date, but the arrangements have not yet been made."
+     }
+    ]
+   },
+   "stop_reason": "tool_use",
+   "latency_s": 3.330561660000967,
+   "in_tokens": 1481,
+   "out_tokens": 417
+  },
+  "judge": {
+   "reasoning": "Y covers the reference's key point: other parties were not ready, while Britain was ready but arrangements had not been made. It also flags the limits of the evidence. Both claims are backed by their quotes.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "Y",
+   "in_tokens": 2342.0,
+   "out_tokens": 169.0
+  }
+ },
+ {
+  "id": "q062",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "needs_clarification",
+   "answer": "Which disputed area do you mean: the Mosul frontier between Turkey and Iraq, or another territory such as the one discussed for the Armenians at Lausanne?",
+   "claims": []
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 2.773104529998818,
+  "in_tokens": 2611,
+  "out_tokens": 254,
+  "citations": [],
+  "judge": {
+   "reasoning": "This item is ambiguous, and the expected behaviour is to ask which dispute is meant. X does that and offers useful options taken from the chunks (the Mosul frontier, or the Armenian territory discussed at Lausanne). It makes no claims of its own.",
+   "correctness": "n/a",
+   "faithfulness": [],
+   "appropriate_behaviour": "yes",
+   "label": "X",
+   "in_tokens": 2648.5,
+   "out_tokens": 181.0
+  }
+ },
+ {
+  "id": "q065",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not say how the League finally decided who got the Aaland Islands. It shows only the early stages. The British Secretary of State referred the dispute to the League Council, and the Council then appointed a commission of three jurists to give an advisory opinion on whether the matter was within Finland's domestic jurisdiction and on demilitarization. The jurists' opinion and the Council's final ruling on sovereignty are missing from the chunks.",
+   "claims": [
+    {
+     "claim": "The Council unanimously set up a commission of three international jurists to give an advisory opinion on domestic jurisdiction and demilitarization.",
+     "chunk_id": 1,
+     "quote": "\u201cThat a commission of three international jurists shall be appointed to give to the Council on the following questions an advisory opinion with the least possible delay."
+    },
+    {
+     "claim": "The Aaland Islands case was brought to the League Council by the British Secretary of State under Article XI of the Covenant.",
+     "chunk_id": 2,
+     "quote": "the Secretary of State, acting in exercise of the friendly right conferred by Article XI. of the Covenant of the League of Nations, has brought to the attention of the Council of the League the case of the Aaland Islands as a matter affecting international relations, which unfortunately threatens to disturb the good understanding between nations upon whom peace depends."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 7.571558786999958,
+  "in_tokens": 2349,
+  "out_tokens": 707,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "This is an out-of-corpus item. X correctly declines: it says the chunks cover only the early steps (the British referral and the jurists' commission) and not the final ruling, and it invents nothing. Claim 1 goes beyond its quote. The quote supports the setting-up of a three-jurist commission to give an advisory opinion, but it does not mention 'unanimously' or the domestic-jurisdiction and demilitarization topics, which appear elsewhere in the chunk. Claim 2 is fully supported by the Article XI quote.",
+   "correctness": "n/a",
+   "faithfulness": [
+    "no",
+    "yes"
+   ],
+   "appropriate_behaviour": "yes",
+   "label": "X",
+   "in_tokens": 2946.0,
+   "out_tokens": 432.5
+  }
+ },
+ {
+  "id": "q069",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence gives only a partial picture. Lloyd George describes the League ordering Poland to keep within a line, General Zeligowski defying it and annexing Vilna, and a unanimous League resolution of condemnation. He adds that Poland first disowned the general, then admitted acting under orders, and later honoured him. The other chunks are only questions asked in the Commons. None of the chunks analyses why the League could not remove Poland from Vilna, for example the lack of enforcement or the positions of the great powers, so the underlying cause is not covered.",
+   "claims": [
+    {
+     "claim": "The League ordered Poland to keep within a line, and Zeligowski defied this and annexed Vilna.",
+     "chunk_id": 1,
+     "quote": "General Zeligowski marched with a division in defiance of that\u2014it is only within the last few years\u2014and annexed Vilna with a Polish division; and they said he was a mutinous general."
+    },
+    {
+     "claim": "The League condemned the act unanimously, but Poland later honoured the general.",
+     "chunk_id": 1,
+     "quote": "The League of Nations, on the motion of a distinguished Frenchman who was a genuine friend of the League, M. Bourgeois, carried unanimously a resolution condemning the act, and we joined in the protest."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 5.282162016999791,
+  "in_tokens": 1764,
+  "out_tokens": 531,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "max_tokens": 1600,
+  "first_attempt": {
+   "output": {
+    "status": "insufficient_evidence",
+    "answer": "The evidence shows that Poland defied the League, but it does not explain why the League failed to get Poland out of Vilna. Lloyd George says the League ordered Poland to keep within a line with Vilna on the Lithuanian side, and General Zeligowski ignored it and annexed Vilna. The League unanimously condemned the act and Britain joined the protest. Poland first disowned the general, but its President later admitted acting under his orders, and the general was honoured in 1923. The remaining chunks are only questions from members, with no answers, and nothing on enforcement or the reasons the League could not reverse the annexation."
+   },
+   "stop_reason": "max_tokens",
+   "latency_s": 7.486717469000723,
+   "in_tokens": 1764,
+   "out_tokens": 800
+  },
+  "judge": {
+   "reasoning": "Output Y also returned insufficient_evidence, which is appropriate. It mentions possible causes (lack of enforcement, the positions of the great powers) only as examples of what the chunks do not cover, not as an answer, so it does not invent one. Claim 1 is supported: its quote shows the defiance and the annexation, and 'in defiance of that' refers back to the League's order. Claim 2 says 'Poland later honoured the general', but its own quote only covers the League's condemnation. The honours appear elsewhere in chunk 1, not in the quoted text, so claim 2 is not fully supported by its quote.",
+   "correctness": "n/a",
+   "faithfulness": [
+    "yes",
+    "no"
+   ],
+   "appropriate_behaviour": "yes",
+   "label": "Y",
+   "in_tokens": 2535.0,
+   "out_tokens": 243.5
+  }
+ },
+ {
+  "id": "q073",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence covers only one episode, the March 1926 Commons debate on the failed attempt to admit Germany to the League Council. In that debate the reaction was sharply critical of the Government. Mr. MacDonald called the outcome a lamentable failure of British diplomacy. Mr. Thurtle accused the Foreign Secretary of misleading the House and of not carrying out the people's wishes at Geneva. Sir A. Chamberlain said he would accept the House's verdict. The chunks do not cover other disputes or other League decisions, so they cannot show a general pattern of Parliament's reaction.",
+   "claims": [
+    {
+     "claim": "MacDonald condemned the outcome of the March 1926 Geneva episode as a major diplomatic failure.",
+     "chunk_id": 3,
+     "quote": "It has resulted in the most lamentable failure that British diplomacy has had to face for a great many years."
+    },
+    {
+     "claim": "Thurtle argued the Government had misled the House and failed to carry out the people's wishes at Geneva.",
+     "chunk_id": 1,
+     "quote": "We contend that the Foreign Secretary misled the House of Commons and the people of this country, and we contend that when he got to Geneva he failed to carry out the wishes of the people of this country."
+    },
+    {
+     "claim": "Chamberlain left the verdict to the House and said he would not complain if it went against him.",
+     "chunk_id": 2,
+     "quote": "If it goes against me, I shall neither complain nor repine."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 5.575298238998585,
+  "in_tokens": 2591,
+  "out_tokens": 821,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "max_tokens": 1600,
+  "first_attempt": {
+   "output": {
+    "status": "insufficient_evidence",
+    "answer": "The evidence covers only one debate, on 23 March 1926, about the failed attempt to admit Germany to the League Council. It does not show how Parliament reacted in general whenever League decisions went against British wishes. In that debate the Opposition attacked the Government. Mr. MacDonald called the outcome a \"most lamentable failure\" of British diplomacy. Mr. Thurtle said the Opposition would vote against the Government because the Foreign Secretary had misled the House and failed to carry out the people's wishes. Sir A. Chamberlain accepted that the decision was in the House's hands. Evidence from other disputes or debates would be needed to say how Parliament reacted more generally."
+   },
+   "stop_reason": "max_tokens",
+   "latency_s": 5.712022836998585,
+   "in_tokens": 2591,
+   "out_tokens": 800
+  },
+  "judge": {
+   "reasoning": "Y marks the item insufficient_evidence and states that the chunks cover only one episode. It says plainly that they cannot show a general pattern of Parliament's reaction. It also gives a short summary of what that one debate contains, presented as limited context. This is the appropriate behaviour for an out-of-corpus item, and each claim matches its quote.",
+   "correctness": "n/a",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes"
+   ],
+   "appropriate_behaviour": "yes",
+   "label": "Y",
+   "in_tokens": 3048.5,
+   "out_tokens": 245.5
+  }
+ },
+ {
+  "id": "q079",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not cover the Greek-Bulgarian border fighting. The only chunk on League speed (Cecil, 1924) concerns a controversy involving a great Power and Greece, which does not match a Greek-Bulgarian border clash. The other chunks cover Greek refugee loans, Albanian famine relief and Bulgarian disarmament. Nothing says how quickly the League acted on a Greek-Bulgarian border outbreak, or why it worked.",
+   "claims": []
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 5.0283235240003705,
+  "in_tokens": 2724,
+  "out_tokens": 450,
+  "citations": [],
+  "max_tokens": 1600,
+  "first_attempt": {
+   "output": {
+    "status": "insufficient_evidence",
+    "answer": "The evidence does not cover fighting on the Greek-Bulgarian border. Chunk 1 has Cecil saying that warlike developments ceased instantly once the Greeks placed a matter in the League's hands, but it does not identify the Greek-Bulgarian border as that matter. The other chunks concern Greek refugees, Albania and disarmament. Nothing gives the timing of a League response to a Greek-Bulgarian border clash or explains why it succeeded.",
+    "claims": "\n<invoke name=\"answer\">\n</invoke>\n"
+   },
+   "stop_reason": "tool_use",
+   "latency_s": 5.7162206240009255,
+   "in_tokens": 2724,
+   "out_tokens": 472
+  },
+  "judge": {
+   "reasoning": "The reference evidence is Cecil's remark on the Greco-Bulgarian dispute (stop the fighting, withdraw troops, then arbitration). That passage is not among the chunks the system saw. Chunk 1 is about the 1924 controversy that involved a great Power and Greece (the Corfu incident with Italy), not the Greek-Bulgarian border. X correctly sees that this is a different case and declines. The decline is justified because the provided chunks genuinely do not contain the answer. Even so, the rubric marks correctness as incorrect because the user got no answer.",
+   "correctness": "incorrect",
+   "faithfulness": [],
+   "appropriate_behaviour": "n/a",
+   "label": "X",
+   "in_tokens": 2999.0,
+   "out_tokens": 385.5
+  }
+ },
+ {
+  "id": "q082",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not cover League sanctions on Italy over Abyssinia. The chunks are 1926 Commons debates on the Anglo-Iraq Treaty and on the League and Locarno, and they discuss League sanctions only in general terms. None of them mentions Abyssinia or any sanctions imposed on Italy for it.",
+   "claims": []
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 3.100192193998737,
+  "in_tokens": 2487,
+  "out_tokens": 352,
+  "citations": [],
+  "judge": {
+   "reasoning": "This is an out-of-corpus item, and none of the chunks the system saw mention Abyssinia or any sanctions on Italy. They are 1926 debates, and Abyssinia only became an issue in 1935\u201336. X correctly declined and gave an accurate description of what the chunks cover. It made no claims, so there was nothing to check for faithfulness, and it invented nothing. This is the appropriate behaviour.",
+   "correctness": "n/a",
+   "faithfulness": [],
+   "appropriate_behaviour": "yes",
+   "label": "X",
+   "in_tokens": 2640.5,
+   "out_tokens": 201.0
+  }
+ },
+ {
+  "id": "q084",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "The evidence gives a British view of why the US stayed out, not a full account. The main reason it points to is Clause (Article) 10 of the Covenant. Hopkinson said the US feared it could commit members to using armed force, which would clash with the Monroe doctrine if applied on the American continent. In 1920 Lord Sydenham added that the American people were sharply divided and that the US would not join without modifications to the Covenant. The chunks do not cover American domestic politics, such as the Senate's role.",
+   "claims": [
+    {
+     "claim": "Hopkinson said Clause 10 was, on the highest American authority, the main thing that kept America out of the League.",
+     "chunk_id": 1,
+     "quote": "It has been stated on the. highest American authority that it was Clause 10 more than anything else that kept America out of the League."
+    },
+    {
+     "claim": "The US feared Clause 10, as construed by the Locarno annexe, would bind members to use armed force in disputes between any two states, and might demand more than verbal recognition of the Monroe doctrine.",
+     "chunk_id": 2,
+     "quote": "Supposing the United States go on feeling, as they do now, that the Clause 10, as it is construed by the annexe of the Locarno Pact, means that the numbers would be bound to come in in case of disputes between any two States and to exercise arm force."
+    },
+    {
+     "claim": "Lord Sydenham said in 1920 that the American people were divided and that America would not join without modifications to the Covenant.",
+     "chunk_id": 3,
+     "quote": "To my mind it is certain that America will never join the League of Nations unless some modifications are introduced into the Covenant."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 6.174208920998353,
+  "in_tokens": 2533,
+  "out_tokens": 862,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "max_tokens": 1600,
+  "first_attempt": {
+   "output": {
+    "status": "answered",
+    "answer": "Based on the British parliamentary evidence, the main reason given is the Covenant's Clause 10 (and a companion clause). Sir Alfred Hopkinson said it was reported on the \"highest American authority\" that Clause 10 above all kept America out, and he described a US fear that members would be bound to use armed force in disputes between other states, which could conflict with the Monroe doctrine. In 1920 Lord Sydenham similarly judged that America would not join unless the Covenant was modified. These are British speakers' views, not American statements, so the evidence gives only a partial picture."
+   },
+   "stop_reason": "max_tokens",
+   "latency_s": 6.273919322000438,
+   "in_tokens": 2533,
+   "out_tokens": 800
+  },
+  "judge": {
+   "reasoning": "This is an out-of-corpus item. Y also hedges: it calls the answer a British view rather than a full account and notes that the Senate's role is not covered. That is an adequate flag of insufficient evidence, though Y frames Clause 10 somewhat more confidently as 'the main reason'. Claim 1 is supported. Claim 2 adds the Monroe doctrine point, which is in chunk 2 but not in the cited quote, and the original is only Hopkinson's hypothetical, so it is not supported by its own quote. Claim 3 says the American people were divided, which is not in the cited quote (it comes from another sentence in chunk 3), so it is not supported either.",
+   "correctness": "n/a",
+   "faithfulness": [
+    "yes",
+    "no",
+    "no"
+   ],
+   "appropriate_behaviour": "yes",
+   "label": "Y",
+   "in_tokens": 3056.0,
+   "out_tokens": 472.5
+  }
+ },
+ {
+  "id": "q085",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The provided evidence says nothing about the Munich Conference of 1938. The chunks only cover 1920-1924 matters (Vilna, an international financial conference, the Anglo-Soviet treaty, and the July 1924 conference on the German loan). Documents on the 1938 Munich Conference are missing.",
+   "claims": []
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 6.19535551700028,
+  "in_tokens": 2080,
+  "out_tokens": 292,
+  "citations": [],
+  "judge": {
+   "reasoning": "This is an out-of-corpus item, and Output Y declines appropriately. It says correctly that the chunks cover 1920-1924 and states that documents on Munich are missing. No claims are made and nothing is invented.",
+   "correctness": "n/a",
+   "faithfulness": [],
+   "appropriate_behaviour": "yes",
+   "label": "Y",
+   "in_tokens": 2414.5,
+   "out_tokens": 177.0
+  }
+ },
+ {
+  "id": "q087",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not say when, or whether, Germany left the League. The chunks are all from March 1926 and cover the failed attempt to admit Germany with a permanent Council seat, not a withdrawal. A source covering Germany's departure is missing.",
+   "claims": []
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 3.5187626629995066,
+  "in_tokens": 2629,
+  "out_tokens": 247,
+  "citations": [],
+  "judge": {
+   "reasoning": "This is an out-of-corpus item. Output Y correctly declines and accurately notes that the chunks are from March 1926 and concern the failed admission, not a withdrawal. It invents nothing.",
+   "correctness": "n/a",
+   "faithfulness": [],
+   "appropriate_behaviour": "yes",
+   "label": "Y",
+   "in_tokens": 2666.0,
+   "out_tokens": 228.5
+  }
+ },
+ {
+  "id": "q089",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "needs_clarification",
+   "answer": "Which plebiscite do you mean: the Upper Silesia plebiscite or the proposed Vilna plebiscite?",
+   "claims": []
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 2.084869708998667,
+  "in_tokens": 1579,
+  "out_tokens": 193,
+  "citations": [],
+  "judge": {
+   "reasoning": "The question is ambiguous. Output X asks a useful clarifying question that names both readings, the Upper Silesia plebiscite and the proposed Vilna plebiscite. This is the expected behaviour. It makes no claims, so there is nothing to check for faithfulness.",
+   "correctness": "n/a",
+   "faithfulness": [],
+   "appropriate_behaviour": "yes",
+   "label": "X",
+   "in_tokens": 2134.5,
+   "out_tokens": 203.0
+  }
+ },
+ {
+  "id": "q091",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "Yes. The evidence shows Britain accepted the League Council's decision on the Iraq-Turkey boundary. Chamberlain said Britain had undertaken to stand by it, and the government then offered Turkey talks on the basis of the fixed boundary. A Commons speaker (Major Hills) also said Britain had agreed to accept the award and could not accept part of it and reject the rest.",
+   "claims": [
+    {
+     "chunk_id": 2,
+     "claim": "Britain undertook in advance to stand by the League's decision.",
+     "quote": "I undertook to stand by the decision of the League.\""
+    },
+    {
+     "chunk_id": 1,
+     "claim": "After the Council's decision, the British Government acted on the fixed boundary by offering conversations with Turkey.",
+     "quote": "No sooner had the Council given its decision than, on behalf of His Majesty's Government, I made a declaration upon which we have acted, that now there was a boundary fixed which might be the basis of discussion, we would be glad to open conversations with the Republic of Turkey and to see whether any means could be found of rendering that decision more palatable to them."
+    },
+    {
+     "chunk_id": 5,
+     "claim": "Britain said it would talk with Turkey while taking due account of the Council's decision.",
+     "quote": "The Council having given its decision, His Majesty's Government will gladly lend itself to conversation with the Government of the Republic of Turkey in order to see whether, while taking due account of the Council's decision, it may not be possible to render the relations between our two countries easier and safer."
+    },
+    {
+     "chunk_id": 4,
+     "claim": "A speaker in the Commons said Britain had agreed to accept the League's award as a whole, including any condition attached to it.",
+     "quote": "We agreed to accept the award of the League, and if the Council in its wisdom chose to attach a condition extending the terms of the Treaty between this country and Iraq, we have to accept that condition or reject the whole award."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 8.659205267000289,
+  "in_tokens": 2401,
+  "out_tokens": 799,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "Output Y also gives one confident 'Yes' about the Mosul (Iraq\u2013Turkey) boundary case. It does not acknowledge that the question is ambiguous or ask which dispute is meant, so the behaviour is inappropriate. Each claim is supported by its quote. In chunk 2, the words 'I undertook to stand by the decision of the League' are Chamberlain quoting another speaker, but they still describe Britain's commitment.",
+   "correctness": "n/a",
+   "faithfulness": [
+    "yes",
+    "yes",
+    "yes",
+    "yes"
+   ],
+   "appropriate_behaviour": "no",
+   "label": "Y",
+   "in_tokens": 3041.5,
+   "out_tokens": 392.0
+  }
+ },
+ {
+  "id": "q092",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "needs_clarification",
+   "answer": "Which treaty do you mean: the Anglo-Iraq Treaty (1926), the Anglo-Soviet Treaty (1924), or another one?",
+   "claims": []
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 4.440439480998975,
+  "in_tokens": 2637,
+  "out_tokens": 229,
+  "citations": [],
+  "judge": {
+   "reasoning": "Output Y asks a short clarifying question and names the relevant treaties from the evidence. It does not give a confident answer for a single case. There are no claims to check for faithfulness.",
+   "correctness": "n/a",
+   "faithfulness": [],
+   "appropriate_behaviour": "yes",
+   "label": "Y",
+   "in_tokens": 2644.0,
+   "out_tokens": 195.5
+  }
+ },
+ {
+  "id": "q094",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "needs_clarification",
+   "answer": "What does \"that\" refer to: the Allied troops and commissions in Upper Silesia, the League of Nations budget or delegation, or the International Labour Office/Organisation?",
+   "claims": []
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 2.3654840719991626,
+  "in_tokens": 1653,
+  "out_tokens": 226,
+  "citations": [],
+  "judge": {
+   "reasoning": "The item is ambiguous, and the output asks a useful clarifying question that lists the candidate referents found in the chunks. It invents nothing. There are no claims to check.",
+   "correctness": "n/a",
+   "faithfulness": [],
+   "appropriate_behaviour": "yes",
+   "label": "X",
+   "in_tokens": 2171.0,
+   "out_tokens": 141.5
+  }
+ },
+ {
+  "id": "q095",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "needs_clarification",
+   "answer": "Which dispute or place do you mean by \"there\"? If you mean the March 1926 Geneva proceedings over Germany's entry to the League and the Council, I can answer for that.",
+   "claims": []
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 2.211034660000223,
+  "in_tokens": 2451,
+  "out_tokens": 214,
+  "citations": [],
+  "judge": {
+   "reasoning": "Asks a useful clarifying question about what 'there' refers to and offers the 1926 Geneva case as a possible reading. It gives no confident single-case answer, which is appropriate. No claims to check.",
+   "correctness": "n/a",
+   "faithfulness": [],
+   "appropriate_behaviour": "yes",
+   "label": "Y",
+   "in_tokens": 2563.0,
+   "out_tokens": 262.5
+  }
+ },
+ {
+  "id": "q107",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "Kenworthy objects that the Pressburg district and Ersekhovar are predominantly Magyar but were handed to Czechoslovakia so that it would have a frontier on the Danube, including rich land south of the river. He argues that Czech access to the Danube could have been secured by guaranteeing freedom of transit along railways and roads rather than by transferring territory. He warns that handing the historically Hungarian town of Pressburg to alien rule will cause future warfare unless it is rectified, and that war in Europe harms Britain's finances and trade.",
+   "claims": [
+    {
+     "claim": "The Pressburg and Ersekhovar district is predominantly Magyar but was given to Czechoslovakia to give it a Danube frontier, including land south of the river.",
+     "chunk_id": 1,
+     "quote": "It has been handed over to the new Czechoslovak State in order that it should have a riparian frontier on the Danube."
+    },
+    {
+     "claim": "He argues that freedom of transit along railways and roads could have secured Czech access to the Danube instead of transferring territory.",
+     "chunk_id": 2,
+     "quote": "If it was necessary that the Czechs should be assured of freedom of transit to the Danube, why was not some-arrangement made whereby freedom of transit was given them along the railways and roads leading to it?"
+    },
+    {
+     "claim": "He warns that handing Pressburg to alien rule will, unless rectified, cause future warfare.",
+     "chunk_id": 2,
+     "quote": "Unless it is rectified that will be so, and it will be the cause of future warfare."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 6.531193730999803,
+  "in_tokens": 2624,
+  "out_tokens": 655,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "Covers every key point in the reference: the area is Magyar-majority, it was handed over to give Czechoslovakia a riparian frontier, and transit arrangements were the alternative. It also adds the warning about future war. Claim 1: the quote supports the handover to get a Danube frontier, but not 'predominantly Magyar' or the land south of the river, so the quote only partly supports the claim. Strictly, the Magyar part is a key element and is not in the quote, so I mark it no. Claims 2 and 3 are supported by their quotes; the 'alien rule' context in claim 3 comes from the same chunk, and the quote's 'that will be so' carries it, so I accept it.",
+   "correctness": "correct",
+   "faithfulness": [
+    "no",
+    "yes",
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "X",
+   "in_tokens": 3120.5,
+   "out_tokens": 297.0
+  }
+ },
+ {
+  "id": "q108",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "Asquith says that one of the greatest blots on the whole series of treaties is that the Great Powers did not insist, as a condition of granting these countries emancipation and autonomous rule, that they remain members of one economic unit, as they had been under the Austro-Hungarian Empire. He adds that the new states have since set up artificial barriers against one another, and that this has held back industrial recovery in the region.",
+   "claims": [
+    {
+     "claim": "Asquith calls the failure to keep the successor states in one economic unit one of the greatest blots on the series of treaties.",
+     "chunk_id": 1,
+     "quote": "I very much regret\u2014I think it has been one of the greatest blots upon the whole of this series of treaties\u2014that the Great Powers did not insist, as a condition of the emancipation and of the grant of autonomous rule to these countries, that they, should remain as they have been\u2014and that was the one virtue of the Austro-Hungarian Empire\u2014members of one economic unit."
+    },
+    {
+     "claim": "He says the artificial barriers the new states erected against one another have retarded the re-establishment of industrial life.",
+     "chunk_id": 2,
+     "quote": "Probably they are all in the right direction, but you ought to have gone a great deal further, and the terrible chaos to which my hon. Friend himself bore testimony, and which he obviously deplored, which has arisen from these new States erecting against one another all kinds of artificial barriers is one of the great causes which has retarded the re-establishment of free and full industrial life in that part of Europe from which, as we now know\u2014and we realise perhaps more than we ever have done the economic inter-dependence of the whole area\u2014we, France and America, and all the victorious nations are suffering only in a less degree than they are."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 4.607465900999159,
+  "in_tokens": 2850,
+  "out_tokens": 679,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   },
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "X gets the reference's key point right: the Great Powers did not insist that the new states stay one economic unit. It correctly says Asquith called this 'one of the greatest blots', which matches his own hedged wording. Its extra point about artificial barriers holding back industrial recovery is accurate to chunk 2. Both claims are supported by their quotes.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes",
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "X",
+   "in_tokens": 3183.0,
+   "out_tokens": 217.5
+  }
+ },
+ {
+  "id": "q111",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "According to Jonas Vileitis's despatch to the Secretary of State, the treaty of peace was ratified by the Lithuanian Constituent Assembly on August 6th (1920).",
+   "claims": [
+    {
+     "claim": "The treaty of peace was ratified by the Lithuanian Constituent Assembly on August 6th.",
+     "chunk_id": 1,
+     "quote": "The same despatch states that on August 6th the treaty of peace was ratified by the Lithuanian Constituent Assembly."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 4.267621245000555,
+  "in_tokens": 2819,
+  "out_tokens": 262,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "The answer gives August 6th (1920), which matches the reference. The claim restates the quote word for word. One small slip: the quote says 'the same despatch states', so the despatch is a report Vileitis is passing on, not his own. Calling it 'Vileitis's despatch' is slightly loose, but the date is right.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "X",
+   "in_tokens": 2837.0,
+   "out_tokens": 255.0
+  }
+ },
+ {
+  "id": "q113",
+  "model": "claude-sonnet-5-5",
+  "output": {
+   "status": "answered",
+   "answer": "In his speech of 25 November 1925, Lord Parmoor said the League had between fifty and sixty constituent Members. He gave a range, not an exact number. His other speeches in the evidence (1924 and 1926) give no membership figure.",
+   "claims": [
+    {
+     "claim": "Lord Parmoor said the League had between fifty and sixty constituent Members.",
+     "chunk_id": 1,
+     "quote": "At the present time in the League of Nations there are between fifty and sixty constituent Members claiming, as they are entitled to claim, an equality in treatment and consideration under the terms of the Covenant of the League of Nations."
+    }
+   ]
+  },
+  "schema_ok": true,
+  "stop_reason": "tool_use",
+  "latency_s": 3.8332323699996778,
+  "in_tokens": 2459,
+  "out_tokens": 349,
+  "citations": [
+   {
+    "in_range": true,
+    "quote_found": true
+   }
+  ],
+  "judge": {
+   "reasoning": "Y gives the correct answer, between fifty and sixty, and correctly ties it to the 1925 speech. Its added note is accurate: the 1924 and 1926 chunks give no membership figure. The quote supports the claim.",
+   "correctness": "correct",
+   "faithfulness": [
+    "yes"
+   ],
+   "appropriate_behaviour": "n/a",
+   "label": "Y",
+   "in_tokens": 2706.5,
+   "out_tokens": 155.0
+  }
+ }
+]

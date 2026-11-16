@@ -1,0 +1,62 @@
+[
+ {
+  "k": 1,
+  "id": "q028",
+  "model": "claude-haiku-5-5",
+  "judge": "partially"
+ },
+ {
+  "k": 2,
+  "id": "q044",
+  "model": "claude-haiku-5-5",
+  "judge": "incorrect"
+ },
+ {
+  "k": 3,
+  "id": "q006",
+  "model": "claude-sonnet-5-5",
+  "judge": "correct"
+ },
+ {
+  "k": 4,
+  "id": "q003",
+  "model": "claude-haiku-5-5",
+  "judge": "incorrect"
+ },
+ {
+  "k": 5,
+  "id": "q003",
+  "model": "claude-sonnet-5-5",
+  "judge": "incorrect"
+ },
+ {
+  "k": 6,
+  "id": "q040",
+  "model": "claude-sonnet-5-5",
+  "judge": "partially"
+ },
+ {
+  "k": 7,
+  "id": "q108",
+  "model": "claude-sonnet-5-5",
+  "judge": "correct"
+ },
+ {
+  "k": 8,
+  "id": "q113",
+  "model": "claude-haiku-5-5",
+  "judge": "correct"
+ },
+ {
+  "k": 9,
+  "id": "q037",
+  "model": "claude-sonnet-5-5",
+  "judge": "incorrect"
+ },
+ {
+  "k": 10,
+  "id": "q030",
+  "model": "claude-haiku-5-5",
+  "judge": "correct"
+ }
+]

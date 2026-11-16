@@ -1,0 +1,175 @@
+{
+ "weights": {
+  "accuracy": 0.6,
+  "cost": 0.3,
+  "latency": 0.1
+ },
+ "models": {
+  "haiku": {
+   "model": "claude-haiku-5-5",
+   "n": 44,
+   "unjudged": [
+    "q033"
+   ],
+   "schema_failures": [],
+   "rerun_at_1600": [
+    "q008",
+    "q015",
+    "q017",
+    "q023",
+    "q024",
+    "q036",
+    "q037",
+    "q040",
+    "q091"
+   ],
+   "n_answerable": 24,
+   "n_unanswerable": 19,
+   "schema_ok": 44,
+   "correctness": 0.6875,
+   "faithfulness": 0.8333333333333334,
+   "n_claims": 78,
+   "citation_validity": 0.9871794871794872,
+   "chunk_id_in_range": 1.0,
+   "unanswerable_behaviour": 0.7894736842105263,
+   "by_category": {
+    "lexical": {
+     "n": 8,
+     "correctness": 0.9375
+    },
+    "multi-doc": {
+     "n": 4,
+     "correctness": 0.125
+    },
+    "semantic": {
+     "n": 11,
+     "correctness": 0.7727272727272727
+    },
+    "why": {
+     "n": 1,
+     "correctness": 0.0
+    }
+   },
+   "status_by_answerability": {
+    "answerable": {
+     "answered": 17,
+     "insufficient_evidence": 8
+    },
+    "ambiguous": {
+     "answered": 2,
+     "insufficient_evidence": 1,
+     "needs_clarification": 4
+    },
+    "out-of-corpus": {
+     "answered": 7,
+     "insufficient_evidence": 5
+    }
+   },
+   "latency_p50": 2.7524649544993736,
+   "latency_p95": 4.5997928244494695,
+   "in_tokens_mean": 2316.5227272727275,
+   "out_tokens_mean": 595.0909090909091,
+   "in_tokens_total": 101927,
+   "out_tokens_total": 26184,
+   "cost_per_answer": 0.005291977272727274,
+   "cost_total": 0.232847,
+   "judge_in_tokens_total": 122470.0,
+   "judge_out_tokens_total": 12538.0,
+   "judge_cost_total": 0.9258000000000001,
+   "accuracy": 0.7701023391812866,
+   "cost_score": 1.0,
+   "latency_score": 1.0,
+   "composite": 0.8620614035087718
+  },
+  "sonnet": {
+   "model": "claude-sonnet-5-5",
+   "n": 44,
+   "unjudged": [
+    "q033"
+   ],
+   "schema_failures": [
+    "q030",
+    "q037"
+   ],
+   "rerun_at_1600": [
+    "q006",
+    "q017",
+    "q021",
+    "q024",
+    "q025",
+    "q030",
+    "q037",
+    "q040",
+    "q055",
+    "q069",
+    "q073",
+    "q079",
+    "q084"
+   ],
+   "n_answerable": 24,
+   "n_unanswerable": 19,
+   "schema_ok": 42,
+   "correctness": 0.6875,
+   "faithfulness": 0.686046511627907,
+   "n_claims": 86,
+   "citation_validity": 1.0,
+   "chunk_id_in_range": 1.0,
+   "unanswerable_behaviour": 0.8421052631578947,
+   "by_category": {
+    "lexical": {
+     "n": 8,
+     "correctness": 0.9375
+    },
+    "multi-doc": {
+     "n": 4,
+     "correctness": 0.375
+    },
+    "semantic": {
+     "n": 11,
+     "correctness": 0.6818181818181818
+    },
+    "why": {
+     "n": 1,
+     "correctness": 0.0
+    }
+   },
+   "status_by_answerability": {
+    "answerable": {
+     "answered": 19,
+     "insufficient_evidence": 6
+    },
+    "ambiguous": {
+     "answered": 2,
+     "needs_clarification": 5
+    },
+    "out-of-corpus": {
+     "answered": 5,
+     "insufficient_evidence": 7
+    }
+   },
+   "latency_p50": 5.168930753000495,
+   "latency_p95": 8.231130870949437,
+   "in_tokens_mean": 2316.5227272727275,
+   "out_tokens_mean": 606.1136363636364,
+   "in_tokens_total": 101927,
+   "out_tokens_total": 26669,
+   "cost_per_answer": 0.016041272727272727,
+   "cost_total": 0.705816,
+   "judge_in_tokens_total": 122470.0,
+   "judge_out_tokens_total": 12538.0,
+   "judge_cost_total": 0.9258000000000001,
+   "accuracy": 0.7385505915952671,
+   "cost_score": 0.3298975937071419,
+   "latency_score": 0.532501804730428,
+   "composite": 0.5953498135423456
+  }
+ },
+ "spend": {
+  "rerank_cost": 0.631911,
+  "rerank_tokens": [
+   615866,
+   3209
+  ],
+  "all_cost": 3.4221740000000005
+ }
+}
