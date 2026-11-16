@@ -20,7 +20,7 @@ Lexical side, two candidates: rank\_bm25 (in-process) vs PostgreSQL full-text se
 ## Decision
 
 A, RRF with k=60 (not tuned), dense + BM25, depth 100 per retriever, feeding the reranker (ADR-003). The BM25 vs Postgres-FTS choice for the lexical side is open (see Evidence).
-JASPER: TODO confirm the fusion depth. Validation favours shallow depth for R@5 without a reranker, but the reranker needs a deep candidate pool (top 50). we do 50 depth and include haiku as reranker.
+Depth (Jasper, Day 4): d=100 per retriever. Fused R@50 (what Haiku sees): validation 0.71/0.71/0.71/0.77 and dev 0.79/0.83/0.88/0.85 for d=25/50/100/200 (eval/depth_sweep_fused.py). 100 is never worse and best on dev; extra cost is local search only, since Haiku always reads 50.
 
 ## Why
 
