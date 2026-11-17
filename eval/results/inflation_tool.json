@@ -1,0 +1,362 @@
+[
+ {
+  "year": 1925,
+  "tool": false,
+  "rep": 0,
+  "rel_error": 0.024298118606750012,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": false,
+  "n_calls": 0,
+  "tokens": [
+   100,
+   113
+  ],
+  "answer": "Using the UK retail price index, \u00a3600,000 in 1925 is roughly \u00a350 million to \u00a355 million today (around 2024 prices). The figure is approximate because price indices differ and the 1925 value is an estimate. If you'd prefer a different measure, such as average earnings, the result would be considerabl"
+ },
+ {
+  "year": 1925,
+  "tool": false,
+  "rep": 1,
+  "rel_error": 0.121868306746075,
+  "within_5pct": false,
+  "measure_named": true,
+  "tool_called_correctly": false,
+  "n_calls": 0,
+  "tokens": [
+   100,
+   131
+  ],
+  "answer": "Using the UK Retail Price Index (the standard measure for British pounds), \u00a3600,000 in 1925 is roughly \u00a340 million to \u00a345 million in today's money. That is an approximate figure, since the exact result depends on the index and the year you choose for \"today.\" If you want a more precise estimate, the"
+ },
+ {
+  "year": 1925,
+  "tool": false,
+  "rep": 2,
+  "rel_error": 0.121868306746075,
+  "within_5pct": false,
+  "measure_named": true,
+  "tool_called_correctly": false,
+  "n_calls": 0,
+  "tokens": [
+   100,
+   107
+  ],
+  "answer": "Using the UK retail price index (RPI), \u00a3600,000 in 1925 is roughly \u00a340 to \u00a345 million in 2024 money. Using the Bank of England's CPI-based inflation calculator, the figure is closer to \u00a335 million. These are approximations, since the two measures differ, and the choice of index matters for a figure "
+ },
+ {
+  "year": 1925,
+  "tool": true,
+  "rep": 0,
+  "rel_error": 0.0008812734533120112,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": true,
+  "n_calls": 1,
+  "tokens": [
+   1587,
+   226
+  ],
+  "answer": "\u00a3600,000 in 1925 is worth about \u00a351.2 million in 2025 prices, using the ONS long-run retail price index. That is an adjustment for prices, not wages, so it shows what the sum would buy in goods and services rather than its relative size in the economy of the time."
+ },
+ {
+  "year": 1925,
+  "tool": true,
+  "rep": 1,
+  "rel_error": 0.0008812734533120112,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": true,
+  "n_calls": 1,
+  "tokens": [
+   1611,
+   230
+  ],
+  "answer": "The \u00a3600,000 from 1925 is worth about **\u00a351.2 million** in 2025 prices. This uses the ONS long-run retail price index (prices, not wages), with a conversion factor of about 85.4."
+ },
+ {
+  "year": 1925,
+  "tool": true,
+  "rep": 2,
+  "rel_error": 0.0008812734533120112,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": true,
+  "n_calls": 1,
+  "tokens": [
+   1608,
+   229
+  ],
+  "answer": "\u00a3600,000 in 1925 is worth about \u00a351.2 million in 2025 money. This uses the ONS long-run retail price index (prices, not wages), which rose by a factor of roughly 85.4 over that period."
+ },
+ {
+  "year": 1921,
+  "tool": false,
+  "rep": 0,
+  "rel_error": 0.18569809930361658,
+  "within_5pct": false,
+  "measure_named": true,
+  "tool_called_correctly": false,
+  "n_calls": 0,
+  "tokens": [
+   105,
+   109
+  ],
+  "answer": "Using the UK retail price index, \u00a32,500,000 in 1921 is roughly \u00a3130 million to \u00a3140 million in today's money (about \u00a3135 million as a rough midpoint). Those figures are approximate, and the result depends on the index used. I'm not able to pull live inflation data, so please check a current inflatio"
+ },
+ {
+  "year": 1921,
+  "tool": false,
+  "rep": 1,
+  "rel_error": 0.18569809930361658,
+  "within_5pct": false,
+  "measure_named": true,
+  "tool_called_correctly": false,
+  "n_calls": 0,
+  "tokens": [
+   105,
+   138
+  ],
+  "answer": "Using the UK Retail Price Index (the most common measure for British pounds), \u00a32,500,000 in 1921 is roughly \u00a3130 million to \u00a3140 million in today's money. Treating it as a rough estimate, this is about \u00a3135 million, though the exact figure depends on the index used and the year you compare it to. Ot"
+ },
+ {
+  "year": 1921,
+  "tool": false,
+  "rep": 2,
+  "rel_error": 0.18569809930361658,
+  "within_5pct": false,
+  "measure_named": true,
+  "tool_called_correctly": false,
+  "n_calls": 0,
+  "tokens": [
+   105,
+   140
+  ],
+  "answer": "Converting \u00a32,500,000 from 1921 to today's money depends on the measure used. Using the UK Retail Price Index, which is one common way to measure purchasing power, \u00a32.5 million in 1921 is roughly \u00a3130 to \u00a3140 million in recent prices (around 2023\u20132024). I'd suggest checking the Bank of England's inf"
+ },
+ {
+  "year": 1921,
+  "tool": true,
+  "rep": 0,
+  "rel_error": 0.00015359478779778142,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": true,
+  "n_calls": 1,
+  "tokens": [
+   1565,
+   187
+  ],
+  "answer": "\u00a32,500,000 in 1921 is worth about \u00a3171.9 million in 2025 prices. This uses the ONS long-run retail price index, so it reflects changes in prices rather than wages. The inflation factor over that period is roughly 68.8 times."
+ },
+ {
+  "year": 1921,
+  "tool": true,
+  "rep": 1,
+  "rel_error": 0.0004280494269853496,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": true,
+  "n_calls": 1,
+  "tokens": [
+   1565,
+   189
+  ],
+  "answer": "\u00a32,500,000 in 1921 is worth about **\u00a3172 million** in 2025 prices. This uses the ONS long-run retail price index, so it reflects changes in prices rather than changes in wages or relative economic size. The conversion factor is about 68.8."
+ },
+ {
+  "year": 1921,
+  "tool": true,
+  "rep": 2,
+  "rel_error": 0.00015359478779778142,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": true,
+  "n_calls": 1,
+  "tokens": [
+   1565,
+   186
+  ],
+  "answer": "\u00a32,500,000 in 1921 is worth about **\u00a3171.9 million** in 2025 prices. This uses the ONS long-run retail price index, so it measures changes in prices rather than wages. The adjustment factor is roughly 68.8 times."
+ },
+ {
+  "year": 1926,
+  "tool": false,
+  "rep": 0,
+  "rel_error": 0.25136238321232385,
+  "within_5pct": false,
+  "measure_named": true,
+  "tool_called_correctly": false,
+  "n_calls": 0,
+  "tokens": [
+   106,
+   111
+  ],
+  "answer": "Using the UK Retail Price Index (RPI) as the measure, \u00a31,400,000 in 1926 is roughly \u00a380 to \u00a390 million in today's money, depending on the exact base year used. Using the Consumer Price Index instead would give a somewhat different figure, so the RPI estimate is the one I'd cite, and it's approximate"
+ },
+ {
+  "year": 1926,
+  "tool": false,
+  "rep": 1,
+  "rel_error": 0.0813654464710878,
+  "within_5pct": false,
+  "measure_named": true,
+  "tool_called_correctly": false,
+  "n_calls": 0,
+  "tokens": [
+   106,
+   199
+  ],
+  "answer": "Roughly \u00a3130 million to \u00a3150 million in today's money, depending on the measure used. Using the UK retail price index, \u00a31.4 million in 1926 is worth about \u00a380 million in 2024 prices. Using the UK GDP deflator, which tracks the overall size of the economy, it comes to roughly \u00a3150 million. The differ"
+ },
+ {
+  "year": 1926,
+  "tool": false,
+  "rep": 2,
+  "rel_error": 0.1681804257914709,
+  "within_5pct": false,
+  "measure_named": true,
+  "tool_called_correctly": false,
+  "n_calls": 0,
+  "tokens": [
+   106,
+   107
+  ],
+  "answer": "Using the UK Retail Price Index as a measure, \u00a31,400,000 in 1926 is roughly equivalent to about \u00a390 million to \u00a3100 million today, depending on the exact index year used. This is a rough estimate, and the figure would differ under other measures, such as GDP deflators or the relative-income method, "
+ },
+ {
+  "year": 1926,
+  "tool": true,
+  "rep": 0,
+  "rel_error": 0.00015287180134804348,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": true,
+  "n_calls": 1,
+  "tokens": [
+   1567,
+   267
+  ],
+  "answer": "\u00a31,400,000 in 1926 is worth about \u00a3120.2 million in 2025, using the ONS long-run retail price index (a measure of prices, not wages). The price level rose by a factor of roughly 86 over that period.\n\nI should also correct my earlier answer: I stated the \u00a31,400,000 figure as if it came from a parliam"
+ },
+ {
+  "year": 1926,
+  "tool": true,
+  "rep": 1,
+  "rel_error": 0.00015287180134804348,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": true,
+  "n_calls": 1,
+  "tokens": [
+   1567,
+   251
+  ],
+  "answer": "\u00a31,400,000 in 1926 is worth about \u00a3120.2 million in 2025 money. This uses the ONS long-run retail price index, so it reflects changes in prices rather than wages.\n\nI should also correct my earlier answer. I said the Parliamentary figure was \u00a31,400,000 in 1926, but I didn't verify that against a sour"
+ },
+ {
+  "year": 1926,
+  "tool": true,
+  "rep": 2,
+  "rel_error": 0.00015287180134804348,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": true,
+  "n_calls": 1,
+  "tokens": [
+   1567,
+   267
+  ],
+  "answer": "\u00a31,400,000 in 1926 is worth about \u00a3120.2 million in 2025 money. This uses the ONS long-run retail price index, which measures prices rather than wages, so it reflects purchasing power rather than relative economic size.\n\nI should also correct my earlier answer. I stated the \u00a31,400,000 figure as if i"
+ },
+ {
+  "year": 1920,
+  "tool": false,
+  "rep": 0,
+  "rel_error": 0.044441618822920255,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": false,
+  "n_calls": 0,
+  "tokens": [
+   100,
+   71
+  ],
+  "answer": "Using the UK retail price index as the measure, \u00a3250,000 in 1920 is roughly \u00a313 to \u00a315 million in today's money. The exact figure depends on the index and the year you choose, so treat that range as an estimate."
+ },
+ {
+  "year": 1920,
+  "tool": false,
+  "rep": 1,
+  "rel_error": 0.044441618822920255,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": false,
+  "n_calls": 0,
+  "tokens": [
+   100,
+   115
+  ],
+  "answer": "Using the UK retail price index (RPI-based conversion, which is the measure most commonly used for British pounds), \u00a3250,000 in 1920 is roughly equivalent to \u00a314 to \u00a315 million in 2024 money. Consumer price index measures give a somewhat lower figure, around \u00a311 to \u00a312 million, so the exact result d"
+ },
+ {
+  "year": 1920,
+  "tool": false,
+  "rep": 2,
+  "rel_error": 0.17184940297986423,
+  "within_5pct": false,
+  "measure_named": true,
+  "tool_called_correctly": false,
+  "n_calls": 0,
+  "tokens": [
+   100,
+   183
+  ],
+  "answer": "Converting \u00a3250,000 from 1920 to today's money depends on the measure used. Using the UK Consumer Price Index, prices rose enormously after 1920, so the modern equivalent is roughly \u00a312 to \u00a313 million. Measured by relative economic size (GDP per head), the equivalent would be considerably higher, on"
+ },
+ {
+  "year": 1920,
+  "tool": true,
+  "rep": 0,
+  "rel_error": 0.00015110563201013553,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": true,
+  "n_calls": 1,
+  "tokens": [
+   1601,
+   222
+  ],
+  "answer": "\u00a3250,000 in 1920 is worth about \u00a315.7 million in 2025 prices. I used the ONS long-run retail price index, which measures prices rather than wages, and the conversion factor is roughly 62.8."
+ },
+ {
+  "year": 1920,
+  "tool": true,
+  "rep": 1,
+  "rel_error": 0.00015110563201013553,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": true,
+  "n_calls": 1,
+  "tokens": [
+   1579,
+   195
+  ],
+  "answer": "\u00a3250,000 in 1920 is worth about \u00a315.7 million in 2025 money, based on the ONS long-run retail price index (prices, not wages). The adjustment factor is roughly 62.8."
+ },
+ {
+  "year": 1920,
+  "tool": true,
+  "rep": 2,
+  "rel_error": 0.00015110563201013553,
+  "within_5pct": true,
+  "measure_named": true,
+  "tool_called_correctly": true,
+  "n_calls": 1,
+  "tokens": [
+   1609,
+   233
+  ],
+  "answer": "In today's money (2025), \u00a3250,000 from 1920 is worth about **\u00a315.7 million**. I used the ONS long-run retail price index (prices, not wages), which multiplies the original amount by a factor of about 62.8."
+ }
+]

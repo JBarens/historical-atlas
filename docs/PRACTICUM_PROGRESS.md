@@ -84,3 +84,5 @@ Cross-cutting gaps: latency (p50/p95) measured nowhere yet; retrieval runs outsi
 - Day 4 Phase 7: Haiku vs Sonnet (dev, Opus judge) -> accuracy within noise, Haiku 3x cheaper/2x faster. Judge too harsh vs Jasper/Hermes (5/10): penalised honest partial answers and format. Rule B (chunk id, no quote) vs C, Haiku, Sonnet judge with fixed rubric, n=25: correctness C 0.79 / B 0.90, faithfulness C 0.93 / B 1.00, latency p95 4.6 / 3.7 s. Spend $0.83.
 
 - Decision (Jasper): citation rule B (chunk id per claim, no quote) for the system. Leniency guard: periodic spot check where the judge must extract a verbatim supporting sentence from the cited chunk, verified in code (quote-forced audit).
+
+- Day 5 Phase 8: architecture C (Jasper): code controls flow (rewrite if history, always retrieve); Claude only gets adjust_for_inflation. Tool built TDD (23 tests, backend/tools/inflation.py). Haiku on 4 computation items x3: no tool 3/12 within 5% (median error 17%), with tool 12/12 (error 0%), tool called correctly 12/12. $0.04.
