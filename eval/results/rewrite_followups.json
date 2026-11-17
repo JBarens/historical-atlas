@@ -1,0 +1,87 @@
+{
+ "retrieval": {
+  "raw": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "naive": [
+   0.5,
+   0.0,
+   0.0,
+   1.0,
+   1.0
+  ],
+  "rewrite": [
+   0.0,
+   1.0,
+   1.0,
+   1.0,
+   0.0
+  ]
+ },
+ "routing": [
+  {
+   "id": "q063",
+   "calc": false,
+   "skip": false,
+   "query": "Did Britain accept the League of Nations' decision in the Mosul dispute between Britain and Turkey over the Mosul vilayet frontier, 1925?"
+  },
+  {
+   "id": "q064",
+   "calc": false,
+   "skip": false,
+   "query": "What did the British government decide about the Anglo-Turkish treaty concerning the Mosul question after the Lausanne Conference (1923-1926)?"
+  },
+  {
+   "id": "q067",
+   "calc": false,
+   "skip": false,
+   "query": "What did the League of Nations Commission of Rapporteurs recommend in the Aaland Islands dispute between Finland and Sweden (1920-1921)?"
+  },
+  {
+   "id": "q070",
+   "calc": false,
+   "skip": false,
+   "query": "Why did the League of Nations fail to resolve the Vilna dispute between Poland and Lithuania in 1919-1926?"
+  },
+  {
+   "id": "q078",
+   "calc": false,
+   "skip": false,
+   "query": "What was the cost of the Allied troop occupation of Upper Silesia in 1921-1922, and who paid for it?"
+  },
+  {
+   "id": "q080",
+   "calc": false,
+   "skip": false,
+   "query": "Did Britain take part in the League of Nations loans to Greece and Bulgaria (1920s), and what did Parliament discuss about British participation?"
+  },
+  {
+   "id": "q099",
+   "calc": true,
+   "skip": false,
+   "query": "What was the cost of the Mosul commitment in 1925 (\u00a3600,000 stated in Parliament) and its equivalent value in today's money (inflation adjustment from 1925 to present)?"
+  },
+  {
+   "id": "q100",
+   "calc": true,
+   "skip": false,
+   "query": "What was the cost of the Upper Silesia commitment in 1921 (\u00a32,500,000 stated in Parliament), and what is its equivalent value in today's money?"
+  },
+  {
+   "id": "q101",
+   "calc": true,
+   "skip": true,
+   "query": "What would the \u00a31,400,000 Greek refugee loan commitment of 1926 be worth in present-day money, adjusted for UK inflation since 1926?"
+  },
+  {
+   "id": "q102",
+   "calc": true,
+   "skip": true,
+   "query": "What would the 1920 cost of the Aaland Islands commitment (\u00a3250,000, figure given in Parliament) be in present-day money, adjusted for inflation?"
+  }
+ ]
+}

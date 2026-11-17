@@ -86,3 +86,5 @@ Cross-cutting gaps: latency (p50/p95) measured nowhere yet; retrieval runs outsi
 - Decision (Jasper): citation rule B (chunk id per claim, no quote) for the system. Leniency guard: periodic spot check where the judge must extract a verbatim supporting sentence from the cited chunk, verified in code (quote-forced audit).
 
 - Day 5 Phase 8: architecture C (Jasper): code controls flow (rewrite if history, always retrieve); Claude only gets adjust_for_inflation. Tool built TDD (23 tests, backend/tools/inflation.py). Haiku on 4 computation items x3: no tool 3/12 within 5% (median error 17%), with tool 12/12 (error 0%), tool called correctly 12/12. $0.04.
+
+- Day 5: rewrite+route (Haiku, only with history). Follow-ups n=5 dev+val: R@5 raw 0.00 / naive concat 0.50 / rewrite 0.60 (Jasper predicted 0.05 / 0.6). Routing: calculations skipped retrieval 2/4, normal follow-ups wrongly skipped 0/6 (safe default holds). $0.21.
