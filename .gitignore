@@ -23,3 +23,5 @@ data_*.log
 
 # Phase 10 request logs (local only)
 backend/logs/
+eval/results/full_eval_dryrun.json
+eval/results/full_eval_requests.jsonl
