@@ -11,3 +11,6 @@ skill-observations/
 # practicum data (rebuildable)
 backend/data/
 data_*.log
+
+# Phase 10 request logs (local only)
+backend/logs/

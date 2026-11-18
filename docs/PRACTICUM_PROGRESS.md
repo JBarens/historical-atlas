@@ -8,7 +8,8 @@ Consolidation (Postgres/pgvector exact = numpy, top-20 overlap 1.00): VALIDATION
 Phase 7 done (docs/benchmarks/answer_eval.md, ADR-005): Haiku 5.5 generator, top 5 chunks, per-claim citations rule B (dev: correctness 0.90, faithfulness 1.00 likely lenient; quote-forced audit as guard). Judge vs human 5/10 before rubric fix.
 Phase 8 done (ADR-004, backend/pipeline.py): architecture C, code owns flow; Haiku rewrite+route only with history (skip retrieval only on explicit false); one tool adjust_for_inflation, max 2 round-trips. Tool 12/12 vs 3/12 without; follow-up R@5 rewrite 0.60 vs raw 0.00. 14 mocked pipeline tests.
 Phase 9 done pending Jasper's interpretation of the smoke check (docs/benchmarks/failure_modes.md): one retry helper in pipeline.py; 20 s budget, 12 s/call, SDK retries off, 3 attempts + backoff/jitter/retry-after for 429/529/conn/timeout, 1 retry for malformed/truncated, other 4xx no retry; index failure -> error status. 22 failure tests (59 total). Smoke check two-tool generator: tool right 2/2 when called, but 2/4 routed to retrieval and refused.
-Next: Phase 10 observability. Plan order (Jasper): 10, 11, 12, 13, 14, then FRONTEND rework (promised Phase 0: new map/UI for the 5 cases, Hermes does heavy lifting), then 15 held-out, 16 interview, CV texts.
+Phase 10 done pending Jasper's interpretation (docs/benchmarks/observability.md): option A, one JSONL line per request (backend/observability.py, backend/logs/, OBS_LOG_PATH) with full text, spans (request -> rewrite_and_route -> retrieve -> rerank -> generate -> tool -> response), tokens and assumed cost per stage; backend/metrics.py CLI. 6 tests (65 total). Real demo 3 requests $0.046 (eval/results/obs_demo.jsonl).
+Next: Phase 11 cost and latency. Plan order (Jasper): 11, 12, 13, 14, then FRONTEND rework (promised Phase 0: new map/UI for the 5 cases, Hermes does heavy lifting), then 15 held-out, 16 interview, CV texts.
 
 # Status against the brief (docs/PRACTICUM_BRIEF.md), updated Day 3
 
@@ -26,7 +27,8 @@ Order deviated from the brief: chunking (brief Phase 6) and the embedding-model 
 | 7 | Generation + answer eval | done | answer_eval.md, ADR-005; dev only, small n |
 | 8 | Agent and tools | done | ADR-004; composed generator not evaluated at scale |
 | 9 | Failure engineering | done (pending interpretation) | failure_modes.md; JASPER: TODO smoke-check interpretation |
-| 10-16 | Observability, cost/latency, scale, CI, security, held-out, interview | not started | |
+| 10 | Observability | done (pending interpretation) | observability.md; JSONL logs, no hosted tool (option A); JASPER: TODO interpretation |
+| 11-16 | Cost/latency, scale, CI, security, held-out, interview | not started | |
 
 Cross-cutting gaps: latency (p50/p95) measured nowhere yet; retrieval runs outside PostgreSQL/pgvector (brief: keep PG, prefer PG-native lexical).
 

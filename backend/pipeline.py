@@ -43,6 +43,7 @@ import run_rewrite as RW  # noqa: E402  (route tool + prompt)
 import run_rule_b as RB  # noqa: E402  (rule-B prompt + answer tool)
 from run_hybrid import tok, RRF_K, DEPTH  # noqa: E402
 from tools.inflation import TOOL_SPEC as INFLATION_TOOL, adjust_for_inflation  # noqa: E402
+import observability as obs  # noqa: E402  (Phase 10: request id, spans, JSONL log)
 
 # Phase 9b (Jasper, A): the router also flags pure calculations; code then forces the tool and passes no chunks.
 ROUTE_TOOL = json.loads(json.dumps(RW.TOOL))
@@ -244,7 +245,14 @@ def retrieve_candidates(query):
     for lst in (dense, lex):
         for r, ci in enumerate(lst, 1):
             fused[ci] += 1 / (RRF_K + r)
-    return sorted(fused, key=fused.get, reverse=True)
+    out = sorted(fused, key=fused.get, reverse=True)
+    dpos = {int(c): r for r, c in enumerate(dense, 1)}
+    lpos = {int(c): r for r, c in enumerate(lex, 1)}
+    obs.annotate(strategy=f"hybrid dense(nomic)+bm25, RRF k={RRF_K}, depth {DEPTH} each", candidate_count=len(out),
+                 candidates=[{"chunk": int(c), "rrf_pos": r, "rrf_score": round(fused[c], 6),
+                              "dense_pos": dpos.get(int(c)), "bm25_pos": lpos.get(int(c))}
+                             for r, c in enumerate(out[:RERANK_N], 1)])
+    return out
 
 
 # ---------------------------------------------------------------- stage 3
@@ -258,6 +266,9 @@ def rerank(query, candidates):
     order, _, i_t, o_t = L.llm_rank(query, [built[c][3] for c in cand])
     ranked = [cand[k] for k in order]
     top = (ranked + [c for c in cand if c not in ranked])[:TOPK]
+    obs.annotate(model=MODEL, reranked_n=len(cand), tokens={"input": i_t, "output": o_t},
+                 reranked=[{"chunk": int(c), "rerank_pos": r, "rrf_pos": cand.index(c) + 1}
+                           for r, c in enumerate(ranked + [c for c in cand if c not in ranked], 1)][:20])
     chunks = [{"index": int(c), "doc_id": built[c][0], "start": int(built[c][1]), "end": int(built[c][2]),
                "text": built[c][3]} for c in top]
     return chunks, [i_t, o_t]
@@ -315,6 +326,8 @@ def generate(question, history, chunks, force_inflation=False):
                          {"type": "auto"}))
         u = _usage(r)
         tokens[0] += u[0]; tokens[1] += u[1]
+        obs.annotate(model=MODEL, llm_calls=(obs.current_span().attributes.get("llm_calls", 0) + 1)
+                     if obs.current_span() else 1, tokens={"input": tokens[0], "output": tokens[1]})
         stop = getattr(r, "stop_reason", None)
         tus = [b for b in r.content if b.type == "tool_use"]
         final = next((b.input for b in tus if b.name == ANSWER_TOOL["name"]), None)
@@ -334,7 +347,10 @@ def generate(question, history, chunks, force_inflation=False):
         msgs.append({"role": "assistant", "content": r.content})
         results = []
         for tu in other:
-            out = run_tool(tu.name, tu.input)
+            with obs.span(f"tool:{tu.name}", input=tu.input) as sp:
+                out = run_tool(tu.name, tu.input)
+                if sp is not None:
+                    sp.set(output=out, is_error="error" in out)
             calls.append({"name": tu.name, "input": tu.input, "output": out})
             results.append({"type": "tool_result", "tool_use_id": tu.id, "content": json.dumps(out),
                             **({"is_error": True} if "error" in out else {})})
@@ -362,42 +378,64 @@ def answer(question, history=None):
     global _ctx
     history = history or []
     timings, usage = {}, {}
+    rid = obs.new_request_id()
     result = {"question": question, "query": question, "retrieved": True, "status": "error", "answer": "",
               "claims": [], "chunk_ids": [], "chunks": [], "tool_calls": [], "error": None, "message": None,
-              "is_calculation": False}
+              "is_calculation": False, "request_id": rid}
+    trace = obs.Trace(rid)
+    try:
+        trace.start(question=question, history_turns=len(history))
+    except Exception as e:  # noqa: BLE001 - observability must never break a request
+        obs._stderr("trace start", e)
+    t_req = time.perf_counter()
     _ctx = ctx = _Ctx()
     try:
         if history:
             t0 = time.perf_counter()
-            result["query"], result["retrieved"], result["is_calculation"], usage["rewrite"] = rewrite_and_route(question, history)
+            with obs.span("rewrite_and_route", model=MODEL) as sp:
+                result["query"], result["retrieved"], result["is_calculation"], usage["rewrite"] = rewrite_and_route(question, history)
+                if sp is not None:
+                    sp.set(query=result["query"], needs_retrieval=result["retrieved"],
+                           is_calculation=result["is_calculation"],
+                           tokens={"input": usage["rewrite"][0], "output": usage["rewrite"][1]})
             timings["rewrite"] = time.perf_counter() - t0
         chunks = []
         if result["retrieved"]:
             _check_budget("retrieve")
             t0 = time.perf_counter()
-            try:
-                cand = retrieve_candidates(result["query"])
-            except Exception as e:  # noqa: BLE001 - index/embeddings (or a future pgvector store) unavailable
-                raise IndexUnavailable(f"{type(e).__name__}: {e}") from e
+            with obs.span("retrieve", query=result["query"]):
+                try:
+                    cand = retrieve_candidates(result["query"])
+                except Exception as e:  # noqa: BLE001 - index/embeddings (or a future pgvector store) unavailable
+                    raise IndexUnavailable(f"{type(e).__name__}: {e}") from e
             timings["retrieve"] = time.perf_counter() - t0
             t0 = time.perf_counter()
-            chunks, usage["rerank"] = rerank(result["query"], cand)
+            with obs.span("rerank", candidate_count=len(cand)) as sp:
+                chunks, usage["rerank"] = rerank(result["query"], cand)
+                if sp is not None:
+                    sp.set(top_k=[c["index"] for c in chunks])
             timings["rerank"] = time.perf_counter() - t0
         result["chunks"] = chunks
         result["chunk_ids"] = [c["index"] for c in chunks]
         _check_budget("generate")
         t0 = time.perf_counter()
-        out, calls, usage["generate"], note = generate(question, history, chunks,
-                                                        force_inflation=result.get("is_calculation", False))
+        with obs.span("generate", chunks_in=len(chunks), force_inflation=result.get("is_calculation", False)) as sp:
+            out, calls, usage["generate"], note = generate(question, history, chunks,
+                                                            force_inflation=result.get("is_calculation", False))
+            if sp is not None:
+                sp.set(stop=note)
         timings["generate"] = time.perf_counter() - t0
         result["tool_calls"], result["stop"] = calls, note
-        err = validate_output(out, len(chunks))
-        if err:
-            result.update(error=f"malformed generator output: {err}", message=USER_MESSAGES["malformed"])
-        else:
-            result.update(status=out["status"], answer=out["answer"], claims=[
-                {**c, "in_range": (c.get("source", "chunk") != "chunk")
-                       or (isinstance(c.get("chunk_id"), int) and 1 <= c["chunk_id"] <= len(chunks))} for c in out["claims"]])
+        with obs.span("response") as sp:
+            err = validate_output(out, len(chunks))
+            if err:
+                result.update(error=f"malformed generator output: {err}", message=USER_MESSAGES["malformed"])
+            else:
+                result.update(status=out["status"], answer=out["answer"], claims=[
+                    {**c, "in_range": (c.get("source", "chunk") != "chunk")
+                           or (isinstance(c.get("chunk_id"), int) and 1 <= c["chunk_id"] <= len(chunks))} for c in out["claims"]])
+            if sp is not None:
+                sp.set(status=result["status"], validation_error=err)
     except IndexUnavailable as e:
         result.update(error=f"index unavailable: {e}", message=USER_MESSAGES["index"])
     except BudgetExceeded as e:
@@ -412,4 +450,58 @@ def answer(question, history=None):
         _ctx = None
     result["timings_s"] = timings
     result["usage"] = usage
+    _log_request(result, history, trace, time.perf_counter() - t_req)
     return result
+
+
+def _error_cause(result):
+    """Coarse cause class for metrics: budget / index / malformed / rate_limit / unavailable / fatal, or None."""
+    e = result.get("error")
+    if not e:
+        return None
+    if e.startswith("budget:"):
+        return "budget"
+    if e.startswith("index unavailable"):
+        return "index"
+    if e.startswith("malformed"):
+        return "malformed"
+    return {v: k for k, v in USER_MESSAGES.items()}.get(result.get("message"), "fatal")
+
+
+def _log_request(result, history, trace, total_s):
+    """Build and append the one log record for this request. Never raises."""
+    try:
+        trace.root.set(status=result["status"]) if trace.root else None
+        trace.stop()
+        spans = trace.to_list()
+        tool_spans = [s for s in spans if s["name"].startswith("tool:")]
+        tools = [{**c, "latency_ms": (tool_spans[i]["duration_ms"] if i < len(tool_spans) else None)}
+                 for i, c in enumerate(result.get("tool_calls", []))]
+        cost = {st: obs.cost_usd(MODEL, tk) for st, tk in result.get("usage", {}).items()}
+        tokens = {st: {"input": tk[0], "output": tk[1]} for st, tk in result.get("usage", {}).items()}
+        by_name = {s["name"]: s["attributes"] for s in spans}
+        rec = {
+            "request_id": result["request_id"], "ts": spans[0]["start"] if spans else None,
+            "status": result["status"], "error": result.get("error"), "error_cause": _error_cause(result),
+            "error_causes": result.get("error_causes", []), "retries": result.get("retries", {}),
+            "question": result["question"], "history": history, "query": result.get("query"),
+            "routing": {"rewritten": bool(history), "needs_retrieval": result.get("retrieved"),
+                        "is_calculation": result.get("is_calculation")},
+            "retrieval": {k: by_name.get("retrieve", {}).get(k) for k in ("strategy", "candidate_count", "candidates")},
+            "rerank": {k: by_name.get("rerank", {}).get(k) for k in ("model", "reranked_n", "reranked")},
+            "chunk_ids": result.get("chunk_ids", []),
+            "top_chunks": [{"chunk": c["index"], "doc_id": c["doc_id"], "text": c["text"]} for c in result.get("chunks", [])],
+            "answer": result.get("answer"), "message": result.get("message"), "stop": result.get("stop"),
+            "claims": [{k: c.get(k) for k in ("claim", "source", "chunk_id", "in_range")} for c in result.get("claims", [])],
+            "tool_calls": tools,
+            "models": {st: MODEL for st in result.get("usage", {})},
+            "tokens": tokens, "tokens_total": {"input": sum(t["input"] for t in tokens.values()),
+                                               "output": sum(t["output"] for t in tokens.values())},
+            "cost_usd": cost, "cost_usd_total": round(sum(cost.values()), 6), "cost_note": obs.PRICE_NOTE,
+            "latency_ms": {st: round(v * 1000, 1) for st, v in result.get("timings_s", {}).items()},
+            "latency_ms_total": round(total_s * 1000, 1),
+            "spans": spans,
+        }
+        obs.write_event(rec)
+    except Exception as e:  # noqa: BLE001 - logging must never break a request
+        obs._stderr("log_request", e)
