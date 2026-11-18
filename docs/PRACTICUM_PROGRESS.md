@@ -118,3 +118,5 @@ Cross-cutting gaps: latency (p50/p95) measured nowhere yet; retrieval runs outsi
 - Phase 14 DONE (Jasper interpretation in security_review.md). Currency guard added (Jasper option b): code blocks a GBP tool call when the question names another currency -> needs_clarification. 74 backend tests. LLM contract unchanged (flow code, not prompt).
 
 - Phase 15 PRE-REGISTRATION (Jasper, before seeing test): frozen pipeline commit 8c282a9. Predictions: correctness 0.79, faithfulness 1.00, R@20 0.72, p95 4 s, passes release threshold. Calculation prediction 5/5 not testable: test has 0 calculation items (cluster split put all 4 in dev). Protocol: (a) report honestly, no tuning after; magnitude of any miss reported.
+
+- PLAN NEXT SESSION (Jasper): Phase 16 interview defence + the 4 post-practicum items (README 2-min review, CV/LinkedIn line with Phase 15 numbers, Accenture FDE staffing text, site log entry). Before that: review frontend subagent result (screenshots, HF deploy needs Jasper HF account + secrets) and Phase 15 result + Jasper interpretation.
