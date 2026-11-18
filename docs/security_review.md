@@ -70,6 +70,8 @@ What the failures are:
 
 JASPER: TODO one sentence on how to read these results.
 
+Regression check after hardening: full eval (local, contract d64f0c85, `eval/results/full_eval_phase14.json`) correctness 0.80, p95 4.9 s, faithfulness 1.00, calculations 4/4, $0.68; passes the thresholds, and approved the new contract in `eval/ci/llm_contract.json`.
+
 ## Residual risks
 
 1. **Poisoned corpus (indirect injection and data poisoning)**: the big one. Instruction-style injections were contained here (4/4), but a planted falsehood is repeated with a citation (I4). Nothing in the pipeline checks a document's truth or provenance.

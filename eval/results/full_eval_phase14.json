@@ -1,0 +1,298 @@
+{
+ "summary": {
+  "dry_run": false,
+  "n": 25,
+  "rerank_n": 20,
+  "correctness": 0.8,
+  "p95_latency_s": 4.89,
+  "p50_latency_s": 3.88,
+  "faithfulness": 1.0,
+  "calculations_correct": "4/4",
+  "errors": 0,
+  "cost_usd": 0.6751,
+  "thresholds": {
+   "correctness_min": 0.64,
+   "p95_latency_max_s": 7.0
+  },
+  "failures": [],
+  "llm_contract_sha256": "d64f0c852b1395b75ef890cadd555a65b7d397af162d1a0d613ac06645e57e18",
+  "date": "2026-11-18T16:42:53+00:00",
+  "git_sha": "dc1b0018886834c2a3d5616b03047a4048e4991e"
+ },
+ "rows": [
+  {
+   "id": "q001",
+   "status": "answered",
+   "latency_s": 4.556928959998913,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q003",
+   "status": "insufficient_evidence",
+   "latency_s": 3.51637100500011,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q006",
+   "status": "answered",
+   "latency_s": 4.085611977003282,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q012",
+   "status": "answered",
+   "latency_s": 2.5107964980015822,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q021",
+   "status": "answered",
+   "latency_s": 3.955376810998132,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q023",
+   "status": "answered",
+   "latency_s": 3.269458561000647,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q025",
+   "status": "insufficient_evidence",
+   "latency_s": 4.628882354001689,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q026",
+   "status": "insufficient_evidence",
+   "latency_s": 3.9983128419989953,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q028",
+   "status": "answered",
+   "latency_s": 4.134871046000626,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q030",
+   "status": "answered",
+   "latency_s": 3.4955187769992335,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q032",
+   "status": "insufficient_evidence",
+   "latency_s": 3.841109693999897,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q033",
+   "status": "insufficient_evidence",
+   "latency_s": 4.0395703760004835,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q034",
+   "status": "answered",
+   "latency_s": 3.946693999998388,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q036",
+   "status": "insufficient_evidence",
+   "latency_s": 4.803244368999003,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q037",
+   "status": "insufficient_evidence",
+   "latency_s": 3.6923060860026453,
+   "correct": 0.0,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q040",
+   "status": "insufficient_evidence",
+   "latency_s": 5.565384612000344,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q044",
+   "status": "insufficient_evidence",
+   "latency_s": 4.91350933799913,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q050",
+   "status": "answered",
+   "latency_s": 2.7009965910001483,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q051",
+   "status": "answered",
+   "latency_s": 2.5959264379998785,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q055",
+   "status": "answered",
+   "latency_s": 3.8841675609983213,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q079",
+   "status": "insufficient_evidence",
+   "latency_s": 3.6747657859996252,
+   "correct": 0.5,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q107",
+   "status": "answered",
+   "latency_s": 3.965629587000876,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q108",
+   "status": "answered",
+   "latency_s": 2.804320931001712,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q111",
+   "status": "answered",
+   "latency_s": 2.2566133910004282,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q113",
+   "status": "answered",
+   "latency_s": 3.009673881002527,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true
+   ]
+  }
+ ],
+ "calculations": [
+  true,
+  true,
+  true,
+  true
+ ]
+}
