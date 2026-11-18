@@ -8,7 +8,7 @@ Consolidation (Postgres/pgvector exact = numpy, top-20 overlap 1.00): VALIDATION
 Phase 7 done (docs/benchmarks/answer_eval.md, ADR-005): Haiku 5.5 generator, top 5 chunks, per-claim citations rule B (dev: correctness 0.90, faithfulness 1.00 likely lenient; quote-forced audit as guard). Judge vs human 5/10 before rubric fix.
 Phase 8 done (ADR-004, backend/pipeline.py): architecture C, code owns flow; Haiku rewrite+route only with history (skip retrieval only on explicit false); one tool adjust_for_inflation, max 2 round-trips. Tool 12/12 vs 3/12 without; follow-up R@5 rewrite 0.60 vs raw 0.00. 14 mocked pipeline tests.
 Phase 9 done pending Jasper's interpretation of the smoke check (docs/benchmarks/failure_modes.md): one retry helper in pipeline.py; 20 s budget, 12 s/call, SDK retries off, 3 attempts + backoff/jitter/retry-after for 429/529/conn/timeout, 1 retry for malformed/truncated, other 4xx no retry; index failure -> error status. 22 failure tests (59 total). Smoke check two-tool generator: tool right 2/2 when called, but 2/4 routed to retrieval and refused.
-Next: Phase 10 observability.
+Next: Phase 10 observability. Plan order (Jasper): 10, 11, 12, 13, 14, then FRONTEND rework (promised Phase 0: new map/UI for the 5 cases, Hermes does heavy lifting), then 15 held-out, 16 interview, CV texts.
 
 # Status against the brief (docs/PRACTICUM_BRIEF.md), updated Day 3
 
