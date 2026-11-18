@@ -41,6 +41,17 @@ Then: `python eval/ci/build_ci_cache.py`, run the full eval, and update the base
 - corrupted fingerprint (model name): FINGERPRINT MISMATCH, exit 1.
 - simulated regression (RRF k=1, test-only parameter): REGRESSION 0.692308 < 0.711538, fails.
 
+## What the fast gate cannot see
+
+The fast gate mocks Claude and checks retrieval only. A change to a prompt, a model name or a tool schema passes every test and the gate while changing what the system does. Path rule (Phase 14, Jasper approved): job `llm-contract` in `ci.yml`, on every push and pull_request.
+
+- `eval/ci/llm_contract.py` imports the pipeline and hashes the **LLM contract** objects, not whole files, so unrelated edits don't trigger it: `pipeline.MODEL`, `SYSTEM`, `ROUTE_TOOL`, `ANSWER_TOOL`, `INFLATION_TOOL`, `GEN_USER_TEMPLATE`, `ROUTE_USER_TEMPLATE`, `NO_EVIDENCE`, `evidence_block` (source), `MAX_TOOL_ROUNDS`, the router prompt `run_rewrite.SYSTEM`, the rerank `MODEL`, `TOOL` and `llm_rank` (source, holds the prompt), and every file in `backend/tools/`.
+- It compares the hash with `eval/ci/llm_contract.json` (hash + the full eval run that approved it). On a mismatch the job fails with: **LLM contract changed: run the Full eval workflow and record its result**. The job also prints the diff stat of contract files against the PR base / previous commit.
+- Approving is a deliberate act: run the Full eval workflow, then
+  `python eval/ci/llm_contract.py --approve --full-eval-run <GitHub run id | path to full_eval.json>`.
+  It refuses unless the result is a real run (not `--dry-run`), has no failures, correctness >= 0.64, p95 <= 7.0 s, and its `llm_contract_sha256` equals the current hash (full_eval.py now records the hash, date and git sha). So the approval is tied to the exact contract that was evaluated.
+- Tests: `eval/ci/test_llm_contract.py` (prompt/model/schema and tools-file changes trigger, unrelated constants don't, approve refuses dry/failed/below-threshold/other-contract results and accepts a passing one).
+
 ## Full eval
 
 `eval/ci/full_eval.py` (needs the `ANTHROPIC_API_KEY` repo secret). Release-blocking thresholds (Jasper):

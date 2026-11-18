@@ -13,6 +13,7 @@ Cost is an estimate at ASSUMED prices (Haiku: $1 / M input tokens, $5 / M output
 import contextvars
 import json
 import os
+import re
 import sys
 import time
 import uuid
@@ -128,6 +129,22 @@ def cost_usd(model, tokens):
     return round(i / 1e6 * pin + o / 1e6 * pout, 6)
 
 
+_SECRET_PATTERNS = [re.compile(r"sk-ant-[A-Za-z0-9_\-]{8,}")]
+
+
+def redact(text):
+    """Phase 14: strip the Anthropic key (env value and the sk-ant- pattern) from any string before it is logged
+    or returned. Applied to error strings in pipeline.answer() and to every log line in write_event()."""
+    if not isinstance(text, str):
+        return text
+    key = os.environ.get("ANTHROPIC_API_KEY") or ""
+    if len(key) >= 8:
+        text = text.replace(key, "[REDACTED]")
+    for pat in _SECRET_PATTERNS:
+        text = pat.sub("[REDACTED]", text)
+    return text
+
+
 def log_path():
     return Path(os.environ.get("OBS_LOG_PATH") or DEFAULT_LOG_PATH)
 
@@ -144,7 +161,7 @@ def write_event(record):
     try:
         p = log_path()
         p.parent.mkdir(parents=True, exist_ok=True)
-        line = json.dumps(record, ensure_ascii=False, default=str)
+        line = redact(json.dumps(record, ensure_ascii=False, default=str))
         with open(p, "a", encoding="utf-8") as f:
             f.write(line + "\n")
         return True

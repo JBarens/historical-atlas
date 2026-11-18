@@ -11,7 +11,9 @@ Phase 9 done pending Jasper's interpretation of the smoke check (docs/benchmarks
 Phase 10 done pending Jasper's interpretation (docs/benchmarks/observability.md): option A, one JSONL line per request (backend/observability.py, backend/logs/, OBS_LOG_PATH) with full text, spans (request -> rewrite_and_route -> retrieve -> rerank -> generate -> tool -> response), tokens and assumed cost per stage; backend/metrics.py CLI. 6 tests (65 total). Real demo 3 requests $0.046 (eval/results/obs_demo.jsonl).
 Phase 12 done (docs/benchmarks/scale_review.md): 10x local scale test; dense exact ~25x, BM25 ~18x slower (super-linear); breaks first: re-indexing (6 h CPU), BM25 latency, API rate limit under concurrency; stay on Postgres/pgvector.
 Phase 13 built (docs/benchmarks/ci_gate.md): fast PR gate = 65 mocked tests + hybrid R@20 dev v2 baseline 0.7115 (zero tolerance, fingerprint guard, eval/ci/); full eval manual (correctness >= 0.64, p95 <= 7.0 s, cap $1.50). RERANK_N = 20 deployed (ADR-003). Committed locally; push pending Jasper's token permission (Workflows: write).
-Next: Phase 14 security. Phase 13 LIVE: CI green on GitHub (run 44343932189).
+Phase 13 LIVE: CI green on GitHub (run 44343932189). CI path rule added: job llm-contract fails when prompts/models/tool schemas/backend/tools change without a passing full eval (eval/ci/llm_contract.py + llm_contract.json).
+Phase 14 built pending Jasper (docs/security_review.md): option B containment, no detector. Chunks wrapped as <document> data + rule; tool bounds (amount <= 1e12); key redaction in errors/logs; input limits (invalid_input). Attack set 16 + 4 benign (hermes_draft), real run $0.33: direct 4/4, indirect 4/5 (planted false fact repeated with citation), tool 4/5 (model relabelled USD as GBP), exfil 2/2; benign 1/4 answered, 0/4 refused as attack (3 insufficient_evidence). JASPER: TODO interpretation.
+Next: frontend rework, then Phase 15.
 
 # Status against the brief (docs/PRACTICUM_BRIEF.md), updated Day 3
 
@@ -106,3 +108,9 @@ Cross-cutting gaps: latency (p50/p95) measured nowhere yet; retrieval runs outsi
 - Decision (Jasper): rerank top 20 for deployment (composite 0.92 vs 0.81 on his weights; correctness -0.04 = 1 question, cost -41%). Revisit if correctness too low (threshold to set in Phase 13). Breakdown at top20: label in top5 -> 19/19 at least partially correct; label not in top5 -> 6/6 honest insufficient_evidence (no hallucination). Correctness is capped by retrieval, not generation.
 
 - Day 6 Phase 12 scale (local, latency only): 1x -> 10x chunks: dense exact p50 6 -> 150 ms (25x, p95 280 ms), RAM 30 -> 301 MB; BM25 query p50 26 -> 477 ms (18x, p95 657 ms), build 0.3 -> 5.5 s. LLM stages unchanged in cost/latency. Jasper predicted BM25 10-15x.
+
+- Plan (Jasper, Day 6): frontend phase includes (1) never render model output as raw HTML (escape/markdown-sanitize), (2) cost-abuse controls: API key per user, N questions/min rate limit, daily spend cap that stops the API. Full accounts out of scope.
+
+- Post-practicum (Jasper agreed): README for 2-minute review, CV/LinkedIn line with Phase 15 numbers, Accenture FDE staffing text, site log entry. Frontend phase adds permanent free hosting (decision pending: HF Spaces vs Cloud Run vs Oracle Always Free; frontend on GitHub Pages; spend cap mandatory since API calls are never free).
+
+- Hosting (Jasper): A = Hugging Face Spaces (Docker, CPU). No public access to the Anthropic key: access control required (options pending: invite codes per person with quota / HF OAuth + allowlist / private Space), plus a global daily spend cap.

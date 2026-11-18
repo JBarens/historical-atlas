@@ -22,3 +22,31 @@ jobs:
         run: uv run -q --python 3.12 --with pytest --with anthropic --with python-dotenv --with fastembed --with numpy --with rank-bm25 python -m pytest eval/ci -q
       - name: fast retrieval gate (hybrid R@20 dev, zero tolerance)
         run: uv run -q --python 3.12 --with pytest --with anthropic --with python-dotenv --with fastembed --with numpy --with rank-bm25 python eval/ci/fast_gate.py
+
+  llm-contract:
+    # Path rule (Phase 14): the fast gate mocks Claude, so prompt/model/tool-schema changes need a real full eval.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ANTHROPIC_API_KEY: ci-not-used
+      UV_PYTHON: "3.12"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          cache-dependency-glob: .github/workflows/*.yml
+      - name: files touching the LLM contract in this change (informational)
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if [ -n "$BASE" ] && git cat-file -e "$BASE^{commit}" 2>/dev/null; then
+            git diff --stat "$BASE" HEAD -- backend/pipeline.py backend/tools eval/run_generation.py eval/run_rule_b.py eval/run_rewrite.py eval/run_llm_rerank.py eval/ci/llm_contract.json || true
+          else
+            echo "no base commit; checking the approved hash only"
+          fi
+      - name: LLM contract hash == approved hash (eval/ci/llm_contract.json)
+        run: uv run -q --python 3.12 --with anthropic --with python-dotenv --with fastembed --with numpy --with rank-bm25 python eval/ci/llm_contract.py

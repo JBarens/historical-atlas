@@ -129,6 +129,15 @@ def main(dry):
     fails = [] if dry else ([f"correctness {corr:.2f} < {MIN_CORRECTNESS}"] * (corr < MIN_CORRECTNESS) +
                             [f"p95 latency {p95:.1f}s > {MAX_P95_S}s"] * (p95 > MAX_P95_S))
     summary["failures"] = fails
+    # Phase 14 path rule: identify the run, so eval/ci/llm_contract.py --approve can check it ran on this contract.
+    import subprocess
+    from datetime import datetime, timezone
+    sys.path.insert(0, str(ROOT / "eval/ci"))
+    import llm_contract  # noqa: E402
+    summary["llm_contract_sha256"] = llm_contract.contract_hash()
+    summary["date"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    summary["git_sha"] = os.environ.get("GITHUB_SHA") or subprocess.run(
+        ["git", "rev-parse", "HEAD"], capture_output=True, text=True, cwd=ROOT).stdout.strip()
     out = ROOT / "eval/results" / ("full_eval_dryrun.json" if dry else "full_eval.json")
     out.write_text(json.dumps({"summary": summary, "rows": rows, "calculations": calc_rows}, indent=1))
     print(json.dumps(summary, indent=1))
