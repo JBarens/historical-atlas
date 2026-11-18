@@ -114,3 +114,5 @@ Cross-cutting gaps: latency (p50/p95) measured nowhere yet; retrieval runs outsi
 - Post-practicum (Jasper agreed): README for 2-minute review, CV/LinkedIn line with Phase 15 numbers, Accenture FDE staffing text, site log entry. Frontend phase adds permanent free hosting (decision pending: HF Spaces vs Cloud Run vs Oracle Always Free; frontend on GitHub Pages; spend cap mandatory since API calls are never free).
 
 - Hosting (Jasper): A = Hugging Face Spaces (Docker, CPU). No public access to the Anthropic key: access control required (options pending: invite codes per person with quota / HF OAuth + allowlist / private Space), plus a global daily spend cap.
+
+- Phase 14 DONE (Jasper interpretation in security_review.md). Currency guard added (Jasper option b): code blocks a GBP tool call when the question names another currency -> needs_clarification. 74 backend tests. LLM contract unchanged (flow code, not prompt).

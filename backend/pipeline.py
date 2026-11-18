@@ -315,6 +315,32 @@ def rerank(query, candidates):
     return chunks, [i_t, o_t]
 
 
+
+# ---------------------------------------------------------------- currency guard (Phase 14, Jasper: option b)
+_GBP_RE = re.compile(r"(£|\bpounds?\b|\bsterling\b|\bgbp\b|\bshillings?\b|\bguineas?\b)", re.I)
+_OTHER_CUR_RE = re.compile(r"(\$|€|\bdollars?\b|\busd\b|\bfrancs?\b|\b(?:reichs)?marks?\b|\blir[ae]\b|"
+                           r"\bdrachma[es]?\b|\bleva?\b|\bzlot[yi]s?\b|\bkron[aeo]r?\b|\beuros?\b|\byen\b|"
+                           r"\b[rd]oubles?\b|\brubles?\b)", re.I)
+
+
+def currency_mismatch(question, tool_args):
+    """Deterministic check: the user's question names a non-GBP currency (and no GBP) while the model calls the
+    GBP-only tool. Returns the currency word found, or None. Questions without a currency (follow-ups such as
+    'what is that in today's money?') pass: the amount then comes from the conversation."""
+    if not isinstance(tool_args, dict):
+        return None
+    m = _OTHER_CUR_RE.search(question or "")
+    if m and not _GBP_RE.search(question or ""):
+        return m.group(0)
+    return None
+
+
+def _clarify_currency(word):
+    return {"status": "needs_clarification",
+            "answer": (f"You mentioned {word!s}, but the inflation data here only covers British pounds (ONS RPI). "
+                       "Do you want the figure for an amount in pounds instead?"),
+            "claims": []}
+
 # ---------------------------------------------------------------- stage 4
 def run_tool(name, args):
     """Execute a model-requested tool. Never raises: unknown tool, bad arguments or a crash become a structured error."""
@@ -388,6 +414,13 @@ def generate(question, history, chunks, force_inflation=False):
         msgs.append({"role": "assistant", "content": r.content})
         results = []
         for tu in other:
+            cur = currency_mismatch(question, tu.input) if tu.name == INFLATION_TOOL["name"] else None
+            if cur:
+                calls.append({"name": tu.name, "input": tu.input,
+                              "output": {"error": "currency_mismatch", "detail": cur}, "blocked_by": "code"})
+                if _ctx is not None:
+                    _ctx.causes.append(f"generate: currency_mismatch ({cur})")
+                return _clarify_currency(cur), calls, tokens, "currency_mismatch"
             with obs.span(f"tool:{tu.name}", input=tu.input) as sp:
                 out = run_tool(tu.name, tu.input)
                 if sp is not None:
