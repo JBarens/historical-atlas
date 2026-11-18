@@ -100,3 +100,5 @@ Cross-cutting gaps: latency (p50/p95) measured nowhere yet; retrieval runs outsi
 - Day 6 Phase 9b (Jasper A): router flags is_calculation; code forces adjust_for_inflation and passes no chunks. Calculations 4x3: fully right 11/12 (was 8/12, 1/4 before), tool correct 12/12, none through retrieval.
 
 - Day 6 Phase 11: D end-to-end, rerank top50 vs top20 (dev n=25, Sonnet judge): label in top5 0.84 / 0.76, correctness 0.80 / 0.76, faithfulness 0.99 / 0.96, p50 4.3 / 4.1 s, p95 6.0 / 5.6 s, cost/question $0.020 / $0.012. Jasper predicted R@5 0.80 -> 0.72. Spend ~$1.55 total.
+
+- Decision (Jasper): rerank top 20 for deployment (composite 0.92 vs 0.81 on his weights; correctness -0.04 = 1 question, cost -41%). Revisit if correctness too low (threshold to set in Phase 13). Breakdown at top20: label in top5 -> 19/19 at least partially correct; label not in top5 -> 6/6 honest insufficient_evidence (no hallucination). Correctness is capped by retrieval, not generation.
