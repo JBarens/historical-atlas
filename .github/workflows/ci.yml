@@ -17,7 +17,7 @@ jobs:
           enable-cache: true
           cache-dependency-glob: .github/workflows/*.yml
       - name: pytest (mocked pipeline)
-        run: uv run -q --python 3.12 --with pytest --with anthropic --with python-dotenv --with fastembed --with numpy --with rank-bm25 python -m pytest backend/tests -q
+        run: uv run -q --python 3.12 --with pytest --with anthropic --with python-dotenv --with fastembed --with numpy --with rank-bm25 --with fastapi --with httpx python -m pytest backend/tests -q
       - name: gate self-tests (regression + stale-fingerprint paths)
         run: uv run -q --python 3.12 --with pytest --with anthropic --with python-dotenv --with fastembed --with numpy --with rank-bm25 python -m pytest eval/ci -q
       - name: fast retrieval gate (hybrid R@20 dev, zero tolerance)
