@@ -77,7 +77,7 @@ def test_tool_loop_is_bounded(no_retrieval):
     # model keeps asking for the tool; on the forced final request it still does -> stop, no further calls
     c = use([resp(tool_use("adjust_for_inflation", {"amount": 100, "from_year": 1923}))])
     r = P.answer("What is 100 pounds of 1923 worth?")
-    assert len(c.requests) == 1 + P.MAX_TOOL_ROUNDS
+    assert len(c.requests) == 1 + P.MAX_TOOL_ROUNDS + P.MALFORMED_RETRIES   # forced final retried once (Phase 9)
     assert len(r["tool_calls"]) == P.MAX_TOOL_ROUNDS and r["stop"] == "forced_final"
     assert c.requests[-1]["tool_choice"] == {"type": "tool", "name": "answer"}
     assert r["status"] == "error"   # no answer tool call even when forced
