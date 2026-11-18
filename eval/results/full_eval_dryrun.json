@@ -1,0 +1,252 @@
+{
+ "summary": {
+  "dry_run": true,
+  "n": 25,
+  "rerank_n": 20,
+  "correctness": 1.0,
+  "p95_latency_s": 0.86,
+  "p50_latency_s": 0.48,
+  "faithfulness": 1.0,
+  "calculations_correct": "0/4",
+  "errors": 0,
+  "cost_usd": 0.0243,
+  "thresholds": {
+   "correctness_min": 0.64,
+   "p95_latency_max_s": 7.0
+  },
+  "failures": []
+ },
+ "rows": [
+  {
+   "id": "q001",
+   "status": "answered",
+   "latency_s": 7.755457317001856,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q003",
+   "status": "answered",
+   "latency_s": 0.9205773030007549,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q006",
+   "status": "answered",
+   "latency_s": 0.5803782220027642,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q012",
+   "status": "answered",
+   "latency_s": 0.5588290710002184,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q021",
+   "status": "answered",
+   "latency_s": 0.5468249110017496,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q023",
+   "status": "answered",
+   "latency_s": 0.3737421249970794,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q025",
+   "status": "answered",
+   "latency_s": 0.5738950680024573,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q026",
+   "status": "answered",
+   "latency_s": 0.49099245999968844,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q028",
+   "status": "answered",
+   "latency_s": 0.4598313690003124,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q030",
+   "status": "answered",
+   "latency_s": 0.42589546000090195,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q032",
+   "status": "answered",
+   "latency_s": 0.6204367949976586,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q033",
+   "status": "answered",
+   "latency_s": 0.40439764999973704,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q034",
+   "status": "answered",
+   "latency_s": 0.38537243800237775,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q036",
+   "status": "answered",
+   "latency_s": 0.47674625100262347,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q037",
+   "status": "answered",
+   "latency_s": 0.21560754399979487,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q040",
+   "status": "answered",
+   "latency_s": 0.48881769700165023,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q044",
+   "status": "answered",
+   "latency_s": 0.47911328099871753,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q050",
+   "status": "answered",
+   "latency_s": 0.46988765000060084,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q051",
+   "status": "answered",
+   "latency_s": 0.4995651290009846,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q055",
+   "status": "answered",
+   "latency_s": 0.5200842330013984,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q079",
+   "status": "answered",
+   "latency_s": 0.3847594549988571,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q107",
+   "status": "answered",
+   "latency_s": 0.34380288499960443,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q108",
+   "status": "answered",
+   "latency_s": 0.3510472199996002,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q111",
+   "status": "answered",
+   "latency_s": 0.3768323220028833,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q113",
+   "status": "answered",
+   "latency_s": 0.3806443700013915,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  }
+ ],
+ "calculations": [
+  false,
+  false,
+  false,
+  false
+ ]
+}

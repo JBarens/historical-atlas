@@ -52,7 +52,8 @@ ROUTE_TOOL["input_schema"]["properties"]["is_calculation"] = {
     "stated in the conversation to another year's value (inflation); false otherwise"}
 
 MODEL = "claude-haiku-5-5"
-RERANK_N, TOPK = G.RERANK_N, G.TOPK          # 50, 5
+TOPK = G.TOPK                                # 5
+RERANK_N = 20                                # Phase 11 decision (ADR-003): deployed default, was 50
 MAX_TOOL_ROUNDS = 2
 ANSWER_TOOL = json.loads(json.dumps(RB.TOOL_B))
 # Phase 9 fix (Jasper, A): a claim can rest on a chunk, on the earlier conversation, or on a tool result.

@@ -10,7 +10,8 @@ Phase 8 done (ADR-004, backend/pipeline.py): architecture C, code owns flow; Hai
 Phase 9 done pending Jasper's interpretation of the smoke check (docs/benchmarks/failure_modes.md): one retry helper in pipeline.py; 20 s budget, 12 s/call, SDK retries off, 3 attempts + backoff/jitter/retry-after for 429/529/conn/timeout, 1 retry for malformed/truncated, other 4xx no retry; index failure -> error status. 22 failure tests (59 total). Smoke check two-tool generator: tool right 2/2 when called, but 2/4 routed to retrieval and refused.
 Phase 10 done pending Jasper's interpretation (docs/benchmarks/observability.md): option A, one JSONL line per request (backend/observability.py, backend/logs/, OBS_LOG_PATH) with full text, spans (request -> rewrite_and_route -> retrieve -> rerank -> generate -> tool -> response), tokens and assumed cost per stage; backend/metrics.py CLI. 6 tests (65 total). Real demo 3 requests $0.046 (eval/results/obs_demo.jsonl).
 Phase 12 done (docs/benchmarks/scale_review.md): 10x local scale test; dense exact ~25x, BM25 ~18x slower (super-linear); breaks first: re-indexing (6 h CPU), BM25 latency, API rate limit under concurrency; stay on Postgres/pgvector.
-Next: Phase 13 CI gate. Plan order (Jasper): 13, 14, then FRONTEND rework, then 15 held-out, 16 interview, CV texts.
+Phase 13 built (docs/benchmarks/ci_gate.md): fast PR gate = 65 mocked tests + hybrid R@20 dev v2 baseline 0.7115 (zero tolerance, fingerprint guard, eval/ci/); full eval manual (correctness >= 0.64, p95 <= 7.0 s, cap $1.50). RERANK_N = 20 deployed (ADR-003). Committed locally; push pending Jasper's token permission (Workflows: write).
+Next: Phase 14 security. Plan order (Jasper): 14, then FRONTEND rework, then 15 held-out, 16 interview, CV texts.
 
 # Status against the brief (docs/PRACTICUM_BRIEF.md), updated Day 3
 

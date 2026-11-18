@@ -1,0 +1,9 @@
+{
+ "metric": "hybrid_R@20_dev_v2",
+ "value": 0.711538,
+ "n": 26,
+ "rrf_k": 60,
+ "depth": 100,
+ "reason": "Phase 13 initial baseline: hybrid nomic+BM25, RRF k=60, depth 100, eval v2 dev",
+ "updated": "2026-11-18T15:30:39+00:00"
+}

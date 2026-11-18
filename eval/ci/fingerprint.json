@@ -1,0 +1,9 @@
+{
+ "chunks_sha256": "7765d3334303dc3c0118e58767798f0d44f6a946e2cdf9d3cb13f872fc5e54e1",
+ "chunk_count": 9798,
+ "embedding_model": "nomic-ai/nomic-embed-text-v1.5",
+ "index_npy_sha256": "decea8b7e98657840578e1560657949b8bc85ae811eb8e70d68b16372c6275ec",
+ "dev_questions_sha256": "262460d5d1bf5b68f5332b3615045cee5b50a394395cc9e7aa4c8dbed7eea882",
+ "dev_question_count": 26,
+ "query_vectors_sha256": "1ef610eb879d6df61ab178cc7ad78cf10efb7fb0f1a1753ba3844848d56e69e1"
+}

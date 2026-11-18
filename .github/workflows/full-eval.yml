@@ -1,0 +1,26 @@
+name: full-eval
+on:
+  workflow_dispatch:
+  # schedule:            # off by default: each run costs ~$1 (cap $1.50)
+  #   - cron: "0 6 * * 1"
+jobs:
+  full-eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      CAP: "1.50"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          cache-dependency-glob: .github/workflows/*.yml
+      - name: full eval (pipeline D, rerank top 20, Sonnet judge)
+        run: uv run -q --python 3.12 --with pytest --with anthropic --with python-dotenv --with fastembed --with numpy --with rank-bm25 python eval/ci/full_eval.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: full-eval
+          path: eval/results/full_eval.json

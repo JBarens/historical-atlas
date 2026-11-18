@@ -9,7 +9,16 @@ frontend/dist/
 skill-observations/
 
 # practicum data (rebuildable)
-backend/data/
+backend/data/*
+!backend/data/corpus/
+backend/data/corpus/*
+!backend/data/corpus/*.jsonl
+!backend/data/index/
+backend/data/index/*
+!backend/data/index/nomic-embed-text-v1.5_speech150.npy
+!backend/data/reference/
+backend/data/reference/*
+!backend/data/reference/cdko.csv
 data_*.log
 
 # Phase 10 request logs (local only)

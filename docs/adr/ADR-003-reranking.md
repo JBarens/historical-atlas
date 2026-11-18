@@ -74,3 +74,7 @@ Answer quality (brief): not measured yet; comes with generation (Phase 7).
 * Haiku price/latency changes, or p95 total exceeds the latency budget set in Phase 11.
 * A local cross-encoder on GPU, or a fine-tuned one, gets within \~0.05 R@5 of Haiku.
 
+
+## Phase 11 decision: rerank top 20 (deployed default)
+
+backend/pipeline.py sets `RERANK_N = 20` (was 50, inherited from eval/run_generation.py). End to end on dev answerable items (n=25, corrected Sonnet judge, eval/run_rerank_depth_e2e.py): top 20 correctness 0.76, p95 total latency ~5.6 s, ~$0.012/question pipeline cost. Top 50 costs more than twice the rerank tokens for a retrieval gain of about one question. The Phase 13 full eval (eval/ci/full_eval.py) asserts this default.
