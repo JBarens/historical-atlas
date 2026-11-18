@@ -13,7 +13,8 @@ Phase 12 done (docs/benchmarks/scale_review.md): 10x local scale test; dense exa
 Phase 13 built (docs/benchmarks/ci_gate.md): fast PR gate = 65 mocked tests + hybrid R@20 dev v2 baseline 0.7115 (zero tolerance, fingerprint guard, eval/ci/); full eval manual (correctness >= 0.64, p95 <= 7.0 s, cap $1.50). RERANK_N = 20 deployed (ADR-003). Committed locally; push pending Jasper's token permission (Workflows: write).
 Phase 13 LIVE: CI green on GitHub (run 44343932189). CI path rule added: job llm-contract fails when prompts/models/tool schemas/backend/tools change without a passing full eval (eval/ci/llm_contract.py + llm_contract.json).
 Phase 14 built pending Jasper (docs/security_review.md): option B containment, no detector. Chunks wrapped as <document> data + rule; tool bounds (amount <= 1e12); key redaction in errors/logs; input limits (invalid_input). Attack set 16 + 4 benign (hermes_draft), real run $0.33: direct 4/4, indirect 4/5 (planted false fact repeated with citation), tool 4/5 (model relabelled USD as GBP), exfil 2/2; benign 1/4 answered, 0/4 refused as attack (3 insufficient_evidence). JASPER: TODO interpretation.
-Next: frontend rework, then Phase 15.
+Phase 15 done pending Jasper (docs/benchmarks/final_test.md): one held-out test run on frozen 8c282a9, n=30, $0.77: correctness 0.80 (CI 0.68-0.93, pred 0.79), faithfulness 0.98 (pred 1.00), R@20 0.775 (pred 0.72), p95 5.4 s (pred 4 s), release PASS; out-of-corpus 4/6 (2 label errors), ambiguous 2/3. JASPER: TODO interpretation.
+Next: Phase 16 interview defence.
 
 # Status against the brief (docs/PRACTICUM_BRIEF.md), updated Day 3
 

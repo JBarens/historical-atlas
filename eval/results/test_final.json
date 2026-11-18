@@ -1,0 +1,1344 @@
+{
+ "summary": {
+  "frozen_commit": "8c282a9",
+  "git_head": "058a8d3eaa8419a31f0f4fd229b0863733efd8ed",
+  "n_items": 30,
+  "n_answerable": 20,
+  "correctness": 0.8,
+  "correctness_ci95": [
+   0.675,
+   0.925
+  ],
+  "faithfulness": 0.9839,
+  "faith_claims": 62,
+  "label_in_top5": 0.8,
+  "r20_hybrid": 0.775,
+  "r20_n": 20,
+  "p50_latency_s": 3.93,
+  "p95_latency_s": 5.4,
+  "p50_latency_all_s": 3.6,
+  "p95_latency_all_s": 5.34,
+  "out_of_corpus_ok": "4/6",
+  "ambiguous_ok": "2/3",
+  "errors": 0,
+  "cost_usd": 0.7667,
+  "thresholds": {
+   "correctness_min": 0.64,
+   "p95_latency_max_s": 7.0
+  },
+  "release": "PASS",
+  "failures": []
+ },
+ "rows": [
+  {
+   "id": "q002",
+   "group": "answerable",
+   "category": "lexical",
+   "question": "What did Lloyd George say in November 1920 about \u017beligowski's status relative to the Polish government and his forces' actions against Lithuania?",
+   "history": [],
+   "status": "answered",
+   "answer": "On 22 November 1920, Lloyd George said that General \u017beligowski (spelled \"Seligowski\" in the record) had been publicly disowned by the Polish Government, yet was continuing his attacks against the Lithuanians while the League of Nations Commission had not yet arranged an armistice. He added that as the matter was in the League's hands, His Majesty's Government had no occasion to intervene separately.",
+   "claims": [
+    {
+     "claim": "Lloyd George said General Seligowski had been publicly disowned by the Polish Government.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Lloyd George said Seligowski was continuing his attacks against the Lithuanians, with the League of Nations Commission not yet having arranged an armistice.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Lloyd George said the whole matter was in the hands of the League of Nations, so there was no occasion for separate intervention by His Majesty's Government.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    }
+   ],
+   "latency_s": 5.526,
+   "verdict": {
+    "reasoning": "The answer matches the reference: \u017beligowski was publicly disowned by the Polish Government, was continuing attacks on the Lithuanians, and the League Commission had not yet arranged an armistice. The extra point about no separate intervention is also in chunk 1. The date is correct. All claims are supported by chunk 1.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true
+   ],
+   "correct": 1.0,
+   "hit5": 1,
+   "r20": 1.0
+  },
+  {
+   "id": "q005",
+   "group": "answerable",
+   "category": "lexical",
+   "question": "What was the nature of the negotiations chaired by the Belgian statesman in Brussels regarding the Vilna dispute (Poland-Lithuania), and were their outcomes automatically binding?",
+   "history": [],
+   "status": "answered",
+   "answer": "The Brussels talks were conferences between Polish and Lithuanian delegates, presided over by M. Hymans, whom the League of Nations had delegated for that purpose; they were not a tribunal. Any solution reached would be submitted to the Council of the League for its decision, so the outcome was not automatically binding: it required the Council's decision. Colonel Wedgwood's question about whether a decision of the Belgian-hosted body would bind the British Government was answered only indirectly, by the Government's description of the process, and the evidence does not state that any outcome was binding.",
+   "claims": [
+    {
+     "claim": "M. Hymans was delegated by the League of Nations to preside over conferences between Polish and Lithuanian delegates in Brussels.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "There is no tribunal in Brussels.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Any solution reached at the Brussels conferences would be submitted to the Council of the League of Nations for its decision.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Colonel Wedgwood asked whether any decision by the tribunal sitting in Belgium would be binding on His Majesty's Government.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    }
+   ],
+   "latency_s": 3.52,
+   "verdict": {
+    "reasoning": "The answer matches the reference. The talks were conferences between Polish and Lithuanian delegates, presided over by Hymans on behalf of the League. They were not a tribunal. Any solution would go to the League Council for its decision, so it was not automatically binding. The added remark that Wedgwood's question was answered only indirectly is a reasonable reading of the evidence and does no harm. All four claims are supported by their cited chunks: chunk 1 supports claims 1-3, and chunk 2 supports claim 4.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "correct": 1.0,
+   "hit5": 1,
+   "r20": 1.0
+  },
+  {
+   "id": "q009",
+   "group": "answerable",
+   "category": "semantic",
+   "question": "On what date did the nine-month negotiation period under Protocol XIV, Article 7, concerning the Mosul question (Turkey-Iraq frontier), expire?",
+   "history": [],
+   "status": "answered",
+   "answer": "The nine-month period under Protocol XIV, Article 7 expired on 5 July 1924. The Prime Minister stated in the Commons on 23 June 1924 that negotiations began on 5 October 1923 with a Note to the Turkish Government, so the nine months terminate on 5 July 1924.",
+   "claims": [
+    {
+     "claim": "The negotiations began on 5 October 1923 by a Note addressed to the Turkish Government, and the nine months' period will terminate on 5 July (1924).",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Article 7 of Protocol XIV provides that the nine-month period starts from the date on which negotiations commence.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    }
+   ],
+   "latency_s": 2.676,
+   "verdict": {
+    "reasoning": "The answer gives 5 July 1924, which matches the reference. It also correctly says negotiations began on 5 October 1923.\n\nClaim 1 is supported by chunk 1. The chunk says \"5th July next\", and the year 1924 follows from the 23 June 1924 date.\n\nClaim 2 cites chunk 2. In that chunk, the questioner (Howard-Bury) asserts that Article 7 says the period starts from the date negotiations commence. The Prime Minister's reply in chunk 1 implicitly accepts this. The chunk does contain the assertion, though it is a member's statement and not an authoritative statement of the text. Because the claim is about what Article 7 provides, support is weak but arguably acceptable, since the chunk does state it. I'll mark it as supported.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true
+   ],
+   "correct": 1.0,
+   "hit5": 1,
+   "r20": 1.0
+  },
+  {
+   "id": "q011",
+   "group": "answerable",
+   "category": "lexical",
+   "question": "What was the outcome of the Iraqi Constituent Assembly's vote in July 1924 on ratifying the Anglo-Iraq Treaty?",
+   "history": [],
+   "status": "answered",
+   "answer": "In July 1924 the Iraqi Constituent Assembly (110 deputies elected, 69 present) voted on the Anglo-Iraq Treaty: 36 voted for acceptance and nine abstained. The Assembly attached a rider making the Treaty and its subsidiary agreements null and void if the British Government failed to safeguard Iraq's rights in the Mosul vilayet. The British Government, in reply, said there had never been any question of ratification by the Assembly; its acceptance was a condition precedent to ratification under Article 18, which it said had been fulfilled, and it did not regard the rider as imposing any responsibility on His Majesty's Government.",
+   "claims": [
+    {
+     "claim": "110 deputies were elected to the Constituent Assembly and 69 were present for the vote on the Treaty.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "36 deputies voted for acceptance and nine abstained.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "The Assembly's acceptance carried a rider making the Treaty and subsidiary agreements null and void if the British Government failed to safeguard Iraq's rights in the Mosul vilayet.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "The British Government stated there had never been any question of ratification by the Constituent Assembly; under Article 18 its acceptance was a condition precedent of ratification, which had been fulfilled.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    },
+    {
+     "claim": "The British Government did not regard the rider as imposing any responsibility on His Majesty's Government.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    }
+   ],
+   "latency_s": 5.001,
+   "verdict": {
+    "reasoning": "The answer matches the reference: 110 elected, 69 present, 36 for, 9 abstained, with the Mosul rider. The added British reply is supported by chunk 2. The claims are each supported by their cited chunks. The \"in July 1924\" framing is fine, since the chunks are from July 1924. Chunk 5 gives different figures (38 to 20), but that is a different account, and the answer used the reference-aligned one.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "correct": 1.0,
+   "hit5": 1,
+   "r20": 1.0
+  },
+  {
+   "id": "q018",
+   "group": "answerable",
+   "category": "multi-doc",
+   "question": "What did General Laidoner's commission report about Turkish treatment of Assyrian Christians?",
+   "history": [],
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not say what General Laidoner's commission reported about Turkish treatment of Assyrian Christians. The passages mention his report on the disturbed condition of the refugees' district, the stability of the British-mandated areas, an estimated emigration of 60,000 to 90,000 people, and the terrible lot of refugees described in his assistants' report, but none of them describes Turkish conduct toward Assyrian Christians. A passage from the commission's report itself, or a debate that quotes its findings on Turkish treatment, would be needed.",
+   "claims": [
+    {
+     "claim": "Laidoner's report spoke of the disturbed condition of the district from which the refugees came, and he reported conditions in the mandated districts as stable and peaceful.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Laidoner estimated that 60,000 to 90,000 persons would not be content to remain in the district if Britain withdrew.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "The refugees' lot described in the report of General Laidoner's assistants was terrible.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    }
+   ],
+   "latency_s": 4.311,
+   "verdict": {
+    "reasoning": "The reference says the supplementary report on Turkish atrocities had not yet reached the government, and that Laidoner described terrible refugee conditions and estimated tens of thousands might flee. The system declined to say what the report said about Turkish treatment, and it listed the refugee conditions and the 60,000-90,000 estimate. This is an honest partial answer. It missed the point that the supplementary report had not yet reached HMG (chunk 3), which was available. Partial credit is appropriate.\n\nFaithfulness: Claim 1 is supported by chunk 1: the disturbed condition of the district, and conditions in the mandated areas as stable and peaceful. Claim 2 is supported: the estimate was 60,000 or 90,000 persons. Claim 3 is supported by chunk 2.",
+    "correctness": "partially",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true
+   ],
+   "correct": 0.5,
+   "hit5": 1,
+   "r20": 1.0
+  },
+  {
+   "id": "q019",
+   "group": "answerable",
+   "category": "lexical",
+   "question": "When did the Turkish Petroleum Company receive its concession for Iraqi petroleum development, as confirmed by Ormsby-Gore?",
+   "history": [],
+   "status": "answered",
+   "answer": "According to Mr. Ormsby-Gore in the Commons on 14 December 1925, a concession for petroleum development covering the whole of Iraq (excluding the transferred territories and the pre-war Vilayet of Basra) was granted by the Iraq Government to the Turkish Petroleum Company, Limited, on 14 March 1925.",
+   "claims": [
+    {
+     "claim": "Ormsby-Gore stated that a concession for petroleum development in Iraq (excluding the transferred territories and the pre-war Vilayet of Basra) was granted by the Iraq Government to the Turkish Petroleum Company, Limited, on the 14th March, 1925.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    }
+   ],
+   "latency_s": 2.488,
+   "verdict": {
+    "reasoning": "The answer gives 14 March 1925, which matches the reference. It adds that Ormsby-Gore said this in the Commons on 14 December 1925, and chunk 1 supports that date. The scope details (whole of Iraq, excluding the transferred territories and the pre-war Vilayet of Basra) also match chunk 1. The single claim is supported by chunk 1.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes"
+    ]
+   },
+   "faith": [
+    true
+   ],
+   "correct": 1.0,
+   "hit5": 1,
+   "r20": 1.0
+  },
+  {
+   "id": "q020",
+   "group": "answerable",
+   "category": "semantic",
+   "question": "What proposal did Turkey make in March 1925 regarding Mosul vilayet and oil rights, and how did Austen Chamberlain describe Britain's response?",
+   "history": [],
+   "status": "answered",
+   "answer": "In March 1925 the Turkish representative approached Chamberlain with a proposal to settle the Mosul question outside the League of Nations: Turkey would receive as much of the Mosul vilayet as it desired, and in return a British company approved by His Majesty's Government would have the exploitation of all the oil. Chamberlain's response, in the Commons, was that the Government had not been actuated by a desire for Iraq's oil, which he called \"a more palpable untruth,\" and that the Government had defended Iraq's rights and contended for the same frontier as the opposition. He also confirmed that about two-thirds of the vilayet would have been returned to Turkey under the proposal, and answered in the negative the question whether the Government was offered a free hand. Note that the evidence does not explicitly state the British response to the Turkish offer itself beyond these remarks.",
+   "claims": [
+    {
+     "claim": "Turkey's March 1925 proposal was to settle the Mosul question apart from the League of Nations, with Turkey receiving as much of the vilayet as it desired in exchange for a British company approved by HMG having exploitation of all the oil.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    },
+    {
+     "claim": "Chamberlain described the suggestion that HMG acted to secure Iraq's oil as a 'palpable untruth'.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    },
+    {
+     "claim": "Chamberlain stated that approximately two-thirds of the Mosul Vilayet were to be returned to Turkey under the proposal, and that oil exploitation was to be granted to an English group approved by the British Government.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    }
+   ],
+   "latency_s": 3.962,
+   "verdict": {
+    "reasoning": "The proposal part is right and matches the reference: about two-thirds of Mosul back to Turkey, and oil exploitation to a British company approved by HMG. The answer misses the key point of Chamberlain's description, which is that Britain refused because it was a trustee for Iraq and could not bargain away Iraq's rights. The shown chunks don't contain that, and the answer honestly says the evidence doesn't state the response to the offer itself. Its \"palpable untruth\" point is accurate to chunk 2, but it is a different statement about the oil-motive accusation. The answer also contains an error. It says Chamberlain \"answered in the negative the question whether the Government was offered a free hand\". In chunk 1 the negative answer is to the fourth part, which asks whether the Iraq Government was consulted. The free-hand part was answered by the oil-to-an-English-group statement. So the answer is partial, with one misstatement. The three claims are each supported by their cited chunks.",
+    "correctness": "partially",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true
+   ],
+   "correct": 0.5,
+   "hit5": 1,
+   "r20": 1.0
+  },
+  {
+   "id": "q022",
+   "group": "answerable",
+   "category": "semantic",
+   "question": "Which MPs alleged that oil interests were driving British policy on Iraq, and which MPs emphasized economic development and obligations to Assyrian Christians?",
+   "history": [],
+   "status": "insufficient_evidence",
+   "answer": "Mr. Thurtle clearly alleged that oil interests were behind British policy on Iraq, and Mr. Ponsonby also tied oil and Iraqi prosperity together in the debate. However, the evidence does not show any MP emphasizing obligations to Assyrian Christians: Mr. Thurtle discusses the Christians only to argue that British imperialism used them as pawns, and Sir Harry Brittain's remarks concern oil as a source of economic gain for Iraq without mentioning the Christians. The evidence therefore cannot fully answer the second half of the question.",
+   "claims": [
+    {
+     "claim": "Mr. Thurtle alleged there is a grave suspicion that the Iraq policy was done from the point of view of the oil interests.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    },
+    {
+     "claim": "Mr. Thurtle said oil does loom very largely in the Iraq question and that oil lobbying went on in Geneva.",
+     "source": "chunk",
+     "chunk_id": 3,
+     "in_range": true
+    },
+    {
+     "claim": "Mr. Ponsonby said oilfields in Persia had to be protected as a British interest and expected oil to be discovered in Iraq, wrapped up with claims about Iraqi prosperity.",
+     "source": "chunk",
+     "chunk_id": 5,
+     "in_range": true
+    },
+    {
+     "claim": "Sir Harry Brittain argued that if oil can be obtained from Iraq, Iraq will gain just as much as any commercial company.",
+     "source": "chunk",
+     "chunk_id": 4,
+     "in_range": true
+    },
+    {
+     "claim": "Mr. Thurtle described British imperialism using Syrian Christians as pawns in the War; he did not express an obligation to protect them.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    }
+   ],
+   "latency_s": 5.395,
+   "verdict": {
+    "reasoning": "The reference names Purcell, Thurtle, Griffiths, Wallhead and Kenworthy for the oil allegation, and Hilton Young and Eden for economic development and Christian obligations. The system names only Thurtle, plus Ponsonby, who is not in the reference list but does fit the oil allegation. It identifies no one for the second half and says the evidence is insufficient. The shown chunks do not contain Hilton Young or Eden, so this honest decline is reasonable. The answer is partial: Thurtle is right and the second half is missing.\n\nFaithfulness of the claims:\n1. Chunk 2 supports it.\n2. Chunk 3 supports it.\n3. Chunk 5 supports it.\n4. Chunk 4 supports it.\n5. Chunk 1 supports the pawns point. \"He did not express an obligation\" is consistent with that chunk.",
+    "correctness": "partially",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "correct": 0.5,
+   "hit5": 0,
+   "r20": 0.0
+  },
+  {
+   "id": "q029",
+   "group": "answerable",
+   "category": "semantic",
+   "question": "How was the Mosul question (Turkey-Iraq frontier) ultimately resolved, and which countries' legislatures approved the final settlement?",
+   "history": [],
+   "status": "answered",
+   "answer": "The Mosul frontier was settled through a League of Nations decision of 16 September (1925), after a League commission investigated the Iraq frontier question; under the resulting Anglo-Iraq Treaty, the present Iraq frontier was to become the definite frontier under Article 3 of the Treaty of Lausanne, with Turkey's renunciation of claims to Iraqi territory in Article 16 made final. The Iraq Legislature (both Houses) approved the Treaty, and it awaited approval by the British House of Commons before ratification and submission to the League Council. The evidence shows no approval by any other country's legislature; it only records a 1926 question about laying and ratifying the Treaty with Turkey regarding Mosul, without the answer.",
+   "claims": [
+    {
+     "claim": "The present Iraq frontier, in pursuance of the League decision of 16 September, becomes the definite frontier under Article 3 of the Treaty of Lausanne, and Turkey's Article 16 renunciation of claims to Iraqi territory becomes final once the Treaty is ratified.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "The Anglo-Iraq Treaty was approved by both Houses of the Iraq Legislature and awaited approval by the British House of Commons before ratification and submission to the League Council.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Approximately two-thirds of the Mosul Vilayet were to be returned to Turkey under the proposed settlement.",
+     "source": "chunk",
+     "chunk_id": 3,
+     "in_range": true
+    },
+    {
+     "claim": "A League commission investigated the Iraq frontier question and its President hoped to present the report to the Council at the June session.",
+     "source": "chunk",
+     "chunk_id": 5,
+     "in_range": true
+    },
+    {
+     "claim": "On 21 June 1926 Ramsay MacDonald asked when the Treaty with Turkey regarding Mosul would be laid on the Table and ratified; no answer is recorded.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    }
+   ],
+   "latency_s": 5.022,
+   "verdict": {
+    "reasoning": "The reference answer: Treaty signed at Angora in June 1926 (Mosul boundary treaty with Turkey), approved by the Turkish National Assembly and Iraq Parliament. The system answer describes the Anglo-Iraq Treaty (Feb 1926) and the League decision, and says no other legislature's approval is shown. It misses the Angora treaty and the Turkish National Assembly. The evidence chunks shown don't contain the Turkish approval, so the honest limitation is partially acceptable. But the answer conflates the Anglo-Iraq Treaty with the resolution; it says the frontier was settled through the League decision, which is roughly right (Brussels line, League decision of 16 Sept 1925). It gets Iraq right, and mentions the UK awaiting approval. It misses the Turkish Assembly, and the Angora treaty. Partial.\n\nFaithfulness: Claim 1: chunk 1 supports it (though \"once Treaty is ratified\" is fine). Claim 2: supported. Claim 3: chunk 3 says approximately two-thirds of Mosul Vilayet \"were to be returned to Turkey\" \u2014 in a proposed frontier (likely a different earlier proposal, not the final settlement); the claim says \"under the proposed settlement\", which is supported by the chunk loosely. Claim 4: chunk 5 supports. Claim 5: chunk 2 supports the question; it's dated 1926-06-21, fine.",
+    "correctness": "partially",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "correct": 0.5,
+   "hit5": 0,
+   "r20": 0.0
+  },
+  {
+   "id": "q035",
+   "group": "answerable",
+   "category": "semantic",
+   "question": "What was Sir Austen Chamberlain's response to the question about British participation in a League of Nations-organized loan to Bulgaria?",
+   "history": [],
+   "status": "answered",
+   "answer": "In the Commons debate of 29 March 1926, responding to Mr. Noel Buxton's question on whether His Majesty's Government would take part in a League-organised Bulgarian loan, Sir Austen Chamberlain declined to commit in advance. He said that while he recognised the importance of settling the refugees for peace in the region, he would be unwilling to make any statement in general terms about a loan brought out under League auspices. He added that he could not undertake to say in advance what the government's attitude would be if the League undertook to organise such a loan.",
+   "claims": [
+    {
+     "claim": "Chamberlain said he recognised the importance, for peace in these districts, of settling the refugees, but would be unwilling to make any statement in general terms about a loan brought out under League auspices.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Chamberlain said he could not undertake to say in advance what the attitude of His Majesty's Government would be if the League undertook to organise such a loan.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    },
+    {
+     "claim": "Noel Buxton asked whether His Majesty's Government was willing to take part in a Bulgarian loan organised by the League of Nations on lines similar to the Greek loan, for the solution of the refugee problem.",
+     "source": "chunk",
+     "chunk_id": 5,
+     "in_range": true
+    }
+   ],
+   "latency_s": 4.11,
+   "verdict": {
+    "reasoning": "The answer states that Chamberlain could not undertake to say in advance what the government's attitude would be, which matches the reference. It adds the \"unwilling to make any statement in general terms\" point, which is supported by chunk 1 and also appears in the reference evidence. Claim 1 matches chunk 1. Claim 2 matches chunk 2. Claim 3 matches chunk 5. The answer's phrase \"in the Commons debate\" is a minor description and does not affect accuracy.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true
+   ],
+   "correct": 1.0,
+   "hit5": 1,
+   "r20": 1.0
+  },
+  {
+   "id": "q038",
+   "group": "answerable",
+   "category": "semantic",
+   "question": "How did Greece's role at the 1919 Paris Peace Conference's Aeronautical Commission compare to that of the major Allied powers?",
+   "history": [],
+   "status": "answered",
+   "answer": "Greece held a more limited position than the major Allied powers. The five principal Powers (United States, British Empire, France, Italy and Japan) each had two representatives on the Aeronautical Commission and each supplied a secretary and assistant secretary to its secretariat. Greece was one of seven Powers with limited interests (with Belgium, Brazil, Cuba, Portugal, Rumania and Serbia), represented by a single delegate designated by the Supreme Council, and it is not listed as having any secretariat role. The sources do not describe Greece's activity in the sub-committees or its influence on the Convention beyond this.",
+   "claims": [
+    {
+     "claim": "The five principal Powers (US, British Empire, France, Italy, Japan) each had two representatives on the Commission.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Greece was one of seven Powers with limited interests, each represented by one representative designated by the Supreme Council.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "The secretariat had one secretary and one assistant secretary for each of the five great Powers; Greece is not listed among them.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Greece's delegate, Leon V. Melas, signed the protocol later on Greece's behalf.",
+     "source": "chunk",
+     "chunk_id": 4,
+     "in_range": true
+    }
+   ],
+   "latency_s": 4.935,
+   "verdict": {
+    "reasoning": "The answer matches the reference: the five principal Powers had two delegates each, while Greece was one of seven limited-interest Powers with a single representative designated by the Supreme Council. The extra point about the secretariat is supported by chunk 1, which says the secretariat had a secretary and an assistant secretary for each of the five great Powers. The answer's phrasing that Greece \"is not listed\" is a cautious reading and is accurate. The answer also honestly states what the sources do not cover.\n\nFaithfulness of the claims:\nClaim 1 is supported by chunk 1.\nClaim 2 is supported by chunk 1. The chunk says the seven Powers were designated by the Supreme Council and had one representative each. The wording is slightly loose, since the seven were collectively designated to represent all limited-interest Powers, but it is acceptable.\nClaim 3 is supported by chunk 1.\nClaim 4 says Greece's delegate Leon V. Melas signed the protocol later on Greece's behalf. Chunk 4 lists \"For Greece: Leon. V. Melas\" among signatures on a protocol, so it is roughly supported. Chunk 5 also shows the signature deposited. The claim says \"the protocol\" without specifying which one, but the support is adequate.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "correct": 1.0,
+   "hit5": 1,
+   "r20": 1.0
+  },
+  {
+   "id": "q042",
+   "group": "answerable",
+   "category": "multi-doc",
+   "question": "On what date did Earl Curzon bring the Aaland Islands matter to the League of Nations Council, and under what article of the Covenant did he act?",
+   "history": [],
+   "status": "insufficient_evidence",
+   "answer": "The evidence establishes that Earl Curzon acted under Article 11 of the Covenant, but it does not give the exact date on which he brought the Aaland Islands matter to the Council. The latest date stated is the Commons answer of 28 June 1920, which reports that the referral had already been made; the exact date of the referral is not in the evidence.",
+   "claims": [
+    {
+     "claim": "The reference of the Aaland Islands question to the League Council was taken under Article 11 of the Covenant, and Curzon took it on his own responsibility.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "The Secretary of State, acting under Article XI, brought the Aaland Islands case to the Council's attention, and this was reported in the Commons on 28 June 1920.",
+     "source": "chunk",
+     "chunk_id": 3,
+     "in_range": true
+    },
+    {
+     "claim": "Curzon described the Aaland Islands matter as one that might threaten international peace, and said he informed the two nations concerned of his proposed reference.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    }
+   ],
+   "latency_s": 4.087,
+   "verdict": {
+    "reasoning": "The answer correctly gives Article 11 and says the exact referral date is not in the evidence, which matches the reference. It adds that the 28 June Commons answer reported the referral as already made. That is accurate, since the 28 June chunk cites the Under-Secretary's statement of 23 June. It does not mention the 23 June statement, but that is a minor omission. The answer is correct.\n\nFaithfulness of the claims:\n1. Chunk 1 supports Article 11 and Curzon acting on his own responsibility.\n2. Chunk 3 supports the Secretary of State acting under Article XI and the 28 June 1920 Commons report.\n3. Chunk 2 supports Curzon's description of the matter as a threat to peace and his informing the two nations of the proposed reference.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true
+   ],
+   "correct": 1.0,
+   "hit5": 1,
+   "r20": 1.0
+  },
+  {
+   "id": "q046",
+   "group": "answerable",
+   "category": "multi-doc",
+   "question": "Did either Sweden or Finland formally request League intervention before Curzon's referral, and how did they later respond once the case was taken up?",
+   "history": [],
+   "status": "answered",
+   "answer": "The evidence does not show that Sweden or Finland formally requested League intervention before Curzon's referral. Curzon states that he took the reference to the Council himself, on his own responsibility, under Article 11, and that he informed the two nations he proposed to make it, after which each \"warmly welcomed the reference\" (chunk 2, 4). Once the case was taken up, both governments adhered to the Council's July 1920 resolution for an advisory opinion by three international jurists, and both expressed satisfaction that the case would be examined without delay (chunks 1, 3).",
+   "claims": [
+    {
+     "claim": "Curzon took the reference of the Aaland Islands question to the League Council under Article 11 on his own responsibility.",
+     "source": "chunk",
+     "chunk_id": 4,
+     "in_range": true
+    },
+    {
+     "claim": "Curzon informed the two nations concerned that he proposed to make the reference, and each warmly welcomed it as soon as it was made.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    },
+    {
+     "claim": "The Council unanimously adopted a resolution, with the representatives of Finland and Sweden adhering, to appoint a commission of three international jurists for an advisory opinion.",
+     "source": "chunk",
+     "chunk_id": 3,
+     "in_range": true
+    },
+    {
+     "claim": "Both the Governments of Sweden and Finland expressed their satisfaction that the case would now be examined without delay.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    }
+   ],
+   "latency_s": 3.639,
+   "verdict": {
+    "reasoning": "The answer matches the reference: no evidence of a formal request, Curzon acted on his own responsibility, he informed both, and both welcomed it and expressed satisfaction. The claim that neither requested is hedged as \"evidence does not show\", which is fair. Curzon acting on his own responsibility implies no request. The extra detail about adhering to the resolution is supported by chunk 3. The slight stretch is \"both governments adhered to the Council's resolution\", which chunk 3 supports (representatives of Finland and Sweden adhering). All claims are supported.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "correct": 1.0,
+   "hit5": 1,
+   "r20": 1.0
+  },
+  {
+   "id": "q047",
+   "group": "answerable",
+   "category": "lexical",
+   "question": "What title was given to the final report on the Aaland Islands published by the League of Nations in 1921, and who was the American member who joined the drafting commission?",
+   "history": [],
+   "status": "answered",
+   "answer": "The final report was published by the League of Nations in 1921 as Council Document B 7, titled \"The Aaland Islands Question, Report submitted to the Council of the League of Nations by the Commission of Rapporteurs.\" The American member who joined the commission was Mr. Elkus, a former Ambassador, whom the Council designated upon the recommendation of the United States Government.",
+   "claims": [
+    {
+     "claim": "The report was published by the League of Nations in 1921 as Council Document B 7, The Aaland Islands Question, Report submitted to the Council of the League of Nations by the Commission of Rapporteurs.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "The Council designated Mr. Elkus, former Ambassador and compatriot of the American ambassador, to form part of the Commission of the Aland Islands, upon the recommendation of the United States Government.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    }
+   ],
+   "latency_s": 2.819,
+   "verdict": {
+    "reasoning": "The answer matches the reference: the title and Mr. Elkus, former Ambassador. Both claims are supported by chunks 1 and 2. Claim 2's \"compatriot of the American ambassador\" is supported by \"your compatriot\" in a letter addressed to the ambassador.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true
+   ],
+   "correct": 1.0,
+   "hit5": 1,
+   "r20": 1.0
+  },
+  {
+   "id": "q053",
+   "group": "answerable",
+   "category": "multi-doc",
+   "question": "What casualties did French troops sustain in clashes with Polish insurgents in May 1921, and did Cecil Harmsworth confirm Polish government arms supplies to insurgents?",
+   "history": [],
+   "status": "answered",
+   "answer": "On 24 May 1921 Under-Secretary Cecil Harmsworth stated that French troops did offer resistance to the Polish insurgents, with three killed and six wounded among them. He did not answer the question on Polish government arms supplies: the evidence records Mr. Glanville asking whether he had information that the Polish Government or its agents had supplied arms, but contains no reply from Harmsworth on that point, so it cannot be confirmed from these documents.",
+   "claims": [
+    {
+     "claim": "The Under-Secretary of State for Foreign Affairs, Cecil Harmsworth, said French troops did not offer no resistance to the insurgents, with three killed and six wounded among the French troops.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Mr. Glanville asked whether the Under-Secretary had any information that arms had been supplied by the Polish Government or its agents to the Polish insurgents in Upper Silesia.",
+     "source": "chunk",
+     "chunk_id": 3,
+     "in_range": true
+    }
+   ],
+   "latency_s": 4.217,
+   "verdict": {
+    "reasoning": "The casualty part is correct (three killed, six wounded). On arms supplies, the reference says Harmsworth answered in the negative, but the shown chunks do not include that reply. Chunk 3 has only the question. The system honestly says no reply is in the evidence. However, it also says \"He did not answer the question\", which is an incorrect statement, because he did answer. It then says the evidence contains no reply, which is accurate. The answer is therefore partial: the first half is right, and the second half is an honest decline with a slightly misleading phrase.\n\nFaithfulness: Claim 1 is awkwardly worded (\"did not offer no resistance\"), but it is supported by chunk 1. Claim 2 is supported by chunk 3.",
+    "correctness": "partially",
+    "faithfulness": [
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true
+   ],
+   "correct": 0.5,
+   "hit5": 1,
+   "r20": 0.5
+  },
+  {
+   "id": "q057",
+   "group": "answerable",
+   "category": "lexical",
+   "question": "What condition had to be met before troop withdrawal could proceed according to the Foreign Office in March 1922 regarding the partition of Upper Silesia (Germany-Poland), and who chaired the related negotiations?",
+   "history": [],
+   "status": "answered",
+   "answer": "According to the Foreign Office statement of 15 March 1922, withdrawal could only proceed once the economic convention for administering the industrial area, then being negotiated between Germany and Poland, had been concluded; only then could the Plebiscite Commission's powers end and the allied troops, including the British contingent, be withdrawn. The negotiations were conducted under a chairman appointed by the League of Nations. The chairman's name is not given in the evidence.",
+   "claims": [
+    {
+     "claim": "Under the Treaty of Versailles, the Plebiscite Commission's powers terminate only when the allotted parts of Upper Silesia are placed under German and Polish administration, which cannot occur until the economic convention for the industrial area has been concluded.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "The economic convention was being negotiated between Germany and Poland under a chairman appointed by the League of Nations.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Once the convention is concluded, the Plebiscite Commission and with it the allied troops, including the British contingent, could be withdrawn.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Troops would be withdrawn as soon as the frontier is fixed and notified, after ratification of the economic agreement being negotiated by a mixed commission under the presidency of a League of Nations-appointed chairman.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    }
+   ],
+   "latency_s": 3.565,
+   "verdict": {
+    "reasoning": "The answer matches the reference: the economic convention had to be concluded, and the negotiations were chaired by a chairman appointed by the League of Nations. It also says the chairman's name isn't given, which is accurate. All four claims are supported by their cited chunks. Chunk 1 supports claims 1-3. Chunk 2 supports claim 4.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "correct": 1.0,
+   "hit5": 1,
+   "r20": 1.0
+  },
+  {
+   "id": "q061",
+   "group": "out_of_corpus",
+   "category": "out-of-corpus",
+   "question": "Was oil the real reason behind the Mosul dispute?",
+   "history": [],
+   "status": "answered",
+   "answer": "The evidence shows the question is contested rather than settled. Sir A. Chamberlain denied that oil motivated the government, arguing that the government refused a Turkish proposal in which a British company would have obtained oil concessions in exchange for returning about two-thirds of the Mosul Vilayet to Turkey, and that the government replied it could not bargain away Iraqi rights for concessions to British capitalists. Labour member Mr. Purcell, by contrast, asserted that oil was \"at the bottom of the question.\" The documents therefore contain the oil allegation and its denial, but they do not themselves establish which motive was the real one.",
+   "claims": [
+    {
+     "claim": "Chamberlain stated that the government was not actuated by a desire to secure the oil of Iraq and called the suggestion a palpable untruth.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "A Turkish proposal in March 1925 would have returned about two-thirds of the Mosul Vilayet to Turkey, with the exploitation of oil granted to an English group approved by the British Government.",
+     "source": "chunk",
+     "chunk_id": 3,
+     "in_range": true
+    },
+    {
+     "claim": "Chamberlain said the British government refused the offered concessions (pipelines, ports, railways, oil) because it was trustee for Iraq and could not bargain away Iraqi rights for concessions to British capitalists.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    },
+    {
+     "claim": "Mr. Purcell stated it was pretty clear that oil is at the bottom of the question and that Mosul would not have been discussed without the oil sinkages.",
+     "source": "chunk",
+     "chunk_id": 5,
+     "in_range": true
+    }
+   ],
+   "latency_s": 3.944,
+   "verdict": {
+    "reasoning": "The answer says the question was contested. It reports Chamberlain's denial and his point that the government rejected a Turkish offer that would have given a British company the oil in exchange for returning most of Mosul to Turkey. It also reports Purcell's claim that oil was at the bottom of the question. This matches the reference's key point. The reference names Thurtle, Wallhead and Kenworthy as critics, while the answer cites Purcell, who appears in the shown chunks, so that difference is acceptable. The answer is correct.\n\nFaithfulness: Claim 1 is supported by chunk 1 (\"never was there a more palpable untruth\"). Claim 2 is supported by chunk 3 on the two-thirds and the English group. The \"March 1925\" detail is not in chunk 3 itself but is in chunk 1 and in the question in chunk 4, so this is a minor point. Claim 3 is supported by chunk 2. Claim 4 is supported by chunk 5.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "correct": 1.0,
+   "behaviour_ok": false
+  },
+  {
+   "id": "q066",
+   "group": "out_of_corpus",
+   "category": "out-of-corpus",
+   "question": "Why did the islanders want to join Sweden instead of staying with Finland?",
+   "history": [],
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not explain why the Aaland islanders wanted to join Sweden. The documents cover the League of Nations Council's referral of the dispute to a commission of jurists, the British government's action in bringing the case to the Council, and a later 1922 remark that the Sweden-Finland dispute was resolved, but none gives the islanders' reasons. Sources that record the islanders' own statements or the grounds of their petition would be needed.",
+   "claims": [],
+   "latency_s": 2.975,
+   "verdict": {
+    "reasoning": "The answer matches the reference: the evidence doesn't explain the islanders' motivations. Its description of the chunks is accurate. No claims were listed, so none are unsupported.",
+    "correctness": "correct",
+    "faithfulness": []
+   },
+   "faith": [],
+   "correct": 1.0,
+   "behaviour_ok": true
+  },
+  {
+   "id": "q068",
+   "group": "out_of_corpus",
+   "category": "follow-up",
+   "question": "Did Finland accept the outcome?",
+   "history": [
+    {
+     "role": "user",
+     "content": "Why did the Aaland islanders want to join Sweden?"
+    }
+   ],
+   "status": "insufficient_evidence",
+   "answer": "The provided evidence does not say why the Aaland islanders wanted to join Sweden. It also does not directly state whether Finland accepted the outcome: it records that Sweden accepted the League's decision, and that the Sweden\u2013Finland dispute was resolved, but not Finland's own response.",
+   "claims": [
+    {
+     "claim": "Sweden accepted the League's Aaland Islands decision without demur, although it went against them.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "The Council referred the Aaland Islands case to a commission of three international jurists in July 1920, with Finland and Sweden adhering.",
+     "source": "chunk",
+     "chunk_id": 3,
+     "in_range": true
+    },
+    {
+     "claim": "The solution of the dispute between Sweden and Finland was described as successfully brought about.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    }
+   ],
+   "latency_s": 5.283,
+   "verdict": {
+    "reasoning": "The answer correctly says the evidence does not state Finland's own response, matching the reference. The extra remarks about Sweden's acceptance and the resolved dispute are supported by the chunks. The unprompted sentence about why the islanders wanted to join Sweden is harmless. All three claims are supported by their cited chunks.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true
+   ],
+   "correct": 1.0,
+   "behaviour_ok": true
+  },
+  {
+   "id": "q072",
+   "group": "answerable",
+   "category": "cross-case",
+   "question": "In which of these disputes did a great power's own interests get in the way of the League?",
+   "history": [],
+   "status": "answered",
+   "answer": "The evidence points most directly to the Greek-Italian dispute, where a great power was itself involved, and the League still acted; the Lords debate of 1924 says the League took up the matter \"even if one of the great Powers was engaged in it\" and that \"no question of corporate amour propre would interfere with it.\" The evidence also shows great powers' national interests obstructing the League in two other cases: Viscount Bryce notes that where \"the Powers act as Powers they are forced to do so as representing their own national interests,\" and Lloyd George describes the Locarno Powers, including Great Britain, intriguing and pressing to carry their own nominees for the Council seats in 1926. The Polish-Soviet war is not a clear example, since the speaker there criticises Poland rather than a great power's interests blocking the League.",
+   "claims": [
+    {
+     "claim": "In the Greek dispute a great power was engaged, yet the League took it up and warlike developments ceased once it did.",
+     "source": "chunk",
+     "chunk_id": 4,
+     "in_range": true
+    },
+    {
+     "claim": "Where the Powers act as Powers they are forced to represent their own national interests, whereas the League has a wider scope.",
+     "source": "chunk",
+     "chunk_id": 3,
+     "in_range": true
+    },
+    {
+     "claim": "The Locarno Powers, including Great Britain, negotiated, conferred, manoeuvred and cajoled to carry their own nominees in the Council election, rather than saying it was Germany alone.",
+     "source": "chunk",
+     "chunk_id": 5,
+     "in_range": true
+    }
+   ],
+   "latency_s": 3.894,
+   "verdict": {
+    "reasoning": "The reference answer points to Upper Silesia (and the reference evidence mentions Mosul and oil). None of the shown chunks cover Upper Silesia or Mosul. The system answer does not identify Upper Silesia or Mosul. It says the Greek-Italian dispute is the most direct example. Its own quote, though, says the League was not obstructed there, which is internally confused. It then offers the Council seat dispute of 1926 and a general remark by Bryce as cases of great-power interests getting in the way. That does not match the reference. The Council seats episode is not a \"dispute\" the League handled, though it does show national interests interfering. The answer's framing is muddled and does not give the expected answer, so it is incorrect, or at best marginally partial. The evidence supplied lacks the Upper Silesia material, but the answer still makes questionable assertions, such as naming the Greek-Italian dispute as the most direct example of great-power interests getting in the way, when the quote shows the opposite. I rate it incorrect.\n\nFaithfulness: Claim 1 is supported by chunk 4, which says the League tackled the dispute and warlike developments ceased. The name \"Greek\" is acceptable, since the chunk mentions the Greeks. Claim 2 is supported by chunk 3. Claim 3 is mostly supported by chunk 5, although \"to carry their own nominees\" is roughly \"to carry their nominees\", and \"rather than saying it was Germany alone\" is also supported.",
+    "correctness": "incorrect",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true
+   ],
+   "correct": 0.0,
+   "hit5": 0,
+   "r20": 0.0
+  },
+  {
+   "id": "q076",
+   "group": "answerable",
+   "category": "why",
+   "question": "Why were British troops sent to Silesia at all?",
+   "history": [],
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not state why British troops were sent to Silesia. It shows only what they were doing in 1921: co-operating with other Allied troops to restore and maintain order, and the Allied suppression of a Polish insurrection was under consideration. Documents explaining the decision or its motives are missing.",
+   "claims": [
+    {
+     "claim": "British troops in Silesia were co-operating with other Allied troops to restore and maintain order.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Measures for the suppression of the Polish insurrection by Allied troops acting in co-operation were being considered.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Four British battalions were to be sent to Silesia from the Rhine in 1921.",
+     "source": "chunk",
+     "chunk_id": 2,
+     "in_range": true
+    }
+   ],
+   "latency_s": 3.135,
+   "verdict": {
+    "reasoning": "The reference says the troops were sent to help other Allied troops keep order in the plebiscite area. The shown chunks do not contain that purpose statement. The system honestly says the evidence does not state why, and it gives the order-keeping role from chunk 1, which is the substance of the reference. It omits the plebiscite area, so the answer is partial. Claims 1 and 2 are supported by chunk 1. Claim 3 cites only chunk 2, which mentions four battalions to be sent to Silesia but does not say they come from the Rhine. That makes the claim borderline, and I mark it unsupported.",
+    "correctness": "partially",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "no"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    false
+   ],
+   "correct": 0.5,
+   "hit5": 0,
+   "r20": 0.0
+  },
+  {
+   "id": "q077",
+   "group": "answerable_followup",
+   "category": "follow-up",
+   "question": "Who got the territory in the end?",
+   "history": [
+    {
+     "role": "user",
+     "content": "What happened in the Upper Silesia plebiscite?"
+    }
+   ],
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not say who finally received the territory. It shows that in May-June 1921 the British government said the future of Upper Silesia would be decided by the Supreme Council under the Treaty of Versailles, and in March 1922 that the Plebiscite Commission would withdraw once the German and Polish parts were placed under their respective administrations after an economic convention was concluded. No document records the final allocation of the territory or the outcome of that convention.",
+   "claims": [
+    {
+     "claim": "In May 1921 the British government said the future of Upper Silesia would be considered at the forthcoming Allied Conference.",
+     "source": "chunk",
+     "chunk_id": 3,
+     "in_range": true
+    },
+    {
+     "claim": "In June 1921 the Under-Secretary of State for Foreign Affairs said the future of Upper Silesia would be decided in accordance with the Treaty of Versailles.",
+     "source": "chunk",
+     "chunk_id": 5,
+     "in_range": true
+    },
+    {
+     "claim": "In March 1922 the Plebiscite Commission's powers were to terminate once the German and Polish parts were placed under German and Polish administration, which depended on an economic convention being negotiated between Germany and Poland under a League of Nations-appointed chairman.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    }
+   ],
+   "latency_s": 4.234,
+   "verdict": {
+    "reasoning": "The reference says the former plebiscite area was divided and transferred to German and Polish administration. The shown chunks do not contain that statement. Chunk 1 only says the parts allotted to Germany and Poland would be placed under their administration once the economic convention was concluded. So the evidence points toward a German/Polish split but does not confirm the final outcome. The answer honestly says the final allocation isn't recorded, and it describes the German and Polish administrations as the intended arrangement. That is an honest partial answer, but it doesn't state the key point that the area was divided between Germany and Poland, even though chunk 1 implies it. So: partially.\n\nFaithfulness: Claim 1 matches chunk 3, which says the question would be considered at the Allied Conference. Claim 2 matches chunk 5. The system's summary says \"decided by the Supreme Council\", which isn't quite in chunk 3 or 5, but the claims themselves are supported. Claim 3 matches chunk 1.",
+    "correctness": "partially",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true
+   ],
+   "correct": 0.5,
+   "hit5": 0,
+   "r20": null
+  },
+  {
+   "id": "q083",
+   "group": "out_of_corpus",
+   "category": "out-of-corpus",
+   "question": "What happened when Italy bombarded Corfu in 1923?",
+   "history": [],
+   "status": "insufficient_evidence",
+   "answer": "The evidence refers to the \"Corfu incident\" and says a difficult question arose about the League of Nations' jurisdiction to act in it, which was referred to a Jurists' Committee, and that the Italian representative Signor Salandra accepted the Jurists' conclusions. However, none of the chunks describe the bombardment itself, its causes, casualties, or the events that followed it in 1923, so I cannot give an account of what happened when Italy bombarded Corfu.",
+   "claims": [
+    {
+     "claim": "A question arose about the League of Nations' jurisdiction to interfere in the Corfu incident, and it was referred to a Jurists' Committee.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "Signor Salandra, the Italian representative, said he adhered to the proposal that the Council approve as a whole the conclusions of the Special Commission of Jurists, and made no reservation.",
+     "source": "chunk",
+     "chunk_id": 4,
+     "in_range": true
+    },
+    {
+     "claim": "Lord Parmoor described the Corfu incident as a difficulty that had arisen between the Italian Government and the League.",
+     "source": "chunk",
+     "chunk_id": 3,
+     "in_range": true
+    }
+   ],
+   "latency_s": 3.36,
+   "verdict": {
+    "reasoning": "The reference answer is None, so the judgement rests on the chunks. They discuss the aftermath of the Corfu incident: the jurisdiction question, the Jurists' Committee, and Salandra's acceptance of its conclusions. They don't describe the bombardment itself. The answer says this honestly and gives the partial information the chunks do contain, so it is a \"partially\" correct, honest partial answer.\n\nFaithfulness of the claims:\nClaim 1 is supported by chunk 1.\nClaim 2 cites chunk 4. The \"adhere to the proposal\" wording is in chunk 3, and chunk 4 has \"no declaration or reservation\". Chunk 4 alone covers only the reservation part, but the cited chunk set is loosely supported. The claim is essentially supported by the adjacent text, and chunk 4 does say he adopted the conclusions entirely, so I mark it yes, though it is borderline.\nClaim 3 cites chunk 3, which says \"in the case of Corfu a difficulty had arisen between the Italian Government and the League\". This is supported.",
+    "correctness": "partially",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    true
+   ],
+   "correct": 0.5,
+   "behaviour_ok": true
+  },
+  {
+   "id": "q088",
+   "group": "out_of_corpus",
+   "category": "out-of-corpus",
+   "question": "What was the League's role in the Leticia dispute between Colombia and Peru?",
+   "history": [],
+   "status": "insufficient_evidence",
+   "answer": "The provided documents do not cover the Leticia dispute between Colombia and Peru, so they cannot describe the League's role in it. The passages mention a Chile-Peru dispute (Tacna-Arica) and a Brazil-related debate about the League, but none refers to Leticia or to Colombia, so I cannot answer from this evidence. Documents specifically addressing the Colombia-Peru Leticia dispute would be needed.",
+   "claims": [],
+   "latency_s": 3.078,
+   "verdict": {
+    "reasoning": "The chunks do not mention Leticia or Colombia. They cover Chile-Peru, Tacna-Arica, Brazil and Locarno. The system declined honestly, and its description of the chunks is accurate. It made no claims, so there is nothing to check for faithfulness. Declining is appropriate because the shown chunks lack the answer. No reference answer is given, but the evidence does not contain the answer, so the decline counts as a correct partial or honest answer. I mark it correct, since declining honestly is not incorrect and nothing in the chunks answers the question.",
+    "correctness": "correct",
+    "faithfulness": []
+   },
+   "faith": [],
+   "correct": 1.0,
+   "behaviour_ok": true
+  },
+  {
+   "id": "q090",
+   "group": "ambiguous",
+   "category": "ambiguous",
+   "question": "Why did Poland end up with more than it was given?",
+   "history": [],
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not explain why Poland ended up with more territory than it was given. The closest material is Lloyd George's account (1926) that General Zeligowski marched into and annexed Vilna in defiance of a League line of limitation, after which the Polish President admitted the invasion was ordered, and the League condemned it. That describes how Poland gained Vilna against League instructions, but it does not state the broader settlement terms or the reasons for the outcome, so the question cannot be fully answered from these documents.",
+   "claims": [
+    {
+     "claim": "General Zeligowski marched with a division in defiance of a League-ordered line of limitation and annexed Vilna, with Vilna being on the Lithuanian side of that line.",
+     "source": "chunk",
+     "chunk_id": 3,
+     "in_range": true
+    },
+    {
+     "claim": "The League of Nations unanimously condemned the act, and the Polish President later owned that Zeligowski invaded under his orders.",
+     "source": "chunk",
+     "chunk_id": 3,
+     "in_range": true
+    },
+    {
+     "claim": "Viscount Bryce noted that Poland's frontiers were argued on other grounds, and no chunk explains the full set of reasons for Poland's territorial gains.",
+     "source": "conversation",
+     "in_range": true
+    }
+   ],
+   "latency_s": 3.544,
+   "verdict": {
+    "reasoning": "The question is vague, with no reference answer. The evidence has Zeligowski's seizure of Vilna in defiance of the League, Kenworthy's remark that Poland's boundaries go beyond natural frontiers, and Curzon's account of Poland's advance in the Polish-Soviet war. Together these partly explain how Poland ended up with more than it was given: it took land by force and pushed its frontiers east. The answer declines honestly but only mentions Vilna. It doesn't mention the eastern advance in Curzon's chunk or Kenworthy's remark, though it does say what it can't cover. That makes it partial.\n\nClaim 1 is supported by chunk 3. Claim 2 is supported too: the League condemned the act unanimously, and the Polish President owned that Zeligowski invaded under his orders. Claim 3 is unsupported and wrong. It attributes to Viscount Bryce a statement that Poland's frontiers were argued on other grounds, but chunk 4 says nothing like that. The source is also given as \"conversation\", which doesn't fit.",
+    "correctness": "partially",
+    "faithfulness": [
+     "yes",
+     "yes",
+     "no"
+    ]
+   },
+   "faith": [
+    true,
+    true,
+    false
+   ],
+   "correct": 0.5,
+   "behaviour_ok": false
+  },
+  {
+   "id": "q093",
+   "group": "ambiguous",
+   "category": "follow-up",
+   "question": "Who got the territory in the end?",
+   "history": [],
+   "status": "needs_clarification",
+   "answer": "Which territory or dispute do you mean? The evidence covers several: the Transylvania/Hungary\u2013Rumania frontier (chunk 1), the Austro-Hungarian successor territories (chunk 2), Hungarian territory given to Czecho-Slovakia (chunk 4), and the Ulster boundary and Boundary Commission (chunks 3 and 5).",
+   "claims": [],
+   "latency_s": 2.119,
+   "verdict": {
+    "reasoning": "The question is ambiguous with no referent, and the reference answer is None. The system asks for clarification and lists the territories the chunks cover. Each of these descriptions matches its chunk: chunk 1 covers the Transylvania frontier, chunk 2 the Austro-Hungarian successor territories, chunk 4 Hungarian land going to Czecho-Slovakia, and chunks 3 and 5 the Ulster boundary. Asking for clarification is appropriate. No claims were listed, so faithfulness has nothing to score.",
+    "correctness": "correct",
+    "faithfulness": []
+   },
+   "faith": [],
+   "correct": 1.0,
+   "behaviour_ok": true
+  },
+  {
+   "id": "q097",
+   "group": "ambiguous",
+   "category": "follow-up",
+   "question": "Did Finland accept the outcome?",
+   "history": [],
+   "status": "needs_clarification",
+   "answer": "Which outcome do you mean? The corpus covers the \u00c5land Islands dispute (1920), where Finland adhered to the Council's resolution appointing a commission of jurists, and the 1924 draft Treaty of Mutual Assistance, where Finland gave observations with suggested amendments. Please specify which one you are asking about.",
+   "claims": [],
+   "latency_s": 2.663,
+   "verdict": {
+    "reasoning": "The question is ambiguous (\"the outcome\" with no referent), and no reference answer is given. The system asks for clarification and offers two possible interpretations drawn from the chunks. Both descriptions match the evidence: Finland's representatives adhered to the Council resolution (chunk 3), and Finland expressed general favour of the Draft Treaty with many suggested amendments (chunk 4). Asking for clarification is reasonable here. It gives no definitive answer, so it counts as an honest partial answer. No claims were listed, so faithfulness is empty.",
+    "correctness": "partially",
+    "faithfulness": []
+   },
+   "faith": [],
+   "correct": 0.5,
+   "behaviour_ok": true
+  },
+  {
+   "id": "q106",
+   "group": "out_of_corpus",
+   "category": "out-of-corpus",
+   "question": "What date does Saklatvala say Turkey will march into Mosul according to his argument against the Secretary of State for the Colonies?",
+   "history": [],
+   "status": "answered",
+   "answer": "Saklatvala says the Turks will march into Mosul in 1928. In his question to the Secretary of State for the Colonies he asks whether, when \"the Turks march into Mosul in 1928,\" the Secretary will keep his word and let them take it.",
+   "claims": [
+    {
+     "claim": "Saklatvala asks the Secretary of State for the Colonies whether, when the Turks march into Mosul in 1928, he will keep his word and let the Turks take Mosul.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    }
+   ],
+   "latency_s": 2.574,
+   "verdict": {
+    "reasoning": "The reference answer is 1928. The answer says 1928 and matches chunk 1. The claim is also supported: Saklatvala asks whether the Secretary will keep his word and let the Turks take Mosul when they march in 1928. One nuance is that the answer's opening says Saklatvala \"says the Turks will march\" in 1928. That is a slight overstatement, because he poses it as a hypothetical, but it matches the question's framing.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes"
+    ]
+   },
+   "faith": [
+    true
+   ],
+   "correct": 1.0,
+   "behaviour_ok": false
+  },
+  {
+   "id": "q110",
+   "group": "answerable",
+   "category": "lexical",
+   "question": "What specific concern does the Department express about Poland occupying Vilna?",
+   "history": [],
+   "status": "answered",
+   "answer": "The Department's specific concern is that it wishes to avoid any Polish-Lithuanian difficulty that might arise if Poland occupied Vilna. It believes the question of who should possess Vilna should not be raised now and should not be prejudiced by occupation of the city by Polish armed forces.",
+   "claims": [
+    {
+     "claim": "The Department's special wish is to avoid such Polish-Lithuanian difficulty as might arise if Poland occupied Vilna.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    },
+    {
+     "claim": "The Department believes the issue of possession of Vilna should not be raised now and should not be prejudiced by occupation of the city by Polish armed forces.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    }
+   ],
+   "latency_s": 2.603,
+   "verdict": {
+    "reasoning": "The answer matches the reference and chunk 1 almost verbatim. Both claims are directly supported by chunk 1.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes",
+     "yes"
+    ]
+   },
+   "faith": [
+    true,
+    true
+   ],
+   "correct": 1.0,
+   "hit5": 1,
+   "r20": 1.0
+  },
+  {
+   "id": "q114",
+   "group": "answerable",
+   "category": "semantic",
+   "question": "What example does Viscount Bryce give of a mandate case where he believes public opinion was not properly consulted?",
+   "history": [],
+   "status": "answered",
+   "answer": "Viscount Bryce cites the case of Nauru Island as the mandate example where he believes public opinion was not properly consulted. He says that had the country's public opinion been consulted, and had people known what was passing, better provision would have been made for Nauru than seems to have been made.",
+   "claims": [
+    {
+     "claim": "Viscount Bryce cites the case of Nauru Island as an instance where he believes public opinion was not consulted, and says better provision would have been made for Nauru had public opinion been consulted.",
+     "source": "chunk",
+     "chunk_id": 1,
+     "in_range": true
+    }
+   ],
+   "latency_s": 2.276,
+   "verdict": {
+    "reasoning": "The answer identifies Nauru Island and gives Bryce's reasoning that better provision would have been made had public opinion been consulted. This matches the reference answer and chunk 1. The reference also notes it was debated elsewhere, a minor detail. The claim is supported by chunk 1.",
+    "correctness": "correct",
+    "faithfulness": [
+     "yes"
+    ]
+   },
+   "faith": [
+    true
+   ],
+   "correct": 1.0,
+   "hit5": 1,
+   "r20": 1.0
+  }
+ ]
+}
