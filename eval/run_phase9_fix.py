@@ -37,22 +37,18 @@ for it in calc:
         rows.append({"year": e["year"], "status": r["status"],
                      "tool_ok": any(c["input"].get("amount") == e["amount_gbp"] and c["input"].get("from_year") == e["year"] for c in calls),
                      "within": any(abs(n - e["value"]) / e["value"] <= 0.05 for n in numbers(r["answer"] or "")),
-                     "retrieved": bool(r["chunk_ids"])})
+                     "retrieved": bool(r["chunk_ids"]), "is_calc": r.get("is_calculation")})
 ok = [x for x in rows if x["status"] == "answered" and x["within"]]
 print(f"calculations: fully right {len(ok)}/{len(rows)} | tool called correctly {sum(x['tool_ok'] for x in rows)}/{len(rows)} | "
       f"answered {sum(x['status']=='answered' for x in rows)}/{len(rows)} | went through retrieval {sum(x['retrieved'] for x in rows)}/{len(rows)}")
 
 items = [json.loads(l) for l in (ROOT / "eval/eval_set_v2.jsonl").read_text().splitlines()]
-neg = [i for i in items if i["split"] == "dev" and not i.get("history")
-       and i["tags"].get("answerability") in ("out-of-corpus", "ambiguous")][:8]
-reg = []
-for it in neg:
-    r = P.answer(it["question"], []); cost(r)
-    reg.append({"id": it["id"], "type": it["tags"]["answerability"], "status": r["status"], "answer": (r["answer"] or "")[:160]})
-safe = sum(x["status"] in ("insufficient_evidence", "needs_clarification") for x in reg)
-print(f"grounding regression: declined or clarified {safe}/{len(reg)}")
-for x in reg:
-    if x["status"] == "answered":
-        print("  ANSWERED:", x["id"], x["type"], "|", x["answer"])
+fu = [i for i in items if i.get("history") and i["category"] == "follow-up" and i["split"] in ("dev", "validation")]
+flag = []
+for it in fu:
+    q, needs, calc, u = P.rewrite_and_route(it["question"], it["history"]); spend[0] += u[0]; spend[1] += u[1]
+    flag.append(calc)
+print(f"normal follow-ups wrongly flagged as calculation: {sum(flag)}/{len(flag)}; calc items flagged: {sum(bool(x["is_calc"]) for x in rows)}/{len(rows)}")
+reg = flag
 print(f"spend ~${spend[0]*PRICE_IN + spend[1]*PRICE_OUT:.2f} (assumed Haiku price)")
-(ROOT / "eval/results/phase9_fix.json").write_text(json.dumps({"calc": rows, "regression": reg}, indent=1))
+(ROOT / "eval/results/phase9b_fix.json").write_text(json.dumps({"calc": rows, "regression": reg}, indent=1))

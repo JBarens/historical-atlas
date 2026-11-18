@@ -44,6 +44,12 @@ import run_rule_b as RB  # noqa: E402  (rule-B prompt + answer tool)
 from run_hybrid import tok, RRF_K, DEPTH  # noqa: E402
 from tools.inflation import TOOL_SPEC as INFLATION_TOOL, adjust_for_inflation  # noqa: E402
 
+# Phase 9b (Jasper, A): the router also flags pure calculations; code then forces the tool and passes no chunks.
+ROUTE_TOOL = json.loads(json.dumps(RW.TOOL))
+ROUTE_TOOL["input_schema"]["properties"]["is_calculation"] = {
+    "type": "boolean", "description": "true ONLY if the last message asks to convert/adjust a money amount already "
+    "stated in the conversation to another year's value (inflation); false otherwise"}
+
 MODEL = "claude-haiku-5-5"
 RERANK_N, TOPK = G.RERANK_N, G.TOPK          # 50, 5
 MAX_TOOL_ROUNDS = 2
@@ -205,10 +211,11 @@ def _usage(r):
 
 # ---------------------------------------------------------------- stage 1
 def rewrite_and_route(question, history):
-    """Returns (standalone_query, needs_retrieval, tokens). Only called when history is non-empty."""
+    """Returns (standalone_query, needs_retrieval, is_calculation, tokens). Only called when history is non-empty.
+    is_calculation must be explicitly True (safe default: normal grounded path)."""
     conv = "\n".join(f"{t['role'].upper()}: {t['content']}" for t in history)
     r = _Guarded(_get_client(), "rewrite").create(
-        model=MODEL, max_tokens=300, system=RW.SYSTEM, tools=[RW.TOOL], tool_choice={"type": "auto"},
+        model=MODEL, max_tokens=300, system=RW.SYSTEM, tools=[ROUTE_TOOL], tool_choice={"type": "auto"},
         thinking={"type": "disabled"},
         messages=[{"role": "user", "content": f"CONVERSATION:\n{conv}\n\nLAST USER MESSAGE: {question}\n\nCall route."}])
     out = next((b.input for b in r.content if b.type == "tool_use"), None)
@@ -216,7 +223,8 @@ def rewrite_and_route(question, history):
     q = out.get("standalone_query")
     query = q if isinstance(q, str) and q.strip() else question
     needs = out.get("needs_retrieval") is not False      # safe default: anything but an explicit False retrieves
-    return query, needs, _usage(r)
+    calc = out.get("is_calculation") is True
+    return query, (needs and not calc), calc, _usage(r)
 
 
 # ---------------------------------------------------------------- stage 2
@@ -290,7 +298,7 @@ def validate_output(out, n_chunks):
     return None
 
 
-def generate(question, history, chunks):
+def generate(question, history, chunks, force_inflation=False):
     """Bounded generator loop. Returns (output_dict_or_None, tool_calls, tokens, stop_note)."""
     client = _Guarded(_get_client(), "generate")
     ev = G.evidence_block(chunks) if chunks else "(no evidence retrieved)"
@@ -302,7 +310,9 @@ def generate(question, history, chunks):
         r = client.create(
             model=MODEL, max_tokens=1600, system=SYSTEM, messages=msgs, thinking={"type": "disabled"},
             tools=[ANSWER_TOOL, INFLATION_TOOL],
-            tool_choice={"type": "tool", "name": ANSWER_TOOL["name"]} if forced else {"type": "auto"})
+            tool_choice=({"type": "tool", "name": ANSWER_TOOL["name"]} if forced else
+                         {"type": "tool", "name": INFLATION_TOOL["name"]} if (force_inflation and rounds == 0) else
+                         {"type": "auto"}))
         u = _usage(r)
         tokens[0] += u[0]; tokens[1] += u[1]
         stop = getattr(r, "stop_reason", None)
@@ -353,12 +363,13 @@ def answer(question, history=None):
     history = history or []
     timings, usage = {}, {}
     result = {"question": question, "query": question, "retrieved": True, "status": "error", "answer": "",
-              "claims": [], "chunk_ids": [], "chunks": [], "tool_calls": [], "error": None, "message": None}
+              "claims": [], "chunk_ids": [], "chunks": [], "tool_calls": [], "error": None, "message": None,
+              "is_calculation": False}
     _ctx = ctx = _Ctx()
     try:
         if history:
             t0 = time.perf_counter()
-            result["query"], result["retrieved"], usage["rewrite"] = rewrite_and_route(question, history)
+            result["query"], result["retrieved"], result["is_calculation"], usage["rewrite"] = rewrite_and_route(question, history)
             timings["rewrite"] = time.perf_counter() - t0
         chunks = []
         if result["retrieved"]:
@@ -376,7 +387,8 @@ def answer(question, history=None):
         result["chunk_ids"] = [c["index"] for c in chunks]
         _check_budget("generate")
         t0 = time.perf_counter()
-        out, calls, usage["generate"], note = generate(question, history, chunks)
+        out, calls, usage["generate"], note = generate(question, history, chunks,
+                                                        force_inflation=result.get("is_calculation", False))
         timings["generate"] = time.perf_counter() - t0
         result["tool_calls"], result["stop"] = calls, note
         err = validate_output(out, len(chunks))
