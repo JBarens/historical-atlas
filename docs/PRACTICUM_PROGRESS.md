@@ -92,3 +92,5 @@ Cross-cutting gaps: latency (p50/p95) measured nowhere yet; retrieval runs outsi
 - Day 5 Phase 8: architecture C (Jasper): code controls flow (rewrite if history, always retrieve); Claude only gets adjust_for_inflation. Tool built TDD (23 tests, backend/tools/inflation.py). Haiku on 4 computation items x3: no tool 3/12 within 5% (median error 17%), with tool 12/12 (error 0%), tool called correctly 12/12. $0.04.
 
 - Day 5: rewrite+route (Haiku, only with history). Follow-ups n=5 dev+val: R@5 raw 0.00 / naive concat 0.50 / rewrite 0.60 (Jasper predicted 0.05 / 0.6). Routing: calculations skipped retrieval 2/4, normal follow-ups wrongly skipped 0/6 (safe default holds). $0.21.
+
+- Day 6 Phase 9 fix (Jasper A): grounding rule now allows chunks + earlier conversation + tool results (no outside knowledge); claims carry source chunk|conversation|tool. Calculations 4x3: fully right 8/12 (was 1/4), tool correct 9/12. Grounding regression on 8 dev out-of-corpus/ambiguous: statuses identical to the old prompt (6 answered, 2 declined) -> no loosening; the 6 answered are mostly label problems (questions the strict v2 rule marked out-of-corpus, e.g. Branting line). $0.34.

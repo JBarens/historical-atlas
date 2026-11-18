@@ -1,0 +1,138 @@
+{
+ "calc": [
+  {
+   "year": 1925,
+   "status": "insufficient_evidence",
+   "tool_ok": false,
+   "within": false,
+   "retrieved": false
+  },
+  {
+   "year": 1925,
+   "status": "answered",
+   "tool_ok": true,
+   "within": true,
+   "retrieved": true
+  },
+  {
+   "year": 1925,
+   "status": "insufficient_evidence",
+   "tool_ok": false,
+   "within": false,
+   "retrieved": true
+  },
+  {
+   "year": 1921,
+   "status": "answered",
+   "tool_ok": true,
+   "within": true,
+   "retrieved": true
+  },
+  {
+   "year": 1921,
+   "status": "insufficient_evidence",
+   "tool_ok": false,
+   "within": false,
+   "retrieved": true
+  },
+  {
+   "year": 1921,
+   "status": "answered",
+   "tool_ok": true,
+   "within": true,
+   "retrieved": true
+  },
+  {
+   "year": 1926,
+   "status": "insufficient_evidence",
+   "tool_ok": true,
+   "within": true,
+   "retrieved": true
+  },
+  {
+   "year": 1926,
+   "status": "answered",
+   "tool_ok": true,
+   "within": true,
+   "retrieved": false
+  },
+  {
+   "year": 1926,
+   "status": "answered",
+   "tool_ok": true,
+   "within": true,
+   "retrieved": false
+  },
+  {
+   "year": 1920,
+   "status": "answered",
+   "tool_ok": true,
+   "within": true,
+   "retrieved": false
+  },
+  {
+   "year": 1920,
+   "status": "answered",
+   "tool_ok": true,
+   "within": true,
+   "retrieved": false
+  },
+  {
+   "year": 1920,
+   "status": "answered",
+   "tool_ok": true,
+   "within": true,
+   "retrieved": false
+  }
+ ],
+ "regression": [
+  {
+   "id": "q007",
+   "type": "ambiguous",
+   "status": "answered",
+   "answer": "Yes, according to the Lithuanian envoy Jonas Vileitis' August 1920 note to the Secretary of State, Poland, on the eve of defeat by Soviet Russia, formally recog"
+  },
+  {
+   "id": "q008",
+   "type": "out-of-corpus",
+   "status": "answered",
+   "answer": "Curzon told the Lords that Mosul was a point the Turks attached enormous importance to, and that Britain could not deny its importance because of its necessity "
+  },
+  {
+   "id": "q015",
+   "type": "out-of-corpus",
+   "status": "answered",
+   "answer": "The Council's decision upheld as the boundary the broad line laid down at the suggestion of Mr. Branting, subject to delimitation, and not definitive until the "
+  },
+  {
+   "id": "q016",
+   "type": "out-of-corpus",
+   "status": "answered",
+   "answer": "In December 1925 the League Council upheld as the boundary, subject to delimitation, the broad line laid down at the suggestion of Mr. Branting. The decision wa"
+  },
+  {
+   "id": "q017",
+   "type": "out-of-corpus",
+   "status": "answered",
+   "answer": "Viscount Cecil argued that rejecting the Council's Mosul decision would be an impossible policy, given the extensive care the League had taken. He stressed that"
+  },
+  {
+   "id": "q024",
+   "type": "out-of-corpus",
+   "status": "answered",
+   "answer": "According to Lord Curzon, the Mosul question was discussed at the peace table but no solution was found there, so the parties instead agreed to remit it to nego"
+  },
+  {
+   "id": "q062",
+   "type": "ambiguous",
+   "status": "insufficient_evidence",
+   "answer": "The evidence does not say what the people living in the disputed (Mosul) area wanted. The chunks cover Turkish territorial claims, British and oil-interest posi"
+  },
+  {
+   "id": "q065",
+   "type": "out-of-corpus",
+   "status": "insufficient_evidence",
+   "answer": "The evidence shows how the League began handling the Aaland Islands dispute, but not how it decided who received the islands. The Council unanimously resolved ("
+  }
+ ]
+}

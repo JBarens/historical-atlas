@@ -47,11 +47,25 @@ from tools.inflation import TOOL_SPEC as INFLATION_TOOL, adjust_for_inflation  #
 MODEL = "claude-haiku-5-5"
 RERANK_N, TOPK = G.RERANK_N, G.TOPK          # 50, 5
 MAX_TOOL_ROUNDS = 2
-ANSWER_TOOL = RB.TOOL_B
+ANSWER_TOOL = json.loads(json.dumps(RB.TOOL_B))
+# Phase 9 fix (Jasper, A): a claim can rest on a chunk, on the earlier conversation, or on a tool result.
+ANSWER_TOOL["input_schema"]["properties"]["claims"]["items"] = {
+    "type": "object", "required": ["claim", "source"],
+    "properties": {"claim": {"type": "string"},
+                   "source": {"type": "string", "enum": ["chunk", "conversation", "tool"]},
+                   "chunk_id": {"type": "integer", "description": "required when source is chunk"}}}
 # Rule-B prompt plus the inflation instruction (the only addition; tool behaviour measured in run_inflation_tool.py).
-SYSTEM = RB.SYSTEM_B + ("\n- If the user asks what a historical sum of money is worth in another year, FIRST call "
-                        "adjust_for_inflation with the amount and year and wait for its result; only then call the answer tool, using its result and name the measure it returned. Amounts stated "
-                        "in the conversation and tool results count as evidence for that calculation.")
+_GROUNDING_OLD = "- Use ONLY the evidence chunks given. No outside knowledge, even if you know the answer."
+_GROUNDING_NEW = ("- Allowed evidence: (1) the evidence chunks, (2) facts stated earlier in this conversation, "
+                  "(3) results returned by your tools. Nothing else: no outside knowledge, even if you know the answer.")
+assert _GROUNDING_OLD in RB.SYSTEM_B
+SYSTEM = RB.SYSTEM_B.replace(_GROUNDING_OLD, _GROUNDING_NEW).replace(
+    "give the id of the chunk that supports it.",
+    "give its source: chunk (with chunk_id), conversation, or tool.") + (
+    "\n- If the user asks what a historical sum of money is worth in another year, FIRST call adjust_for_inflation "
+    "with the amount and year (taken from the conversation if needed) and wait for its result; then call the answer tool, "
+    "cite the tool result (source tool) and name the measure it returned. Missing chunks are not a reason to decline "
+    "a calculation whose inputs are in the conversation.")
 
 TOTAL_BUDGET_S = 20.0
 CALL_TIMEOUT_S = 12.0
@@ -266,8 +280,12 @@ def validate_output(out, n_chunks):
     if not isinstance(out.get("answer"), str):
         return "answer is not a string"
     claims = out.get("claims")
-    if not isinstance(claims, list) or not all(isinstance(c, dict) and isinstance(c.get("claim"), str) and "chunk_id" in c
-                                               for c in claims):
+    def _ok(c):  # source chunk needs a chunk_id; conversation/tool claims don't (Phase 9 fix)
+        if not (isinstance(c, dict) and isinstance(c.get("claim"), str)):
+            return False
+        src = c.get("source", "chunk")
+        return src in ("conversation", "tool") or (src == "chunk" and "chunk_id" in c)
+    if not isinstance(claims, list) or not all(_ok(c) for c in claims):
         return "claims malformed"
     return None
 
@@ -366,7 +384,8 @@ def answer(question, history=None):
             result.update(error=f"malformed generator output: {err}", message=USER_MESSAGES["malformed"])
         else:
             result.update(status=out["status"], answer=out["answer"], claims=[
-                {**c, "in_range": isinstance(c["chunk_id"], int) and 1 <= c["chunk_id"] <= len(chunks)} for c in out["claims"]])
+                {**c, "in_range": (c.get("source", "chunk") != "chunk")
+                       or (isinstance(c.get("chunk_id"), int) and 1 <= c["chunk_id"] <= len(chunks))} for c in out["claims"]])
     except IndexUnavailable as e:
         result.update(error=f"index unavailable: {e}", message=USER_MESSAGES["index"])
     except BudgetExceeded as e:
