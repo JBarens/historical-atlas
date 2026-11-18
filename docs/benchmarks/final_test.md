@@ -56,4 +56,4 @@ The one unfaithful claim in the answerable set is q076.
 
 ## Interpretation
 
-JASPER: TODO
+Jasper: I can claim the system meets its release threshold on held-out data (correctness 0.80, 95% CI 0.68-0.93, n=20), not "0.80" without the range. Limitations: retrieval misses are the main failure class and the main lever (better embedding model, retrieval improvements); some labels are wrong (2 out-of-corpus items were answerable); a larger, independently labelled test set would narrow the interval.
