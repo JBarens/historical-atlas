@@ -55,4 +55,4 @@ Postgres note: dense retrieval runs on the numpy cache (ADR-004), so there is no
 
 Observed: whenever the tool was called, arguments and number were right (2/2). In 2/4 the router still retrieved, and the generator then refused because the retrieved chunks did not contain the conversation's figure (it treats the history amount as unsupported, despite the prompt line saying conversation amounts count). In one tool case the number was right but the status was `insufficient_evidence`. No retries or errors occurred.
 
-JASPER: TODO - interpretation of the smoke check (router vs. generator grounding rule; is a correct number under `insufficient_evidence` acceptable?).
+Jasper: testing components separately can suggest the system works; only testing the whole system together surfaces the underlying problems (here: an old grounding rule and a citation schema that conflicted with the new tool).
