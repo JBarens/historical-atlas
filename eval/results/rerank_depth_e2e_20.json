@@ -1,0 +1,321 @@
+{
+ "20": [
+  {
+   "id": "q001",
+   "status": "answered",
+   "cost": 0.00839,
+   "latency": 2.7299,
+   "hit5": 1,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q003",
+   "status": "insufficient_evidence",
+   "cost": 0.010854,
+   "latency": 4.7975,
+   "hit5": 1,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q006",
+   "status": "answered",
+   "cost": 0.010891,
+   "latency": 4.538399999999999,
+   "hit5": 1,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q012",
+   "status": "answered",
+   "cost": 0.009706,
+   "latency": 3.2883,
+   "hit5": 1,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q021",
+   "status": "answered",
+   "cost": 0.012785,
+   "latency": 4.0565999999999995,
+   "hit5": 1,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q023",
+   "status": "insufficient_evidence",
+   "cost": 0.011943,
+   "latency": 3.9516999999999998,
+   "hit5": 1,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q025",
+   "status": "insufficient_evidence",
+   "cost": 0.011681,
+   "latency": 5.0199,
+   "hit5": 0,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q026",
+   "status": "insufficient_evidence",
+   "cost": 0.0124,
+   "latency": 4.680899999999999,
+   "hit5": 0,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q028",
+   "status": "insufficient_evidence",
+   "cost": 0.014717,
+   "latency": 5.6297,
+   "hit5": 0,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q030",
+   "status": "answered",
+   "cost": 0.013638,
+   "latency": 5.264399999999999,
+   "hit5": 1,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q032",
+   "status": "insufficient_evidence",
+   "cost": 0.011416,
+   "latency": 3.7394000000000003,
+   "hit5": 0,
+   "correct": 0.5,
+   "faith": []
+  },
+  {
+   "id": "q033",
+   "status": "insufficient_evidence",
+   "cost": 0.009609,
+   "latency": 4.0005,
+   "hit5": 1,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true,
+    false
+   ]
+  },
+  {
+   "id": "q034",
+   "status": "insufficient_evidence",
+   "cost": 0.008752,
+   "latency": 3.6543,
+   "hit5": 1,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true,
+    false
+   ]
+  },
+  {
+   "id": "q036",
+   "status": "insufficient_evidence",
+   "cost": 0.015468,
+   "latency": 4.5611999999999995,
+   "hit5": 0,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q037",
+   "status": "insufficient_evidence",
+   "cost": 0.014404,
+   "latency": 4.206600000000001,
+   "hit5": 1,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q040",
+   "status": "insufficient_evidence",
+   "cost": 0.016539,
+   "latency": 6.017399999999999,
+   "hit5": 1,
+   "correct": 0.5,
+   "faith": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q044",
+   "status": "answered",
+   "cost": 0.014219,
+   "latency": 5.366,
+   "hit5": 1,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q050",
+   "status": "answered",
+   "cost": 0.008138,
+   "latency": 4.142797050000809,
+   "hit5": 1,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q051",
+   "status": "answered",
+   "cost": 0.007781,
+   "latency": 3.9871147839985497,
+   "hit5": 1,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q055",
+   "status": "answered",
+   "cost": 0.008857,
+   "latency": 5.624543764002738,
+   "hit5": 1,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true,
+    false
+   ]
+  },
+  {
+   "id": "q079",
+   "status": "insufficient_evidence",
+   "cost": 0.013059999999999999,
+   "latency": 4.212491542002681,
+   "hit5": 0,
+   "correct": 0.5,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q107",
+   "status": "answered",
+   "cost": 0.012723,
+   "latency": 4.013156794997485,
+   "hit5": 1,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q108",
+   "status": "answered",
+   "cost": 0.012747999999999999,
+   "latency": 3.418517066998902,
+   "hit5": 1,
+   "correct": 1.0,
+   "faith": [
+    true,
+    true
+   ]
+  },
+  {
+   "id": "q111",
+   "status": "answered",
+   "cost": 0.010291999999999999,
+   "latency": 2.673726913995779,
+   "hit5": 1,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  },
+  {
+   "id": "q113",
+   "status": "answered",
+   "cost": 0.010363999999999998,
+   "latency": 3.258279487999971,
+   "hit5": 1,
+   "correct": 1.0,
+   "faith": [
+    true
+   ]
+  }
+ ]
+}
