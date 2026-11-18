@@ -137,3 +137,27 @@ def test_warming_returns_503(client):
         assert ask(client).status_code == 503
     finally:
         M._state["ready"] = True
+
+
+def test_map_layers(client):
+    b = client.get("/api/borders").json()
+    assert "CShapes 2.0" in b["source"] and b["features"]
+    assert all(f["properties"]["s"] <= f["properties"]["e"] for f in b["features"])
+    c = client.get("/api/cases").json()
+    areas = {f["properties"]["case"] for f in c["features"] if f["properties"]["kind"] == "area"}
+    assert areas == set(M.C.CASES)
+    assert all(f["properties"].get("source") for f in c["features"])
+
+
+def test_moments_are_backed_by_corpus_documents(client):
+    m = client.get("/api/moments").json()
+    assert set(m) == set(M.C.CASES)
+    for case, items in m.items():
+        assert items == sorted(items, key=lambda x: x["date"])
+        for x in items:
+            d = M.docs()[x["doc_id"]]
+            # the event happened on or before the dated document that reports it, within the same year
+            assert x["date"] <= d["date"][:7] and x["date"][:4] == d["date"][:4], (case, x)
+            assert case in (d.get("cases") or [])
+            w, s_, e, n = x["focus"]
+            assert w < e and s_ < n

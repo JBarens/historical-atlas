@@ -12,8 +12,6 @@ const REVEAL_MS = 1000;
 const STEPS = ["Searching sources", "Weighing evidence", "Writing answer"];
 const STEP_AT_MS = [0, 2500, 5500];
 
-type CaseFeature = { properties: { case: string; name: string }; geometry: { type: string; coordinates: number[][][] } };
-type CaseCollection = { type: "FeatureCollection"; features: CaseFeature[] };
 
 type Claim = { claim: string; source: "chunk" | "conversation" | "tool"; chunk_id?: number | null; in_range?: boolean };
 type Source = {
@@ -73,52 +71,136 @@ function useHealth() {
   return { state, live };
 }
 
-function CaseMap({ caseId }: { caseId: string | null }) {
+type Moment = { date: string; label: string; doc_id: string; focus: [number, number, number, number]; disputed?: boolean; border_note?: string };
+type Moments = Record<string, Moment[]>;
+type Geo = { type: "FeatureCollection"; features: { properties: Record<string, unknown>; geometry: { type: string; coordinates: unknown } }[] };
+
+const STEP_MS = 3800;
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const asOf = (ym: string) => Number(ym.replace("-", "")) * 100 + 15;
+const fmtDate = (ym: string) => `15 ${MONTHS[Number(ym.slice(5, 7)) - 1]} ${ym.slice(0, 4)}`;
+const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const valid = (d: number): maplibregl.ExpressionSpecification => ["all", ["<=", ["get", "s"], d], [">=", ["get", "e"], d]];
+
+function hatch(color: [number, number, number]) {
+  const n = 8, data = new Uint8Array(n * n * 4);
+  for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) {
+    const on = (x + y) % n < 2, i = (y * n + x) * 4;
+    data.set(on ? [...color, 200] : [0, 0, 0, 0], i);
+  }
+  return { width: n, height: n, data };
+}
+
+function CaseMap({ caseId, panelOpen }: { caseId: string | null; panelOpen: boolean }) {
   const el = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
-  const geo = useRef<CaseCollection | null>(null);
+  const [moments, setMoments] = useState<Moments>({});
   const [loaded, setLoaded] = useState(false);
+  const [idx, setIdx] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const list = useMemo(() => (caseId ? moments[caseId] ?? [] : []), [caseId, moments]);
+  const cur = list[Math.min(idx, list.length - 1)];
 
   useEffect(() => {
     if (!el.current) return;
-    const m = new maplibregl.Map({ container: el.current, style: MAP_STYLE, bounds: EUROPE, attributionControl: { compact: true } });
+    const m = new maplibregl.Map({
+      container: el.current, style: MAP_STYLE, bounds: EUROPE, maxZoom: 7,
+      attributionControl: { compact: true, customAttribution: "CShapes 2.0, Schvitz et al. 2022 (ETH Zurich), CC BY-NC-SA 4.0" },
+    });
     m.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
     map.current = m;
     m.on("load", async () => {
-      const r = await fetch(`${API}/api/cases`);
-      geo.current = await r.json();
-      m.addSource("cases", { type: "geojson", data: geo.current as unknown as maplibregl.GeoJSONSourceSpecification["data"] });
-      m.addLayer({ id: "case-fill", type: "fill", source: "cases",
-        paint: { "fill-color": ["case", ["==", ["get", "case"], ""], "#b4532a", "#5b6b7a"], "fill-opacity": 0.18 } });
-      m.addLayer({ id: "case-line", type: "line", source: "cases",
-        paint: { "line-color": "#5b6b7a", "line-width": 1.2 } });
-      m.addLayer({ id: "case-label", type: "symbol", source: "cases",
-        layout: { "text-field": ["get", "name"], "text-size": 12, "text-font": ["Noto Sans Regular"], "text-offset": [0, 1.6] },
-        paint: { "text-color": "#3a4550", "text-halo-color": "#fff", "text-halo-width": 1.2 } });
+      for (const l of m.getStyle().layers) {
+        if (l.type === "symbol" || /boundary|admin/.test(l.id)) m.setLayoutProperty(l.id, "visibility", "none");
+      }
+      const [borders, cases, mom] = await Promise.all(["borders", "cases", "moments"].map((p) => fetch(`${API}/api/${p}`).then((r) => r.json())));
+      setMoments(mom as Moments);
+      m.addImage("hatch", hatch([138, 58, 26]));
+      m.addSource("borders", { type: "geojson", data: borders as Geo as unknown as maplibregl.GeoJSONSourceSpecification["data"] });
+      m.addSource("cases", { type: "geojson", data: cases as Geo as unknown as maplibregl.GeoJSONSourceSpecification["data"] });
+      const d0 = 19200615, poly: maplibregl.ExpressionSpecification = ["!=", ["get", "kind"], "label"];
+      m.addLayer({ id: "state-fill", type: "fill", source: "borders", filter: ["all", poly, valid(d0)],
+        paint: { "fill-color": ["get", "c"], "fill-opacity": 0.7 } });
+      m.addLayer({ id: "state-line", type: "line", source: "borders", filter: ["all", poly, valid(d0)],
+        paint: { "line-color": "#8c8577", "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.5, 7, 1.1] } });
+      m.addLayer({ id: "case-fill", type: "fill", source: "cases", filter: ["==", ["get", "kind"], "area"],
+        paint: { "fill-color": "#b4532a", "fill-opacity": 0 } });
+      m.addLayer({ id: "case-hatch", type: "fill", source: "cases", filter: ["==", ["get", "case"], "__none"],
+        paint: { "fill-pattern": "hatch" } });
+      m.addLayer({ id: "case-line", type: "line", source: "cases", filter: ["==", ["get", "kind"], "area"],
+        paint: { "line-color": "#8a3a1a", "line-width": 0, "line-dasharray": [3, 2] } });
+      m.addLayer({ id: "case-partition", type: "line", source: "cases", filter: ["==", ["get", "case"], "__none"],
+        paint: { "line-color": "#8a3a1a", "line-width": 1.8 } });
+      m.addLayer({ id: "state-label", type: "symbol", source: "borders", filter: ["all", ["==", ["get", "kind"], "label"], valid(d0)],
+        layout: { "text-field": ["get", "n"], "text-size": 11, "text-font": ["Noto Sans Regular"], "text-max-width": 7 },
+        paint: { "text-color": "#6e6a62", "text-halo-color": "rgba(255,255,255,0.8)", "text-halo-width": 1 } });
+      m.addLayer({ id: "case-label", type: "symbol", source: "cases", filter: ["==", ["get", "case"], "__none"],
+        layout: { "text-field": ["get", "name"], "text-size": 12.5, "text-font": ["Noto Sans Bold"], "text-max-width": 9 },
+        paint: { "text-color": "#8a3a1a", "text-halo-color": "#fff", "text-halo-width": 1.4 } });
       setLoaded(true);
     });
     return () => m.remove();
   }, []);
 
+  // A new case restarts the timeline; it plays unless the user prefers reduced motion.
+  const [shownCase, setShownCase] = useState<string | null>(null);
+  if (caseId !== shownCase) { setShownCase(caseId); setIdx(0); setPlaying(!!caseId && !reducedMotion()); }
+
+  useEffect(() => {
+    if (!playing || idx >= list.length - 1) return;
+    const h = setTimeout(() => { setIdx(idx + 1); if (idx + 1 >= list.length - 1) setPlaying(false); }, STEP_MS);
+    return () => clearTimeout(h);
+  }, [playing, idx, list.length]);
+
   useEffect(() => {
     const m = map.current;
     if (!m || !loaded) return;
-    const id = caseId ?? "";
-    m.setPaintProperty("case-fill", "fill-color", ["case", ["==", ["get", "case"], id], "#b4532a", "#5b6b7a"]);
-    m.setPaintProperty("case-fill", "fill-opacity", ["case", ["==", ["get", "case"], id], 0.38, 0.14]);
-    m.setPaintProperty("case-line", "line-color", ["case", ["==", ["get", "case"], id], "#8a3a1a", "#5b6b7a"]);
-    m.setPaintProperty("case-line", "line-width", ["case", ["==", ["get", "case"], id], 2.4, 1]);
-    const f = geo.current?.features.find((x: CaseFeature) => x.properties.case === caseId);
-    if (f && f.geometry.type === "Polygon") {
-      const b = new maplibregl.LngLatBounds();
-      f.geometry.coordinates[0].forEach((p: number[]) => b.extend(p as [number, number]));
-      m.fitBounds(b, { padding: 120, maxZoom: 6, duration: 1200 });
-    } else {
-      m.fitBounds(EUROPE, { padding: 20, duration: 1200 });
+    const pad = { top: 60, bottom: caseId ? 120 : 30, left: 40, right: panelOpen ? 480 : 50 };
+    const anim = reducedMotion() ? { duration: 0 } : { duration: 1400 };
+    if (!cur || !caseId) {
+      m.setFilter("case-hatch", ["==", ["get", "case"], "__none"]);
+      m.setFilter("case-partition", ["==", ["get", "case"], "__none"]);
+      m.setFilter("case-label", ["==", ["get", "case"], "__none"]);
+      m.setPaintProperty("case-fill", "fill-opacity", 0);
+      m.setPaintProperty("case-line", "line-width", 0);
+      m.fitBounds(EUROPE, { padding: { ...pad, right: panelOpen ? 480 : 20 }, ...anim });
+      return;
     }
-  }, [caseId, loaded]);
+    const d = asOf(cur.date), poly: maplibregl.ExpressionSpecification = ["!=", ["get", "kind"], "label"];
+    m.setFilter("state-fill", ["all", poly, valid(d)]);
+    m.setFilter("state-line", ["all", poly, valid(d)]);
+    m.setFilter("state-label", ["all", ["==", ["get", "kind"], "label"], valid(d)]);
+    const isCase: maplibregl.ExpressionSpecification = ["==", ["get", "case"], caseId];
+    m.setPaintProperty("case-fill", "fill-opacity", ["case", isCase, cur.disputed ? 0.08 : 0.2, 0]);
+    m.setPaintProperty("case-line", "line-width", ["case", isCase, 1.6, 0]);
+    m.setFilter("case-hatch", cur.disputed ? ["all", isCase, ["==", ["get", "kind"], "area"]] : ["==", ["get", "case"], "__none"]);
+    m.setFilter("case-partition", cur.disputed ? ["==", ["get", "case"], "__none"] : ["all", isCase, ["==", ["get", "kind"], "line"]]);
+    m.setFilter("case-label", ["all", isCase, ["==", ["get", "kind"], "area"]]);
+    const [w, s, e, n] = cur.focus;
+    m.fitBounds([[w, s], [e, n]], { padding: pad, maxZoom: 6, ...anim });
+  }, [cur, caseId, loaded, panelOpen]);
 
-  return <div ref={el} className="map" data-case={caseId ?? "none"} />;
+  return (
+    <>
+      <div ref={el} className="map" data-case={caseId ?? "none"} data-moment={cur ? idx : -1} />
+      {cur && (
+        <div className="timeline" style={panelOpen ? { right: "min(460px, 92%)" } : undefined}>
+          <div className="tl-row">
+            <button className="tl-play" onClick={() => { if (idx >= list.length - 1) setIdx(0); setPlaying(!playing); }}
+              aria-label={playing ? "Pause" : "Play"}>{playing ? "❚❚" : "▶"}</button>
+            <input type="range" min={0} max={list.length - 1} step={1} value={idx} aria-label="Timeline"
+              onChange={(e) => { setPlaying(false); setIdx(Number(e.target.value)); }} />
+            <div className="tl-date">{cur.date}</div>
+          </div>
+          <div className="tl-label">{cur.label}</div>
+          <div className="tl-meta">
+            borders as of {fmtDate(cur.date)} (CShapes){cur.border_note ? `; ${cur.border_note}` : ""}
+            <span className="mono"> · {cur.doc_id}</span>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
 
 function Marker({ c, n, onOpen }: { c: Claim; n: number | null; onOpen: () => void }) {
@@ -420,7 +502,7 @@ export default function App() {
           )}
         </section>
         <section className="mapwrap">
-          <CaseMap caseId={caseId} />
+          <CaseMap caseId={caseId} panelOpen={!!panel} />
           {panel && <SidePanel p={panel} onClose={() => setPanel(null)} />}
         </section>
       </main>

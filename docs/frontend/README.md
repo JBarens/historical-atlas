@@ -39,3 +39,30 @@
 ## Screenshots (1440x900, headless Chrome)
 `01_demo_start.png`, `02_demo_answer_source.png`, `03_demo_followup_calc.png`, `04_insufficient_petrich.png`,
 `05_demo_mosul_map.png`, `06_waking.png`, `07_live_progress.png`, `08_live_answer.png`.
+
+
+## Map data (frontend phase, round 2)
+
+Jasper rejected the hand-drawn polygons and the historical-basemaps snapshots as too rough.
+
+- Country borders: CShapes 2.0, Schvitz et al. 2022 (ETH Zurich), CC BY-NC-SA 4.0. backend/scripts/build_map_data.py
+  keeps every state valid between 1914-01-01 and 1930-12-31, clips to Europe and the Middle East and simplifies with
+  shared borders intact (~700 m). Output backend/data/static/borders.geojson (1.48 MB, 113 polygons, 109 label points),
+  shared under the same licence. Each feature carries its first and last valid day, so the map draws the borders of the
+  moment's date.
+- Known CShapes gaps, shown instead of hidden:
+  - Upper Silesia: CShapes places Katowice in Poland from 1919-06-28, so the June 1922 partition is not coded. The
+    plebiscite area is drawn hatched as disputed until June 1922; the partition line appears from then.
+  - Mosul: CShapes places Mosul and Kirkuk in Iraq from 1920-04-26. The vilayet is drawn hatched as disputed until the
+    League Council decision of 16 Dec 1925.
+  - Vilna: Polish from 1920-10-07 in CShapes, which matches the Zeligowski seizure.
+  The timeline states this per moment ('borders as of <date> (CShapes); ... disputed until ...').
+- Dispute areas (backend/data/static/cases.geojson, provenance per feature): Aland from Natural Earth admin-1 (public
+  domain); Upper Silesia plebiscite area and Vilna region built from modern districts (geoBoundaries/OSM, ODbL),
+  approximate; Mosul vilayet from modern Iraqi governorates (Natural Earth), approximate; Petrich from the geoBoundaries
+  municipality (public domain), approximate.
+- Moments (backend/data/static/moments.json): Hermes-curated, each with a corpus doc_id whose date was checked; a test
+  enforces that every doc_id exists, is tagged with the case and is dated in the moment's year. Events the corpus does not
+  cover (the 1921 Aland decision, the Oct 1925 Greco-Bulgarian incident, the Brussels line date) are left out.
+- Demo conversations: dev-split questions that answered correctly in eval/results/rerank_depth_e2e_20.json, plus one
+  deliberate insufficient_evidence example (Petrich) and the inflation calculation; one follow-up pair. Cost $0.12.

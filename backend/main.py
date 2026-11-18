@@ -4,7 +4,9 @@
   GET  /api/demo    stored example conversations (no API calls, no invite code)
   POST /api/ask     {question, history} + header X-Invite-Code -> pipeline.answer(), plus source metadata and the case
   GET  /api/cases   static GeoJSON of the five dispute areas
-No Postgres: map data is the static file backend/data/static/cases.geojson. The old /query, /borders, /history and
+  GET  /api/borders state polygons 1914-1930 with validity dates (CShapes 2.0, CC BY-NC-SA 4.0)
+  GET  /api/moments per-case key moments (date, label, focus bbox, supporting doc_id)
+No Postgres: map data are static files in backend/data/static/ (built by backend/scripts/build_map_data.py). The old /query, /borders, /history and
 /country endpoints (old retrieve() + agent path) are gone; the new UI does not use them.
 """
 import json
@@ -159,6 +161,17 @@ def demo():
 @app.get("/api/cases")
 def cases_geojson():
     return json.loads((STATIC / "cases.geojson").read_text())
+
+
+@app.get("/api/borders")
+def borders_geojson():
+    return FileResponse(STATIC / "borders.geojson", media_type="application/geo+json",
+                        headers={"Cache-Control": "public, max-age=86400"})
+
+
+@app.get("/api/moments")
+def moments():
+    return {k: v for k, v in json.loads((STATIC / "moments.json").read_text()).items() if not k.startswith("_")}
 
 
 @app.post("/api/ask")

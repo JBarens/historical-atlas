@@ -83,3 +83,10 @@ input { font: inherit; }
 .tool { margin-bottom: 14px; }
 .tool .lbl { font-size: 12px; color: var(--muted); margin-top: 8px; }
 .tool pre { margin: 2px 0 0; padding: 8px; background: var(--tool-bg); border-radius: 4px; font-size: 12px; white-space: pre-wrap; }
+.timeline { position: absolute; left: 16px; right: 16px; bottom: 26px; z-index: 1; background: rgba(255, 255, 255, 0.94); border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; }
+.tl-row { display: flex; align-items: center; gap: 10px; }
+.tl-row input[type="range"] { flex: 1; accent-color: var(--accent); }
+.tl-play { width: 28px; height: 24px; border: 1px solid var(--line); background: var(--card); border-radius: 4px; color: var(--ink); font-size: 11px; }
+.tl-date { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.tl-label { font-family: var(--serif); font-size: 14.5px; margin-top: 4px; }
+.tl-meta { font-size: 12px; color: var(--muted); }

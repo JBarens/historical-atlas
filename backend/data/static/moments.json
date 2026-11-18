@@ -1,0 +1,262 @@
+{
+ "_note": "Per-case key moments, curated from backend/data/corpus. date = the event as stated in or dated by doc_id (year-month); test_api checks each doc_id exists and its date matches. focus = [west, south, east, north]. disputed = case area drawn hatched as disputed because CShapes does not code the change (Upper Silesia until the June 1922 transfer, Mosul until the Council decision of 1925-12-16); border_note is shown in the timeline.",
+ "aland": [
+  {
+   "date": "1920-06",
+   "label": "Britain refers the dispute to the League Council (Art. 11)",
+   "doc_id": "hansard:S5CV0131P0-00469",
+   "focus": [
+    16.5,
+    58.6,
+    25.5,
+    62.0
+   ],
+   "disputed": false
+  },
+  {
+   "date": "1920-07",
+   "label": "Council asks a commission of jurists for an advisory opinion",
+   "doc_id": "frus:frus1920v01:d31",
+   "focus": [
+    11.0,
+    55.5,
+    30.0,
+    64.5
+   ],
+   "disputed": false
+  },
+  {
+   "date": "1920-09",
+   "label": "Council resolves to send a commission of inquiry",
+   "doc_id": "frus:frus1920v01:d35",
+   "focus": [
+    16.5,
+    58.6,
+    25.5,
+    62.0
+   ],
+   "disputed": false
+  },
+  {
+   "date": "1920-11",
+   "label": "Commission named: Beyens, Calonder, Elkus",
+   "doc_id": "frus:frus1920v01:d39",
+   "focus": [
+    18.5,
+    59.6,
+    21.6,
+    60.8
+   ],
+   "disputed": false
+  }
+ ],
+ "upper_silesia": [
+  {
+   "date": "1921-05",
+   "label": "After the plebiscite the Allies have not yet fixed the frontier",
+   "doc_id": "hansard:S5CV0142P0-00370",
+   "focus": [
+    13.0,
+    48.5,
+    24.0,
+    53.5
+   ],
+   "disputed": true,
+   "border_note": "Upper Silesia disputed until June 1922"
+  },
+  {
+   "date": "1921-06",
+   "label": "Allied troops move to suppress the Polish insurrection",
+   "doc_id": "hansard:S5CV0142P0-06631",
+   "focus": [
+    16.5,
+    49.5,
+    20.0,
+    51.3
+   ],
+   "disputed": true,
+   "border_note": "Upper Silesia disputed until June 1922"
+  },
+  {
+   "date": "1922-03",
+   "label": "German-Polish economic convention under a League chairman",
+   "doc_id": "hansard:S5CV0151P0-07536",
+   "focus": [
+    16.5,
+    49.5,
+    20.0,
+    51.3
+   ],
+   "disputed": true,
+   "border_note": "Upper Silesia disputed until June 1922"
+  },
+  {
+   "date": "1922-07",
+   "label": "Plebiscite area handed to German and Polish administration",
+   "doc_id": "hansard:S5CV0156P0-02715",
+   "focus": [
+    16.5,
+    49.5,
+    20.0,
+    51.3
+   ],
+   "disputed": false,
+   "border_note": "Upper Silesia partitioned June 1922"
+  }
+ ],
+ "vilna": [
+  {
+   "date": "1920-11",
+   "label": "Żeligowski's troops hold Vilna; the League takes up the dispute",
+   "doc_id": "hansard:S5CV0134P0-00445",
+   "focus": [
+    20.0,
+    52.5,
+    29.5,
+    57.0
+   ],
+   "disputed": false
+  },
+  {
+   "date": "1921-03",
+   "label": "Plebiscite question before the League Council",
+   "doc_id": "hansard:S5CV0138P0-05883",
+   "focus": [
+    22.5,
+    53.3,
+    28.5,
+    56.3
+   ],
+   "disputed": false
+  },
+  {
+   "date": "1922-03",
+   "label": "Vilna diet accepts the act of union with Poland",
+   "doc_id": "hansard:S5CV0152P0-02906",
+   "focus": [
+    22.5,
+    53.3,
+    28.5,
+    56.3
+   ],
+   "disputed": false
+  },
+  {
+   "date": "1923-03",
+   "label": "Ambassadors' Conference awards Vilna to Poland (Art. 87)",
+   "doc_id": "hansard:S5CV0161P0-06294",
+   "focus": [
+    20.0,
+    52.5,
+    29.5,
+    57.0
+   ],
+   "disputed": false
+  }
+ ],
+ "mosul": [
+  {
+   "date": "1924-06",
+   "label": "Anglo-Turkish Mosul conference at Constantinople",
+   "doc_id": "hansard:S5CV0174P0-02840",
+   "focus": [
+    26.0,
+    31.0,
+    50.0,
+    42.0
+   ],
+   "disputed": true,
+   "border_note": "Mosul disputed until the League decision of Dec 1925"
+  },
+  {
+   "date": "1924-10",
+   "label": "Frontier referred to the League Council; status quo to be kept",
+   "doc_id": "hansard:S5CV0177P0-01196",
+   "focus": [
+    35.0,
+    32.5,
+    48.5,
+    39.5
+   ],
+   "disputed": true,
+   "border_note": "Mosul disputed until the League decision of Dec 1925"
+  },
+  {
+   "date": "1925-03",
+   "label": "League commission completes its inquiry on the spot",
+   "doc_id": "hansard:S5CV0182P0-01466",
+   "focus": [
+    35.0,
+    32.5,
+    48.5,
+    39.5
+   ],
+   "disputed": true,
+   "border_note": "Mosul disputed until the League decision of Dec 1925"
+  },
+  {
+   "date": "1925-12",
+   "label": "Council decision on the frontier",
+   "doc_id": "hansard:S5LV0062P0-05726",
+   "focus": [
+    35.0,
+    32.5,
+    48.5,
+    39.5
+   ],
+   "disputed": false,
+   "border_note": "Mosul frontier settled Dec 1925 (treaty June 1926)"
+  },
+  {
+   "date": "1926-06",
+   "label": "Angora treaty with Turkey signed; ratification",
+   "doc_id": "hansard:S5CV0197P0-00245",
+   "focus": [
+    26.0,
+    31.0,
+    50.0,
+    42.0
+   ],
+   "disputed": false,
+   "border_note": "Mosul frontier settled Dec 1925 (treaty June 1926)"
+  }
+ ],
+ "greco_bulgarian": [
+  {
+   "date": "1925-11",
+   "label": "Cecil tells the Lords how the League settled the Greco-Bulgarian dispute",
+   "doc_id": "hansard:S5LV0062P0-03186",
+   "focus": [
+    20.5,
+    39.5,
+    27.5,
+    43.5
+   ],
+   "disputed": false
+  },
+  {
+   "date": "1926-03",
+   "label": "Bulgaria seeks a League refugee loan",
+   "doc_id": "hansard:S5CV0192P0-07017",
+   "focus": [
+    20.0,
+    39.0,
+    29.5,
+    44.5
+   ],
+   "disputed": false
+  },
+  {
+   "date": "1926-04",
+   "label": "Refugee loan under League auspices debated",
+   "doc_id": "hansard:S5CV0194P0-05385",
+   "focus": [
+    20.0,
+    39.0,
+    29.5,
+    44.5
+   ],
+   "disputed": false
+  }
+ ]
+}

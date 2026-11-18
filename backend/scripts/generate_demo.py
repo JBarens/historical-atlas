@@ -13,16 +13,22 @@ sys.path.insert(0, str(BACKEND))
 import main as M  # noqa: E402
 
 CONVERSATIONS = [
-    ["Why was the Aland Islands question referred to the League of Nations?"],
-    ["What did MPs say about the result of the Upper Silesia plebiscite?",
+    # dev-split questions that answered correctly in eval/results/rerank_depth_e2e_20.json (never test items)
+    ["Who were the three members of the committee established in September 1920 to propose a final settlement of "
+     "the Aaland Islands question, and which countries did they represent?"],
+    ["Why was the conference to resolve the territory's fate in the partition of Upper Silesia (Germany-Poland) "
+     "repeatedly delayed through mid-1921?",
      "Did the British government accept the League's partition?"],
-    ["What was the British position on the Mosul frontier with Turkey?"],
+    ["What authority did the Ambassadors' Conference cite in March 1923 when awarding Vilna to Poland?"],
+    ["What position did Ramsay MacDonald take in the February 1926 Commons debate on extending British obligations "
+     "to Iraq until 1928?"],
+    # kept deliberately: the corpus does not hold the answer, so the honest result is insufficient_evidence
     ["How did the League of Nations respond to the Greek incursion into Bulgaria near Petrich in 1925?"],
-    ["In 1922 Parliament was told that the Iraq garrison cost about £20,000,000 a year. Which measure would you use "
+    ["In 1922 Parliament was told that the Iraq garrison cost about \u00a320,000,000 a year. Which measure would you use "
      "to compare that with today?",
-     "What would £20,000,000 from 1922 be worth in 2023?"],
+     "What would \u00a320,000,000 from 1922 be worth in 2023?"],
 ]
-CAP = 0.10
+CAP = 0.12
 
 out, total = [], 0.0
 for turns in CONVERSATIONS:
