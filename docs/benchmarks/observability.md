@@ -107,4 +107,4 @@ A user reports a wrong source. Look up the request id and read the trace top-dow
 
 Without the logged candidate positions and chunk texts, all four look the same from the outside: a wrong answer.
 
-JASPER: TODO one sentence of interpretation.
+Jasper: generation dominates latency (3.2 of 5.8 s) and reranking dominates cost ($0.015 of $0.023), so the levers for speed and for price are in different stages.
