@@ -1,0 +1,585 @@
+{
+ "generated_with": "claude-haiku-5-5",
+ "cost_usd": 0.0799,
+ "conversations": [
+  {
+   "title": "Why was the Aland Islands question referred to the League of Nations?",
+   "turns": [
+    {
+     "question": "Why was the Aland Islands question referred to the League of Nations?",
+     "response": {
+      "request_id": "3297b9096b3b4cc3",
+      "status": "answered",
+      "answer": "The Aaland Islands question was referred to the League of Nations because it was considered a matter affecting international relations that threatened to disturb the good understanding between nations on which peace depends. The Secretary of State acted under the friendly right conferred by Article XI of the Covenant, and he informed the Swedish and Finnish Governments, both of whom expressed satisfaction that the case would be examined without delay. Earl Curzon has said he took the reference on his own responsibility after the two nations had been in dispute for several months, and each welcomed it once made.",
+      "message": null,
+      "claims": [
+       {
+        "claim": "The Secretary of State acted under Article XI of the Covenant to bring the Aaland Islands case to the Council as a matter affecting international relations that threatened to disturb the good understanding between nations on which peace depends.",
+        "source": "chunk",
+        "chunk_id": 1,
+        "in_range": true
+       },
+       {
+        "claim": "Sweden and Finland both expressed satisfaction that the case would now be examined without delay.",
+        "source": "chunk",
+        "chunk_id": 1,
+        "in_range": true
+       },
+       {
+        "claim": "Earl Curzon described the matter as one affecting international relations which might threaten international peace, and said the two nations had been in dispute for several months and each welcomed the reference.",
+        "source": "chunk",
+        "chunk_id": 2,
+        "in_range": true
+       },
+       {
+        "claim": "The reference was taken under Article 11 of the Covenant, on Earl Curzon's own responsibility.",
+        "source": "chunk",
+        "chunk_id": 3,
+        "in_range": true
+       }
+      ],
+      "sources": [
+       {
+        "doc_id": "hansard:S5CV0131P0-00469",
+        "speaker": "The PRIME MINISTER",
+        "date": "1920-06-28",
+        "source": "Hansard, House of Commons",
+        "title": "AALAND ISLANDS.",
+        "before": "",
+        "passage": "As stated by hon. Friend the Under-Secretary of State for Foreign Affairs on the 23rd June, in reply to a question by my hon. Friend the Member for Lincoln, the Secretary of State, acting in exercise of the friendly right conferred by Article XI. of the Covenant of the League of Nations, has brought to the attention of the Council of the League the case of the Aaland Islands as a matter affecting international relations, which unfortunately threatens to disturb the good understanding between nations upon whom peace depends. He has informed the Governments of Sweden and Finland of the action which he felt it his duty to take, and both Governments have expressed their satisfaction that the case will now be examined without delay.",
+        "after": ""
+       },
+       {
+        "doc_id": "hansard:S5LV0041P0-00963",
+        "speaker": "EARL CURZON OF KEDLESTON",
+        "date": "1920-07-22",
+        "source": "Hansard, House of Lords",
+        "title": "THE LEAGUE OF NATIONS.",
+        "before": "…on of armaments in the sense that I have advocated. The next question that was raised was one arising out of Article 11 of the Covenant, and upon this Article the noble and learned Lord, Lord Parmoor, speaking in tones almost of indignation, challenged me to show that any action at all had been taken. He was quite mistaken, and the answer to him was given by the noble and learned Viscount, Lord Haldane, who followed. The reference of the Aaland Islands question to the League of Nations was taken under Article 11, and I hope I am not indiscreetly letting out any secret if I reveal to your Lordships that that reference to the Council of the League was taken by myself on my own responsibility. ",
+        "passage": "This question of the Aaland Islands, seemed to me, having gone very closely into the matter, to be one affecting international relations which might threaten to disturb international peace, or the good understanding between the nations upon whom peace depends, and, acting upon what I think is a sane interpretation of that 458 Article of the Covenant, I informed the two nations concerned that I proposed to snake that reference, with the satisfactory result that, having been in dispute with each other for several months about the matter, each warmly welcomed the reference as soon as it had been made. One other case has been referred to in connection with this Article, and that is the case of Poland. There has been repeated here this afternoon, by more than one speaker, the charge, which we have already heard from Lord Grey of Fallodon, Mr. Asquith, and others, that a great mistake was made in not referring the case of Poland, at the time that she started upon her campaign of aggression, to the Council of the League. ",
+        "after": "It was pointed out by Mr. Balfour in another place that this was not in any sense the kind of case in which reference to the League, or intervention by the League, was contemplated by its authors. But I would give the more practical explanation which comes home to me as having been to some extent concerned in the matter. What was the position? Here were two nations, Poland on the one hand, Soviet Russia on the other, at war. They have not, during the two years in which I have Lad any connection with this matter, been at peace. They have been sporadically engaged in military operations against each other throughout the whole of that time, and, indeed, just before this advance happened, we all…"
+       },
+       {
+        "doc_id": "hansard:S5LV0041P0-00963",
+        "speaker": "EARL CURZON OF KEDLESTON",
+        "date": "1920-07-22",
+        "source": "Hansard, House of Lords",
+        "title": "THE LEAGUE OF NATIONS.",
+        "before": "… on the other hand the Germans make reply, \"If you force upon us too precipitate a disarmament we cannot guarantee order; there will be revolution in our country, and you will find that we have no Government at all.\" That is the kind of difficult situation that arises and which renders rapid progress very, very difficult indeed. Nevertheless, I think that in that respect at Spa a substantial advance was made, and I think that a good deal remains to be done, by individual Powers themselves, who are in a position to do so, setting an example, as I am quite convinced that our own Government is willing to do, by reducing its own armaments within reasonable reasonable limits, as far as possible. ",
+        "passage": "I may say, before passing from the question of disarmament, that one of the actual accomplishments of the Council of the League has been to set up a Committee to consider practicable schemes for the reduction of armaments in the sense that I have advocated. The next question that was raised was one arising out of Article 11 of the Covenant, and upon this Article the noble and learned Lord, Lord Parmoor, speaking in tones almost of indignation, challenged me to show that any action at all had been taken. He was quite mistaken, and the answer to him was given by the noble and learned Viscount, Lord Haldane, who followed. The reference of the Aaland Islands question to the League of Nations was taken under Article 11, and I hope I am not indiscreetly letting out any secret if I reveal to your Lordships that that reference to the Council of the League was taken by myself on my own responsibility. ",
+        "after": "This question of the Aaland Islands, seemed to me, having gone very closely into the matter, to be one affecting international relations which might threaten to disturb international peace, or the good understanding between the nations upon whom peace depends, and, acting upon what I think is a sane interpretation of that 458 Article of the Covenant, I informed the two nations concerned that I proposed to snake that reference, with the satisfactory result that, having been in dispute with each other for several months about the matter, each warmly welcomed the reference as soon as it had been made. One other case has been referred to in connection with this Article, and that is the case of P…"
+       },
+       {
+        "doc_id": "hansard:S5CV0131P0-02609",
+        "speaker": "63. Mr. CAPE",
+        "date": "1920-07-01",
+        "source": "Hansard, House of Commons",
+        "title": "AALAND ISLANDS.",
+        "before": "",
+        "passage": "asked the Prime Minister whether the Swedish or Finnish Governments have appealed to the League of Nations over the question of the Aaland Islands; and, if not, whether the League of Nations is justified in intervening without any request from the two Powers concerned?",
+        "after": ""
+       },
+       {
+        "doc_id": "hansard:S5LV0041P0-00955",
+        "speaker": "VISCOUNT BRYCE",
+        "date": "1920-07-22",
+        "source": "Hansard, House of Lords",
+        "title": "THE LEAGUE OF NATIONS.",
+        "before": "…which foodstuffs grown in these States are not allowed to go to feed Austria. These are matters, as indeed was said by the Colonial Secretary in a debate which we had in this House, in which the League of Nations might intervene, and I should like to hear that there is some prospect that the League of Nations will intervene and endeavour to put forward better conditions, which will be favourable to all parties. Then there is the case of Albania and the quarrels of the Jugo-Slav States with Italy. The Great Powers have failed to settle these questions. Might not an attempt be made to refer them to the League of Nations, which would take them up de novo in perhaps a more coniciliatory spirit? ",
+        "passage": "I will only mention, in passing, the dangers which threaten us from a conflict between China and Japan, and I will acknowledge, also in passing, one service 438 which the League of Nations has rendered and which shows the other services which she might render. In taking in hand the adjustment of the very difficult question with regard to the Aaland Islands the League of Nations has been dealing with the question in what, I think, will commend itself to the House as being the proper way. There is one more question. This relates to a recognition by the Powers of a case in which the League of Nations may be used, and I desire to ask what steps are being taken to use it. Your Lordships may remember that when the Treaty with Hungary was submitted to Hungary, a communication was addressed to the Hungarian Government by the Prime Minister of France on behalf of the Allies, in which he used these words with regard to the territorial delimitations in Hungary— The Allied and Associated Powers have nevertheless considered the case where a boundary so traced— according to the terms of the Treaty with Hungary— would not everywhere correspond precisely to ethnical or economic exigencies. ",
+        "after": "Possibly an Inquiry conducted on the spot will do away with the necessity of displacing, at certain points, the limits provided by the Treaty. Such an Inquiry could not be conducted at the present time without indefinitely delaying the conclusion of Peace. … But when the Boundary Commissions have commenced their labours, if they consider that the provisions of the Treaty give rise anywhere, as stated above, to any injustice-which it is in the general interests to remove, they will be at liberty to submit a Report on the subject to the Council of the League of Nations. In such case the Allied and Associated Power agree that the Council of the League shall be-empowered, if one of the parties c…"
+       }
+      ],
+      "tool_calls": [],
+      "case": "aland"
+     }
+    }
+   ]
+  },
+  {
+   "title": "What did MPs say about the result of the Upper Silesia plebiscite?",
+   "turns": [
+    {
+     "question": "What did MPs say about the result of the Upper Silesia plebiscite?",
+     "response": {
+      "request_id": "61174c0613bf469f",
+      "status": "insufficient_evidence",
+      "answer": "The evidence does not show what MPs said about the result of the Upper Silesia plebiscite. The chunks cover a 1 June 1921 question from Mr. R. Richardson on whether the Jewish population's votes for remaining with Germany would be considered, to which the Under-Secretary replied that the Treaty of Versailles draws no distinction between votes by race, sect or creed. Later exchanges (13 and 20 June 1921) concern the general situation and defer to the Prime Minister, but none states or discusses the plebiscite result. More debate from after the result was announced would be needed.",
+      "message": null,
+      "claims": [
+       {
+        "claim": "Mr. R. Richardson asked whether the Jewish population of Upper Silesia, who voted unanimously to remain with Germany, would be taken into account in the plebiscite award.",
+        "source": "chunk",
+        "chunk_id": 1,
+        "in_range": true
+       },
+       {
+        "claim": "The Under-Secretary of State for Foreign Affairs replied that the future of Upper Silesia would be decided under the Treaty of Versailles, which draws no distinction between votes of different races, sects or creeds.",
+        "source": "chunk",
+        "chunk_id": 2,
+        "in_range": true
+       },
+       {
+        "claim": "On 13 June 1921 Mr. Chamberlain reported the situation in Upper Silesia as generally unaltered and gave a negative answer to the second part of a question.",
+        "source": "chunk",
+        "chunk_id": 3,
+        "in_range": true
+       }
+      ],
+      "sources": [
+       {
+        "doc_id": "hansard:S5CV0142P0-03300",
+        "speaker": "Mr. R. RICHARDSON",
+        "date": "1921-06-01",
+        "source": "Hansard, House of Commons",
+        "title": "UPPER SILESIA.",
+        "before": "",
+        "passage": "asked the Under-Secretary of State for Foreign Affairs whether he is aware that the Jewish population of Upper Silesia, comprising 20,000 people, a large proportion of the industrial population, voted unanimously in favour of remaining with Germany, knowing that their welfare lies with that country; and will cognisance be taken of that fact in the plebiscite award?",
+        "after": ""
+       },
+       {
+        "doc_id": "hansard:S5CV0142P0-03301",
+        "speaker": "The UNDER-SECRETARY of STATE for FOREIGN AFFAIRS (Mr. Cecil Harmsworth)",
+        "date": "1921-06-01",
+        "source": "Hansard, House of Commons",
+        "title": "UPPER SILESIA.",
+        "before": "",
+        "passage": "The future of Upper Silesia will be decided in accordance with the Treaty of Versailles, which does not provide for any distinction being drawn between the votes of different races, sects or creeds.",
+        "after": ""
+       },
+       {
+        "doc_id": "hansard:S5CV0143P0-00411",
+        "speaker": "Mr. CHAMBERLAIN",
+        "date": "1921-06-13",
+        "source": "Hansard, House of Commons",
+        "title": "UPPER SILESIA.",
+        "before": "",
+        "passage": "The situation in Upper Silesia is generally unaltered. But reinforcements having now arrived, 32 it is hoped that the forces at the disposal of the Commission will be adequate to enable it to restore order at an early date. The answer to the second part of the question is in the negative.",
+        "after": ""
+       },
+       {
+        "doc_id": "hansard:S5CV0143P0-03174",
+        "speaker": "Mr. HARMSWORTH",
+        "date": "1921-06-20",
+        "source": "Hansard, House of Commons",
+        "title": "UPPER SILESIA.",
+        "before": "",
+        "passage": "Of course I can add nothing to what the Prime Minister said.",
+        "after": ""
+       },
+       {
+        "doc_id": "hansard:S5CV0143P0-03172",
+        "speaker": "Mr. HARMSWORTH",
+        "date": "1921-06-20",
+        "source": "Hansard, House of Commons",
+        "title": "UPPER SILESIA.",
+        "before": "",
+        "passage": "My hon. and gallant Friend will have heard the reply given by the Prime Minister on that subject.",
+        "after": ""
+       }
+      ],
+      "tool_calls": [],
+      "case": "upper_silesia"
+     }
+    },
+    {
+     "question": "Did the British government accept the League's partition?",
+     "response": {
+      "request_id": "adff6452d87949d4",
+      "status": "insufficient_evidence",
+      "answer": "The evidence does not establish whether the British government accepted the League's partition of Upper Silesia. It contains only a 1925 remark by Lloyd George that Germany was \"smarting under the decision of Silesia,\" a 1921 statement that the future would be decided under the Treaty of Versailles, a one-line refusal by Mr. Chamberlain with no context, and questions that ask whether a decision was reached or policy adhered to, without answering them. A direct government statement on acceptance of the partition is needed.",
+      "message": null,
+      "claims": [
+       {
+        "claim": "Lloyd George (1925) said Germany was smarting under the decision of Silesia.",
+        "source": "chunk",
+        "chunk_id": 1,
+        "in_range": true
+       },
+       {
+        "claim": "The Under-Secretary (1921) said the future of Upper Silesia will be decided in accordance with the Treaty of Versailles.",
+        "source": "chunk",
+        "chunk_id": 3,
+        "in_range": true
+       },
+       {
+        "claim": "Mr. Chamberlain (1921) replied 'No, I cannot accept the hon. and gallant Gentleman's statement' with no further context.",
+        "source": "chunk",
+        "chunk_id": 2,
+        "in_range": true
+       },
+       {
+        "claim": "Mr. White (1921) asked whether a decision had been reached on Upper Silesia's future following the plebiscite, without an answer in the evidence.",
+        "source": "chunk",
+        "chunk_id": 5,
+        "in_range": true
+       }
+      ],
+      "sources": [
+       {
+        "doc_id": "hansard:S5CV0188P0-01666",
+        "speaker": "Mr. LLOYD GEORGE",
+        "date": "1925-11-18",
+        "source": "Hansard, House of Commons",
+        "title": "TREATY OF MUTUAL GUARANTEE.",
+        "before": "… the Opposition mixed a good many thistles with his bouquet. There were more prickles than perfume, but there were one or two criticisms of his with which I certainly agree, notably, that about the Dominions. But I still say, I am frankly delighted, as one who has taken a part in many of these conferences, at the unquestionable advance which this represents in the cause of European peace. If there are any criticisms, they are criticisms with a view to there being amendment in future conferences. There are two outstanding features of this Treaty which, I think, drown all criticism. The first is that Germany has been induced to come into the League of Nations—a very difficult task, as I know. ",
+        "passage": "I remember having a conference with the German Chancellor at Genoa, in which on behalf of the British Government I begged and implored him to induce Germany to come into the League. We promised the support of the British Government to the application, and not only that, but we promised the support of the British Government to the application of Germany to be a member of the Council of the League. They were then smarting under the decision of Silesia, and he then told me that public opinion was so angry that -no German Government could at that stage have entered the League. It is a real achievement to have got them inside. I agree with everything the Leader of the Opposition has said about the League of Nations. All the same, do not let us shut our eyes to the fact that it has appeared too much as a Council of the 449 Allies in many ways. ",
+        "after": "The Allies dominated it, and there were many decisions which looked as if they had been inspired rather by the spirit of conquest than by the spirit of conciliation. But the introduction of Germany to the League alters in a very large measure the character of that body, and I think it is the beginning of bigger things, because I do not think the League of Nations can hope to dominate international affairs of Europe and be a real security for peace until you have got all the great nations there. Nobody knows better than my two right hon. Friends how difficult it was for Great Britain to be always standing there alone pleading for fair play and conciliation. It became almost a conflict between…"
+       },
+       {
+        "doc_id": "hansard:S5CV0143P0-06245",
+        "speaker": "Mr. CHAMBERLAIN",
+        "date": "1921-06-27",
+        "source": "Hansard, House of Commons",
+        "title": "UPPER SILESIA.",
+        "before": "",
+        "passage": "No, I cannot accept the hon. and gallant Gentleman's statement.",
+        "after": ""
+       },
+       {
+        "doc_id": "hansard:S5CV0142P0-03301",
+        "speaker": "The UNDER-SECRETARY of STATE for FOREIGN AFFAIRS (Mr. Cecil Harmsworth)",
+        "date": "1921-06-01",
+        "source": "Hansard, House of Commons",
+        "title": "UPPER SILESIA.",
+        "before": "",
+        "passage": "The future of Upper Silesia will be decided in accordance with the Treaty of Versailles, which does not provide for any distinction being drawn between the votes of different races, sects or creeds.",
+        "after": ""
+       },
+       {
+        "doc_id": "hansard:S5CV0143P0-06240",
+        "speaker": "Lieut.-Commander KENWORTHY",
+        "date": "1921-06-27",
+        "source": "Hansard, House of Commons",
+        "title": "UPPER SILESIA.",
+        "before": "",
+        "passage": "asked the Prime Minister what further progress has been made by the Allies with the enforcement of the Treaty of Versailles in respect to Upper Silesia; whether he adheres to the policy of His Majesty's Government as last explained by him to this House; and when he will be in a position to make a further statement?",
+        "after": ""
+       },
+       {
+        "doc_id": "hansard:S5CV0142P0-00370",
+        "speaker": "Mr. WHITE",
+        "date": "1921-05-24",
+        "source": "Hansard, House of Commons",
+        "title": "UPPER SILESIA.",
+        "before": "",
+        "passage": "asked the Prime Minister whether a decision has yet been arrived at as to the future of Upper Silesia as a result of the plebiscite?",
+        "after": ""
+       }
+      ],
+      "tool_calls": [],
+      "case": "upper_silesia"
+     }
+    }
+   ]
+  },
+  {
+   "title": "What was the British position on the Mosul frontier with Turkey?",
+   "turns": [
+    {
+     "question": "What was the British position on the Mosul frontier with Turkey?",
+     "response": {
+      "request_id": "1b6771393e6b43e5",
+      "status": "answered",
+      "answer": "The evidence shows the British government's position was to retain the Mosul vilayet on the frontier it had reached, and that it had earlier considered a settlement with Turkey. Sir A. Chamberlain said Britain had contended for the same frontier as the Iraqi side, and that in March 1925 a Turkish proposal would have returned about two-thirds of the Mosul Vilayet to Turkey in exchange for oil exploitation by an English group approved by the British Government. Opponents noted that Britain advanced to Mosul after the Armistice, and the League of Nations Commissioner stated that, legally, the disputed territory must be regarded as part of Turkey until Turkey renounced its rights.",
+      "message": null,
+      "claims": [
+       {
+        "claim": "Sir A. Chamberlain said Britain contended for the same frontier as the one the Iraq side had defended.",
+        "source": "chunk",
+        "chunk_id": 1,
+        "in_range": true
+       },
+       {
+        "claim": "In March of the previous year, the Turkish representative approached Chamberlain with a proposal to settle the question apart from the League of Nations, with Turkey receiving as much of the Mosul vilayet as it desired in exchange for a British company, approved by the British government, exploiting the oil.",
+        "source": "chunk",
+        "chunk_id": 1,
+        "in_range": true
+       },
+       {
+        "claim": "Approximately two-thirds of the Mosul Vilayet were to be returned to Turkey under the proposed settlement, with oil exploitation granted to an English group approved by the British Government.",
+        "source": "chunk",
+        "chunk_id": 2,
+        "in_range": true
+       },
+       {
+        "claim": "At the Armistice, Britain was not in Mosul; it advanced to Mosul afterwards and then to the present line.",
+        "source": "chunk",
+        "chunk_id": 4,
+        "in_range": true
+       },
+       {
+        "claim": "The League of Nations Commissioner stated that from the legal point of view the disputed territory must be regarded as an integral part of Turkey until that Power has renounced her right.",
+        "source": "chunk",
+        "chunk_id": 4,
+        "in_range": true
+       },
+       {
+        "claim": "Kenworthy argued that under the Armistice Britain was to remain on the lines it held, but it advanced to Mosul and beyond, taking the whole vilayet.",
+        "source": "chunk",
+        "chunk_id": 5,
+        "in_range": true
+       }
+      ],
+      "sources": [
+       {
+        "doc_id": "hansard:S5CV0191P0-07381",
+        "speaker": "Sir A. CHAMBERLAIN",
+        "date": "1926-02-18",
+        "source": "Hansard, House of Commons",
+        "title": "ANGLO-IRAQ TREATY.",
+        "before": "",
+        "passage": "But there is one observation which has been current which I must answer. There is a suggestion that His Majesty's Government have been actuated in this question by the desire to secure, the oil of Iraq. Were the party opposite actuated by that desire when they undertook to defend the interests and the rights of Iraq and contended for the same frontier for which we have contended? Why does the oil well up when we are in office, and only when we are in office? But never was there a more palpable untruth. I was approached by the Turkish representative with a proposition in March of last year to settle this question apart from the League of Nations. What was the basis of the proposition? It was that Turkey should have so much as she desired of the vilayet of Mosul. That was one side of the bargain. The other side was that a British company, approved by His Majesty's Government, should have the exploitation of all the oil. ",
+        "after": "Pipe lines were to be necessary, and a British company should have the construction of the pipe lines. A port or two ports would be required, and a British company should have the concession for the ports. Five other ports and the concession for, I think—I speak from memory—3,000 kilometres of railway were offered. If we were after oil, we could have had a concession for all the oil in Mosul and concessions for anything else we liked. The reply of His Majesty's Government 2277 was that they were trustees for Iraq; that they were not possessors, but mandatories, and that as mandatories and trustees they could not bargain away the rights and interests of Iraq and her people in exchange for con…"
+       },
+       {
+        "doc_id": "hansard:S5CV0192P0-01883",
+        "speaker": "Sir A. CHAMBERLAIN",
+        "date": "1926-02-24",
+        "source": "Hansard, House of Commons",
+        "title": "MOSUL VILAYET.",
+        "before": "",
+        "passage": "Yes, Sir, approximately two-thirds of the Mosul Vilayet were to be returned to Turkey. I abstain from giving the actual geographical description of the proposed frontier as it consists of a long list of names only to be found on a large scale map. The answer to the second and third parts of the question is that the exploitation of oil was to be granted to an English group to be approved by the British Government. The answer to the fourth part of the question is in the negative.",
+        "after": ""
+       },
+       {
+        "doc_id": "hansard:S5CV0192P0-01882",
+        "speaker": "Lieut.-Commander KENWORTHY",
+        "date": "1926-02-24",
+        "source": "Hansard, House of Commons",
+        "title": "MOSUL VILAYET.",
+        "before": "",
+        "passage": "asked the Secretary of State for Foreign Affairs whether in the proposals made by the Turkish Government to His Majesty's Government in March of last year for a peaceful settlement of the Mosul question, it was stated how much of the vilayet of Mosul would satisfy the Turkish demands; whether any particular British company was mentioned by the Turkish Government as being acceptable for the development of the oil resources of the territory in question or whether His Majesty's Government were offered a free 497 hand in this matter; whether the Iraq Government was consulted with reference to these offers from the Turkish Government; and, if so, what was their reply?",
+        "after": ""
+       },
+       {
+        "doc_id": "hansard:S5CV0191P0-07345",
+        "speaker": "Mr. THURTLE",
+        "date": "1926-02-18",
+        "source": "Hansard, House of Commons",
+        "title": "ANGLO-IRAQ TREATY.",
+        "before": "…rt by the League of Nations itself. The hon. Member for Oldham, I am sure, will accept this as being unimpeachable authority: Another objection to the solution proposed by the British Government arises from the circumstances in which the Syrians took up arms against the Turk. There is no doubt that this people rose in armed revolt against its lawful Government\"— I am not saying this; the League of Nations is saying it— at the instigation of foreigners, and without any provocation on the part of the Turkish authorities. If that be the situation, and I submit that it is, is it any wonder that there is bitter feeling between the Turks and the Syrians as a consequence of this kind of treachery? ",
+        "passage": "Hon. Members opposite must accept a good deal of responsibility for it, because our Government was partly responsible for seducing these Syrians from their real allegiance and making them take part in a fight against the Turkish Government, which was really over them. There is a point about the legality of the position taken up by the Turkish Government. Here is one plain fact. At the time of the Armistice we were not in Mosul. We were south of Mosul. We subsequently advanced to Mosul after the Armistice, and then to the present line. What does the League of Nations Commissioner say about that? The Turkish Government has insisted all along that it has not renounced its rights of sovereignty over this territory. The League of Nations Commissioner says. From the legal point of view the disputed territory must be regarded as an integral part of Turkey until that Power has renounced her right. ",
+        "after": "She has not renounced her right. Iraq cannot claim the disputed territory either by invoking the right of conquest or by any other legal right. The right hon. Gentleman the Member for Norwich was somewhat sarcastic on the way in which we put forward the question of oil in discussing this matter. I am going to submit that, however much the House may try to disguise the fact, oil does loom very largely in this question. Some months ago I did myself the benefit 2223 of reading the \"Daily Telegraph,\" and I read there some remarks by the diplomatic correspondent of that paper. The \"Daily Telegraph\" is not, in the elegant words of the right hon. Gentleman opposite, in favour of a \"policy of scuttl…"
+       },
+       {
+        "doc_id": "hansard:S5CV0191P0-07365",
+        "speaker": "Lieut. - Commander KENWORTHY",
+        "date": "1926-02-18",
+        "source": "Hansard, House of Commons",
+        "title": "ANGLO-IRAQ TREATY.",
+        "before": "…e of the very few strong men. I have been acquainted with him so long that I know his qualities, and I know that he really carried his colleagues with him at Geneva, although he has now committed us to 25 years of bolstering up this Arab State. Success can only be achieved by pursuing a policy of peace, and yet the Conservative Government has only succeeded in still further embittering the relations of this 2263 country with Turkey. It has always been our policy to be on good terms with the Turk. We have heard hon. Members opposite using abusive language about the Turks, but the right hon. Gentleman the Member for Norwich ought to recollect that the Turks have survived four successive wars. ",
+        "passage": "At the present moment in Turkey the people are westernising their customs, and making a gallant effort to organise themselves and rejuvenate their State, and under these circumstances I think a little more sympathy and friendship would be welcome to them at a tine when they are so much bruised and shattered after the many struggles through which they have passed. In these circumstances, I think the right hon. Gentleman the Member for Norwich might have had a few words of sympathy towards Turkey instead of adopting such a truculent attitude. At the conclusion of the late War, by the terms of the Armistice, we were to remain on the lines which we then held, but instead of doing that, as soon as the Turks laid down their arms we not only advanced to Mosul but we went scores of miles beyond, and we took in the whole vilayet of Mosul. ",
+        "after": "The argument used in favour of this action was that we must secure a strategical frontier, and another argument was that the vilayet of Mosul was necessary in order to secure the prosperity of the whole State of Iraq. May I point out that, in the first instance, Niosul was included in the French Mandate for Syria and the Sykes-Picot Agreement had reference to Syria. It has only been discovered comparatively recently that it is necessary for the economic prosperity and the maintenance of the State of Iraq. We must, however, look at the other man's point of view, and I would ask hon. Members to look at the Turkish point of view. Under this arrangement, a portion of the Kurdish race remains on …"
+       }
+      ],
+      "tool_calls": [],
+      "case": "mosul"
+     }
+    }
+   ]
+  },
+  {
+   "title": "How did the League of Nations respond to the Greek incursion into Bulgaria near Petrich in 1925?",
+   "turns": [
+    {
+     "question": "How did the League of Nations respond to the Greek incursion into Bulgaria near Petrich in 1925?",
+     "response": {
+      "request_id": "cf3c9a930b374f35",
+      "status": "insufficient_evidence",
+      "answer": "The provided evidence does not describe the 1925 Greek incursion into Bulgaria near Petrich or the League's response to it. The chunks cover other Bulgarian frontier matters (a 1922 Council resolution on Bulgarian frontiers), a 1924 Lords remark that the League's handling of an earlier Greek-related dispute ended warlike developments, and 1924 discussions of disarmament of Bulgaria, Austria and Hungary. To answer, the corpus would need documents on the Petrich incident itself, dated 1925.",
+      "message": null,
+      "claims": [],
+      "sources": [
+       {
+        "doc_id": "hansard:S5LV0057P0-00283",
+        "speaker": "VISCOUNT CECIL OF CHELWOOD",
+        "date": "1924-04-02",
+        "source": "Hansard, House of Lords",
+        "title": "COUNCIL OF THE LEAGUE OF NATIONS.",
+        "before": "…se who thought that the Corfu incident was otherwise than very satisfactory from a League point of view. I remember vehement criticisms being made upon it at the time. I remember particularly that Mr. Lloyd George wrote, for publication in America, a most violent attack on the whole thing. It was conceived with that indifference to fact, and that vehemence of statement and recklessness of consequences which are 107 characteristic of that gentleman's methods of controversy when he is dealing cither with a political opponent or with a Minister of a friendly country, and he concluded it with these words:— It has damaged the British name, it has destroyed the authority of the League of Nations. ",
+        "passage": "A more recklessly inaccurate statement has never been made. As a matter of fact, I believe that the incident has done a great deal to increase the authority of the League of Nations. And these final events show the extent to which that is true. They show, in the first place, that the League did not feel itself too weak to tackle, an international controversy, even if one of the great Powers was engaged in it. That fact alone was of importance. It showed that, once the League took up a question, warlike developments ceased. They ceased instantly. There were no further warlike developments from the moment the matter was placed by the Greeks into the hands of the League. I think that the way the League dealt with it showed that the one desire that prevails at Geneva is to achieve a peaceful settlement of a matter, and that no question of corporate amour propre would interfere with it. ",
+        "after": "The moment the two parties informed the Council of the League that they had agreed to go before another tribunal, the Council of the League Very properly said: \"If you have agreed to take another tribunal, that is your affair: all we want is a peaceful settlement. By all means go to the tribunal.\" But they very rightly drew up, and recommended to the other tribunal, what they believed would be a just settlement of the dispute. And I venture to think that the real mistake that was made in the whole transaction was that the terms of that settlement were not adhered to in one important particular by the Conference of Ambassadors. There were two difficulties which resulted from that article to w…"
+       },
+       {
+        "doc_id": "hansard:S5CV0157P0-00393",
+        "speaker": "Mr. HARMSWORTH",
+        "date": "1922-07-24",
+        "source": "Hansard, House of Commons",
+        "title": "BULGARIA (FRONTIERS).",
+        "before": "",
+        "passage": "The Bulgarian Government appealed to the League of Nations on this question, and the Council have accepted a resolution noting the declarations made by the Rumanian, Greek and Serbian representatives as to the pacific intentions of t heir respective Governments, and expressing the hope for a satisfactory conclusion to the direct negotiations between all the parties which are now in progress. The Council requested to be informed at their next meeting of the results obtained, and placed themselves at the disposal of tie Governments concerned if required. A copy of the resolution will be placed in the Library of the House in accordance with the usual practice.",
+        "after": ""
+       },
+       {
+        "doc_id": "hansard:S5LV0058P0-01503",
+        "speaker": "VISCOUNT CECIL OF CHELWOOD",
+        "date": "1924-07-14",
+        "source": "Hansard, House of Lords",
+        "title": "COUNCIL OF THE LEAGUE OF NATIONS.",
+        "before": "… last two years the sentiment of the Assembly, if I did not mistake it, was that it was necessary to get to business, and that the time for fine sentiments and eloquent speeches had passed. I trust that the Prime Minister is going to the Assembly in order to set forward the remedies for the great causes that are troubling Europe, and particularly in order to deal with the very great and difficult question of the reduction and limitation of armaments. The noble Lord made a reference to the policy of the Government in regard to armaments, and suggested that it would be probably more convenient to deal with that at a future time when we have before us the document that has been sent to Geneva. ",
+        "passage": "I respectfully agree with him, and I do not propose to say anything beyond this: that I trust when we do see the document it will not be of a purely negative character, and that if the Government cannot accept the suggestions that have been made in the League itself they will at any rate have some alternative policy to put forward. I cannot help feeling—and I say it with regret—a little disquieted over the policy of the Government in this connection. The noble Lord said that he thought it was of great importance that the League had undertaken to deal with the disarmament of Bulgaria, Austria and Hungary. I did not quite understand why he thought it of great importance. As I understand it, the proposal is that when the existing international authorities have certified that those countries have been disarmed to the extent that they are bound to be disarmed by the Treaties, then the League 494 will take over the duty of seeing that those armaments are not increased in an unauthorised manner in the future. ",
+        "after": "I am, I admit, very nervous about the whole of that part of the duties of the League. It is a very difficult task for them to undertake, and though I would not for a moment say that it is wrong, I am not so happy about the noble Lord's account of the methods that are to be employed for creating the necessary machinery. It is apparently sent for the advice of the permanent Military Commission. I would be very sorry to say anything against that body. It has done very excellent work, but so far its work has been mainly of a critical character, and I cannot at this moment call to mind a single piece of constructive work that it has done since it came into existence. How the noble Lord proposes t…"
+       },
+       {
+        "doc_id": "hansard:S5CV0159P0-01593",
+        "speaker": "Mr. NOEL BUXTON",
+        "date": "1922-11-24",
+        "source": "Hansard, House of Commons",
+        "title": "FOREIGN AFFAIRS.",
+        "before": "…vexed question of what has been the effect of French policy, on which it is, perhaps, better for the moment to say nothing. The Labour party takes a different point of view from that of other parties in a marked respect. We have been accustomed to a time-honoured phrase—\"British interests.\" We on these benches feel that British interests have not been rightly understood. There are other interests than those which I have heard supported from Conservative Benches in past Parliaments. We look upon one essential British interest as being the general prosperity of the world and the self-determination of peoples on just principles—self-determination which must go with a genuine League of Nations. ",
+        "passage": "2.0 P.M. In the Near East, self-determination is the most important subject to discuss, because I am afraid we must admit, after all we have heard about the protection of minorities in the Turkish Empire, that the only genuine protection for those people is the establishment of self-government for them. The question is going to be exceedingly difficult because, even if we do what the Leader of the Opposition 204 suggested and bring about reciprocal treaties between Turkey and the other countries of the Near East, we know how very difficult such provisions have been to carry out. Self-determination on the European side has been only roughly satisfied by recent treaties. There is a marked exception, and that is Bulgaria. As to Bulgaria, the Treaty of Neuilly, which was a punitive Treaty, did promise to Bulgaria access to the sea. But there can be no access to the Ægean Sea except by the territorial possession of a corridor, which ought, I think, to be the whole of Western Thrace. ",
+        "after": "When we think of the way in which self-determination has at last been brought about in the Balkans, we are tempted to recriminate in regard to the policies of the past. When we think of the effect of the policy of 1878 and the replacement of Turkey as far north as the River Save, it is a melancholy reflection that to put that right rivers of blood have flowed, and let us thank God that at last there is self-determination in the main for the whole of the Balkan people. In Asia the case is different. We think that the Turks have rights of a national kind as well as other nations and that the Treaty of Sevres trod upon those rights. But the Turks, insulted by the Treaty of Sevres, have now got …"
+       },
+       {
+        "doc_id": "hansard:S5LV0058P0-01500",
+        "speaker": "LORD PARMOOR",
+        "date": "1924-07-14",
+        "source": "Hansard, House of Lords",
+        "title": "COUNCIL OF THE LEAGUE OF NATIONS.",
+        "before": "…ticles 159 of the Treaty of Saint-Germain, 143 of the Treaty of Trianon and 104 of the Treaty of Neuilly. Under these Articles this is the provision: Austria (Hungary Bulgaria) undertakes to submit to any investigation which the Council of the League of Nations, acting if need be by a majority vote, may consider necessary. Let me explain what that means. Up till this time there have been Inter-Allied Commissions of Control to safeguard the position of disarmament in those three countries. It was always contemplated that after a time these Inter-Allied Commissions of Control should come to an end, and that then the League should undertake the duty of seeing that no fresh armaments were made. ",
+        "passage": "In other words, these countries agreed under the Covenant to submit the question of disarmament to the investigation of the League after the Inter-Allied Commissions of Control came to an end. That was extremely satisfactory in itself, but the question was how to carry it out. Fortunately, the representatives of France—who, I must say, have always, in my experience at the Council, been extremely friendly—were M. Bourgeois, whom the noble Earl opposite will affectionately remember, and M. de Jouvenel, a great friend of the League of Nations. They both assented to this. They said quite frankly—and it was afterwards stated publicly—that this is a very important point, particularly to France, because whatever is applied to Austria, Hungary and Bulgaria will 487 certainly be applied in the ease of Germany. I do not say it will be applied immediately, because the question is whether Germany has now complied with the conditions of Article 203 of the Treaty of Versailles, and it is not until she has complied with those conditions that the subsequent steps can be taken under Article 213. ",
+        "after": "I indicated, on behalf of the British Government, that there were two difficulties ahead of us. One was a difficulty to be settled by jurists, because it was not very obvious how the Council should be composed under the terms of the Treaty when these matters came to be considered. The second point was that we should have to be advised on technical matters as regards armaments of various kinds. M. de Jouvenel, who, on behalf of the French Delegation, accepted the general proposal, said he thought these matters might be settled in this way: that so far as concerned the jurists' question it should be sent to the Committee of Jurists. We were unanimous, and that has been done. I hope very much t…"
+       }
+      ],
+      "tool_calls": [],
+      "case": "greco_bulgarian"
+     }
+    }
+   ]
+  },
+  {
+   "title": "In 1922 Parliament was told that the Iraq garrison cost about £20,000,000 a year. Which measure would you use to compare that with today?",
+   "turns": [
+    {
+     "question": "In 1922 Parliament was told that the Iraq garrison cost about £20,000,000 a year. Which measure would you use to compare that with today?",
+     "response": {
+      "request_id": "3815166a419248a7",
+      "status": "answered",
+      "answer": "The evidence does not contain a 1922 statement of about £20,000,000 for the Iraq garrison; the closest figures are £23,000,000 spent in 1921 and under £8,000,000 in 1922–23, so the premise should be checked against the source. For comparing a historical sum with today, the appropriate measure is the ONS long-run retail price index (prices, not wages), which is the measure the inflation adjustment tool uses to convert a GBP amount to another year (default 2025). Note that this is a price measure, so it shows what the money would buy, not how it compares with earnings or national income.",
+      "message": null,
+      "claims": [
+       {
+        "claim": "In 1921 the UK was spending over £23,000,000 a year in Iraq; in 1922–23 it spent under £8,000,000.",
+        "source": "chunk",
+        "chunk_id": 2,
+        "in_range": true
+       },
+       {
+        "claim": "In 1920 the Iraq garrison annual cost was stated as £16,000,000.",
+        "source": "chunk",
+        "chunk_id": 1,
+        "in_range": true
+       },
+       {
+        "claim": "The adjust_for_inflation tool converts historical GBP amounts using the ONS long-run retail price index (prices, not wages), with a default target year of 2025.",
+        "source": "tool",
+        "chunk_id": null,
+        "in_range": true
+       }
+      ],
+      "sources": [
+       {
+        "doc_id": "hansard:S5CV0127P0-02356",
+        "speaker": "Lieut.-Colonel MURRAY",
+        "date": "1920-03-25",
+        "source": "Hansard, House of Commons",
+        "title": "FOREIGN AFFAIRS.",
+        "before": "…r John Hewitt and Sir Harry Verney, the Liberal candidate for Basingstoke, which was issued in 1919. The inquiry took place at the end of 1918, and these gentlemen made an investigation into our expenditure in Mesopotamia. Sir John says: Apart from the sums spent upon roads and railways, £2,000,000 may be regarded as expenditure which would benefit the civil population and be of permanent value to the country. He goes on to say: There is no doubt that the expenditure incurred during the War far accedes in amount any sum at which the railways can fairly be assessed as n commercial concern. This is the point which I should like to emphasise, having regard to the remarks of the Prime Minister. ",
+        "passage": "The account that Sir John gives of the attempts to promote agriculture are very far from encouraging. That is evidenced in the Report. What, therefore, is left of the great resources of Mesopotamia to which the Prime Minister referred can only be the oil that can he developed in that country. In spite of what the Prime Minister said, I suggest that the sane policy in Mesopotamia would be to cut our losses and to reduce our committments in that country as speedily as possible. As the right hon. Member for Paisley pointed out, there are no natural boundaries to Mesopotamia in the part that we occupy. We have a garrison of 70,000 men there, of whom 18,000 are British, and the annual cost is £16,000,000. From a very small beginning we have acquired a territory—because that is what it amounts to—larger than the country of Italy. Our policy should be to establish as firmly as possible the newly-created Republics of Georgia and Azerbaijan, to 697 create, as has boon suggested, and as I believe is the intention of the Government, an independent State of Armenia, and to organise but not to control the Sherifats of Mosul and Baghdad, and that we should confine the territory which is administered by ourselves to the Vilayet of Busra. ",
+        "after": "I should have liked to have developed, but I know the House is anxious to get to other business, the reasons for some of the difficulties with which we have been confronted in regard to our present policy in connection with Constantinople and other matters arising out of the Peace Treaty. What I should have said would have been to impress upon the Government the necessity for reverting to the past practice in which our foreign policy was controlled, not by the Prime Minister at No. 10, Downing Street, but by the Secretary of State for Foreign Affairs. It is only by having the centre of gravity under the Secretary of State for Foreign Affairs that we can have a fixed policy. The result of the…"
+       },
+       {
+        "doc_id": "hansard:S5CV0191P0-07305",
+        "speaker": "Mr. AMERY",
+        "date": "1926-02-18",
+        "source": "Hansard, House of Commons",
+        "title": "ANGLO-IRAQ TREATY.",
+        "before": "",
+        "passage": "On the contrary, I have already made it clear that the policy on which we are working of bringing our military and financial responsibility in Iraq to an end in 1928 still holds the field and remains unchanged. What is more, I believe that we can substantially fulfil that policy within the date laid down two years ago. I would like to remind the House of the steady progress that has been made in this matter since the present policy was established. In 1921, when the present policy was laid down by the Chancellor of the Exchequer, we were spending over £23,000,000 a year in Iraq. The following year, in 1922–23, we spent under £8,000,000; in 1923–24 we spent £5,750,000; in 1924–25, £4,500,000, and in the current year, 1925–26, we are spending £4,000,000. In spite of all the difficulties and anxieties of the present circumstances, we are prepared to estimate in the coming year for figures in the neighbourhood of £3,800,000, and I am hopeful that it may be possible to reduce those figures still further during 2176 the year, and to bring about a still more substantial reduction in the following year. ",
+        "after": "I would further remind the House, and if my voice may reach the Press I would like to remind them also, that this expenditure, though it is expenditure in Iraq, is not all necessarily expenditure on Iraq. Four years ago the Chancellor of the Exchequer put all military and air expenditure in the Middle East within the sphere of the Colonial Office authority on the Middle East Vote. The object of doing this was that those who control the policy should have a direct interest in forcing down expenditure. This policy in the main has worked well up to the present, though it has certain objections; but it has created a misleading impression, at any rate in comparison with the cost of our other Impe…"
+       },
+       {
+        "doc_id": "hansard:S5CV0191P0-07308",
+        "speaker": "Mr. AMERY",
+        "date": "1926-02-18",
+        "source": "Hansard, House of Commons",
+        "title": "ANGLO-IRAQ TREATY.",
+        "before": "…e admirable Air Force units which are stationed there, and which have such an excellent training ground provided for them there? They would certainly not be disbanded altogether if we left Iraq. In any case, I think that expenditure can be substantially reduced within the next few years, first of all because the whole situation will not, I believe, requires so larger a force, and also because Iraq is going to be progressively more capable of shouldering its own burdens. I do not know whether the House realises that Iraq already bears the whole cost of its civil administration, of a most efficient police force, and also of a small army of 8,000 men which is steadily increasing in efficiency. ",
+        "passage": "2177 When the right hon. Gentleman the Member for Norwich went into the finances of Iraq less than a year ago, he budgeted for a current revenue of 518 lakhs, equal to about, £3,880,000. I have since had information from the Acting High Commissioner that, in spite of the heavy unforeseen expenditure on famine relief and Christian refugees, and in spite of the fact that certain of the reforms advocated by my right hon. Friend have not yet been put into execution, the financial position in the current year is at least 15 lakhs, or about £112,000, better than it was before. It has also been calculated that next year the revenue and expenditure will balance at about 555 lakhs, or about £4,200,000. Considering the position in which that country was when we took it over after the War, and comparing it with what was done in Egypt in the early days, I regard that as a most satisfactory achievement in the administration of Iraq. ",
+        "after": "In other respects, also, I have every confidence that Iraq will steadily improve her position. Her export and import trade is already very far from negligible. In the last two years her export trade stood at about £3,250,000, and her import trade at about £6,750,000. Of that total, 33 per cent., or about £2,250,000, came from the United Kingdom. That is a trade not, far off the volume of our trade with such important countries as Poland, or Mexico, or Austria. I would add that another 30 per cent. of Iraq's import trade came from India, so that the Empire imports into Iraq amount to not far off two-thirds of her total import trade.. I have every confidence that that trade will expand steadil…"
+       },
+       {
+        "doc_id": "hansard:S5CV0191P0-07353",
+        "speaker": "Mr. GRIFFITHS",
+        "date": "1926-02-18",
+        "source": "Hansard, House of Commons",
+        "title": "ANGLO-IRAQ TREATY.",
+        "before": "… South Wales as a result of the consumption of oil in the Navy. For every oil well that you sink in Mosul you close down pits in this country and you increase the unemployment amongst the miners. After having been in Iraq I am of opinion that the money you spend in maintaining even an aerodrome in that country—there are thousands and thousands of acres, and you have great engineering works there, with blacksmiths' shops and all kinds of machinery for producing aeroplanes—could be far better spent in this country, and I am sure that I am speaking the voice of the electors—Darlington spoke yesterday—in saying that the money would be far better spent in assisting our home industries to revive. ",
+        "passage": "We have spent in Iraq up to the present about £170,000,000, and, according to the figures given by the Colonial Secretary, we are to spend about £4,000,000 per annum in future. The Minister of Labour in his last Bill, in order to economise, saved £4,000,000 at the expense of the unemployed of this country by refusing to pay extended benefit. It would have been better to have spent that sum in helping the unemployed than to spend it in Iraq. The policy of this Government is that charity and generosity do not begin at home; they always begin abroad, and the taxpayers and workers of this country have always had to suffer and to pay.",
+        "after": ""
+       },
+       {
+        "doc_id": "hansard:S5CV0191P0-07334",
+        "speaker": "Major HILLS",
+        "date": "1926-02-18",
+        "source": "Hansard, House of Commons",
+        "title": "ANGLO-IRAQ TREATY.",
+        "before": "…uld not expect to monopolise all the trade, and ought not to do so, I agreed. He knows very well that no mandatory Power can do that. As soon as you accept a mandate you agree to admit the trade of all nations on equal terms. Therefore, 2196 what we do is not entirely for our own benefit, but for the benefit of all the world. It seems to me that one of the great difficulties and dangers of the world to-day is the relation between Western and Eastern races. He would perform the greatest service to mankind who could find a middle term of civilisation, a common system of culture which would embrace the East as well as the West. It has to be found, or a very material bar to progress will exist. ",
+        "passage": "I can imagine no more favourable field for finding that common measure of progress and that common civilisation than the new State of Iraq. As a nation we are trying to do this in India. But in India we have difficulties. It is an old country and a country over which controversy has raged. Iraq starts with a clean sheet. She is a new State which we have brought into existence. If we could find some solution of this almost insoluble problem, and some method of common action by the Eastern races and the Western races, I believe that the man who did that would do very great service to the world. For all these reasons, bearing in mind the liability that is on us, bearing in mind that we have to pay £4,000,000 this year and nearly £4,000,000 next year, and realising that we could spend that money very well at home and would be glad to do so, I urge the House to accept this new Treaty.",
+        "after": ""
+       }
+      ],
+      "tool_calls": [],
+      "case": "mosul"
+     }
+    },
+    {
+     "question": "What would £20,000,000 from 1922 be worth in 2023?",
+     "response": {
+      "request_id": "9bef1080c9c3461a",
+      "status": "answered",
+      "answer": "£20,000,000 from 1922 is worth about £1,480,100,503 in 2023, according to the ONS long-run retail price index (prices, not wages). This is a price-level adjustment, so it shows what the sum would buy rather than its share of earnings or national income. The figure is for the £20,000,000 premise, which the earlier evidence did not confirm as a 1922 statement.",
+      "message": null,
+      "claims": [
+       {
+        "claim": "£20,000,000 from 1922 is worth about £1,480,100,503 in 2023 on the ONS RPI long-run (prices) measure, with a factor of about 74.01.",
+        "source": "tool",
+        "chunk_id": null,
+        "in_range": true
+       },
+       {
+        "claim": "The adjustment uses a price index, not wages.",
+        "source": "tool",
+        "chunk_id": null,
+        "in_range": true
+       }
+      ],
+      "sources": [],
+      "tool_calls": [
+       {
+        "name": "adjust_for_inflation",
+        "input": {
+         "amount": 20000000,
+         "from_year": 1922,
+         "to_year": 2023,
+         "currency": "GBP"
+        },
+        "output": {
+         "amount_in": 20000000,
+         "from_year": 1922,
+         "to_year": 2023,
+         "adjusted_amount": 1480100502.512563,
+         "factor": 74.00502512562815,
+         "measure": "ONS RPI long-run (prices)",
+         "currency": "GBP"
+        }
+       }
+      ],
+      "case": null
+     }
+    }
+   ]
+  }
+ ]
+}

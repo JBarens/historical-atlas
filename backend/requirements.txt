@@ -1,9 +1,8 @@
-fastapi
-uvicorn
-psycopg2-binary
-sqlalchemy
-pgvector
-pydantic-ai[anthropic]
-anthropic
+# Serving deps for the Hugging Face Space (backend/main.py + pipeline.py)
+fastapi>=0.115
+uvicorn[standard]>=0.32
+anthropic>=0.40
 python-dotenv
-# sentence-transformers omitted — local RAG only, not needed on free Render tier
+fastembed==0.9.*
+numpy
+rank-bm25==0.2.2

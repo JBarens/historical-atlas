@@ -16,6 +16,7 @@ backend/data/corpus/*
 !backend/data/index/
 backend/data/index/*
 !backend/data/index/nomic-embed-text-v1.5_speech150.npy
+!backend/data/static/
 !backend/data/reference/
 backend/data/reference/*
 !backend/data/reference/cdko.csv

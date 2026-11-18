@@ -1,0 +1,281 @@
+{
+ "type": "FeatureCollection",
+ "_provenance": "Hand-drawn approximate polygons (Hermes, frontend phase) from the public outlines of each interwar dispute area (Natural Earth / OpenStreetMap basemap as visual reference). Approximate: for highlighting and zoom only, not historical boundaries.",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "case": "aland",
+    "name": "Åland Islands",
+    "years": "1920–1921"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       19.25,
+       60.05
+      ],
+      [
+       19.55,
+       60.45
+      ],
+      [
+       20.2,
+       60.62
+      ],
+      [
+       20.95,
+       60.5
+      ],
+      [
+       21.2,
+       60.2
+      ],
+      [
+       20.9,
+       59.85
+      ],
+      [
+       20.2,
+       59.8
+      ],
+      [
+       19.6,
+       59.85
+      ],
+      [
+       19.25,
+       60.05
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "case": "upper_silesia",
+    "name": "Upper Silesia",
+    "years": "1919–1922"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       17.55,
+       50.25
+      ],
+      [
+       17.75,
+       50.65
+      ],
+      [
+       18.0,
+       50.95
+      ],
+      [
+       18.45,
+       51.1
+      ],
+      [
+       18.8,
+       50.85
+      ],
+      [
+       19.25,
+       50.45
+      ],
+      [
+       19.35,
+       50.1
+      ],
+      [
+       18.95,
+       49.85
+      ],
+      [
+       18.4,
+       49.9
+      ],
+      [
+       17.9,
+       50.0
+      ],
+      [
+       17.55,
+       50.25
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "case": "vilna",
+    "name": "Vilna region",
+    "years": "1920–1923"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       24.6,
+       54.15
+      ],
+      [
+       24.5,
+       54.7
+      ],
+      [
+       24.9,
+       55.3
+      ],
+      [
+       25.6,
+       55.65
+      ],
+      [
+       26.6,
+       55.5
+      ],
+      [
+       27.0,
+       55.0
+      ],
+      [
+       26.6,
+       54.35
+      ],
+      [
+       25.7,
+       54.0
+      ],
+      [
+       25.0,
+       54.0
+      ],
+      [
+       24.6,
+       54.15
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "case": "mosul",
+    "name": "Mosul vilayet",
+    "years": "1918–1926"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       41.6,
+       36.6
+      ],
+      [
+       42.4,
+       37.3
+      ],
+      [
+       43.4,
+       37.35
+      ],
+      [
+       44.6,
+       37.2
+      ],
+      [
+       45.2,
+       36.5
+      ],
+      [
+       45.9,
+       35.7
+      ],
+      [
+       45.6,
+       35.0
+      ],
+      [
+       44.6,
+       34.6
+      ],
+      [
+       43.6,
+       34.7
+      ],
+      [
+       42.6,
+       35.1
+      ],
+      [
+       41.5,
+       35.7
+      ],
+      [
+       41.6,
+       36.6
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "case": "greco_bulgarian",
+    "name": "Petrich / Demir Kapu",
+    "years": "1925"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       22.85,
+       41.3
+      ],
+      [
+       22.9,
+       41.5
+      ],
+      [
+       23.2,
+       41.62
+      ],
+      [
+       23.55,
+       41.55
+      ],
+      [
+       23.65,
+       41.35
+      ],
+      [
+       23.4,
+       41.2
+      ],
+      [
+       23.05,
+       41.2
+      ],
+      [
+       22.85,
+       41.3
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

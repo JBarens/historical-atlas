@@ -1,0 +1,14 @@
+**/node_modules
+**/__pycache__
+**/.env
+frontend/dist
+backend/logs
+backend/data/raw
+backend/data/index/*
+!backend/data/index/nomic-embed-text-v1.5_speech150.npy
+backend/tests
+historical-basemaps-master
+eval/results
+docs
+.git
+*.log
