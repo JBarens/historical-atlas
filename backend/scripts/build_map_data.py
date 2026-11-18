@@ -106,6 +106,23 @@ VILNA_BY = ["Ashmyany", "Astravyets", "Smarhon", "Voranava", "Lida", "Braslaw", 
 MOSUL = ["Ninawa", "Dihok", "Arbil", "As-Sulaymaniyah", "At-Ta'mim"]
 
 
+# Dispute areas are snapped to the CShapes map so the overlay coincides with the drawn borders and coast:
+# near any CShapes border (within EPS) the area is extended to that border, and everything is cut to CShapes land.
+# Edges far from a border (the inner admin lines) are left as they are.
+EPS = 0.06  # degrees, about 5 km
+CASE_DATE = {"aland": 19210101, "upper_silesia": 19210601, "vilna": 19210101, "mosul": 19250601,
+             "greco_bulgarian": 19251101}
+
+
+def fit(g, states, date):
+    live = [shape(f["geometry"]) for f in states if f["geometry"]["type"] != "Point"
+            and f["properties"]["s"] <= date <= f["properties"]["e"]]
+    land = unary_union(live)
+    band = unary_union([x.boundary for x in live]).buffer(EPS)
+    out = unary_union([g, g.buffer(EPS).intersection(band)]).intersection(land)
+    return out.buffer(0)
+
+
 def cases(states):
     ne = load("ne_a1.geojson")
     aland = unary_union([shape(f["geometry"]) for f in ne if f["properties"]["admin"] == "Aland"])
@@ -117,7 +134,8 @@ def cases(states):
                        pick(load("gb_BLR_2.geojson"), "shapeName", VILNA_BY)])
     pet = pick(load("gb_BGR_2.geojson"), "shapeName", ["Petrich"])
     # partition line: the Germany-Poland border inside the plebiscite area as CShapes codes it
-    at = {f["properties"]["n"]: shape(f["geometry"]) for f in states if f["properties"]["s"] <= 19250101 <= f["properties"]["e"]}
+    at = {f["properties"]["n"]: shape(f["geometry"]) for f in states
+          if f["geometry"]["type"] != "Point" and f["properties"]["s"] <= 19250101 <= f["properties"]["e"]}
     line = at["Germany"].boundary.intersection(at["Poland"].buffer(0.02)).intersection(sil.buffer(0.05))
     NE = "Natural Earth 10m admin-1 (public domain)"
     GB_OSM = "geoBoundaries gbOpen ADM2 (OpenStreetMap, ODbL 1.0)"
@@ -129,7 +147,8 @@ def cases(states):
         ("greco_bulgarian", "Petrich district", "1925", pet, "geoBoundaries gbOpen ADM2 BGR (Wikimedia, public domain): Petrich municipality", "approximate: modern municipality"),
     ]
     out = [{"type": "Feature", "properties": {"case": c, "kind": "area", "name": n, "years": y, "source": s, "approx": a},
-            "geometry": r(g)} for c, n, y, g, s, a in feats]
+            # Aland is kept as is: its islands are below the CShapes resolution, so cutting to CShapes land would erase them
+            "geometry": r(g if c == "aland" else fit(g, states, CASE_DATE[c]))} for c, n, y, g, s, a in feats]
     out.append({"type": "Feature", "properties": {"case": "upper_silesia", "kind": "line", "name": "1922 partition line",
                 "source": "CShapes 2.0 (CC BY-NC-SA 4.0): Germany-Poland border inside the plebiscite area",
                 "approx": "as coded in CShapes (which dates it from 1919, not 1922)"}, "geometry": r(line, 0.002)})
@@ -139,4 +158,8 @@ def cases(states):
 
 
 if __name__ == "__main__":
-    cases(borders())
+    import sys
+    if "--cases-only" in sys.argv:  # reuse the committed borders.geojson instead of re-running mapshaper
+        cases(json.loads((OUT / "borders.geojson").read_text())["features"])
+    else:
+        cases(borders())

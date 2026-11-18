@@ -8,6 +8,8 @@ import "./App.css";
 const API = import.meta.env.VITE_API_URL ?? "";
 const MAP_STYLE = "https://tiles.openfreemap.org/styles/positron";
 const EUROPE: [number, number, number, number] = [-11, 34, 48, 63];
+// Europe plus the Near East (Mosul): the user cannot pan or zoom out beyond this.
+const MAX_BOUNDS: [number, number, number, number] = [-28, 24, 64, 72];
 const REVEAL_MS = 1000;
 const STEPS = ["Searching sources", "Weighing evidence", "Writing answer"];
 const STEP_AT_MS = [0, 2500, 5500];
@@ -104,7 +106,7 @@ function CaseMap({ caseId, panelOpen }: { caseId: string | null; panelOpen: bool
   useEffect(() => {
     if (!el.current) return;
     const m = new maplibregl.Map({
-      container: el.current, style: MAP_STYLE, bounds: EUROPE, maxZoom: 7,
+      container: el.current, style: MAP_STYLE, bounds: EUROPE, maxZoom: 7, minZoom: 2.6, maxBounds: MAX_BOUNDS, renderWorldCopies: false,
       attributionControl: { compact: true, customAttribution: "CShapes 2.0, Schvitz et al. 2022 (ETH Zurich), CC BY-NC-SA 4.0" },
     });
     m.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
@@ -472,11 +474,20 @@ export default function App() {
             <>
               {notice && <div className="notice">{notice}</div>}
               {!liveMode && (
-                <div className="examples">
-                  {demo.map((c) => (
-                    <button key={c.title} className="example" onClick={() => playDemo(c)}>{c.title}</button>
-                  ))}
-                </div>
+                turns.length === 0 ? (
+                  <div className="examples">
+                    {demo.map((c) => (
+                      <button key={c.title} className="example" onClick={() => playDemo(c)}>{c.title}</button>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="examples compact">
+                    <select value="" onChange={(e) => { const c = demo[Number(e.target.value)]; if (c) playDemo(c); }}>
+                      <option value="" disabled>Other example questions</option>
+                      {demo.map((c, i) => <option key={c.title} value={i}>{c.title}</option>)}
+                    </select>
+                  </div>
+                )
               )}
               <div className="turns">
                 {turns.map((t) => (
