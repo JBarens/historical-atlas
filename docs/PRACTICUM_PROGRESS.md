@@ -6,7 +6,8 @@ Best system: BM25 + nomic (RRF) -> Haiku 5.5 rerank. Dev v2 (n=26): top20 R@5 0.
 History (v1 labels): 0.20 start -> 0.35 chunks+nomic -> 0.35 hybrid -> 0.44 rerank. Then 19/25 remaining misses turned out to be eval errors -> eval v2.
 Consolidation (Postgres/pgvector exact = numpy, top-20 overlap 1.00): VALIDATION n=16 dense 0.51, BM25 0.49, PG-FTS-OR 0.40 (AND 0.00), RRF 0.51, +Haiku20 0.62, +Haiku50 R@5 0.69 MRR 0.68, total p50 1.4s p95 2.1s (no rerank 0.26s). eval/results/pg_*.json
 Phase 7 done (docs/benchmarks/answer_eval.md, ADR-005): Haiku 5.5 generator, top 5 chunks, per-claim citations rule B (dev: correctness 0.90, faithfulness 1.00 likely lenient; quote-forced audit as guard). Judge vs human 5/10 before rubric fix.
-Next: Phase 8 agent and tools: query rewriting for follow-ups, inflation tool from backend/data/reference/cdko.csv, deterministic vs model decisions.
+Phase 8 done (ADR-004, backend/pipeline.py): architecture C, code owns flow; Haiku rewrite+route only with history (skip retrieval only on explicit false); one tool adjust_for_inflation, max 2 round-trips. Tool 12/12 vs 3/12 without; follow-up R@5 rewrite 0.60 vs raw 0.00. 14 mocked pipeline tests.
+Next: Phase 9 failure engineering (no results, Postgres down, malformed output, API timeout/rate limit, tool errors; timeouts, bounded retries, fallbacks).
 
 # Status against the brief (docs/PRACTICUM_BRIEF.md), updated Day 3
 
@@ -22,7 +23,8 @@ Order deviated from the brief: chunking (brief Phase 6) and the embedding-model 
 | 5 | Reranking | running | bge-reranker-base, 50 candidates; ADR-003, latency, answer quality pending |
 | 6 | Chunking | done early | chunking_experiment.md not written |
 | 7 | Generation + answer eval | done | answer_eval.md, ADR-005; dev only, small n |
-| 8-16 | Agent, failures, observability, cost/latency, scale, CI, security, held-out, interview | not started | |
+| 8 | Agent and tools | done | ADR-004; composed generator not evaluated at scale |
+| 9-16 | Failures, observability, cost/latency, scale, CI, security, held-out, interview | not started | |
 
 Cross-cutting gaps: latency (p50/p95) measured nowhere yet; retrieval runs outside PostgreSQL/pgvector (brief: keep PG, prefer PG-native lexical).
 
