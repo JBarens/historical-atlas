@@ -37,5 +37,7 @@ license: cc-by-nc-sa-4.0
 
 Demo mode of github.com/JBarens/historical-atlas: grounded answers over Hansard and FRUS on five League of Nations
 disputes (1920-1926). Country borders: CShapes 2.0, Schvitz et al. 2022 (ETH Zurich), CC BY-NC-SA 4.0.
+Contains Parliamentary information licensed under the Open Parliament Licence v3.0. FRUS: public domain.
+ONS CDKO: Open Government Licence v3.0.
 """)
 print("built", OUT, sum(f.stat().st_size for f in OUT.rglob("*") if f.is_file()) // 1000, "kB")
