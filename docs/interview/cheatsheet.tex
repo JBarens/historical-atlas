@@ -52,7 +52,7 @@ Generation share of time & $\approx$3.2 of 5.8 s \\
 Right passage retrieved (dev) & 19/19 at least partly correct \\
 Passage missed (dev) & 6/6 declined, 0 hallucinated \\
 Calculations & 8/12 $\to$ 11/12 (tool 12/12) \\
-Judge calibration & 5/10 failed $\to$ $\geq$8/10 \\
+Retrieval judge & 5/10 $\to$ 8/10 (v2) \\
 Release gate & correctness $\geq$0.64, p95 $\leq$7.0 s \\
 PR gate & R@20 dev, zero tolerance \\
 Security attacks & 14/16 (2 instructive misses) \\
@@ -94,13 +94,13 @@ verified against source; judge only used after matching my grading $\geq$8/10 (v
 question source. Real fix: independent questions from users or a historian.}
 
 \section{4. Something that went wrong}
-\ans{I needed an LLM judge to score answers at scale, so before trusting it I graded 10 cases myself and compared. It
-agreed with me only 5 out of 10, against my bar of 8. Two causes: it never saw the conversation history, so it marked
-correct follow-up answers wrong, and its rule was too soft, so a list answer naming two of five disputes passed. I gave
-it the history, required a supporting quote, and wrote my stricter rule into the rubric; it then met the bar and only
-then did I use it. Lesson: an unvalidated judge just moves the error somewhere you can't see it; on a client project I
-calibrate the judge against a human before any number goes in a report. Backup story: calculations were 8/12 right
-because retrieved chunks distracted the model; I made code route them to the tool, 11/12 with the tool 12/12.}
+\ans{My labels covered only one passage per question, so for vague questions I needed an LLM judge to decide whether
+other retrieved chunks also answered them. Before trusting it, I graded 10 cases myself: it agreed with me 5 times out of
+10, against my bar of 8. Two causes: it never saw the earlier turn, so follow-ups like ``and why did that fail?'' had no
+meaning; and its rule was too soft: for ``which disputes did the League settle?'' a chunk naming one was accepted. I
+added the history, wrote my rule in (on topic is never enough; a list needs more than one example) and made it quote the
+exact sentence, checked by code. Re-calibrated on 10 new cases: 8/10, and only then did I use it. Lesson: an unvalidated
+judge moves the error to where you can't see it. Backup: calculations 8/12 $\to$ code routes them to the tool, 11/12.}
 
 \section{5. 2,000 employees: cost and what breaks}
 \ans{About a cent a question: \$700--3,600 a month depending on adoption (5 a day, 22 workdays); validate in a pilot from the
