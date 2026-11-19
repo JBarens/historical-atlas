@@ -49,8 +49,8 @@ p50 / p95 latency & 3.9 s / 5.4 s \\
 Cost per question & \textbf{\$0.012} ($\approx$1 cent) \\
 Rerank share of cost & $\approx$2/3 \\
 Generation share of time & $\approx$3.2 of 5.8 s \\
-Right passage retrieved & 19/19 answered correctly \\
-Passage missed & 6/6 declined, 0 hallucinated \\
+Right passage retrieved (dev) & 19/19 at least partly correct \\
+Passage missed (dev) & 6/6 declined, 0 hallucinated \\
 Calculations & 8/12 $\to$ 11/12 (tool 12/12) \\
 Judge calibration & 5/10 failed $\to$ $\geq$8/10 \\
 Release gate & correctness $\geq$0.64, p95 $\leq$7.0 s \\
@@ -79,8 +79,8 @@ Problem $\to$ approach $\to$ proof (a number) $\to$ one trade-off or lesson. Ans
 grounded question answering over $\sim$5,000 parliamentary speeches and US diplomatic documents on five League of Nations
 disputes: hybrid retrieval (BM25 for names and dates, dense embeddings for meaning), a Haiku reranker, and a
 deterministic inflation tool. Every claim cites a source passage; without evidence it declines. On a held-out test set I
-opened once: correctness 0.80 (95\% CI 0.68--0.93), faithfulness 0.98, p95 5.4 s. Retrieval is the ceiling: with the right
-passage, 19 of 19 answers were correct.}
+opened once: correctness 0.80 (95\% CI 0.68--0.93), faithfulness 0.98, p95 5.4 s. Retrieval is the ceiling: on dev, whenever the
+right passage was retrieved the answer was at least partly correct (19/19), and 6 of 8 failed test items are retrieval misses.}
 
 \section{2. Why not put everything in the context window?}
 \ans{It doesn't fit: 1.3M tokens against 200k. Even if it did, about \$1.30 a question against \$0.012, roughly 100$\times$,
