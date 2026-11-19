@@ -1,5 +1,5 @@
 {
- "_note": "Per-case key moments, curated from backend/data/corpus. date = the event as stated in or dated by doc_id (year-month); test_api checks each doc_id exists and its date matches. focus = [west, south, east, north]. disputed = case area drawn hatched as disputed because CShapes does not code the change (Upper Silesia until the June 1922 transfer, Mosul until the Council decision of 1925-12-16); border_note is shown in the timeline.",
+ "_note": "Per-case key moments, curated from backend/data/corpus. date = the event as stated in or dated by doc_id (year-month); test_api checks each doc_id exists and its date matches. focus = [west, south, east, north]. disputed = case area drawn hatched as disputed because CShapes does not code the change (Upper Silesia until the June 1922 transfer, Mosul until the Council decision of 1925-12-16); border_note is shown in the timeline. actors = countries playing a role at that moment, Hermes-curated: only countries the moment's doc_id itself names in that role (parties, referring state, commission members' countries), as CShapes state names; an empty list means the document names none. Countries outside the map bbox (countries.OUTSIDE_MAP) are shown as a label.",
  "aland": [
   {
    "date": "1920-06",
@@ -11,7 +11,11 @@
     25.5,
     62.0
    ],
-   "disputed": false
+   "disputed": false,
+   "actors": [
+    "Sweden",
+    "Finland"
+   ]
   },
   {
    "date": "1920-07",
@@ -23,7 +27,11 @@
     30.0,
     64.5
    ],
-   "disputed": false
+   "disputed": false,
+   "actors": [
+    "Finland",
+    "Sweden"
+   ]
   },
   {
    "date": "1920-09",
@@ -35,7 +43,16 @@
     25.5,
     62.0
    ],
-   "disputed": false
+   "disputed": false,
+   "actors": [
+    "United Kingdom",
+    "Belgium",
+    "Italy",
+    "Switzerland",
+    "United States",
+    "Sweden",
+    "Finland"
+   ]
   },
   {
    "date": "1920-11",
@@ -47,7 +64,13 @@
     21.6,
     60.8
    ],
-   "disputed": false
+   "disputed": false,
+   "actors": [
+    "Belgium",
+    "Italy",
+    "Switzerland",
+    "United States"
+   ]
   }
  ],
  "upper_silesia": [
@@ -62,7 +85,8 @@
     53.5
    ],
    "disputed": true,
-   "border_note": "Upper Silesia disputed until June 1922"
+   "border_note": "Upper Silesia disputed until June 1922",
+   "actors": []
   },
   {
    "date": "1921-06",
@@ -75,7 +99,12 @@
     51.3
    ],
    "disputed": true,
-   "border_note": "Upper Silesia disputed until June 1922"
+   "border_note": "Upper Silesia disputed until June 1922",
+   "actors": [
+    "United Kingdom",
+    "Germany",
+    "Poland"
+   ]
   },
   {
    "date": "1922-03",
@@ -88,7 +117,12 @@
     51.3
    ],
    "disputed": true,
-   "border_note": "Upper Silesia disputed until June 1922"
+   "border_note": "Upper Silesia disputed until June 1922",
+   "actors": [
+    "Germany",
+    "Poland",
+    "United Kingdom"
+   ]
   },
   {
    "date": "1922-07",
@@ -101,7 +135,11 @@
     51.3
    ],
    "disputed": false,
-   "border_note": "Upper Silesia partitioned June 1922"
+   "border_note": "Upper Silesia partitioned June 1922",
+   "actors": [
+    "Germany",
+    "Poland"
+   ]
   }
  ],
  "vilna": [
@@ -115,7 +153,11 @@
     29.5,
     57.0
    ],
-   "disputed": false
+   "disputed": false,
+   "actors": [
+    "Lithuania",
+    "Poland"
+   ]
   },
   {
    "date": "1921-03",
@@ -127,7 +169,8 @@
     28.5,
     56.3
    ],
-   "disputed": false
+   "disputed": false,
+   "actors": []
   },
   {
    "date": "1922-03",
@@ -139,7 +182,10 @@
     28.5,
     56.3
    ],
-   "disputed": false
+   "disputed": false,
+   "actors": [
+    "Poland"
+   ]
   },
   {
    "date": "1923-03",
@@ -151,7 +197,10 @@
     29.5,
     57.0
    ],
-   "disputed": false
+   "disputed": false,
+   "actors": [
+    "Poland"
+   ]
   }
  ],
  "mosul": [
@@ -166,7 +215,8 @@
     42.0
    ],
    "disputed": true,
-   "border_note": "Mosul disputed until the League decision of Dec 1925"
+   "border_note": "Mosul disputed until the League decision of Dec 1925",
+   "actors": []
   },
   {
    "date": "1924-10",
@@ -179,7 +229,12 @@
     39.5
    ],
    "disputed": true,
-   "border_note": "Mosul disputed until the League decision of Dec 1925"
+   "border_note": "Mosul disputed until the League decision of Dec 1925",
+   "actors": [
+    "Turkey",
+    "Iraq",
+    "United Kingdom"
+   ]
   },
   {
    "date": "1925-03",
@@ -192,7 +247,10 @@
     39.5
    ],
    "disputed": true,
-   "border_note": "Mosul disputed until the League decision of Dec 1925"
+   "border_note": "Mosul disputed until the League decision of Dec 1925",
+   "actors": [
+    "Iraq"
+   ]
   },
   {
    "date": "1925-12",
@@ -205,7 +263,16 @@
     39.5
    ],
    "disputed": false,
-   "border_note": "Mosul frontier settled Dec 1925 (treaty June 1926)"
+   "border_note": "Mosul frontier settled Dec 1925 (treaty June 1926)",
+   "actors": [
+    "United Kingdom",
+    "Turkey",
+    "Iraq",
+    "France",
+    "Sweden",
+    "Hungary",
+    "Belgium"
+   ]
   },
   {
    "date": "1926-06",
@@ -218,7 +285,12 @@
     42.0
    ],
    "disputed": false,
-   "border_note": "Mosul frontier settled Dec 1925 (treaty June 1926)"
+   "border_note": "Mosul frontier settled Dec 1925 (treaty June 1926)",
+   "actors": [
+    "Turkey",
+    "Iraq",
+    "United Kingdom"
+   ]
   }
  ],
  "greco_bulgarian": [
@@ -232,7 +304,11 @@
     27.5,
     43.5
    ],
-   "disputed": false
+   "disputed": false,
+   "actors": [
+    "Greece",
+    "Bulgaria"
+   ]
   },
   {
    "date": "1926-03",
@@ -244,7 +320,10 @@
     29.5,
     44.5
    ],
-   "disputed": false
+   "disputed": false,
+   "actors": [
+    "Bulgaria"
+   ]
   },
   {
    "date": "1926-04",
@@ -256,7 +335,10 @@
     29.5,
     44.5
    ],
-   "disputed": false
+   "disputed": false,
+   "actors": [
+    "Bulgaria"
+   ]
   }
  ]
 }

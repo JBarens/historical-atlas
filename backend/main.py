@@ -5,7 +5,7 @@
   POST /api/ask     {question, history} + header X-Invite-Code -> pipeline.answer(), plus source metadata and the case
   GET  /api/cases   static GeoJSON of the five dispute areas
   GET  /api/borders state polygons 1914-1930 with validity dates (CShapes 2.0, CC BY-NC-SA 4.0)
-  GET  /api/moments per-case key moments (date, label, focus bbox, supporting doc_id)
+  GET  /api/moments per-case key moments (date, label, focus bbox, supporting doc_id, curated actors)
 No Postgres: map data are static files in backend/data/static/ (built by backend/scripts/build_map_data.py). The old /query, /borders, /history and
 /country endpoints (old retrieve() + agent path) are gone; the new UI does not use them.
 """
@@ -32,6 +32,7 @@ from pydantic import BaseModel, Field  # noqa: E402
 
 import access as A  # noqa: E402
 import cases as C  # noqa: E402
+import countries as K  # noqa: E402
 
 STATIC = BACKEND / "data" / "static"
 DIST = Path(os.environ.get("FRONTEND_DIST", ROOT / "frontend" / "dist"))
@@ -133,7 +134,14 @@ def shape(result, history):
         "tool_calls": [{"name": t.get("name"), "input": t.get("input"), "output": t.get("output")}
                        for t in result.get("tool_calls", [])],
         "case": case,
+        "countries": K.countries(result.get("answer", ""), result.get("claims", []), case_date(case)) if ok else [],
     }
+
+
+def case_date(case):
+    """yyyymmdd of the case's first key moment (resolves historical names, e.g. Serbia vs Yugoslavia)."""
+    m = json.loads((STATIC / "moments.json").read_text()).get(case or "", [])
+    return int(m[0]["date"].replace("-", "")) * 100 + 15 if m else K.DEFAULT_DATE
 
 
 def cost_of(result):

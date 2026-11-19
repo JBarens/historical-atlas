@@ -70,6 +70,11 @@ input { font: inherit; }
 
 .mapwrap { position: relative; min-height: 0; }
 .map { position: absolute; inset: 0; }
+.mapwrap.panel-open .map { right: min(440px, 90%); }
+.mapctl { position: absolute; top: 10px; left: 10px; z-index: 1; display: flex; gap: 6px; align-items: center; }
+.showall { font: inherit; font-size: 13px; padding: 4px 10px; background: #fff; border: 1px solid var(--line); border-radius: 4px; cursor: pointer; }
+.showall.on { background: #1f4f86; border-color: #1f4f86; color: #fff; }
+.also { font-size: 12.5px; padding: 4px 10px; background: rgba(255, 255, 255, 0.94); border: 1px solid var(--line); border-radius: 4px; color: #1f4f86; }
 .panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(440px, 90%); background: var(--card); border-left: 1px solid var(--line); box-shadow: -6px 0 18px rgba(0, 0, 0, 0.08); padding: 18px 20px; overflow-y: auto; z-index: 2; }
 .close { position: absolute; top: 8px; right: 12px; border: none; background: none; font-size: 22px; color: var(--muted); }
 .panel-n { font-weight: 700; color: var(--accent); margin-bottom: 10px; }

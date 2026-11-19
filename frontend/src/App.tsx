@@ -11,8 +11,9 @@ const STATIC = import.meta.env.VITE_STATIC === "1";
 const dataUrl = (p: string) => (STATIC ? `./data/${p}.json` : `${API}/api/${p}`);
 const MAP_STYLE = "https://tiles.openfreemap.org/styles/positron";
 const EUROPE: [number, number, number, number] = [-11, 34, 48, 63];
-// Europe plus the Near East (Mosul): the user cannot pan or zoom out beyond this.
-const MAX_BOUNDS: [number, number, number, number] = [-28, 24, 64, 72];
+// = the borders data bbox (backend/scripts/build_map_data.py BBOX): MapLibre keeps the whole viewport inside it, so the
+// uncoloured area beyond the CShapes clip is never visible.
+const MAX_BOUNDS: [number, number, number, number] = [-12, 27, 52, 71];
 const REVEAL_MS = 1000;
 const STEPS = ["Searching sources", "Weighing evidence", "Writing answer"];
 const STEP_AT_MS = [0, 2500, 5500];
@@ -27,8 +28,9 @@ type ToolCall = { name: string; input: unknown; output: unknown };
 type Status = "answered" | "insufficient_evidence" | "needs_clarification" | "error";
 type Answer = {
   request_id: string; status: Status; answer: string; message?: string | null; claims: Claim[];
-  sources: Source[]; tool_calls: ToolCall[]; case: string | null; code?: string;
+  sources: Source[]; tool_calls: ToolCall[]; case: string | null; code?: string; countries?: Country[];
 };
+type Country = { name: string; count: number; in_map: boolean };
 type Turn = { id: number; question: string; response?: Answer; revealed: boolean };
 type DemoConv = { title: string; turns: { question: string; response: Answer }[] };
 type Panel = { kind: "chunk"; source: Source; n: number } | { kind: "tool"; calls: ToolCall[] } | { kind: "conversation" };
@@ -77,7 +79,11 @@ function useHealth() {
   return { state, live };
 }
 
-type Moment = { date: string; label: string; doc_id: string; focus: [number, number, number, number]; disputed?: boolean; border_note?: string };
+type Moment = {
+  date: string; label: string; doc_id: string; focus: [number, number, number, number]; disputed?: boolean; border_note?: string;
+  actors?: string[];
+};
+type Feature = { properties: Record<string, unknown>; geometry: { type: string; coordinates: unknown } };
 type Moments = Record<string, Moment[]>;
 type Geo = { type: "FeatureCollection"; features: { properties: Record<string, unknown>; geometry: { type: string; coordinates: unknown } }[] };
 
@@ -97,9 +103,32 @@ function hatch(color: [number, number, number]) {
   return { width: n, height: n, data };
 }
 
-function CaseMap({ caseId, panelOpen }: { caseId: string | null; panelOpen: boolean }) {
+const NONE: maplibregl.ExpressionSpecification = ["==", ["get", "n"], "__none"];
+const named = (names: string[], d: number): maplibregl.ExpressionSpecification =>
+  names.length ? ["all", ["!=", ["get", "kind"], "label"], valid(d), ["in", ["get", "n"], ["literal", names]]] : NONE;
+
+/** [w, s, e, n] of the polygons of the named states valid on date d. */
+function boundsOf(features: Feature[], names: Set<string>, d: number) {
+  let w = 180, s = 90, e = -180, n = -90;
+  const walk = (c: unknown): void => {
+    if (Array.isArray(c) && typeof c[0] === "number") {
+      const [x, y] = c as number[];
+      w = Math.min(w, x); e = Math.max(e, x); s = Math.min(s, y); n = Math.max(n, y);
+    } else if (Array.isArray(c)) c.forEach(walk);
+  };
+  for (const f of features) {
+    const p = f.properties;
+    if (p.kind !== "label" && names.has(p.n as string) && (p.s as number) <= d && (p.e as number) >= d) walk(f.geometry.coordinates);
+  }
+  return w <= e ? [w, s, e, n] : null;
+}
+
+function CaseMap({ caseId, panelOpen, mentions }: { caseId: string | null; panelOpen: boolean; mentions: Country[] }) {
   const el = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
+  const [features, setFeatures] = useState<Feature[]>([]);
+  const known = useMemo(() => new Set(features.map((f) => f.properties.n as string)), [features]);
+  const [wide, setWide] = useState(false);
   const [moments, setMoments] = useState<Moments>({});
   const [loaded, setLoaded] = useState(false);
   const [idx, setIdx] = useState(0);
@@ -110,7 +139,7 @@ function CaseMap({ caseId, panelOpen }: { caseId: string | null; panelOpen: bool
   useEffect(() => {
     if (!el.current) return;
     const m = new maplibregl.Map({
-      container: el.current, style: MAP_STYLE, bounds: EUROPE, maxZoom: 7, minZoom: 2.6, maxBounds: MAX_BOUNDS, renderWorldCopies: false,
+      container: el.current, style: MAP_STYLE, bounds: EUROPE, maxZoom: 7, minZoom: 3, maxBounds: MAX_BOUNDS, renderWorldCopies: false,
       attributionControl: { compact: true, customAttribution: "CShapes 2.0, Schvitz et al. 2022 (ETH Zurich), CC BY-NC-SA 4.0" },
     });
     m.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
@@ -121,6 +150,7 @@ function CaseMap({ caseId, panelOpen }: { caseId: string | null; panelOpen: bool
       }
       const [borders, cases, mom] = await Promise.all(["borders", "cases", "moments"].map((p) => fetch(dataUrl(p)).then((r) => r.json())));
       setMoments(mom as Moments);
+      setFeatures((borders as Geo).features);
       m.addImage("hatch", hatch([138, 58, 26]));
       m.addSource("borders", { type: "geojson", data: borders as Geo as unknown as maplibregl.GeoJSONSourceSpecification["data"] });
       m.addSource("cases", { type: "geojson", data: cases as Geo as unknown as maplibregl.GeoJSONSourceSpecification["data"] });
@@ -129,6 +159,12 @@ function CaseMap({ caseId, panelOpen }: { caseId: string | null; panelOpen: bool
         paint: { "fill-color": ["get", "c"], "fill-opacity": 0.7 } });
       m.addLayer({ id: "state-line", type: "line", source: "borders", filter: ["all", poly, valid(d0)],
         paint: { "line-color": "#8c8577", "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.5, 7, 1.1] } });
+      m.addLayer({ id: "mention-fill", type: "fill", source: "borders", filter: NONE,
+        paint: { "fill-color": "#2f6fb0", "fill-opacity": 0.1 } });
+      m.addLayer({ id: "actor-fill", type: "fill", source: "borders", filter: NONE,
+        paint: { "fill-color": "#2f6fb0", "fill-opacity": 0.24 } });
+      m.addLayer({ id: "actor-line", type: "line", source: "borders", filter: NONE,
+        paint: { "line-color": "#1f4f86", "line-width": 1.8 } });
       m.addLayer({ id: "case-fill", type: "fill", source: "cases", filter: ["==", ["get", "kind"], "area"],
         paint: { "fill-color": "#b4532a", "fill-opacity": 0 } });
       m.addLayer({ id: "case-hatch", type: "fill", source: "cases", filter: ["==", ["get", "case"], "__none"],
@@ -150,18 +186,35 @@ function CaseMap({ caseId, panelOpen }: { caseId: string | null; panelOpen: bool
 
   // A new case restarts the timeline; it plays unless the user prefers reduced motion.
   const [shownCase, setShownCase] = useState<string | null>(null);
-  if (caseId !== shownCase) { setShownCase(caseId); setIdx(0); setPlaying(!!caseId && !reducedMotion()); }
+  if (caseId !== shownCase) { setShownCase(caseId); setIdx(0); setWide(false); setPlaying(!!caseId && !reducedMotion()); }
+  const go = (i: number) => { setIdx(i); setWide(false); };
+
+  const d = cur ? asOf(cur.date) : 0;
+  const actors = useMemo(() => (cur?.actors ?? []).filter((a) => known.has(a)), [cur, known]);
+  const mentioned = useMemo(() => mentions.filter((c) => c.in_map && known.has(c.name) && !actors.includes(c.name)).map((c) => c.name),
+    [mentions, known, actors]);
+  const outside = useMemo(() => [...new Set([...(cur?.actors ?? []).filter((a) => known.size && !known.has(a)),
+    ...mentions.filter((c) => !c.in_map).map((c) => c.name)])], [cur, mentions, known]);
+  const wideBounds = useMemo(() => {
+    if (!cur) return null;
+    const b = boundsOf(features, new Set([...actors, ...mentioned]), d);
+    if (!b) return null;
+    const [w, s, e, n] = cur.focus, [W, S, E, N] = MAX_BOUNDS;
+    return [Math.max(W, Math.min(w, b[0])), Math.max(S, Math.min(s, b[1])), Math.min(E, Math.max(e, b[2])), Math.min(N, Math.max(n, b[3]))] as const;
+  }, [cur, features, actors, mentioned, d]);
+
+  useEffect(() => { map.current?.resize(); }, [panelOpen]);
 
   useEffect(() => {
     if (!playing || idx >= list.length - 1) return;
-    const h = setTimeout(() => { setIdx(idx + 1); if (idx + 1 >= list.length - 1) setPlaying(false); }, STEP_MS);
+    const h = setTimeout(() => { setIdx(idx + 1); setWide(false); if (idx + 1 >= list.length - 1) setPlaying(false); }, STEP_MS);
     return () => clearTimeout(h);
   }, [playing, idx, list.length]);
 
   useEffect(() => {
     const m = map.current;
     if (!m || !loaded) return;
-    const pad = { top: 60, bottom: caseId ? 120 : 30, left: 40, right: panelOpen ? 480 : 50 };
+    const pad = { top: 60, bottom: caseId ? 120 : 30, left: 40, right: 50 };
     const anim = reducedMotion() ? { duration: 0 } : { duration: 1400 };
     if (!cur || !caseId) {
       m.setFilter("case-hatch", ["==", ["get", "case"], "__none"]);
@@ -169,10 +222,11 @@ function CaseMap({ caseId, panelOpen }: { caseId: string | null; panelOpen: bool
       m.setFilter("case-label", ["==", ["get", "case"], "__none"]);
       m.setPaintProperty("case-fill", "fill-opacity", 0);
       m.setPaintProperty("case-line", "line-width", 0);
-      m.fitBounds(EUROPE, { padding: { ...pad, right: panelOpen ? 480 : 20 }, ...anim });
+      for (const l of ["mention-fill", "actor-fill", "actor-line"]) m.setFilter(l, NONE);
+      m.fitBounds(EUROPE, { padding: { ...pad, right: 20 }, ...anim });
       return;
     }
-    const d = asOf(cur.date), poly: maplibregl.ExpressionSpecification = ["!=", ["get", "kind"], "label"];
+    const poly: maplibregl.ExpressionSpecification = ["!=", ["get", "kind"], "label"];
     m.setFilter("state-fill", ["all", poly, valid(d)]);
     m.setFilter("state-line", ["all", poly, valid(d)]);
     m.setFilter("state-label", ["all", ["==", ["get", "kind"], "label"], valid(d)]);
@@ -182,20 +236,29 @@ function CaseMap({ caseId, panelOpen }: { caseId: string | null; panelOpen: bool
     m.setFilter("case-hatch", cur.disputed ? ["all", isCase, ["==", ["get", "kind"], "area"]] : ["==", ["get", "case"], "__none"]);
     m.setFilter("case-partition", cur.disputed ? ["==", ["get", "case"], "__none"] : ["all", isCase, ["==", ["get", "kind"], "line"]]);
     m.setFilter("case-label", ["all", isCase, ["==", ["get", "kind"], "area"]]);
-    const [w, s, e, n] = cur.focus;
+    m.setFilter("mention-fill", named(mentioned, d));
+    m.setFilter("actor-fill", named(actors, d));
+    m.setFilter("actor-line", named(actors, d));
+    const [w, s, e, n] = wide && wideBounds ? wideBounds : cur.focus;
     m.fitBounds([[w, s], [e, n]], { padding: pad, maxZoom: 6, ...anim });
-  }, [cur, caseId, loaded, panelOpen]);
+  }, [cur, caseId, loaded, panelOpen, d, actors, mentioned, wide, wideBounds]);
 
   return (
     <>
-      <div ref={el} className="map" data-case={caseId ?? "none"} data-moment={cur ? idx : -1} />
+      <div ref={el} className="map" data-case={caseId ?? "none"} data-moment={cur ? idx : -1} data-wide={wide ? 1 : 0} />
+      {cur && (wideBounds || outside.length > 0) && (
+        <div className="mapctl">
+          {wideBounds && <button className={`showall${wide ? " on" : ""}`} aria-pressed={wide} onClick={() => setWide(!wide)}>Show all</button>}
+          {outside.length > 0 && <div className="also">Also involved: {outside.join(", ")}</div>}
+        </div>
+      )}
       {cur && (
         <div className="timeline" style={panelOpen ? { right: "min(460px, 92%)" } : undefined}>
           <div className="tl-row">
-            <button className="tl-play" onClick={() => { if (idx >= list.length - 1) setIdx(0); setPlaying(!playing); }}
+            <button className="tl-play" onClick={() => { if (idx >= list.length - 1) go(0); setPlaying(!playing); }}
               aria-label={playing ? "Pause" : "Play"}>{playing ? "❚❚" : "▶"}</button>
             <input type="range" min={0} max={list.length - 1} step={1} value={idx} aria-label="Timeline"
-              onChange={(e) => { setPlaying(false); setIdx(Number(e.target.value)); }} />
+              onChange={(e) => { setPlaying(false); go(Number(e.target.value)); }} />
             <div className="tl-date">{cur.date}</div>
           </div>
           <div className="tl-label">{cur.label}</div>
@@ -355,6 +418,7 @@ export default function App() {
   const [input, setInput] = useState("");
   const [panel, setPanel] = useState<Panel | null>(null);
   const [caseId, setCaseId] = useState<string | null>(null);
+  const [mentions, setMentions] = useState<Country[]>([]);
   const nextId = useRef(1);
   const playToken = useRef(0);
   const endRef = useRef<HTMLDivElement>(null);
@@ -371,7 +435,7 @@ export default function App() {
       if (!conv) return;
       setTurns(conv.turns.map((t) => ({ id: nextId.current++, question: t.question, response: t.response, revealed: true })));
       const last = conv.turns[conv.turns.length - 1].response;
-      setCaseId(last.case ?? null);
+      setCaseId(last.case ?? null); setMentions(last.countries ?? []);
       const k = Number(qs.get("source") ?? 0);
       if (k && last.sources[k - 1]) setPanel({ kind: "chunk", source: last.sources[k - 1], n: k });
       else if (qs.get("source") === "calc") setPanel({ kind: "tool", calls: last.tool_calls });
@@ -386,7 +450,7 @@ export default function App() {
   };
   const settle = (id: number, response: Answer) => {
     setTurns((t) => t.map((x) => (x.id === id ? { ...x, response } : x)));
-    setCaseId(response.case ?? null);
+    setCaseId(response.case ?? null); setMentions(response.countries ?? []);
   };
 
   const reset = () => { playToken.current++; setTurns([]); setPanel(null); setCaseId(null); setBusy(false); };
@@ -516,8 +580,8 @@ export default function App() {
             </>
           )}
         </section>
-        <section className="mapwrap">
-          <CaseMap caseId={caseId} panelOpen={!!panel} />
+        <section className={`mapwrap${panel ? " panel-open" : ""}`}>
+          <CaseMap caseId={caseId} panelOpen={!!panel} mentions={mentions} />
           {panel && <SidePanel p={panel} onClose={() => setPanel(null)} />}
         </section>
       </main>

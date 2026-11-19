@@ -66,3 +66,23 @@ Jasper rejected the hand-drawn polygons and the historical-basemaps snapshots as
   cover (the 1921 Aland decision, the Oct 1925 Greco-Bulgarian incident, the Brussels line date) are left out.
 - Demo conversations: dev-split questions that answered correctly in eval/results/rerank_depth_e2e_20.json, plus one
   deliberate insufficient_evidence example (Petrich) and the inflation calculation; one follow-up pair. Cost $0.12.
+
+## Involved countries and zoom (round 3)
+
+- Answer mentions (B, deterministic, no LLM): `backend/countries.py` maps 40 states (160 name patterns: historical names and
+  adjectives, e.g. British/England -> United Kingdom, Ottoman/Turks -> Turkey, Iran -> Persia, Serb-Croat-Slovene ->
+  Yugoslavia, dated where a name changes state) to CShapes names. Case-sensitive whole words in the validated answer
+  and claim texts only, never the retrieved chunks; 'North Pole' and 'turkey' do not match. `/api/ask` returns
+  `countries` [{name, count, in_map}]; the demo answers' `countries` are recomputed by
+  `backend/scripts/add_demo_countries.py` (no API calls). Tests: `backend/tests/test_countries.py`.
+- Moment actors (A): `actors` per moment in moments.json, Hermes-curated: only countries the moment's doc_id itself
+  names in that role; empty when the document names none. A test checks each is a CShapes state valid on the date or
+  outside the map.
+- Map: dispute area strongest (rust); current moment's actors medium (blue tint + border, changes with the timeline);
+  answer mentions soft tint. Countries outside the map show as 'Also involved: ...'.
+- Zoom: the camera stays on the moment's focus. 'Show all' fits the dispute area plus all highlighted in-map countries
+  (within the map bounds); pressing again or moving the timeline returns to the focus. Never automatic.
+- Zoom-out limit: maxBounds = the borders data bbox (-12, 27, 52, 71), so the uncoloured area beyond the CShapes clip
+  is never visible; minZoom 3. With the source panel open the map shrinks to the space left of the panel, so Mosul
+  still fits.
+- Screenshots 01-08 replaced; `09_mosul_show_all.png` shows 'Show all' active.

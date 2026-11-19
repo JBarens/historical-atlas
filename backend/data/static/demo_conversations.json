@@ -97,7 +97,29 @@
        }
       ],
       "tool_calls": [],
-      "case": "aland"
+      "case": "aland",
+      "countries": [
+       {
+        "name": "Belgium",
+        "count": 3,
+        "in_map": true
+       },
+       {
+        "name": "Italy",
+        "count": 3,
+        "in_map": true
+       },
+       {
+        "name": "Switzerland",
+        "count": 3,
+        "in_map": true
+       },
+       {
+        "name": "United States",
+        "count": 3,
+        "in_map": false
+       }
+      ]
      }
     }
    ]
@@ -179,7 +201,24 @@
        }
       ],
       "tool_calls": [],
-      "case": "upper_silesia"
+      "case": "upper_silesia",
+      "countries": [
+       {
+        "name": "France",
+        "count": 2,
+        "in_map": true
+       },
+       {
+        "name": "Italy",
+        "count": 2,
+        "in_map": true
+       },
+       {
+        "name": "United Kingdom",
+        "count": 2,
+        "in_map": true
+       }
+      ]
      }
     },
     {
@@ -250,7 +289,24 @@
        }
       ],
       "tool_calls": [],
-      "case": "upper_silesia"
+      "case": "upper_silesia",
+      "countries": [
+       {
+        "name": "France",
+        "count": 2,
+        "in_map": true
+       },
+       {
+        "name": "Italy",
+        "count": 2,
+        "in_map": true
+       },
+       {
+        "name": "United Kingdom",
+        "count": 2,
+        "in_map": true
+       }
+      ]
      }
     }
    ]
@@ -338,7 +394,14 @@
        }
       ],
       "tool_calls": [],
-      "case": "vilna"
+      "case": "vilna",
+      "countries": [
+       {
+        "name": "Poland",
+        "count": 2,
+        "in_map": true
+       }
+      ]
      }
     }
    ]
@@ -432,7 +495,19 @@
        }
       ],
       "tool_calls": [],
-      "case": "mosul"
+      "case": "mosul",
+      "countries": [
+       {
+        "name": "Iraq",
+        "count": 7,
+        "in_map": true
+       },
+       {
+        "name": "United Kingdom",
+        "count": 2,
+        "in_map": true
+       }
+      ]
      }
     }
    ]
@@ -508,7 +583,19 @@
        }
       ],
       "tool_calls": [],
-      "case": "greco_bulgarian"
+      "case": "greco_bulgarian",
+      "countries": [
+       {
+        "name": "Greece",
+        "count": 3,
+        "in_map": true
+       },
+       {
+        "name": "Bulgaria",
+        "count": 1,
+        "in_map": true
+       }
+      ]
      }
     }
    ]
@@ -608,7 +695,8 @@
         }
        }
       ],
-      "case": null
+      "case": null,
+      "countries": []
      }
     }
    ]
