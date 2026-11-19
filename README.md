@@ -118,9 +118,9 @@ release decisions were mine; they are recorded in [docs/adr](docs/adr) and [docs
 
 ## Data and licences
 
-- Hansard (UK Parliament debates): see source for licence terms.
-- FRUS, Foreign Relations of the United States (US Department of State): see source.
-- ONS series CDKO (retail price index, used by the inflation tool): see source.
+- Hansard (UK Parliament debates): contains Parliamentary information licensed under the Open Parliament Licence v3.0.
+- FRUS, Foreign Relations of the United States (US Department of State, Office of the Historian): public domain.
+- ONS series CDKO (Retail Prices Index, long-run series from 1800, Jan 1974 = 100; used by the inflation tool): Open Government Licence v3.0.
 - Country borders: CShapes 2.0, Schvitz et al. 2022 (ETH Zurich), CC BY-NC-SA 4.0; the derived borders file is shared
   under the same licence.
 - Dispute areas: Natural Earth (public domain) for Aaland and Mosul; geoBoundaries/OSM (ODbL) for Upper Silesia and
