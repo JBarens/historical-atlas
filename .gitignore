@@ -26,3 +26,6 @@ data_*.log
 backend/logs/
 eval/results/full_eval_dryrun.json
 eval/results/full_eval_requests.jsonl
+
+# built static Space (rebuild with deploy/build_static_space.py)
+deploy/static_space/

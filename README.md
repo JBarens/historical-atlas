@@ -7,6 +7,8 @@ pinned: false
 
 # Historical Atlas
 
+Demo: https://huggingface.co/spaces/JBarens310/historical-atlas (static, demo mode; live questions run locally or on a compute Space).
+
 Grounded question answering over British parliamentary debates (Hansard) and FRUS documents on five interwar
 League of Nations disputes. Practicum brief and progress: docs/PRACTICUM_BRIEF.md, docs/PRACTICUM_PROGRESS.md.
 Frontend and API decisions: docs/frontend/README.md.

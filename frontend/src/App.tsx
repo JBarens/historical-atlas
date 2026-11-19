@@ -6,6 +6,9 @@ import "./App.css";
 // All model output and source text is rendered as React text nodes (escaped). No raw HTML anywhere.
 
 const API = import.meta.env.VITE_API_URL ?? "";
+// Static build (free Hugging Face static Space): no backend; read the exported JSON files, demo mode only.
+const STATIC = import.meta.env.VITE_STATIC === "1";
+const dataUrl = (p: string) => (STATIC ? `./data/${p}.json` : `${API}/api/${p}`);
 const MAP_STYLE = "https://tiles.openfreemap.org/styles/positron";
 const EUROPE: [number, number, number, number] = [-11, 34, 48, 63];
 // Europe plus the Near East (Mosul): the user cannot pan or zoom out beyond this.
@@ -59,6 +62,7 @@ function useHealth() {
     const poll = async () => {
       while (!stop) {
         try {
+          if (STATIC) { setLive(false); setState("ok"); return; }
           const r = await fetch(`${API}/api/health`);
           if (r.ok) { const j = await r.json(); setLive(!!j.live); setState("ok"); return; }
         } catch { /* backend asleep or starting */ }
@@ -115,7 +119,7 @@ function CaseMap({ caseId, panelOpen }: { caseId: string | null; panelOpen: bool
       for (const l of m.getStyle().layers) {
         if (l.type === "symbol" || /boundary|admin/.test(l.id)) m.setLayoutProperty(l.id, "visibility", "none");
       }
-      const [borders, cases, mom] = await Promise.all(["borders", "cases", "moments"].map((p) => fetch(`${API}/api/${p}`).then((r) => r.json())));
+      const [borders, cases, mom] = await Promise.all(["borders", "cases", "moments"].map((p) => fetch(dataUrl(p)).then((r) => r.json())));
       setMoments(mom as Moments);
       m.addImage("hatch", hatch([138, 58, 26]));
       m.addSource("borders", { type: "geojson", data: borders as Geo as unknown as maplibregl.GeoJSONSourceSpecification["data"] });
@@ -358,7 +362,7 @@ export default function App() {
 
   useEffect(() => {
     if (health.state !== "ok") return;
-    fetch(`${API}/api/demo`).then((r) => r.json()).then((j) => {
+    fetch(dataUrl("demo")).then((r) => r.json()).then((j) => {
       const convs: DemoConv[] = j.conversations ?? [];
       setDemo(convs);
       // Deep link (Hermes UX detail): ?demo=N shows example N already revealed; &source=K opens footnote K.
