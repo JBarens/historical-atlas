@@ -152,7 +152,7 @@ were eval errors; 2 wrong labels even in test. Next time: 20 real questions firs
 the alias, dependencies, rate limits. Logs/metrics first, then eval: passes $\Rightarrow$ users changed, add real
 questions; fails $\Rightarrow$ system changed, diff against last good run, pin. Never tune to pass the judge.
 
-\textbf{``A bug you don't understand?'':} layers that don't care who wrote the code: tests (74, mocked), deterministic
+\textbf{``A bug you don't understand?'':} layers that don't care who wrote the code: tests (93 backend, mocked), deterministic
 gates (R@20, fingerprint, LLM contract), the eval as end-to-end test, small diffs I read and have explained. Plus limited
 blast radius: read-only tool with input checks, code-routed calculations, spend cap, rollback. Example: the API was still
 running day-one code; only the end-to-end check exposed it.
