@@ -131,6 +131,35 @@ the judge (5/10) and wrote its rubric, made code route calculations to the tool 
 Postgres FTS on measurement, set the release thresholds, chose top-20 rerank (41\% cheaper). Delegated drafting is
 documented and reported separately.}
 
+\section{Two judges (don't mix them up)}
+\small
+\begin{tabularx}{\linewidth}{@{}lXl@{}}
+\toprule
+Retrieval judge & does this chunk also answer the question? & 5/10 $\to$ 8/10 (v2); was too soft \\
+Answer judge & correctness + faithfulness of the answer ($\to$ 0.80) & 5/10, all harsher than me; rubric fixed, not re-measured \\
+\bottomrule
+\end{tabularx}
+\normalsize
+
+\section{Round 2 answers}
+\textbf{Self-preference (Claude judging Claude):} the answer judge's 5 disagreements were all \emph{harsher} than me, so
+measured bias pushes scores down. Still to do: fresh calibration after the rubric fix; a non-Claude judge on a sample.
+
+\textbf{Decision I'd change:} LLM-written eval questions (64 for \$1.50). Cost: lexical skew; 18 of the first 25 misses
+were eval errors; 2 wrong labels even in test. Next time: 20 real questions first, LLM expands in their style.
+
+\textbf{``Answers got worse, code unchanged'':} what else changed? Questions (shift), data/index, model version behind
+the alias, dependencies, rate limits. Logs/metrics first, then eval: passes $\Rightarrow$ users changed, add real
+questions; fails $\Rightarrow$ system changed, diff against last good run, pin. Never tune to pass the judge.
+
+\textbf{``A bug you don't understand?'':} layers that don't care who wrote the code: tests (74, mocked), deterministic
+gates (R@20, fingerprint, LLM contract), the eval as end-to-end test, small diffs I read and have explained. Plus limited
+blast radius: read-only tool with input checks, code-routed calculations, spend cap, rollback. Example: the API was still
+running day-one code; only the end-to-end check exposed it.
+
+\textbf{CI facts:} PR gate = tests + hybrid \textbf{R@20} dev, zero tolerance. Release = correctness $\geq$0.64,
+p95 $\leq$7.0 s. Top-20 vs top-50 = \textbf{rerank candidates}, not R@k.
+
 \section{Other lines worth having}
 \begin{itemize}
 \item \textbf{Containment over detection:} a detector false-positives on history questions and doesn't cover documents.
