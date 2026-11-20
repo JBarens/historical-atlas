@@ -61,7 +61,21 @@ Total API spend & $\approx$\$8 \\
 \end{tabularx}
 \end{multicols}
 
-\section{Facts I got wrong in round 1}
+\section{Retrieval numbers (why hybrid)}
+\small
+\begin{tabularx}{\linewidth}{@{}Xr@{}}
+\toprule
+R@5 on name/date questions (v1) & dense 0.57 vs BM25 0.48 \\
+R@5 on vague questions (v1) & BM25 0.27 vs dense 0.20 (opposite of my hypothesis) \\
+Median rank of right passage, full ranking & dense 74 / BM25 42 / \textbf{fused 17} \\
+Cost of BM25 & $\approx$40 ms, no model \\
+Pipeline & fused top 20 $\to$ Haiku rerank $\to$ top 5 to the generator \\
+\bottomrule
+\end{tabularx}
+\normalsize
+Line: \emph{they fail on different questions; fusion gets the right passage into the reranker's top 20.}
+
+\section{Facts I got wrong (rounds 1--2)}
 \begin{itemize}
 \item It \textbf{never} answers from training data: no evidence $\to$ \texttt{insufficient\_evidence}.
 \item Corpus = Commons \textbf{and} Lords (Hansard) \textbf{plus} FRUS, not Lords only.
@@ -69,6 +83,9 @@ Total API spend & $\approx$\$8 \\
 \item CI: fast gate on \textbf{every push}; full eval \textbf{manual} or forced by an LLM-contract change. Not daily.
 \item Cost is \$0.012 per question, not \$0.0012.
 \item Code: \textbf{nearly 100\% AI-generated}. Say it; own the decisions.
+\item Citations: code checks the cited chunk \textbf{was retrieved} (in range), not that it supports the claim; support is the judge's faithfulness, \textbf{0.98}.
+\item ``Does it make things up?'' $\to$ answer with \textbf{faithfulness 0.98}, then explain correctness 0.80: misses are mostly ``no evidence''.
+\item ``How would I know?'' $\to$ a test set from \textbf{their} questions, measured before go-live.
 \end{itemize}
 
 \section{Answer pattern}
